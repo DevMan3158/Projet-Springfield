@@ -1,0 +1,66 @@
+#
+# container
+#
+language:php
+extendsFolder:.php
+extendsDisplay:.php
+container:${NAME_PHP_CONTAINER}
+#
+# Compile Docker
+#
+dockerCompile:#docker# build .
+composeCompile:#compose# up -d
+#
+# Container (Unit)
+#
+unit_container:${NAME_PHP_CONTAINER}
+#
+# Compile (Unit)
+#
+unit_containerExec:php
+unit_containerFileAdd:/usr/local/bin/phpunit
+unit_folders:
+unit_containerCmdUp:
+unit_containerCmd:#exec# #fileAdd# --log-junit #xmlFile# #unitFolder#
+unit_containerCmdDown:
+unit_nameXml:nb-phpunit-pctr-log.xml
+#
+# Project (Unit)
+#
+unit_srcFolder:project/www
+unit_unitFolder:project/unit
+unit_tmp:projecttmp/tmp/php
+#
+# Container (Unit)
+#
+unit_projectFolderDocker:/usr/local/apache2
+unit_srcFolderDocker:www
+unit_unitFolderDocker:unit
+unit_tmpDocker:../projecttmp/tmp/php
+#
+# Container (Docs)
+#
+docs_container:${NAME_PHP_CONTAINER}
+#
+# Compile (Docs)
+#
+docs_title:damp_docs
+docs_containerExec:php
+docs_containerFileAdd:/opt/phpDocumentor/vendor/bin/phpdoc
+docs_folders:core/class/
+docs_containerCmdUp:
+docs_containerCmd:#exec# #fileAdd# run --ansi --directory #srcFolder# --target #docsFolder# --cache-folder #tmpFolder# --title #title#
+docs_containerCmdDown:
+#
+# Project (Docs)
+#
+docs_srcFolder:project/www
+docs_docsFolder:project/docs
+docs_tmp:projecttmp/tmp/php
+#
+# Container (Docs)
+#
+docs_projectFolderDocker:/usr/local/apache2
+docs_srcFolderDocker:www
+docs_docsFolderDocker:docs
+docs_tmpDocker:../projecttmp/tmp/php

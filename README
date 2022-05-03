@@ -1,0 +1,81 @@
+docker exec -it pctronique_php bash
+Parsing configuration file phpDocumentor.ini...
+   (found in /usr/local/lib/php/data/PhpDocumentor/)...
+
+   jira
+
+####################################################
+# HowTo Use this stack
+####################################################
+
+    I / Configuration
+    II / Tools available ( shortcuts )
+
+
+#########################################
+I / Configuration 00
+#########################################
+
+    A / Php (ssmtp)
+    B / Apache 2.4
+    C / Mysql 
+
+#------------------------------------------
+A /   ssmtp ( to use mail() function in php )
+#------------------------------------------
+
+Don't forget ton configure ssmtp credentials inside the file "ssmtp.conf"
+
+cp docker/php/ssmtp.conf.dist docker/php/ssmtp.conf
+vim docker/php/ssmtp
+
+
+#------------------------------------------
+B /  Override Apache config and/or Add a vhost
+#------------------------------------------
+
+You can change the main apache config file by editing this file : "httpd.conf"
+
+vim docker/apache/httpd.conf
+
+
+
+To add a vhost ( virtual host ), edit the file "httpd-vhosts.conf"
+
+vim docker/apache/httpd-vhosts.conf
+
+
+
+#------------------------------------------
+C /  Override Mysql configuration
+#------------------------------------------
+
+You can add / edit all mysql options ( my.cnf ), inside this file "conf-mysql.cnf"
+
+vim docker/mysql/conf-mysql.cnf
+
+
+
+#########################################
+II / Tools
+#########################################
+
+# cleanenv.sh : 
+
+- Remove stopped container
+
+# logs.sh : 
+
+- show the real time logs from the container "http"
+
+# stats.sh :
+
+- show the ressources statistics foreach running containers
+
+# dump_sql.sh <database name>
+
+- Create a dump of the database <database name> inside the current directory "tools/"
+
+# restore_sql.sh <dump file.sql>
+
+- Restore/import the sql dump inside the SQL container . 
