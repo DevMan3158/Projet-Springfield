@@ -22,13 +22,14 @@ header{
 }
 
 .hommerheader{
-    width: 90px;
+    width: 270px;
     align-self: end;
 }
 
 .donnut{
     min-width: 40px;
     margin-right: 3%;
+    width: 7%;
 }
 
 header h1{
@@ -223,6 +224,14 @@ footer ul:last-of-type::after{
     footer::after{
         bottom: unset;
         top:0;
+    }
+
+    /* HEADER */
+
+    header h1{
+        margin-left: unset;
+        width: 400px;
+        font-size: 2.5em;
     }
 
 } 
