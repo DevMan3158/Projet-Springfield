@@ -1,0 +1,38 @@
+
+@font-face /* POLICE */ {
+    font-family: "Simpsonfont";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Simpsonfont"),
+        url("src/font/Simpsonfont") format("ttf");
+}
+
+*{
+    font-family: "Simpsonfont", Helvetica, sans-serif;
+}
+
+header{
+
+    display: flex;
+    justify-content: space-between;
+    background-color: #8BC7E5;
+    align-items: center;
+}
+
+.hommerheader{
+    width: 90px;
+    align-self: end;
+}
+
+.donnut{
+    width: 60px;
+    margin-right: 5px;
+}
+
+h1{
+    font-size: 1em;
+    margin: 20px 0;
+    text-align: center;
+    color: #FFF500;
+    -webkit-text-stroke: 0.01px black;
+}
