@@ -11,6 +11,8 @@
     font-family: "Simpsonfont", Helvetica, sans-serif;
 }
 
+/* HEADER */
+
 header{
 
     display: flex;
@@ -25,14 +27,60 @@ header{
 }
 
 .donnut{
-    width: 60px;
-    margin-right: 5px;
+    min-width: 40px;
+    margin-right: 3%;
 }
 
 h1{
-    font-size: 1em;
     margin: 20px 0;
     text-align: center;
     color: #FFF500;
-    -webkit-text-stroke: 0.01px black;
+    -webkit-text-stroke: 0.7px black;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* SECTION */
+
+section{
+    background: url("../img/background-sky.webp");
+    background-size: cover;
+    height: 200px;
+}
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #424F46;
+    color: #FFF500;
+    -webkit-text-stroke: 1px black;
+    font-size: 1.5em;
+    padding: 0 30px 30px 30px;
+    text-align: center;
+    border: solid 1px black;
+}
+
+footer a{
+    font-family: 'Comic Neue', cursive;
+    color: #FFF500;
+    font-size: 0.6em;
+    letter-spacing: 1px;
+    font-weight: 0;
+    font-style: normal;
+}
+
+footer ul, footer div{
+    margin-top: 40px;
+}
+
+.duffbeer{
+    width: 100%;
+}
+
+.duffbeer img{
+    width: 25px;
+    margin: auto;
 }
