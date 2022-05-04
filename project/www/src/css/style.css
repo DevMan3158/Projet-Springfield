@@ -19,10 +19,11 @@ header{
     justify-content: space-between;
     background-color: #8BC7E5;
     align-items: center;
+    border: solid black 1px;
 }
 
 .hommerheader{
-    width: 270px;
+    width: 100px;
     align-self: end;
 }
 
@@ -38,8 +39,9 @@ header h1{
     text-align: center;
     color: #FFF500;
     -webkit-text-stroke: 0.7px black;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
+    text-shadow: black 2px 2px 2px;
 }
 
 #donnut img:last-of-type{
@@ -212,6 +214,10 @@ footer p{
 footer h1{
     display: none;
     margin-top: 100px;
+}
+
+footer > ul > li:first-of-type{
+    text-shadow: black 2px 2px 2px;
 }
 /* Barres de séparations after/before & images décoratives */
 
