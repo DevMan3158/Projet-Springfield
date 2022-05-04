@@ -50,3 +50,13 @@ function fetch_gest(url, dataArray) {
         .catch((error) => console.error("Error:", error));
 }
 
+function fetch_form(url, idform) {
+    const formData = new FormData(document.getElementById(idform));
+    return fetch(url, {
+        method: "post",
+        body: formData,
+    })
+    .then((response) => response.text())
+    .catch((error) => console.error("Error:", error));
+}
+

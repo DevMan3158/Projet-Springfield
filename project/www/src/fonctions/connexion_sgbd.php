@@ -27,8 +27,6 @@ if (!function_exists('connexion_sgbd')) {
         }
         $line .= ";charset=UTF8";
 
-        echo $line."<br />";
-
         $sgbd = null;
         try {
             

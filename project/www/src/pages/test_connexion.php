@@ -7,7 +7,7 @@
     <title>Test</title>
 </head>
 <body>
-    <a href="#" id="btt_conn">Connexion</a>
+    <a href="#" id="btt_conn">Connexion</a>&gt;
     <script src="./../js/header_connexion.js"></script>
 </body>
 </html>
