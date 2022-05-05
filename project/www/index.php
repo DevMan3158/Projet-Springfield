@@ -16,13 +16,13 @@
         }
 
         if ($_GET['ind'] == 'acc') {
-            echo '<link href="./src/css/style-acc.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-acc.css">';
         } elseif ($_GET['ind'] == 'cat'){
-            echo '<link href="./src/css/style-cat.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-cat.css">';
         } elseif ($_GET['ind'] == 'msg'){
-            echo '<link href="./src/css/style-messages.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-messages.css">';
         } elseif ($_GET['ind'] == 'insc'){
-            echo '<link href="./src/css/style-inscription.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
         }
 
     ?>
