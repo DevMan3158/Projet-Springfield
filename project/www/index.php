@@ -9,6 +9,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat&family=Oswald&family=Playball&display=swap" rel="stylesheet">
+    <?php
+
+        if(empty($_GET)) {
+            $_GET['ind'] = 'acc';
+        }
+
+        if ($_GET['ind'] == 'acc') {
+            echo '<link href="./src/css/style-acc.css">';
+        } elseif ($_GET['ind'] == 'cat'){
+            echo '<link href="./src/css/style-cat.css">';
+        } elseif ($_GET['ind'] == 'msg'){
+            echo '<link href="./src/css/style-messages.css">';
+        } elseif ($_GET['ind'] == 'insc'){
+            echo '<link href="./src/css/style-inscription.css">';
+        }
+
+    ?>
     <title>Springfield</title>
 </head>
 <body>
@@ -17,22 +34,48 @@
         <div class="hommerheader">
             <img src="src/img/hommer_content.png" alt="Hommer joyeux">
         </div>
-        <h1> Office du tourisme de Springfield </h1>
+        <a href="./index.php?ind=acc">
+            <h1>
+                Office du tourisme de Springfield 
+            </h1>
+        </a>
         <input type="checkbox" id="checkbox">
         <label id="donnut" for="checkbox">
             <img id="d1" src="src/img/donnuts.png" alt="Un donnuts">
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
-            <button>Connexion</button>
-            <button>Aide</button>
-            <button>Expositions</button>
-            <button>Musée</button>
-            <button>Lieux</button>
+            <a>Connexion</a>
+            <a href="./index.php?ind=cat">Categories</a>
+
+            
+            <!--
+            <a>Expositions</a>
+            <a>Musée</a>
+            <a>Lieux</a>
+            -->
+
         </nav>
     </header>
 
     <section>
+        <?php
+
+            if(empty($_GET)) {
+                $_GET['ind'] = 'acc';
+            }
+
+            if ($_GET['ind'] == 'acc') {
+                include './src/pages/acc.php';
+            } elseif ($_GET['ind'] == 'cat'){
+                include './src/pages/cat.php';
+            } elseif ($_GET['ind'] == 'msg'){
+                include './src/pages/messages.php';
+            } elseif ($_GET['ind'] == 'insc'){
+                include './src/pages/inscription.php';
+            }
+
+        ?>
 
     </section>
 

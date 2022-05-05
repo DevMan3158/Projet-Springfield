@@ -63,11 +63,12 @@ nav{
     flex-direction: column;
     right: 0;
     display: none;
-    margin-top: 400px;
+    margin-top: 161px;
+    top: 0;
     z-index: 10;
 }
 
-button{
+nav a{
     background-color:#424F46;
     color:#FFF500;
     padding: 10px 45px;
@@ -92,7 +93,7 @@ button{
 
 /* ICONES NAV */
 
-button:first-of-type::after{
+nav > a:first-of-type::after{
     content: "";
     position: absolute;
     width: 20px;
@@ -101,7 +102,7 @@ button:first-of-type::after{
     background-image: url(../img/login.png)
 }
 
-button:nth-of-type(2)::after{
+nav > a:nth-of-type(2)::after{
     content: "";
     position: absolute;
     width: 20px;
@@ -110,7 +111,7 @@ button:nth-of-type(2)::after{
     background-image: url(../img/help.png)
 }
 
-button:nth-of-type(3)::after{
+nav > a:nth-of-type(3)::after{
     content: "";
     position: absolute;
     width: 20px;
@@ -119,7 +120,7 @@ button:nth-of-type(3)::after{
     background-image: url(../img/expo.png)
 }
 
-button:nth-of-type(4)::after{
+nav > a:nth-of-type(4)::after{
     content: "";
     position: absolute;
     width: 20px;
@@ -128,7 +129,7 @@ button:nth-of-type(4)::after{
     background-image: url(../img/musee.png)
 }
 
-button:last-of-type::after{
+nav > a:last-of-type::after{
     content: "";
     position: absolute;
     width: 20px;
