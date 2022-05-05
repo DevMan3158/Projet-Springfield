@@ -5,7 +5,12 @@ function popupWindow(url, windowName, win, w, h) {
 }
 
 function header_connexion(e) {
-    popupWindow("./connexion.php", "connexion", window, 320, 320);
+    let startLink = "./src/";
+    var hostname_origin = document.location.href;
+    if (hostname_origin.search("sgd-admin") != -1) {
+        startLink = "./../src/";
+    }
+    popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 320);
 }
 
 document.getElementById("btt_conn").addEventListener("click", header_connexion);

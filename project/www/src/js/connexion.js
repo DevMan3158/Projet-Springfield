@@ -9,13 +9,17 @@ function valider(e) {
         };
         fetch_post('./../exec/connexion_exec.php', dataArray).then(function(response) {
             if(response == "1") {
-                console.log("connexion réussi.");
-                window.opener.location.href = "./../../index.php";
+                window.opener.location.href = "./../../sgd-admin/index.php";
                 window.close();
             } else if(response == "2") {
                 alert("Il manque des informations pour vous connecter.");
+            } else if(response == "3") {
+                alert("Erreur de mot de passe.");
+            } else if(response == "4") {
+                alert("Erreur de login.");
+            } else {
+                alert("Erreur de login.");
             }
-            console.log(response);
         });
     } else {
         console.log("Les informations sont vides, vous ne pouvez pas vous connecter.");
