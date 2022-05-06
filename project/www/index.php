@@ -1,6 +1,6 @@
 <?php
 
-    include_once './src/fonctions/connexion_sgbd.php';
+    include_once dirname(__FILE__) . '/src/fonctions/connexion_sgbd.php';
 
 ?>
 

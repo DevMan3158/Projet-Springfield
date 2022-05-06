@@ -33,3 +33,4 @@ if(!empty($_SESSION) && array_key_exists('avatar', $_SESSION)) {
 unset($_SESSION);
 session_destroy();
 
+header('location: ./../../');

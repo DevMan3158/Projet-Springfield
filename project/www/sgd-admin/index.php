@@ -1,3 +1,16 @@
+<?php
+
+    include_once dirname(__FILE__) . '/../src/fonctions/connexion_sgbd.php';
+
+    session_start();
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION)) {
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -156,3 +169,13 @@ elseif ($_GET['ind'] == 'produit') {
 </body>
 
 </html>
+<?php
+
+} else { ?>
+    <script src="./../src/js/header_connexion.js"></script>
+    <script type="text/javascript">
+        header_connexion(event);
+    </script>
+<?php 
+}
+?>

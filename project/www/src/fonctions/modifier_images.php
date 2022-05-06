@@ -9,7 +9,9 @@ if (!function_exists('modifier_images_folder')) {
      * @return boolean c'est bien une image.
      */
     function type_valide(int $type): bool {
-        return ($type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG || $type == IMAGETYPE_GIF);
+        return ($type == IMAGETYPE_BMP || $type == IMAGETYPE_GIF || 
+        $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG || $type == IMAGETYPE_WBMP
+        || $type == IMAGETYPE_WEBP);
     }
 
     // 
@@ -28,6 +30,15 @@ if (!function_exists('modifier_images_folder')) {
             }
             elseif( $type == IMAGETYPE_GIF ) {
                 return ".gif";
+            }
+            elseif( $type == IMAGETYPE_BMP ) {
+                return ".bmp";
+            }
+            elseif( $type == IMAGETYPE_WBMP ) {
+                return ".wbmp";
+            }
+            elseif( $type == IMAGETYPE_WEBP ) {
+                return ".webp";
             }
             return ".null";
     }
@@ -51,6 +62,15 @@ if (!function_exists('modifier_images_folder')) {
             elseif( $type == IMAGETYPE_GIF ) {
                 imagegif($filename, $new_name);
             }
+            elseif( $type == IMAGETYPE_BMP ) {
+                imagebmp($filename, $new_name);
+            }
+            elseif( $type == IMAGETYPE_WBMP ) {
+                imagewbmp($filename,$new_name);
+            }
+            elseif( $type == IMAGETYPE_WEBP ) {
+                imagewebp($filename, $new_name);
+            }
             imagedestroy($filename);
         }
     }
@@ -72,6 +92,15 @@ if (!function_exists('modifier_images_folder')) {
             }
             elseif( $type == IMAGETYPE_GIF ) {
                 return imagecreatefromgif($filename);
+            }
+            elseif( $type == IMAGETYPE_BMP ) {
+                return imagecreatefrombmp($filename);
+            }
+            elseif( $type == IMAGETYPE_WBMP ) {
+                return imagecreatefromwbmp($filename);
+            }
+            elseif( $type == IMAGETYPE_WEBP ) {
+                return imagecreatefromwebp($filename);
             }
             return null;
         }
@@ -159,7 +188,7 @@ if (!function_exists('modifier_images_folder')) {
             {
                 if (is_file($file . DIRECTORY_SEPARATOR . $value))
                 {
-                    modifier_image($file . DIRECTORY_SEPARATOR . $value, $value, $folder_save, $width_max, $height_max);
+                    modifier_image($file . DIRECTORY_SEPARATOR . $value, $folder_save, $value, $width_max, $height_max);
                 }
             }
         }
