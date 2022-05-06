@@ -3,8 +3,8 @@
     font-family: "Simpsonfont";
     font-style: normal;
     font-weight: normal;
-    src: local("Simpsonfont"),
-        url("src/font/Simpsonfont") format("ttf");
+    src: url('./../font/Simpson/Simpsonfont.woff') format('woff'),
+        url('./../font/Simpson/Simpsonfont.ttf') format('truetype');
 }
 
 *{

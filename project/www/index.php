@@ -1,3 +1,9 @@
+<?php
+
+    include_once './src/fonctions/connexion_sgbd.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat&family=Oswald&family=Playball&display=swap" rel="stylesheet">
     <?php
 
-        if(empty($_GET)) {
+        if(empty($_GET['ind'])) {
             $_GET['ind'] = 'acc';
         }
 
@@ -45,10 +51,10 @@
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
-            <a>Connexion</a>
+            <a id="btt_conn">Connexion</a>
             <a href="./index.php?ind=cat">Categories</a>
 
-            
+            <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>
             <!--
             <a>Expositions</a>
             <a>Musée</a>
@@ -60,10 +66,6 @@
 
     <section>
         <?php
-
-            if(empty($_GET)) {
-                $_GET['ind'] = 'acc';
-            }
 
             if ($_GET['ind'] == 'acc') {
                 include './src/pages/acc.php';
@@ -99,6 +101,6 @@
 
         <p>Tous droits réservés @Springfield - 2022</p>
     </footer>
-    
+    <script src="./../src/js/header_connexion.js"></script>
 </body>
 </html>
