@@ -127,15 +127,19 @@ figcaption{
 
     section{
         padding: 50px;
+        grid-template-rows: auto auto;
         grid-template-areas: "title title title"
         "text text text"
-        "fig1 fig1 fig1"
-        "fig2 fig2 fig2"
-        "fig3 fig3 fig4"
-        "fig6 fig7 fig7"
-        "fig8 fig8 fig8"
-        "fig9 fig9 fig10"
-        "fig5 fig5 fig5";
+        "fig1 fig2 fig3"
+        "fig1 fig2 fig3"
+        "fig1 . fig3"
+        "fig4 fig5 fig6"
+        "fig4 fig5 fig6"
+        "fig4 fig5 fig6"
+        "fig7 fig8 fig9"
+        "fig7 fig8 fig9"
+        "fig7 fig8 fig9"
+        "fig10 fig10 fig10";
     }
 
 }

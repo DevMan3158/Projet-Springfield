@@ -23,7 +23,7 @@
         foreach ($resultat as $article) {
 
             echo    '<figure>
-                        <img src="' .($article['src']). '" alt="'.($article['alt']).'">
+                        <img src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
                         <figcaption>' .($article['titre']). '</figcaption>
                     </figure>';
     }
