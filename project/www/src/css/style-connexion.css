@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'simpsonfont';
+    src: url('./../font/Simpson/Simpsonfont.woff') format('woff'),
+        url('./../font/Simpson/Simpsonfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "simpsonfont";
+    background: url("./../img/background-sky.webp") repeat;
+    background-size: cover;
+    min-width: 320px;
+}
+
+#connexion {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+/** textes pour la connexion **/
+#connexion label, #connexion input, #connexion input:hover, 
+#connexion input:focus, #connexion input:default {
+    font-family: "simpsonfont";
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    font-size: 25px;
+    padding: 5px;
+    width: 310px;
+}
+
+#connexion input, #connexion input:hover, #connexion input:focus {
+    border-radius: 30px;
+}
+
+#connexion input:hover {
+    transform: scale(1.03);
+}
+
+#connexion input:focus {
+    color: #D1B271;
+}
+
+#connexion label {
+    padding: 10px;
+}
+
+#connexion input, #connexion input:hover, #connexion input:focus {
+    outline: none;
+}
+
+#connexion a {
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
+
+/** button **/
+.button {
+    font-family: "simpsonfont";
+    font-size: 25px;
+    padding: 5px 20px;
+    margin: 0 5px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.button_jaune {
+    background-color: #FED90F;
+}
+
+.button_gris {
+    background-color: #424F46;
+    color: white;
+}

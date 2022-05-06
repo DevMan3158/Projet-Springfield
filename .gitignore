@@ -1,6 +1,8 @@
 /nbproject/private/
 /projecttmp/
+/project/www/errors.log
 /project/www/.htaccess
+/project/www/data
 /project/www/config/config.php
 /project/www/config/sgbd_config.php
 /project/www/src/config/config.php
