@@ -50,8 +50,7 @@ services:
             - ./.docker/config/config_error_path.php:/usr/local/apache2/error/config_path.php:rw
             - ./.docker/config/config_install_path.php:/usr/local/apache2/install/config_path.php:rw
             - ./.docker/config/.htaccess:/usr/local/apache2/www/.htaccess:rw
-            - ./.docker/config/sgbd_config.php:/usr/local/apache2/www/config/sgbd_config.php:rw
-            - ./.docker/config/config.php:/usr/local/apache2/www/config/config.php:rw
+            - ./config/sgbd_config.php:/usr/local/apache2/www/src/config/sgbd_config.php
             
 
 ###########################
@@ -71,12 +70,12 @@ services:
             - ./.docker/mysql/mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf:ro
             - ./.docker/mysql/0000_phpmyadmin.sql:/docker-entrypoint-initdb.d/0000_phpmyadmin.sql
             # start sql
-            - ./.docker/sgbd_data/0001_damp.sql:/docker-entrypoint-initdb.d/0001_damp.sql
+            - ./config/0001-springfield.sql:/docker-entrypoint-initdb.d/0001-springfield.sql
+            - ./config/0002-springfield.sql:/docker-entrypoint-initdb.d/0002-springfield.sql
+            - ./config/0003-springfield.sql:/docker-entrypoint-initdb.d/0003-springfield.sql
             # stop sql
         environment:
             - MYSQL_ROOT_PASSWORD=secret
-            - MYSQL_USER=project
-            - MYSQL_PASSWORD=project
         entrypoint:
             sh -c "/usr/local/bin/docker-entrypoint.sh --character-set-server=latin1 --collation-server=latin1_swedish_ci"
             

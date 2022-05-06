@@ -4,6 +4,7 @@ mkdir -p project/install
 mkdir -p project/error
 mkdir -p project/docs
 mkdir -p project/unit
+mkdir -p project/www/data
 # creation des tmp du docker
 mkdir -p projecttmp/data
 mkdir -p projecttmp/mysql_data
@@ -26,7 +27,9 @@ mkdir -p projecttmp/log/mysql
 # cp docker/config/config.php project/www/config/
 
 # modifi les droits sur les dossiers
-chmod 777 -R project
+# chmod 777 -R project
+chmod 777 -R project/www/data
+chmod 777 project/www/
 chmod 777 -R projecttmp
 
 # creation du docker du projet

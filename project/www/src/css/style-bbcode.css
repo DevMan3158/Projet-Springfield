@@ -1,0 +1,31 @@
+.bbcode {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+}
+
+.editor_bbcode {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.editor_html_bbcode {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  border: black 1px solid;
+  box-sizing: border-box;
+  display: inline;
+  resize: both;
+  overflow: auto;
+  height: 35px;
+}
+
+.editor_type_bbcode {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
