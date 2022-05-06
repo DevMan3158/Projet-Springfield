@@ -55,20 +55,17 @@ function display_text(editTxt) {
 }
 
 function GetSelectedText() {
-
+    let value = [];
     if (document.getSelection) {    // all browsers, except IE before version 9
         var sel = document.getSelection();
-            // sel is a string in Firefox and Opera, 
-            // and a selectionRange object in Google Chrome, Safari and IE from version 9
-            // the alert method displays the result of the toString method of the passed object
-        alert(sel);
+        value = [sel.anchorOffset, sel.focusOffset];
     } 
     else {
         if (document.selection) {   // Internet Explorer before version 9
-            var textRange = document.selection.createRange();
-            alert(textRange.text);
+            value = [document.selection.anchorOffset, document.selection.focusOffset];
         }
     }
+    return value;
 }
 
 function bbcode_add_txt(e, type) {
@@ -91,29 +88,32 @@ function bbcode_add_txt(e, type) {
             add_end = tab[3];
         }
         let text = "";
+        let selectionStart = 0;
+        let selectionEnd = 0;
         if(edit_type.value == "txt") {
             text = edit.value;
+            selectionStart = edit.selectionStart;
+            selectionEnd = edit.selectionEnd;
         } else {
             text = edit.innerHTML;
-            var sel = window.getSelection()
-            var selected_node = sel.anchorNode;
-            console.log(sel.collapse(selected_node, 3));
-            console.log(selected_node.selectionStart);
-            console.log(selected_node.selectionEnd);
+            let valuesSelect = GetSelectedText();
+            selectionStart = valuesSelect[0];
+            selectionEnd = valuesSelect[1];
         }
+        console.log("start : "+selectionStart);
+        console.log("stop : "+selectionEnd);
         console.log(text);
-        console.log(edit.selectionStart);
-        console.log(edit.selectionEnd);
+        console.log(text.length);
         pretext = "";
         selectedtext = "";
         posttext = "";
-        if(edit.selectionStart == edit.selectionEnd) {
-            pretext = text.substring(0,edit.selectionStart);
-            posttext = text.substring(edit.selectionEnd,text.length);
+        if(selectionStart == selectionEnd) {
+            pretext = text.substring(0,selectionStart);
+            posttext = text.substring(selectionEnd,text.length);
         } else {
-            pretext = text.substring(0,edit.selectionStart);
-            selectedtext = text.substring(edit.selectionStart,edit.selectionEnd);
-            posttext = text.substring(edit.selectionEnd,text.length);
+            pretext = text.substring(0,selectionStart);
+            selectedtext = text.substring(selectionStart,selectionEnd);
+            posttext = text.substring(selectionEnd,text.length);
         }
         let valueTxt = pretext+add_start+selectedtext+add_end+posttext;
         if(edit_type.value == "txt") {
