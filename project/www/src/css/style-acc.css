@@ -32,43 +32,69 @@ figure{
     width: 100%;
     text-align: center;
     position: relative;
+    height: 200px;
+    border: solid black 2px;
+}
+
+figure::after{
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 200px;
+    background-color: black;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -100px;
+}
+
+p{
+    grid-area: text;
+    text-align: center;
+    font-family: 'Comic Neue', cursive;
 }
 
 figure:first-of-type{
     grid-area: fig1;
 }
 
-figure:nth-of-type2{
+figure:nth-of-type(2){
     grid-area: fig2;
 }
 
-figure:nth-of-type3{
+figure:nth-of-type(3){
     grid-area: fig3;
 }
 
-figure:nth-of-type4{
+figure:nth-of-type(4){
     grid-area: fig4;
 }
 
-figure:nth-of-type5{
+figure:nth-of-type(5){
     grid-area: fig5;
 }
 
-figure:nth-of-type6{
+figure:nth-of-type(6){
     grid-area: fig6;
 }
 
-figure:nth-of-type7{
+figure:nth-of-type(7){
     grid-area: fig7;
+}
+figure:nth-of-type(8){
+    grid-area: fig8;
+}
+figure:nth-of-type(9){
+    grid-area: fig9;
 }
 
 figure:last-of-type{
-    grid-area: fig8;
+    grid-area: fig10;
 }
 
 section{
     display: grid;
     grid-template-areas: "title"
+    "text"
     "fig1"
     "fig2"
     "fig3"
@@ -76,7 +102,9 @@ section{
     "fig5"
     "fig6"
     "fig7"
-    "fig8";
+    "fig8"
+    "fig9"
+    "fig10";
     height: unset;
     grid-gap: 20px;
 }
@@ -90,9 +118,25 @@ figcaption{
     position: absolute;
     top: 0;
     left: 50%;
-    margin-left: -75px;
+    margin-left: -85px;
     font-size: 1.3em;
+    width: 150px;
 }
 
+@media all and (min-width: 768px){
 
+    section{
+        padding: 50px;
+        grid-template-areas: "title title title"
+        "text text text"
+        "fig1 fig1 fig1"
+        "fig2 fig2 fig2"
+        "fig3 fig3 fig4"
+        "fig6 fig7 fig7"
+        "fig8 fig8 fig8"
+        "fig9 fig9 fig10"
+        "fig5 fig5 fig5";
+    }
+
+}
 

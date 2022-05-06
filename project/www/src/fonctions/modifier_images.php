@@ -167,3 +167,4 @@ if (!function_exists('modifier_images_folder')) {
 
 }
 
+?>

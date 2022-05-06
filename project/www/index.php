@@ -51,7 +51,8 @@
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
-            <a id="btt_conn">Connexion</a>
+            <a href="./index.php?ind=acc">Accueil</a>
+            <a>Connexion</a>
             <a href="./index.php?ind=cat">Categories</a>
 
             <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>

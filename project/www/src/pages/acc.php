@@ -1,63 +1,30 @@
+<?php
+    include_once dirname(__FILE__) . '/../config/sgbd_config.php';
+    $sgbd= connexion_sgbd();
+    $articles = $sgbd->prepare('SELECT titre, src, alt FROM springfield.photos ORDER BY RAND()
+    LIMIT 10');
+
+?>
+
+
 
 <h3>
-    <div></div>
-        Bienvenue
-    <div></div>
+    Bienvenue
 </h3>
 
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
+<p>
+    Découvrez le monde magique de <strong>Springfield</strong> grace aux différentes cartes çi dessous qui vous donnerons toutes les informations sur chaque éléments de la ville !
+</p>
 
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
+<?php
+        $articles->execute();
+        $resultat = $articles->fetchAll((PDO::FETCH_ASSOC));
 
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
+        foreach ($resultat as $article) {
 
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
-
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
-
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
-
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
-
-<figure class="figBox">
-    <img src="data/img/krusty-burger.webp" alt="Le restaurant Krusty Burger">
-    <figcaption class="captionBox">
-        Krusty Burger
-    </figcaption>
-</figure>
-
+            echo    '<figure>
+                        <img src="' .($article['src']). '" alt="'.($article['alt']).'">
+                        <figcaption>' .($article['titre']). '</figcaption>
+                    </figure>';
+    }
+?>
