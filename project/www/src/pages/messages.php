@@ -12,8 +12,8 @@ $form_email = "";
 $form_msg = "";
 
 ?>
-<section>
-<p id="section_contact_info">PRENDRE RENDEZ-VOUS</p>
+<section id="form_contact">
+  <p id="section_contact_info">PRENDRE RENDEZ-VOUS</p>
       <br />
       <h5 id="section_contact_title">
         Contactez-nous <br />
@@ -73,7 +73,7 @@ $form_msg = "";
 
         <div id="form_image">
           <img
-            src="src/imgs/illustration_formulaire.jpg"
+            src="src/img/message_admin.svg"
             alt="la photo d'un plat"
           />
         </div>
