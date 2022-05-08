@@ -8,7 +8,7 @@ include_once './src/fonctions/conversion_bbcode.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/style-bbcode.css" />
+    <link rel="stylesheet" href="src/bbcode_editeur/style-bbcode.css" />
     <title>Document</title>
 </head>
 <body>
@@ -23,7 +23,7 @@ include_once './src/fonctions/conversion_bbcode.php';
     <textarea class="editor_bbcode"></textarea>
 </figure>
 
-<script src="./src/js/bbcode.js"></script>
+<script src="./src/bbcode_editeur/bbcode.js"></script>
 
 <p><?php echo conversion_bbcode('test 021 [b]strong[/b] and [title]Titre[/title].'); ?></p>
     

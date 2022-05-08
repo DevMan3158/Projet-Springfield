@@ -1,82 +1,67 @@
-html,
-body {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    font-size: 16px;
-  
-}
-
-
-
-
-header
-{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 80px;
-    background-color: #8bc7e5;
-    border: solid 1px black;
-    
-}
-
-
-
-#h1
-{
-    
-    width: 50%;
-    text-align: center;
+@font-face /* POLICE */ {
     font-family: "Simpsonfont";
-    
-
+    font-style: normal;
+    font-weight: normal;
+    src: url('./../../../src/font/Simpson/Simpsonfont.woff') format('woff'),
+        url('./../../../src/font/Simpson/Simpsonfont.ttf') format('truetype');
 }
 
-
-
-
-/*nav
-{
-    width: 25%;
-    text-align: center;
-    border: solid 1px black;  
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-nav ul
-{
-   list-style: none;
+body {
+    background: url("./../../../src/img/background-sky.webp") repeat-y;
+    background-size: cover;
 }
 
-
-
-*/
-/*--------- Responsive---------- */
-
-
-/*---------- Mobile------------- */
-@media (max-width: 656px) {
-    #h1 {
-        font-size: 15px;
-    }
-
+.bg-simpson {
+    background-color: #8BC7E5;
+    color: black;
 }
-/*---------- Tablette----------- */
-@media (max-width: 1024px) {
-    html,
-    body {
-        font-size: 14px;
-    }
-    
+
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
 }
-/*---------- Ordinateur ----------*/
 
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
+}
 
+.title-simpson {
+    color: #FFF500;
+    font-size: 25px;
+    -webkit-text-stroke: 0.7px black;
+    text-shadow: black 2px 2px 2px;
+}
 
+.title-simpson:hover {
+    color: #FFF500;
+    text-decoration: none;
+}
 
-/*--------------Font--------------*/
+.dropdown .btn:hover {
+    background-color: #7bb0c9;
+}
 
-@font-face {
-    font-family: "Simpsonfont.ttf";
-    src: url(".../font/Simpson/Simpsonfont.ttf") format("ttf");
-}   
+.text-simpson {
+    font-family: "Simpsonfont", Helvetica, sans-serif;
+}
+
+.dropdown-menu img {
+    width: 16px;
+    vertical-align: middle;
+}
+
+td:focus {
+    background-color: white;
+    outline: none;
+    border: 0.1px solid rgb(0, 119, 255);
+}

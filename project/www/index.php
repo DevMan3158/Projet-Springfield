@@ -26,8 +26,10 @@
         } elseif ($_GET['ind'] == 'cat'){
             echo '<link rel="stylesheet" href="./src/css/style-cat.css">';
         } elseif ($_GET['ind'] == 'msg'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-messages.css">';
         } elseif ($_GET['ind'] == 'insc'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
         }
 
@@ -63,24 +65,19 @@
 
         </nav>
     </header>
+    <?php
 
-    <section>
-        <?php
+        if ($_GET['ind'] == 'acc') {
+            include './src/pages/acc.php';
+        } elseif ($_GET['ind'] == 'cat'){
+            include './src/pages/cat.php';
+        } elseif ($_GET['ind'] == 'msg'){
+            include './src/pages/messages.php';
+        } elseif ($_GET['ind'] == 'insc'){
+            include './src/pages/inscription.php';
+        }
 
-            if ($_GET['ind'] == 'acc') {
-                include './src/pages/acc.php';
-            } elseif ($_GET['ind'] == 'cat'){
-                include './src/pages/cat.php';
-            } elseif ($_GET['ind'] == 'msg'){
-                include './src/pages/messages.php';
-            } elseif ($_GET['ind'] == 'insc'){
-                include './src/pages/inscription.php';
-            }
-
-        ?>
-
-    </section>
-
+    ?>
     <footer>
         <ul>
             <li>Contact</li>

@@ -1,0 +1,281 @@
+/***********************/
+/** css all component **/
+/***********************/
+/** buttons **/
+.button_orange,
+.button_orange:hover,
+.button_orange:link {
+  display: inline-block;
+  background-color: #8BC7E5;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  box-shadow: 0px 20px 35px 6px rgba(139, 199, 229, 0.16);
+  color: black;
+  border: 0.1px solid rgb(0, 119, 255);
+  font-family: "poppins-regular";
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.button_orange:hover {
+    background-color: #7bb0c9;
+    box-shadow: 0px 20px 35px 6px rgba(123, 176, 201, 0.16);
+  transform: scale(1.05);
+}
+
+button img {
+  min-width: 15px;
+  min-height: 15px;
+  max-width: 15px;
+  max-height: 15px;
+}
+
+/** images **/
+.image_center {
+  vertical-align: middle;
+}
+
+/***********************/
+/**    formulaire     **/
+/***********************/
+form input,
+form label,
+form textarea,
+form button,
+form p {
+  font-family: "Comic Neue", cursive;
+}
+
+/*-------------------*/
+/** section contact **/
+#section_contact {
+  width: 100%;
+  margin-top: 0px;
+  padding: 10px;
+  padding-bottom: 95px;
+  text-align: center;
+}
+
+#section_img_deco {
+  position: relative;
+  float: right;
+}
+
+#section_contact_info {
+  margin-top: 70px;
+  color: #676b89;
+  font-family: "OpenSans-Regular";
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#section_contact_title {
+  margin-top: -25px;
+  color: #14183e;
+  font-family: "volkhov-bold";
+  font-size: 55px;
+}
+
+/** formulaire **/
+#form_contact {
+  background-color: white;
+  display: grid;
+  grid-template-columns: auto auto;
+  /* justify-content: center; */
+  align-items: center;
+  /* vertical-align: middle; */
+  margin: auto;
+  float: none;
+  margin-top: -30px;
+  width: 1020px;
+  border-radius: 20px;
+  box-shadow: 2px 14px 14px #f3f3f3;
+}
+
+#form_contact form {
+  justify-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  font-family: "poppins-regular";
+  text-align: center;
+}
+
+#form_contact label {
+  display: flex;
+  width: 100%;
+  font-size: 15px;
+}
+
+#form_contact input,
+#form_contact textarea {
+  display: flex;
+  color: black;
+  align-items: center;
+  border: none;
+  padding-bottom: 5px;
+  width: 100%;
+  border-bottom: 0.1px solid rgb(223 223 223);
+  font-size: 14px;
+}
+
+#form_contact textarea {
+  height: 90px;
+}
+
+#form_image {
+  display: flex;
+  float: right;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#form_image img {
+  display: flex;
+  object-fit: cover;
+  height: 600px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#form_contact .user_name {
+  float: left;
+  margin-top: -18px;
+  width: 49%;
+  padding-bottom: 20px;
+}
+
+#form_contact .name_2 {
+  float: right;
+}
+
+#form_contact p {
+  margin-top: 25px;
+  line-height: 23px;
+  color: #959393;
+  text-align: left;
+  font-size: 15px;
+}
+
+#form_contact #form_title {
+  color: black;
+  font-family: "poppins-regular";
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#form_contact input:focus,
+#form_contact textarea:focus {
+  outline: none;
+  border-bottom: 0.1px solid rgb(0, 119, 255);
+}
+
+form input:hover,
+form textarea:hover {
+  transform: scale(1.025);
+}
+
+form input,
+form textarea {
+  margin-top: 15px;
+  color: rgb(223 223 223);
+  text-align: left;
+}
+
+form label {
+  margin-top: 25px;
+  text-align: left;
+}
+
+#button_form {
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+/**********************/
+/** version tablette **/
+/**********************/
+@media screen and (min-width: 655px) and (max-width: 1024px) {
+    /*--------------*/
+    /** formulaire **/
+    #form_contact {
+      width: 95%;
+    }
+  
+    #section_contact_title {
+      font-size: 40px;
+    }
+}
+
+/***************************/
+/** version mobile 655px ***/
+/***************************/
+@media screen and (max-width: 655px) {
+    /*-------------------*/
+    /** section contact **/
+    #section_contact {
+      background-color: white;
+      overflow: hidden;
+      margin: unset;
+      padding: unset;
+    }
+  
+    #section_contact_info {
+      margin-top: 91px;
+    }
+  
+    #section_contact_title {
+      font-size: 39px;
+    }
+  
+    #form_contact #form_title {
+      margin-top: 25px;
+    }
+  
+    /*--------------*/
+    /** formulaire **/
+    #form_contact {
+      width: 100%;
+      box-shadow: none;
+    }
+  
+    #form_contact form {
+      width: 100%;
+      padding-right: 25px;
+    }
+  
+    #form_contact label {
+      width: 100%;
+    }
+  
+    #form_contact input {
+      width: 100%;
+    }
+  
+    #form_image {
+      display: none;
+    }
+  
+    #form_contact .user_name {
+      width: 100%;
+    }
+  
+    #form_contact p {
+      text-align: center;
+    }
+  
+    #button_form {
+      margin-top: 77px;
+      margin-bottom: 48px;
+    }
+}

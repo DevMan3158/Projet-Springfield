@@ -57,7 +57,7 @@ if (!function_exists('modifier_images_folder')) {
                 imagejpeg($filename, $new_name);
             }
             elseif( $type == IMAGETYPE_PNG ) {
-                imagepng($filename,$new_name);
+                imagepng($filename,$new_name, 9);
             }
             elseif( $type == IMAGETYPE_GIF ) {
                 imagegif($filename, $new_name);
@@ -112,9 +112,10 @@ if (!function_exists('modifier_images_folder')) {
      * @param string|null $filename le nom de l'image
      * @param integer $width_max : la largeur maximale
      * @param integer $height_max : la hauteur maximale
+     * @param boolean $cut : couper l'image si la taille ou la hauteur depasse la taille.
      * @return void retourne l'image de celui ci
      */
-    function image_resize(?string $filename, int $width_max, int $height_max) {
+    function image_resize(?string $filename, int $width_max, int $height_max, bool $cut = true) {
         list($width, $height, $type) = getimagesize($filename);
         $newwidth = $width;
         $newheight = $height;
@@ -138,16 +139,23 @@ if (!function_exists('modifier_images_folder')) {
         if($position_y < 0) {
             $position_y = 0;
         }
-        
-        // creation de l'image
-        $thumb = imagecreatetruecolor($newwidth, $newheight);
+
         $source = type_image_create($filename, $type);
+        // creation de l'image
+        $thumb = imagecreatetruecolor($newwidth, $newheight);   
+        imagealphablending($thumb, false );
+        imagesavealpha($thumb, true );
 
         // redimension l'image
         imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-        $thumb_final = imagecrop($thumb, ['x' => $position_x, 'y' => $position_y, 'width' => $width_max, 'height' => $height_max]);
+        
+        if($cut) {
+            imagealphablending($thumb, false);
+            $thumb = imagecrop($thumb, ['x' => $position_x, 'y' => $position_y, 'width' => $width_max, 'height' => $height_max]);
+            imagesavealpha($thumb, true);
+        }
 
-        return $thumb_final;
+        return $thumb;
     }
 
     /**
@@ -158,14 +166,14 @@ if (!function_exists('modifier_images_folder')) {
      * @param string|null $name_file_save : le nom de la sauvegarde
      * @param integer $width_max :  largeur max
      * @param integer $height_max :  hauteur max
+     * @param boolean $cut : couper l'image si la taille ou la hauteur depasse la taille.
      * @return void ne retourne rien
      */
-    function modifier_image(?string $filename, ?string $folder_save, ?string $name_file_save, int $width_max, int $height_max):void {
+    function modifier_image(?string $filename, ?string $folder_save, ?string $name_file_save, int $width_max, int $height_max, bool $cut = true):void {
         list($width, $height, $type) = getimagesize($filename);
         if(type_valide($type)) {
             header('Content-Type: '.$type);
-            save_image(image_resize($filename, $width_max, $height_max), $folder_save . DIRECTORY_SEPARATOR . $name_file_save, $type);
-        //save_image($thumb, $folder_save . DIRECTORY_SEPARATOR . $name_file_save, $type);
+            save_image(image_resize($filename, $width_max, $height_max, $cut), $folder_save . DIRECTORY_SEPARATOR . $name_file_save, $type);
         }
     }
 
@@ -176,9 +184,10 @@ if (!function_exists('modifier_images_folder')) {
      * @param string|null $folder_save : ou enregistrer les images modifier (conservent le meme nom).
      * @param integer $width_max :  largeur max
      * @param integer $height_max :  hauteur max
+     * @param boolean $cut : couper l'image si la taille ou la hauteur depasse la taille.
      * @return void ne retourne rien
      */
-    function modifier_images_folder(?string $file, ?string $folder_save, int $width_max, int $height_max): void {
+    function modifier_images_folder(?string $file, ?string $folder_save, int $width_max, int $height_max, bool $cut = true): void {
         $files1 = scandir($file);
 
         $result = array();
@@ -188,7 +197,7 @@ if (!function_exists('modifier_images_folder')) {
             {
                 if (is_file($file . DIRECTORY_SEPARATOR . $value))
                 {
-                    modifier_image($file . DIRECTORY_SEPARATOR . $value, $folder_save, $value, $width_max, $height_max);
+                    modifier_image($file . DIRECTORY_SEPARATOR . $value, $folder_save, $value, $width_max, $height_max, $cut);
                 }
             }
         }
