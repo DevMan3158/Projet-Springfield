@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../sgd-admin/src/css/style.css">
     <?php
 if(!isset($_GET['ind'])) {
@@ -32,9 +36,6 @@ elseif ($_GET['ind'] == 'message') {
 ?>
     <title>Page d'accueil</title>
     <link rel="shortcut icon" type="image/ico" href="../faviron.ico">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
         
         <style>
         .row {
@@ -58,45 +59,45 @@ elseif ($_GET['ind'] == 'message') {
 
 <!----Début_Header---->
 
+<div class="container-fluid bg-secondary ">
 
-    <div class="container-fluid bg-secondary ">
+            <div class="row">
+                <div class="col">
+                        
+                        
+               
+                    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
 
-        <div class="row">
-            <div class="col">
-              
-            
-                
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-
-<!-- Brand -->
-<a class="navbar-brand text-center text-right " href="./index.php?ind=acc">Office du tourisme de Springfield</a>
+                            <!-- Brand -->
+                            <a class="navbar-brand text-center text-right " href="./index.php?ind=acc"><i class="bi bi-house"></i>&emsp;Office du tourisme de Springfield</a>
 
 
-    
+                            
 
-<!-- Links -->
+                            <!-- Links -->
 
-<ul class="navbar-nav ">
+                            <ul class="navbar-nav ">
 
-   <!-- Dropdown -->
-   <li class="nav-item dropdown ">
-      <a class="nav-link dropdown-toggle " href="./index.php?ind=acc" id="navbardrop" data-toggle="dropdown">
-      Accueil
-      </a>
-      <div class="dropdown-menu ">
-         <a class="dropdown-item" href="./index.php?ind=admin">Admin</a>
-         <a class="dropdown-item" href="./index.php?ind=produit">Produits</a>
-         <a class="dropdown-item" href="./index.php?ind=utilisateur">Utilisateurs</a>
-         <a class="dropdown-item" href="./index.php?ind=message">Messages</a>
-      </div>
-   </li>
-</ul>
+                            <!-- Dropdown -->
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle " href="./index.php?ind=acc" id="navbardrop" data-toggle="dropdown">
+                                Menu
+                                </a>
+                                <div class="dropdown-menu ">
+                                   <a class="dropdown-item" href="./index.php?ind=acc"><i class="bi bi-house-heart"></i>&emsp;Accueil</i></a>
+                                    <a class="dropdown-item" href="./index.php?ind=admin"><i class="bi bi-person-badge">&emsp;Admin</i></a>
+                                    <a class="dropdown-item" href="./index.php?ind=produit"><i class="bi bi-folder-plus">&emsp;Produits</i></a>
+                                    <a class="dropdown-item" href="./index.php?ind=utilisateur"><i class="bi bi-people">&emsp;Utilisateurs</i></a>
+                                    <a class="dropdown-item" href="./index.php?ind=message"><i class="bi bi-envelope">&emsp;Messages</i> </a>
+                                </div>
+                            </li>
+                            </ul>
 
-</nav>
-                
+                    </nav>
+                            
 
+                </div>
             </div>
-        </div>
 
     </div>  <!--Fin_Container_Fluid-->
 
@@ -112,6 +113,7 @@ elseif ($_GET['ind'] == 'message') {
 if(!isset($_GET['ind'])) {
     $_GET['ind'] = 'acc' ; 
 }
+
 
 if($_GET['ind'] =='acc') {
     include './src/pages/acc.php';

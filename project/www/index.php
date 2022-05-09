@@ -101,6 +101,6 @@
 
         <p>Tous droits réservés @Springfield - 2022</p>
     </footer>
-    <script src="./../src/js/header_connexion.js"></script>
+    <script src="./src/js/header_connexion.js"></script>
 </body>
 </html>
