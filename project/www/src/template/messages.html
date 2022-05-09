@@ -1,0 +1,68 @@
+<section id="section_contact">
+  <p id="section_contact_info">PRENDRE RENDEZ-VOUS</p>
+  <br />
+  <figure id="form_contact">
+    <form id="form_inform" action="#" method="post">
+      <p id="form_title">Formulaire de contact</p>
+      <div class="user_name">
+        <label>Nom</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          pattern=".{3,40}"
+          placeholder="Nom"
+          required
+        />
+      </div>
+      <div class="user_name" id="name_2">
+        <label>Prénom</label>
+        <input
+          type="text"
+          id="first_name"
+          name="first_name"
+          placeholder="Prénom"
+          pattern=".{3,40}"
+          required
+        />
+      </div>
+      <label>Adresse e-mail</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="monAdresseMail@gmail.com"
+        pattern="[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)"
+        required
+      />
+      <label>Objet</label>
+      <input
+        type="text"
+        id="objet"
+        name="objet"
+        placeholder="information"
+        pattern=".{3,255}"
+        required
+      />
+      <label>Message</label>
+      <textarea
+        id="user_text"
+        name="user_text"
+        pattern=".{8,}"
+        placeholder="Votre message/demande de réservation"
+        required
+      ></textarea>
+      <div class="text_center">
+        <button id="button_form" class="button_orange" type="sumit">
+          Envoyer
+        </button>
+      </div>
+    </form>
+    <div id="form_image">
+      <img src="src/img/message_admin.svg" alt="la photo d'un plat" />
+    </div>
+  </figure>
+</section>
+
+<script src="./src/js/bbcode.js"></script>
+<script src="./src/js/message.js"></script>

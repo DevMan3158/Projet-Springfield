@@ -11,10 +11,14 @@
     font-family: "Simpsonfont", Helvetica, sans-serif;
 }
 
+body {
+    background: url("../img/background-sky.webp") repeat-y;
+    background-size: cover;
+}
+
 /* HEADER */
 
 header{
-
     display: flex;
     justify-content: space-between;
     background-color: #8BC7E5;
@@ -49,13 +53,6 @@ header h1{
 }
 
 /* SECTION */
-
-section{
-    background: url("../img/background-sky.webp");
-    background-size: cover;
-    height: 400px;
-    position: relative;
-}
 
 nav{
     position: absolute;

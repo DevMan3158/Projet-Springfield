@@ -2,6 +2,17 @@
 
     include_once dirname(__FILE__) . '/src/fonctions/connexion_sgbd.php';
 
+    session_start();
+
+    $isConnected = false;
+
+    if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+    array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+    array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+    array_key_exists('email', $_SESSION)) {
+        $isConnected = true;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +37,10 @@
         } elseif ($_GET['ind'] == 'cat'){
             echo '<link rel="stylesheet" href="./src/css/style-cat.css">';
         } elseif ($_GET['ind'] == 'msg'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-messages.css">';
         } elseif ($_GET['ind'] == 'insc'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
         }
 
@@ -51,7 +64,11 @@
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
-            <a id="btt_conn">Connexion</a>
+            <?php if($isConnected) { ?>
+                <a href="./../src/exec/deconnexion_exec.php">Déconnexion</a>
+            <?php } else { ?>
+                <a id="btt_conn">Connexion</a>
+            <?php } ?>
             <a href="./index.php?ind=cat">Categories</a>
 
             <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>
@@ -63,24 +80,19 @@
 
         </nav>
     </header>
+    <?php
 
-    <section>
-        <?php
+        if ($_GET['ind'] == 'acc') {
+            include './src/pages/acc.php';
+        } elseif ($_GET['ind'] == 'cat'){
+            include './src/pages/cat.php';
+        } elseif ($_GET['ind'] == 'msg'){
+            include './src/pages/messages.php';
+        } elseif ($_GET['ind'] == 'insc'){
+            include './src/pages/inscription.php';
+        }
 
-            if ($_GET['ind'] == 'acc') {
-                include './src/pages/acc.php';
-            } elseif ($_GET['ind'] == 'cat'){
-                include './src/pages/cat.php';
-            } elseif ($_GET['ind'] == 'msg'){
-                include './src/pages/messages.php';
-            } elseif ($_GET['ind'] == 'insc'){
-                include './src/pages/inscription.php';
-            }
-
-        ?>
-
-    </section>
-
+    ?>
     <footer>
         <ul>
             <li>Contact</li>

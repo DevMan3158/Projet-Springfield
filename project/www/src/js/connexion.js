@@ -17,6 +17,8 @@ function valider(e) {
                 alert("Erreur de mot de passe.");
             } else if(response == "4") {
                 alert("Erreur de login.");
+            } else if(response == "5") {
+                alert("Une erreur est survenu lors de la connexion.");
             } else {
                 alert("Erreur de login.");
             }

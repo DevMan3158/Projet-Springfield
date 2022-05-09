@@ -1,0 +1,31 @@
+<section class="container text-center">
+    <h1>Administration</h1>
+    <figure class="form-inline justify-content-center m-2">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="recherche" class="sr-only">Rechercher</label>
+          <input type="text" class="form-control" id="recherche">
+        </div>
+        <button type="submit" class="btn btn-primary bg-simpson mb-2">Rechercher</button>
+    </figure>
+</section>
+
+<section class="container">
+  <table class="table table-striped edittxt" id="parEdit">
+    <thead class="bg-secondary">
+      <tr class="bg-simpson">
+        <th><img class="img_mod text-center" src="src/img/poubelle.svg"></th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Niveau</th>
+      </tr>
+    </thead>
+    <tbody id="user_tab" class="bg-light">#tab_admin#</tbody>
+  </table>
+</section>
+
+<script type="text/javascript">
+  let optionsAdmin = '#add_tab_select#';
+</script>
+
+<script src="./src/js/admin.js"></script>
