@@ -1,75 +1,52 @@
-<h1 class="text-center">Adminstration</h1>
+<?php
 
+include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
+include_once dirname(__FILE__) . '/../../../src/class/Error_Log.php';
 
-<!--Formulaire connexion-->
-<form class="form-inline justify-content-center">
-  <label class="sr-only" for="inlineFormInputName2">Nom</label>
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] == 1) {
 
-  <label class="sr-only" for="inlineFormInputGroupUsername2">Identifiant</label>
-  <div class="input-group mb-2 mr-sm-2">
-    <div class="input-group-prepend">
-      <div class="input-group-text">@</div>
-    </div>
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Identifiant">
-  </div>
+  $page = file_get_contents(dirname(__FILE__) . '/../template/admin.html', true);
 
-  <div class="form-check mb-2 mr-sm-2">
-    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-    <label class="form-check-label" for="inlineFormCheck">
-      Se souvenir de moi 
-    </label>
-  </div>
+  $table = "";
+  $sgbd = connexion_sgbd();
+  if(!empty($sgbd)) {
+    try {
+      $res = $sgbd->prepare("SELECT * FROM utilisateur LEFT JOIN admin ON utilisateur.id_admin = admin.id_admin");
+      $res->execute();
+      $data = $res->fetchAll(PDO::FETCH_ASSOC);
+      $i = 0;
+      foreach ($data as $valueLine) {
+        $table .= "<tr id=\"admin_".$valueLine['id_user']."\">";
+        $table .= "<td id=\"td_admin_".$i."_2\"><img class=\"img_mod\" src=\"src/img/poubelle.svg\"></td>";
+        $table .= "<td id=\"td_admin_".$i."_3\" class=\"tab_input\">".$valueLine['nom']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_4\" class=\"tab_input\">".$valueLine['prenom']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_5\" class=\"tab_input\">".$valueLine['email']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_6_".$valueLine['id_admin']."\" class=\"tab_select\">".$valueLine['nom_admin']."</td>";
+        $table .= "</tr>";
+        $i++;
+      }
 
-  <button type="submit" class="btn btn-primary mb-2">Connexion</button>
-</form>
-
-
-
-
-
-
-
-
-
-<!--Table--> 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<!--Pagination-->
-<nav aria-label="Page navigation example ">
-  <ul class="pagination justify-content-center ">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
+      $add_tab_select = "{";
+      $sgbd = connexion_sgbd();
+      $res = $sgbd->prepare("SELECT * FROM admin");
+      $res->execute();
+      $data = $res->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($data as $valueLine) {
+        $add_tab_select .= '"'.$valueLine['id_admin'].'" : "'.$valueLine['nom_admin'].'",';
+      }
+      $add_tab_select .= "}";
+      echo str_replace("'#add_tab_select#'", $add_tab_select, str_replace("#tab_admin#", $table, $page));
+    } catch (PDOException $e) {
+      $error_log = new Error_Log();
+      $error_log->addError($e);
+      echo "Désolé, une erreur c'est produite lors du téléchargement de la page.";
+    }
+  } else {
+    echo "Désolé, une erreur c'est produite lors du téléchargement de la page.";
+  }
+} else {
+  echo "Vous n'avez pas le droit d'ouvrir cette page.";
+}

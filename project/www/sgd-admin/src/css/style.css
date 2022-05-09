@@ -1,64 +1,67 @@
-html,
+@font-face /* POLICE */ {
+    font-family: "Simpsonfont";
+    font-style: normal;
+    font-weight: normal;
+    src: url('./../../../src/font/Simpson/Simpsonfont.woff') format('woff'),
+        url('./../../../src/font/Simpson/Simpsonfont.ttf') format('truetype');
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    font-size: 16px;
-    background-color: rgb(201, 201, 201);
-  
-  
+    background: url("./../../../src/img/background-sky.webp") repeat-y;
+    background-size: cover;
 }
 
-
-
-
-
-
-
-
-
-
-/*nav
-{
-    width: 25%;
-    text-align: center;
-    border: solid 1px black;  
+.bg-simpson {
+    background-color: #8BC7E5;
+    color: black;
 }
 
-nav ul
-{
-   list-style: none;
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
 }
 
-
-
-*/
-/*--------- Responsive---------- */
-
-
-/*---------- Mobile------------- */
-@media (max-width: 656px) {
-    #h1 {
-        font-size: 15px;
-    }
-
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
 }
-/*---------- Tablette----------- */
-@media (max-width: 1024px) {
-    html,
-    body {
-        font-size: 14px;
-    }
-    
+
+.title-simpson {
+    color: #FFF500;
+    font-size: 25px;
+    -webkit-text-stroke: 0.7px black;
+    text-shadow: black 2px 2px 2px;
 }
-/*---------- Ordinateur ----------*/
 
+.title-simpson:hover {
+    color: #FFF500;
+    text-decoration: none;
+}
 
+.dropdown .btn:hover {
+    background-color: #7bb0c9;
+}
 
+.text-simpson {
+    font-family: "Simpsonfont", Helvetica, sans-serif;
+}
 
-/*--------------Font--------------*/
+.dropdown-menu img {
+    width: 16px;
+    vertical-align: middle;
+}
 
-@font-face {
-    font-family: "Simpsonfont.ttf";
-    src: url(".../font/Simpson/Simpsonfont.ttf") format("ttf");
-}   
+td:focus {
+    background-color: white;
+    outline: none;
+    border: 0.1px solid rgb(0, 119, 255);
+}

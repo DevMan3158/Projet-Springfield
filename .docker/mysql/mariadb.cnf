@@ -7,7 +7,7 @@
 socket=/tmp/mysql.sock
 
 [mysqld]
-port=3307
+port=3311
 #
 # * Character sets
 # 
