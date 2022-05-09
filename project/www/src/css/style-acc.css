@@ -32,7 +32,6 @@ figure{
     width: 100%;
     text-align: center;
     position: relative;
-    height: 200px;
     border: solid black 2px;
 }
 
@@ -45,6 +44,10 @@ figure::after{
     bottom: -12px;
     left: 50%;
     margin-left: -100px;
+}
+
+.contain{
+    object-fit: contain;
 }
 
 p{
@@ -127,19 +130,16 @@ figcaption{
 
     section{
         padding: 50px;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto auto 150px 150px 150px 150px 150px 150px;
         grid-template-areas: "title title title"
         "text text text"
         "fig1 fig2 fig3"
-        "fig1 fig2 fig3"
-        "fig1 . fig3"
-        "fig4 fig5 fig6"
-        "fig4 fig5 fig6"
-        "fig4 fig5 fig6"
-        "fig7 fig8 fig9"
-        "fig7 fig8 fig9"
-        "fig7 fig8 fig9"
-        "fig10 fig10 fig10";
+        "fig1 fig2 fig4"
+        "fig1 fig5 fig4"
+        "fig9 fig8 fig6"
+        "fig9 fig7 fig6"
+        "fig10 fig7 fig6"
+
     }
 
 }
