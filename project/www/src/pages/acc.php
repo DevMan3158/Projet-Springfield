@@ -1,3 +1,5 @@
+<section>
+
 <?php
     include_once dirname(__FILE__) . '/../config/sgbd_config.php';
     $sgbd= connexion_sgbd();
@@ -45,3 +47,5 @@
                     </figure>';
     }
 ?>
+
+</section>

@@ -65,7 +65,6 @@
         </nav>
     </header>
 
-    <section>
         <?php
 
             if ($_GET['ind'] == 'acc') {
@@ -80,7 +79,6 @@
 
         ?>
 
-    </section>
 
     <footer>
         <ul>

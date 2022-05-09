@@ -52,7 +52,6 @@ header h1{
 section{
     background: url("../img/background-sky.webp");
     background-size: cover;
-    height: 400px;
     position: relative;
 }
 
