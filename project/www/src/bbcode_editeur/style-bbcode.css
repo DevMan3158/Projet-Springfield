@@ -29,3 +29,10 @@
   grid-row-start: 4;
   grid-row-end: 5;
 }
+
+.bb_title {
+  color: blue;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}

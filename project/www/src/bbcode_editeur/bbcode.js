@@ -1,7 +1,7 @@
 function tab_values() {
     return [
-        ['<', '>', '[b]', '[/b]', '[title]', '[/title]', '\n', ' '],
-        ['&lt;', '&gt;', '<strong>', '</strong>', '<span class=\"bb_title\">', '</span>', '<br />', '&nbsp;'],
+        ['<', '>', '[b]', '[/b]', '[title]', '[/title]', "\n", "\n", '  '],
+        ['&lt;', '&gt;', '<strong>', '</strong>', '<span class=\"bb_title\">', '</span>', '<br />', '<br>', '&nbsp;&nbsp;'],
     ]; 
 }
 
@@ -50,7 +50,7 @@ function display_text(editTxt) {
         editHtml = recupe_editor_html(editTxt);
         editHtml.innerHTML = conversion_bbcode(editTxt.value, edit_type);
     } else {
-        editHtml.value = conversion_bbcode(editTxt.innerHTML, edit_type);
+        editHtml.value = conversion_bbcode(editTxt.innerHTML.replaceAll('&nbsp;', ' ').replaceAll('<div>', '').replaceAll('</div>', ''), edit_type);
     }
 }
 
@@ -61,8 +61,6 @@ function modifTxtHtmlValueStEd(range, allTab) {
     let startText = range.startContainer.nodeValue;
     endText = modifTxtHtmlValue(endText, allTab[1], endOffset);
     startText = modifTxtHtmlValue(startText, allTab[0], startOffset);
-    console.log("startText : "+startText);
-    console.log("endText : "+endText);
 }
 
 function modifTxtHtmlValue(range, allTab) {
@@ -78,34 +76,27 @@ function remplaceSelectHtml(edithtml, type) {
     else {
         sel = document.selection;   // Internet Explorer before version 9
     }
-    console.log(sel);
-    let allTab = addBalise(1, type);
+    let allTab = addBalise(0, type);
     let range = sel.getRangeAt(0);
-    range
-  .setStart(startNode, startOffset)
-  .setEnd(endNode, endOffset)
-
-  .setStartBefore(node)
-  .setStartAfter(node)
-  .setEndBefore(node)
-  .setEndAfter(node)
-  range
-  .setStart(startNode, startOffset)
-  .setEnd(endNode, endOffset)
-
-  .setStartBefore(node)
-  .setStartAfter(node)
-  .setEndBefore(node)
-  .setEndAfter(node)
-    console.log(range.startNode);
     let endContainer = range.endContainer;
-    let startContainer = range.startContainer;
-    if(endContainer.nodeValue === startContainer.nodeValue) {
-        modifTxtHtmlValue(range, allTab);
-    } else {
-        modifTxtHtmlValueStEd(range, allTab);
+    let newNode = undefined;
+    if(allTab[0] == "[b]") {
+        newNode = document.createElement("STRONG");
+    } else if(allTab[0] == "[title]") {
+        newNode = document.createElement("SPAN");
+        newNode.classList.add("bb_title");
     }
-    console.log(range);
+    if(newNode != undefined) {
+        try {
+            range.surroundContents(newNode);
+        } catch(e) { alert("Action impossible.") }
+    }
+    range = document.createRange();
+    sel.removeAllRanges();
+    range.selectNodeContents(endContainer);
+    range.collapse(false);
+    sel.addRange(range);
+    edithtml.focus();
 }
 
 function remplaceTxt(text, allTab, posStart, posEnd) {
@@ -158,6 +149,17 @@ function bbcode_add_txt(e, type) {
     display_text(edit);
 }
 
+function replace_bb_html(textBB) {
+    if(textBB != undefined) {
+        let tab = tab_values();
+        for(i = 0; i < tab[0].length; i++) {
+            textBB = textBB.replaceAll(tab[0][i], tab[1][i]);
+        }
+        return textBB;
+    }
+    return "";
+}
+
 function editor_bbcode(itemTxt) {
     let edit = recupe_editor_bb(itemTxt);
     var input = document.createElement("div");
@@ -165,6 +167,7 @@ function editor_bbcode(itemTxt) {
     input.style.width = edit.style.offsetWidth;
     input.style.height = edit.style.offsetHeight;
     input.contentEditable = true;
+    input.innerHTML = replace_bb_html(edit.value);
     edit.parentNode.appendChild(input);
     var inputType = document.createElement("input");
     inputType.setAttribute("type", "hidden");
