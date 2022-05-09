@@ -19,7 +19,10 @@ array_key_exists('email', $_SESSION)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Page d'accueil</title>
+    <title>Accueil</title>
+    <link rel="shortcut icon" type="image/ico" href="./../favicon.ico">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
     <link rel="apple-touch-icon" sizes="57x57" href="https://media.flaticon.com/dist/min/img/apple-icon-57x57-precomposed.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -61,7 +64,7 @@ array_key_exists('email', $_SESSION)) {
             <img src="./../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
 
-        <a class="col m-1 text-center text-simpson title-simpson" href="./index.php?ind=acc">Office du tourisme de Springfield</a>
+        <a class="col m-1 text-center text-simpson title-simpson" href="./index.php?ind=acc"><i class="bi bi-house"></i>&emsp;Office du tourisme de Springfield</a>
 
         <!-- Dropdown -->
             
@@ -72,26 +75,26 @@ array_key_exists('email', $_SESSION)) {
             <div class="dropdown-menu dropdown-menu-right bg-simpson">
                 <?php if($_SESSION['id_admin'] == 1) { ?>
                     <a class="dropdown-item" href="./index.php?ind=admin">
-                        <img class="img_del" src="src/img/star.svg"> Admin
+                        <img class="img_del" src="src/img/star.svg">&emsp;Admin
                     </a>
                 <?php } ?>
                 <?php if($_SESSION['id_admin'] == 1 || $_SESSION['id_admin'] == 2) { ?>
                     <a class="dropdown-item" href="./index.php?ind=produit">
-                        <img class="img_del" src="src/img/document.svg"> Produits
+                        <img class="img_del" src="src/img/document.svg">&emsp;Produits
                     </a>
                     <a class="dropdown-item" href="./index.php?ind=message">
-                        <img class="img_del" src="src/img/enveloppe.svg">   Messages
+                        <img class="img_del" src="src/img/enveloppe.svg">&emsp;Messages
                     </a>
                 <?php } ?>
                 <a class="dropdown-item" href="./index.php?ind=utilisateur">
-                    <img class="img_del" src="src/img/utilisateur.svg"> Utilisateurs
+                    <img class="img_del" src="src/img/utilisateur.svg">&emsp;Utilisateurs
                 </a>
                 <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php">
-                    <img class="img_del" src="src/img/deconnexion.svg"> Déconnexion
+                    <img class="img_del" src="src/img/deconnexion.svg">&emsp;Déconnexion
                 </a>
             </div>
         </nav>
-    </nav>  <!--Fin_Container_Fluid-->
+    </nav>  
 
 <!----Fin_Header---->
 
