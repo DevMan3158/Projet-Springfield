@@ -1,9 +1,10 @@
 <section id="section_contact">
-  <p id="section_contact_info">PRENDRE RENDEZ-VOUS</p>
+  <h3>PRENDRE RENDEZ-VOUS</h3>
   <br />
   <figure id="form_contact">
     <form id="form_inform" action="#" method="post">
       <p id="form_title">Formulaire de contact</p>
+      <input type="hidden" value="#id_produit#">
       <div class="user_name">
         <label>Nom</label>
         <input
@@ -15,7 +16,7 @@
           required
         />
       </div>
-      <div class="user_name" id="name_2">
+      <div class="user_name name_2">
         <label>Prénom</label>
         <input
           type="text"
@@ -64,5 +65,5 @@
   </figure>
 </section>
 
-<script src="./src/js/bbcode.js"></script>
+<script src="./src/js/le_fetch.js"></script>
 <script src="./src/js/message.js"></script>

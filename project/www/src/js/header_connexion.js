@@ -13,4 +13,6 @@ function header_connexion(e) {
     popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 320);
 }
 
-document.getElementById("btt_conn").addEventListener("click", header_connexion);
+if(document.getElementById('btt_conn')) {
+    document.getElementById('btt_conn').addEventListener("click", header_connexion);
+}

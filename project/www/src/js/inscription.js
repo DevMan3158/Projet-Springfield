@@ -40,6 +40,10 @@ function validation(e) {
     if(!regexPass.test(values.password_rep)) {
         document.getElementById("password_rep").style.borderBottomColor = "red";
     }
+    if (!regexPass.test(values.password_rep)) {
+        document.getElementById("password").style.borderBottomColor = "red";
+        document.getElementById("password_rep").style.borderBottomColor = "red";
+    }
 
     if(!regexText.test(values.name)) {
         document.getElementById("name").focus();
@@ -65,9 +69,23 @@ function validation(e) {
         document.getElementById("password_rep").focus();
         document.getElementById("password_rep").select();
         alert("Merci de confirmer le mot de passe.");
+    } else if (values.password != values.password_rep) {
+        document.getElementById("password").focus();
+        document.getElementById("password").select();
+        alert("Le mot de passe n'est pas identique, merci de recommencer.");
     } else {
         fetch_form('./src/exec/inscript_exec.php', 'form_inform').then(function(response) {
-            alert("Le message a été transmis, nous vous répondrons dans les plus brefs délais.");
+            if(response == "1") {
+                document.getElementById('name').value = "";
+                document.getElementById('first_name').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('login').value = "";
+                document.getElementById('password').value = "";
+                document.getElementById('password_rep').value = "";
+                alert("Merci de votre inscription.");
+            } else {
+                alert(response);
+            }
         });
     }
 

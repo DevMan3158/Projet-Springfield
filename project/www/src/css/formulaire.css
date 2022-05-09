@@ -58,6 +58,10 @@ form p {
   text-align: center;
 }
 
+#section_contact h3 {
+  display: inline;
+}
+
 #section_img_deco {
   position: relative;
   float: right;
@@ -88,7 +92,7 @@ form p {
   /* vertical-align: middle; */
   margin: auto;
   float: none;
-  margin-top: -30px;
+  margin-top: 30px;
   width: 1020px;
   border-radius: 20px;
   box-shadow: 2px 14px 14px #f3f3f3;

@@ -2,6 +2,28 @@ let cellule_old_value = '';
 let cellule_old_item = "0";
 
 function modif_user(id_user) {
+   let values = {
+         name : "",
+         first_name : "",
+         email : "",
+         admin : ""
+   };
+   document.getElementById(id_user).querySelectorAll('td').forEach(element => {
+      let col = element.id.split("_")[3];
+      if(col == "3") {
+         values.name = element.innerHTML;
+      } else if(col == "4") {
+         values.first_name = element.innerHTML;
+      } else if(col == "5") {
+         values.email = element.innerHTML;
+      } else if(col == "6") {
+         values.admin = element.id.split("_")[4];
+      }
+   });
+   let post = new Post_Save('./src/exec/admin_modif_user_exec.php');
+        post.setData(values).then(function(response) {
+            alert(response);
+        });
 }
 
 function editabled(item) {

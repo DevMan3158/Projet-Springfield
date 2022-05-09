@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . '/../../../src/class/Error_Log.php';
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
-array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] == 1) {
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION['id_admin'] == 1) {
 
   $page = file_get_contents(dirname(__FILE__) . '/../template/admin.html', true);
 

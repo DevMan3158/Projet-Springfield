@@ -7,7 +7,7 @@ session_start();
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
-array_key_exists('email', $_SESSION)) {
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
 ?>
 
