@@ -90,6 +90,10 @@ nav a {
     position: relative;
 }
 
+nav a:hover {
+    background-color: black;
+}
+
 #checkbox {
     display: none;
 }
