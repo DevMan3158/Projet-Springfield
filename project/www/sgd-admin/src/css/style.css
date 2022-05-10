@@ -1,0 +1,67 @@
+@font-face /* POLICE */ {
+    font-family: "Simpsonfont";
+    font-style: normal;
+    font-weight: normal;
+    src: url('./../../../src/font/Simpson/Simpsonfont.woff') format('woff'),
+        url('./../../../src/font/Simpson/Simpsonfont.ttf') format('truetype');
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: url("./../../../src/img/background-sky.webp") repeat-y;
+    background-size: cover;
+}
+
+.bg-simpson {
+    background-color: #8BC7E5;
+    color: black;
+}
+
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
+}
+
+.form-inline .bg-simpson:hover {
+    background-color: #7bb0c9;
+    color: black;
+}
+
+.title-simpson {
+    color: #FFF500;
+    font-size: 25px;
+    -webkit-text-stroke: 0.7px black;
+    text-shadow: black 2px 2px 2px;
+}
+
+.title-simpson:hover {
+    color: #FFF500;
+    text-decoration: none;
+}
+
+.dropdown .btn:hover {
+    background-color: #7bb0c9;
+}
+
+.text-simpson {
+    font-family: "Simpsonfont", Helvetica, sans-serif;
+}
+
+.dropdown-menu img {
+    width: 16px;
+    vertical-align: middle;
+}
+
+td:focus {
+    background-color: white;
+    outline: none;
+    border: 0.1px solid rgb(0, 119, 255);
+}

@@ -2,10 +2,10 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mar. 03 mai 2022 à 07:12
--- Version du serveur : 5.7.33
--- Version de PHP : 7.4.19
+-- Hôte : mariadb:3311
+-- Généré le : ven. 06 mai 2022 à 01:20
+-- Version du serveur : 10.4.18-MariaDB-1:10.4.18+maria~focal-log
+-- Version de PHP : 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,8 @@ CREATE TABLE `categorie` (
   `id_user` int(10) NOT NULL,
   `nom` varchar(40) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `avatar` varchar(255) NOT NULL DEFAULT '',
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -55,15 +56,39 @@ CREATE TABLE `categorie` (
 --
 
 CREATE TABLE `messages` (
-  `Id` int(10) NOT NULL,
-  `id_produit` int(10) NOT NULL,
+  `Id_msg` int(10) NOT NULL,
   `Nom` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Prenom` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Message` text COLLATE utf8_unicode_ci NOT NULL,
-  `lu` tinyint(2) NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `lu` tinyint(2) NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message_lu`
+--
+
+CREATE TABLE `message_lu` (
+  `id_msg_lu` int(10) NOT NULL,
+  `id_msg` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message_produit`
+--
+
+CREATE TABLE `message_produit` (
+  `id_msg_prd` int(10) NOT NULL,
+  `id_msg` int(10) NOT NULL,
+  `id_produit` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -75,9 +100,9 @@ CREATE TABLE `pass_perdu` (
   `id_pass_perdu` int(10) NOT NULL,
   `id_user` int(11) NOT NULL,
   `jeton` varchar(255) NOT NULL DEFAULT '',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `expiration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `valide` tinyint(2) NOT NULL DEFAULT '1'
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expiration` timestamp NOT NULL DEFAULT current_timestamp(),
+  `valide` tinyint(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -92,7 +117,7 @@ CREATE TABLE `photos` (
   `src` varchar(100) NOT NULL DEFAULT '',
   `alt` varchar(255) NOT NULL DEFAULT '',
   `titre` varchar(255) NOT NULL DEFAULT '',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -109,7 +134,7 @@ CREATE TABLE `produits` (
   `nbvisite` int(20) NOT NULL,
   `description` text NOT NULL,
   `id_user` int(10) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -127,7 +152,7 @@ CREATE TABLE `utilisateur` (
   `avatar` varchar(150) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `mot_pass` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -151,8 +176,23 @@ ALTER TABLE `categorie`
 -- Index pour la table `messages`
 --
 ALTER TABLE `messages`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `message_produit` (`id_produit`);
+  ADD PRIMARY KEY (`Id_msg`);
+
+--
+-- Index pour la table `message_lu`
+--
+ALTER TABLE `message_lu`
+  ADD PRIMARY KEY (`id_msg_lu`),
+  ADD KEY `key_msg_lu_id_msg` (`id_msg`),
+  ADD KEY `key_msg_lu_id_user` (`id_user`);
+
+--
+-- Index pour la table `message_produit`
+--
+ALTER TABLE `message_produit`
+  ADD PRIMARY KEY (`id_msg_prd`),
+  ADD KEY `key_msg_prd_id_produit` (`id_produit`),
+  ADD KEY `key_msg_prd_id_msg` (`id_msg`);
 
 --
 -- Index pour la table `pass_perdu`
@@ -203,7 +243,19 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_msg` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `message_lu`
+--
+ALTER TABLE `message_lu`
+  MODIFY `id_msg_lu` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `message_produit`
+--
+ALTER TABLE `message_produit`
+  MODIFY `id_msg_prd` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `pass_perdu`
@@ -240,10 +292,18 @@ ALTER TABLE `categorie`
   ADD CONSTRAINT `cat_user` FOREIGN KEY (`id_user`) REFERENCES `utilisateur` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `messages`
+-- Contraintes pour la table `message_lu`
 --
-ALTER TABLE `messages`
-  ADD CONSTRAINT `message_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `message_lu`
+  ADD CONSTRAINT `key_msg_lu_id_msg` FOREIGN KEY (`id_msg`) REFERENCES `messages` (`Id_msg`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `key_msg_lu_id_user` FOREIGN KEY (`id_user`) REFERENCES `utilisateur` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `message_produit`
+--
+ALTER TABLE `message_produit`
+  ADD CONSTRAINT `key_msg_prd_id_msg` FOREIGN KEY (`id_msg`) REFERENCES `messages` (`Id_msg`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `key_msg_prd_id_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `pass_perdu`

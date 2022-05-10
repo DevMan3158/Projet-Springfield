@@ -10,6 +10,11 @@
     font-family: "Simpsonfont", Helvetica, sans-serif;
 }
 
+body {
+    background: url("../img/background-sky.webp") repeat-y;
+    background-size: cover;
+}
+
 /* HEADER */
 
 header {
