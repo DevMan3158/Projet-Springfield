@@ -75,7 +75,7 @@ function validation(e) {
         alert("Le mot de passe n'est pas identique, merci de recommencer.");
     } else {
         fetch_form('./src/exec/inscript_exec.php', 'form_inform').then(function(response) {
-            if(response == "1") {
+            if(response == "true") {
                 document.getElementById('name').value = "";
                 document.getElementById('first_name').value = "";
                 document.getElementById('email').value = "";

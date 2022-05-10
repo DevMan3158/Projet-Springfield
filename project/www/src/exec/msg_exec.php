@@ -16,6 +16,7 @@ if(!empty($_POST) && array_key_exists('name', $_POST) && array_key_exists('first
             && preg_match($regexEmailValide,$_POST['email']) && preg_match("/^.{3,255}$/",$_POST['objet']) 
             && preg_match("/^.{8,}$/",$_POST['user_text'])) {
             try {
+                $sgbd->beginTransaction();
                 $res = $sgbd->prepare("INSERT INTO messages(Nom, Prenom, Email, Objet, Message) VALUES ".
                     "(:Nom,:Prenom,:Email,:Objet,:Message)");
                 $res->execute([
@@ -25,7 +26,16 @@ if(!empty($_POST) && array_key_exists('name', $_POST) && array_key_exists('first
                     ":Objet" => htmlspecialchars(stripslashes(trim($_POST['objet']))),
                     ":Message" => htmlspecialchars(stripslashes(trim($_POST['user_text']))),
                 ]);
-                echo "1";
+                $id_insert = $sgbd->lastInsertId();
+                if(array_key_exists('id_produit', $_POST) && !empty($_POST['id_produit'])) {
+                    $res = $sgbd->prepare("INSERT INTO message_produit (id_msg, id_produit) VALUES (:id_msg,:id_produit)");
+                    $res->execute([
+                        ":id_msg" => $id_insert,
+                        ":id_produit" => $_POST['id_produit']
+                    ]);
+                }
+                $sgbd->commit();
+                echo "true";
             } catch (PDOException $exc) {
                 $error_log = new Error_Log();
                 $error_log->addError($e);

@@ -26,22 +26,22 @@ if (!empty($_POST) && array_key_exists('login', $_POST) && array_key_exists('pas
                         $_SESSION['login'] = $valueLine['login'];
                         $_SESSION['email'] = $valueLine['email'];
                         $_SESSION['avatar'] = $valueLine['avatar'];
-                        echo "1";
+                        echo "true";
                     } else {
-                        echo "3";
+                        echo "Erreur de mot de passe.";
                     }
                 } else {
-                    echo "7";
+                    echo "Vous avez été banni.";
                 }
             }
         } catch (PDOException $exc) {
-            echo "4";
+            echo "Erreur de login.";
             $error_log = new Error_Log();
             $error_log->addError($e);
         }
     } else {
-        echo "5";
+        echo "Une erreur est survenu lors de la connexion.";
     }
 } else {
-    echo "2";
+    echo "Il manque des informations pour vous connecter.";
 }

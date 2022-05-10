@@ -14,13 +14,16 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
   $sgbd = connexion_sgbd();
   if(!empty($sgbd)) {
     try {
-      $res = $sgbd->prepare("SELECT * FROM utilisateur LEFT JOIN admin ON utilisateur.id_admin = admin.id_admin");
-      $res->execute();
+      $res = $sgbd->prepare("SELECT * FROM utilisateur LEFT JOIN admin ON utilisateur.id_admin = admin.id_admin WHERE id_user!=:id_user");
+      $res->execute([
+        ":id_user" => $_SESSION['id_user']
+      ]);
       $data = $res->fetchAll(PDO::FETCH_ASSOC);
       $i = 0;
       foreach ($data as $valueLine) {
         $table .= "<tr id=\"admin_".$valueLine['id_user']."\">";
-        $table .= "<td id=\"td_admin_".$i."_2\"><img class=\"img_mod\" src=\"src/img/poubelle.svg\"></td>";
+        $table .= "<td id=\"td_admin_".$i."_1\" class=\"td_del\"><img class=\"img_del\" src=\"src/img/poubelle.svg\"></td>";
+        $table .= "<td id=\"td_admin_".$i."_2\" class=\"tab_input\">".$valueLine['login']."</td>";
         $table .= "<td id=\"td_admin_".$i."_3\" class=\"tab_input\">".$valueLine['nom']."</td>";
         $table .= "<td id=\"td_admin_".$i."_4\" class=\"tab_input\">".$valueLine['prenom']."</td>";
         $table .= "<td id=\"td_admin_".$i."_5\" class=\"tab_input\">".$valueLine['email']."</td>";

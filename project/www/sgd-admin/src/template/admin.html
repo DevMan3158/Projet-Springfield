@@ -1,12 +1,12 @@
 <section class="container text-center">
     <h1>Administration</h1>
-    <figure class="form-inline justify-content-center m-2">
+    <form id="form_find" class="form-inline justify-content-center m-2">
         <div class="form-group mx-sm-3 mb-2">
           <label for="recherche" class="sr-only">Rechercher</label>
-          <input type="text" class="form-control" id="recherche">
+          <input type="text" class="form-control" id="recherche" name="recherche">
         </div>
-        <button type="submit" class="btn btn-primary bg-simpson mb-2">Rechercher</button>
-    </figure>
+        <button id="bt_find" type="submit" id="find" class="btn btn-primary bg-simpson mb-2">Rechercher</button>
+    </form>
 </section>
 
 <section class="container">
@@ -14,6 +14,7 @@
     <thead class="bg-secondary">
       <tr class="bg-simpson">
         <th><img class="img_mod text-center" src="src/img/poubelle.svg"></th>
+        <th>Login</th>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Email</th>
@@ -28,5 +29,6 @@
   let optionsAdmin = '#add_tab_select#';
 </script>
 
-<script src="./src/js/le_fetch.js"></script>
+<script src="./../src/js/cookies.js"></script>
+<script src="./../src/js/le_fetch.js"></script>
 <script src="./src/js/admin.js"></script>

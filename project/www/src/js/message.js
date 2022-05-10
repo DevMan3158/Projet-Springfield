@@ -70,7 +70,7 @@ function validation(e) {
         alert("Le message n'est pas valide.");
     } else {
         fetch_form('./src/exec/msg_exec.php', 'form_inform').then(function(response) {
-            if(response == "1") {
+            if(response == "true") {
                 document.getElementById('name').value = "";
                 document.getElementById('first_name').value = "";
                 document.getElementById('email').value = "";

@@ -1,17 +1,24 @@
 <section class="container text-center">
   <h1>Messages</h1>
+  #select_msg#
+  <form id="form_find" class="form-inline justify-content-center m-2">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="recherche" class="sr-only">Rechercher</label>
+        <input type="text" class="form-control" id="recherche" name="recherche">
+      </div>
+      <button id="bt_find" type="submit" id="find" class="btn btn-primary bg-simpson mb-2">Rechercher</button>
+  </form>
 </section>
-
 <section class="container text-center">
   <div class="row">
-      <ul class="list-group col-4">
-        <li class="list-group-item active" aria-current="true">An active item</li>
+      <ul class="list-group list-mgs">
+        <li class="list-group-item" aria-current="true">An active item</li>
         <li class="list-group-item">A second item</li>
         <li class="list-group-item">A third item</li>
         <li class="list-group-item">A fourth item</li>
         <li class="list-group-item">And a fifth one</li>
       </ul>
-    <div class="col-8">
+    <div class="txt-msg">
     </div>
   </div>
 </section>

@@ -8,19 +8,11 @@ function valider(e) {
             "password_user" : password_user
         };
         fetch_post('./../exec/connexion_exec.php', dataArray).then(function(response) {
-            if(response == "1") {
+            if(response == "true") {
                 window.opener.location.href = "./../../sgd-admin/index.php";
                 window.close();
-            } else if(response == "2") {
-                alert("Il manque des informations pour vous connecter.");
-            } else if(response == "3") {
-                alert("Erreur de mot de passe.");
-            } else if(response == "4") {
-                alert("Erreur de login.");
-            } else if(response == "5") {
-                alert("Une erreur est survenu lors de la connexion.");
             } else {
-                alert("Erreur de login.");
+                alert(response);
             }
         });
     } else {
