@@ -1,149 +1,175 @@
-
 @font-face /* POLICE */ {
     font-family: "Simpsonfont";
     font-style: normal;
     font-weight: normal;
-    src: url('./../font/Simpson/Simpsonfont.woff') format('woff'),
-        url('./../font/Simpson/Simpsonfont.ttf') format('truetype');
+    src: url("./../font/Simpson/Simpsonfont.woff") format("woff"),
+        url("./../font/Simpson/Simpsonfont.ttf") format("truetype");
 }
 
-*{
+* {
     font-family: "Simpsonfont", Helvetica, sans-serif;
 }
 
 /* HEADER */
 
-header{
-
+header {
     display: flex;
     justify-content: space-between;
-    background-color: #8BC7E5;
+    background-color: #8bc7e5;
     align-items: center;
     border: solid black 1px;
+    position: relative;
 }
 
-.hommerheader{
+.hommerheader {
     width: 100px;
     align-self: end;
 }
 
-#donnut{
+#donnut {
     min-width: 40px;
     width: 7%;
     cursor: pointer;
 }
 
-header h1{
+header h1 {
     margin: 20px 0 20px -30px;
     text-align: center;
-    color: #FFF500;
+    color: #fff500;
     -webkit-text-stroke: 0.7px black;
     font-size: 25px;
     font-weight: 500;
     text-shadow: black 2px 2px 2px;
 }
 
-#donnut img:last-of-type{
+#donnut img:last-of-type {
     display: none;
+}
+
+.cat a {
+    padding: 10px 45px;
+}
+
+.cat {
+    background-color: #424f46;
+    display: flex;
+    flex-direction: column;
+}
+
+.souscat {
+    display: none;
+    flex-direction: column;
+}
+
+.cat:hover .souscat {
+    display: flex;
 }
 
 /* SECTION */
 
-section{
+section {
     background: url("../img/background-sky.webp");
     background-size: cover;
     position: relative;
 }
 
-nav{
+nav {
     position: absolute;
     display: flex;
     flex-direction: column;
     right: 0;
     display: none;
-    margin-top: 161px;
-    top: 0;
+    bottom: -133px;
     z-index: 10;
 }
 
-nav a{
-    background-color:#424F46;
-    color:#FFF500;
+nav a {
+    background-color: #424f46;
+    color: #fff500;
     padding: 10px 45px;
     position: relative;
 }
 
-#checkbox{
+#checkbox {
     display: none;
 }
 
-#checkbox:checked + #donnut > #d2{
+#checkbox:checked + #donnut > #d2 {
     display: block;
 }
 
-#checkbox:checked + #donnut > #d1{
+#checkbox:checked + #donnut > #d1 {
     display: none;
 }
 
-#checkbox:checked ~ nav{
+#checkbox:checked ~ nav {
     display: flex;
 }
 
 /* ICONES NAV */
 
-nav > a:first-of-type::after{
+nav > a:first-of-type::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
-    background-image: url(../img/login.png)
+    background-image: url(../img/accueil.png);
 }
 
-nav > a:nth-of-type(2)::after{
+nav > a:nth-of-type(2)::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
-    background-image: url(../img/help.png)
+    background-image: url(../img/login.png);
 }
 
-nav > a:nth-of-type(3)::after{
+.cat > a::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
-    background-image: url(../img/expo.png)
+    background-image: url(../img/expo.png);
 }
 
-nav > a:nth-of-type(4)::after{
+.souscat > a:first-of-type::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
-    background-image: url(../img/musee.png)
+    background-image: url(../img/musee.png);
 }
 
-nav > a:last-of-type::after{
+.souscat > a:nth-of-type(2)::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
-    background-image: url(../img/map.png)
+    background-image: url(../img/personnage.png);
+}
+
+.souscat > a:last-of-type::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    background-image: url(../img/map.png);
 }
 
 /* FOOTER */
 
-footer{
+footer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background: #424F46;
-    color: #FFF500;
+    background: #424f46;
+    color: #fff500;
     -webkit-text-stroke: 1px black;
     font-size: 1.5em;
     padding: 0 30px 30px 30px;
@@ -178,31 +204,32 @@ footer:after {
     transform: rotate(180deg);
 }
 
-footer a{
-    font-family: 'Comic Neue', cursive;
-    color: #FFF500;
+footer a {
+    font-family: "Comic Neue", cursive;
+    color: #fff500;
     font-size: 0.5em;
     letter-spacing: 1px;
     font-weight: 0;
     font-style: normal;
 }
 
-footer ul, footer div{
+footer ul,
+footer div {
     margin-top: 40px;
 }
 
-.duffbeer{
+.duffbeer {
     width: 100%;
 }
 
-.duffbeer img{
+.duffbeer img {
     width: 25px;
     margin: auto;
 }
 
-footer p{
+footer p {
     width: 100%;
-    font-family: 'Comic Neue', cursive;
+    font-family: "Comic Neue", cursive;
     color: black;
     position: absolute;
     font-size: 0.5em;
@@ -210,17 +237,17 @@ footer p{
     right: -50px;
 }
 
-footer h1{
+footer h1 {
     display: none;
     margin-top: 100px;
 }
 
-footer > ul > li:first-of-type{
+footer > ul > li:first-of-type {
     text-shadow: black 2px 2px 2px;
 }
 /* Barres de séparations after/before & images décoratives */
 
-.duffbeer::before{
+.duffbeer::before {
     content: "";
     position: absolute;
     background: url(../img/maggie.png) no-repeat;
@@ -231,8 +258,8 @@ footer > ul > li:first-of-type{
     height: 75px;
 }
 
-footer ul:first-of-type::after{
-    content: '';
+footer ul:first-of-type::after {
+    content: "";
     background-color: black;
     width: 90%;
     height: 1px;
@@ -241,8 +268,8 @@ footer ul:first-of-type::after{
     margin-top: 20px;
 }
 
-footer ul:last-of-type::after{
-    content: '';
+footer ul:last-of-type::after {
+    content: "";
     background-color: black;
     width: 60%;
     height: 1px;
@@ -251,39 +278,36 @@ footer ul:last-of-type::after{
     margin-top: 20px;
 }
 
-
 /* Media-querries 768px */
 
-@media all and (min-width: 768px){
-
+@media all and (min-width: 768px) {
     /* FOOTER */
 
-    footer{
+    footer {
         flex-direction: row;
     }
 
-    footer p{
-        right:unset;
+    footer p {
+        right: unset;
     }
 
-    footer h1{
+    footer h1 {
         display: block;
         width: 50%;
     }
 
-    footer ul{
+    footer ul {
         width: 25%;
         position: relative;
     }
 
-    footer h1{
+    footer h1 {
         position: relative;
     }
 
-
     /* Barres de séparations after/before & images décoratives */
 
-    footer ul:first-of-type::after{
+    footer ul:first-of-type::after {
         right: 0;
         top: 0;
         width: 1px;
@@ -292,13 +316,12 @@ footer ul:last-of-type::after{
         margin-top: unset;
     }
 
-
-    footer ul:last-of-type::after{
+    footer ul:last-of-type::after {
         width: 300%;
-        left: -80%;
+        left: -50%;
     }
 
-    footer h1::after{
+    footer h1::after {
         content: "";
         left: 0;
         top: -61px;
@@ -308,25 +331,24 @@ footer ul:last-of-type::after{
         background-color: black;
     }
 
-    footer::before{
+    footer::before {
         left: 5%;
     }
 
-    footer::after{
+    footer::after {
         bottom: unset;
-        top:0;
+        top: 0;
     }
 
     /* HEADER */
 
-    header h1{
+    header h1 {
         margin-left: unset;
-        width: 400px;
-        font-size: 2.5em;
+        width: fit-content;
+        font-size: 4em;
     }
 
-    header{
+    header {
         padding: 0 50px;
     }
-
-} 
+}
