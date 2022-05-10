@@ -15,11 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat&family=Oswald&family=Playball&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/280516d329.js" crossorigin="anonymous"></script>
     <?php
-
-        if(empty($_GET['ind'])) {
-            $_GET['ind'] = 'acc';
-        }
 
         if ($_GET['ind'] == 'acc') {
             echo '<link rel="stylesheet" href="./src/css/style-acc.css">';
@@ -53,14 +50,20 @@
         <nav>
             <a href="./index.php?ind=acc">Accueil</a>
             <a id="btt_conn">Connexion</a>
-            <a href="./index.php?ind=cat">Categories</a>
+            <div class="cat">
+                <a>Categories</a>
+                <div class="souscat">
+                    <a href="./index.php?ind=cat&cat=2">Battiments</a>
+                    <a href="./index.php?ind=cat&cat=3">Personnages</a>
+                    <a href="./index.php?ind=cat&cat=1">Lieux</a>
+                </div>
+            </div>
+            
 
             <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>
-            <!--
-            <a>Expositions</a>
-            <a>Musée</a>
-            <a>Lieux</a>
-            -->
+            
+
+            
 
         </nav>
     </header>

@@ -1,4 +1,4 @@
-h3{
+h3 {
     font-size: 1.5em;
     margin: auto;
     display: block;
@@ -8,35 +8,35 @@ h3{
     z-index: 2;
 }
 
-h3:after{
+h3:after {
     content: "";
     background-color: black;
     width: 50px;
     height: 2px;
     position: absolute;
-    left: -50px;
+    right: -65px;
     bottom: 15px;
 }
 
-h3:before{
+h3:before {
     content: "";
     background-color: black;
     width: 50px;
     height: 2px;
     position: absolute;
-    right: -50px;
+    left: -65px;
     bottom: 15px;
 }
 
-figure{
+figure {
     width: 100%;
     text-align: center;
     position: relative;
     border: solid black 2px;
 }
 
-figure::after{
-    content: '';
+figure::after {
+    content: "";
     position: absolute;
     height: 1px;
     width: 200px;
@@ -46,75 +46,76 @@ figure::after{
     margin-left: -100px;
 }
 
-.contain{
+.contain {
     object-fit: contain;
 }
 
-p{
+p {
     grid-area: text;
     text-align: center;
-    font-family: 'Comic Neue', cursive;
+    font-family: "Comic Neue", cursive;
 }
 
-figure:first-of-type{
+figure:first-of-type {
     grid-area: fig1;
 }
 
-figure:nth-of-type(2){
+figure:nth-of-type(2) {
     grid-area: fig2;
 }
 
-figure:nth-of-type(3){
+figure:nth-of-type(3) {
     grid-area: fig3;
 }
 
-figure:nth-of-type(4){
+figure:nth-of-type(4) {
     grid-area: fig4;
 }
 
-figure:nth-of-type(5){
+figure:nth-of-type(5) {
     grid-area: fig5;
 }
 
-figure:nth-of-type(6){
+figure:nth-of-type(6) {
     grid-area: fig6;
 }
 
-figure:nth-of-type(7){
+figure:nth-of-type(7) {
     grid-area: fig7;
 }
-figure:nth-of-type(8){
+figure:nth-of-type(8) {
     grid-area: fig8;
 }
-figure:nth-of-type(9){
+figure:nth-of-type(9) {
     grid-area: fig9;
 }
 
-figure:last-of-type{
+figure:last-of-type {
     grid-area: fig10;
 }
 
-section{
+section {
     display: grid;
-    grid-template-areas: "title"
-    "text"
-    "fig1"
-    "fig2"
-    "fig3"
-    "fig4"
-    "fig5"
-    "fig6"
-    "fig7"
-    "fig8"
-    "fig9"
-    "fig10";
+    grid-template-areas:
+        "title"
+        "text"
+        "fig1"
+        "fig2"
+        "fig3"
+        "fig4"
+        "fig5"
+        "fig6"
+        "fig7"
+        "fig8"
+        "fig9"
+        "fig10";
     height: unset;
     grid-gap: 20px;
 }
 
-figcaption{
+figcaption {
     margin: auto;
-    color: #FFF500;
+    color: #fff500;
     font-weight: 500;
     text-shadow: black 2px 2px 2px;
     -webkit-text-stroke: 0.7px black;
@@ -126,21 +127,18 @@ figcaption{
     width: 150px;
 }
 
-@media all and (min-width: 768px){
-
-    section{
+@media all and (min-width: 768px) {
+    section {
         padding: 50px;
         grid-template-rows: auto auto 150px 150px 150px 150px 150px 150px;
-        grid-template-areas: "title title title"
-        "text text text"
-        "fig1 fig2 fig3"
-        "fig1 fig2 fig4"
-        "fig1 fig5 fig4"
-        "fig9 fig8 fig6"
-        "fig9 fig7 fig6"
-        "fig10 fig7 fig6"
-
+        grid-template-areas:
+            "title title title"
+            "text text text"
+            "fig1 fig2 fig3"
+            "fig1 fig2 fig4"
+            "fig1 fig5 fig4"
+            "fig9 fig8 fig6"
+            "fig9 fig7 fig6"
+            "fig10 fig7 fig6";
     }
-
 }
-
