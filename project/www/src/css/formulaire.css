@@ -86,7 +86,7 @@ form p {
 #form_contact {
   background-color: white;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   /* justify-content: center; */
   align-items: center;
   /* vertical-align: middle; */
@@ -233,6 +233,10 @@ textarea {
       margin: unset;
       padding: unset;
     }
+
+    #form_image img {
+      display: none;
+    }
   
     #section_contact_info {
       margin-top: 91px;
@@ -249,6 +253,7 @@ textarea {
     /*--------------*/
     /** formulaire **/
     #form_contact {
+      grid-template-columns: 1fr;
       width: 100%;
       box-shadow: none;
     }

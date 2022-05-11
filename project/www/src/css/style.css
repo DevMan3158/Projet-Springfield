@@ -14,6 +14,7 @@
 body {
     background: url("../img/background-sky.webp") repeat-y;
     background-size: cover;
+    min-width: 320px;
 }
 
 h3{

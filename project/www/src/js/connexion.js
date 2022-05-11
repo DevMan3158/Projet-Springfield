@@ -28,6 +28,12 @@ function pass_perdu(e) {
 
 }
 
+document.body.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    valider(event);
+  }
+});
+
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("annuler").addEventListener("click", annuler);
 document.getElementById("pass_perdu").addEventListener("click", pass_perdu);
