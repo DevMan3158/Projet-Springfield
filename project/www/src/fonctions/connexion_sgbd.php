@@ -26,7 +26,7 @@ if (!function_exists('connexion_sgbd')) {
             $line .= ';dbname=' . $sgbd_conn_name;
         }
         $line .= ";charset=UTF8";
-
+        
         $sgbd = null;
         try {
             
