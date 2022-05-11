@@ -1,0 +1,8 @@
+input[type="file"] {
+    display: none;
+}
+
+#add-img {
+    width: 90px;
+    height: 90px;
+}

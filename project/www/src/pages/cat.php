@@ -66,11 +66,17 @@
     <div class="btn">
 
     <div class="arrow">
-        <a href="./index.php?ind=cat&cat=1&pg=1" class="pages">1</a>
-        <a href="./index.php?ind=cat&cat=1&pg=2" class="pages">2</a>
-        <a href="./index.php?ind=cat&cat=1&pg=3" class="pages">3</a>
-        <a href="./index.php?ind=cat&cat=1&pg=4" class="pages">4</a>
-        <a href="./index.php?ind=cat&cat=1&pg=5" class="pages">5</a>
+
+    <?php
+
+            for ($i=0; $i<5; $i++){
+
+                    echo'        
+                    <a href="./index.php?ind=cat&cat='.$_GET['cat'].'&pg='.($i).'" class="pages">'.($i).'</a>';
+                };
+
+    ?>
+
     </div>
 
 

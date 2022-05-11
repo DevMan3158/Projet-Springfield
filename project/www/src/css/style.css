@@ -86,6 +86,7 @@ nav {
     display: none;
     bottom: -177px;
     z-index: 10;
+    cursor: pointer;
 }
 
 nav a {
@@ -116,10 +117,6 @@ nav a:hover {
 }
 
 /* ICONES NAV */
-
-#btt_conn{
-    cursor: pointer;
-}
 
 #acc::after {
     content: "";
