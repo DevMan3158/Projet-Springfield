@@ -29,6 +29,11 @@
     <script src="https://kit.fontawesome.com/280516d329.js" crossorigin="anonymous"></script>
     <?php
 
+
+        if(empty($_GET['ind'])) {
+            $_GET['ind'] = 'acc';
+        }
+
         if ($_GET['ind'] == 'acc') {
             echo '<link rel="stylesheet" href="./src/css/style-acc.css">';
         } elseif ($_GET['ind'] == 'cat'){
