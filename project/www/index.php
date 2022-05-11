@@ -1,5 +1,5 @@
 <?php
-
+    /*Connexion*/
     include_once dirname(__FILE__) . '/src/fonctions/connexion_sgbd.php';
 
     session_start();
@@ -7,7 +7,7 @@
     $isConnected = false;
 
     if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
-    array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+    array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) &&   
     array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
     array_key_exists('email', $_SESSION)) {
         $isConnected = true;
@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat&family=Oswald&family=Playball&display=swap" rel="stylesheet">
     <?php
-
+        /*Liens_Contenues_.css*/
         if(empty($_GET['ind'])) {
             $_GET['ind'] = 'acc';
         }
@@ -81,7 +81,7 @@
         </nav>
     </header>
     <?php
-
+        /*Liens_Contenues_.php*/
         if ($_GET['ind'] == 'acc') {
             include './src/pages/acc.php';
         } elseif ($_GET['ind'] == 'cat'){

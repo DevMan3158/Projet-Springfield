@@ -1,5 +1,5 @@
 <?php
-
+/*Connexion*/
 include_once dirname(__FILE__) . '/../src/fonctions/connexion_sgbd.php';
 
 session_start();
@@ -30,21 +30,20 @@ array_key_exists('email', $_SESSION)) {
         
     <link rel="stylesheet" href="../sgd-admin/src/css/style.css">
         <?php
+        /*Liens_Contenues_.css*/
+         
             if(!isset($_GET['ind'])) {
                 $_GET['ind'] = 'acc' ; 
             }
-
             if($_GET['ind'] =='acc') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-acc.css">';
             }
             elseif ($_GET['ind'] == 'admin') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-admin.css">';
             }
-
             elseif ($_GET['ind'] == 'message') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-message.css">';
             }
-
             elseif ($_GET['ind'] == 'produit') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-produit.css">';
             }
@@ -57,16 +56,16 @@ array_key_exists('email', $_SESSION)) {
 <body>
 
 <!----Début_Header  fixed-top---->
-
+<div class=container-fluid>
 
     <nav class="navbar navbar-secondary bg-simpson bg-gradient row">
         <a class="navbar-brand col m-1" href="./index.php?ind=acc">
-            <img src="./../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="./../favicon.ico" width="60" height="60" class="d-inline-block align-top" alt="">
         </a>
 
         <a class="col m-1 text-center text-simpson title-simpson" href="./index.php?ind=acc"><i class="bi bi-house"></i>&emsp;Office du tourisme de Springfield</a>
 
-        <!-- Dropdown -->
+        <!-- Dropdown ./index.php?ind=acc--> 
             
         <nav class="dropdown col text-right">
             <button class="btn m-1 btn-secondary bg-simpson bg-gradient" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,36 +94,32 @@ array_key_exists('email', $_SESSION)) {
             </div>
         </nav>
     </nav>  
-
+</div>
 <!----Fin_Header---->
 
 
 
  
 
-<!----Contenus---->
+<!----Liens_Contenues_.php---->
 
 <?php
+
 if(!isset($_GET['ind'])) {
     $_GET['ind'] = 'acc' ; 
 }
-
-
 if($_GET['ind'] =='acc') {
     include './src/pages/acc.php';
 }
 elseif ($_GET['ind'] == 'admin') {
     include './src/pages/admin.php';
 }
-
 elseif ($_GET['ind'] == 'produit') {
     include './src/pages/produit.php';
 }
-
  elseif ($_GET['ind'] == 'utilisateur') {
     include './src/pages/utilisateur.php';
  }
-
  elseif ($_GET['ind'] == 'message') {
     include './src/pages/message.php';
  }

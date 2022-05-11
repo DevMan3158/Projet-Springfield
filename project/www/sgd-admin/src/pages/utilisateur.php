@@ -1,82 +1,65 @@
-<h1 class="text-center">Utilisateurs</h1>
+
+  <?php
+
+include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION) && ($_SESSION['id_admin'] == 1 || $_SESSION['id_admin'] == 2)) {
+
+  echo file_get_contents(dirname(__FILE__) . '/../template/utilisateur.html', true);
+
+} else {
+  echo "Vous n'avez pas le droit d'ouvrir cette page.";
+}
 
 
-<!--Formulaire pour Users-->
+$serveur = "localhost";
+$dbname = "springfield";  /* On déclare la base de données*/
+$user = "root";
+$pass = "1234";
+$prenom = $_POST["prenom"];
+$email = $_POST["email"];
+$nom = $_POST["nom"];
+$message = $_POST["mot_pass"];
 
-<form>
-  <div class="form-row ">
-    <div class="col-md-4 mb-3">
-      <label for="validationServer01">Prénom</label>
-      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
-      <div class="valid-feedback">
-        Parfait!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServer02">Nom</label>
-      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="" required>
-      <div class="valid-feedback">
-      Parfait!!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServerUsername">Identifiant</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
-        </div>
-        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Identifiant" aria-describedby="inputGroupPrepend3" required>
-        <div class="invalid-feedback">
-          Choisir un Identifiant.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationServer03">Ville</label>
-      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
-      <div class="invalid-feedback">
-      Choisir une ville.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationServer04">Département</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
-      <div class="invalid-feedback">
-      Choisir un département.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationServer05">Code postal</label>
-      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check ">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
+try{
+        
 
 
-<!--Pagination-->
-<nav aria-label="Page navigation example ">
-  <ul class="pagination justify-content-center ">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
+  //On se connecte à la BDD
+  $dbco = new PDO("mysql:host=$serv;dbname=$dbname; charset=utf8", $user, $pass );
+  $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  //On insère les données reçues
+  $sth = $dbco->prepare("
+      INSERT INTO utilisateur(nom, prenom, email, mot_pass)  
+      VALUES(:nom, :prenom, :email, :mot_pass)");
+  /*INSERT INTO -> On spécifie la table "utilisateur" dans la db "springfield" */
+  $sth->bindParam(':prenom',$prenom);
+  
+  $sth->bindParam(':nom',$nom);
+  
+  $sth->bindParam(':email',$email);
+
+  $sth->bindParam('mot_pass',$mot_pass);
+  
+ 
+  $sth->execute();
+
+  echo 'Serveur:' .$serveur.'<br>';
+  echo 'db:' .$dbname.'<br>';
+  echo 'P:' .$prenom.'<br>';
+  echo 'N:' .$nom.'<br>';
+  echo 'E:' .$email.'<br>';
+
+
+  /*echo' Envoie dans la table  <br>';*/
+  //On renvoie l'utilisateur vers la page de remerciement
+  /*header("Location:Formulairemessage.html");*/
+}
+catch(PDOException $e){
+  echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+}
+?>
+

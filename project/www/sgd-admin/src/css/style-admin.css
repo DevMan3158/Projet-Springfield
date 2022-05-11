@@ -1,5 +1,7 @@
 .img_del, .img_mod {
-    width: 20px;
+    width: 25px;
+    background-color:  #FFF500; 
+    border-radius: 3px;
 }
 
 /*table td select {
