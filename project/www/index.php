@@ -65,7 +65,7 @@
         </label>
         <nav>
             <?php if($isConnected) { ?>
-                <a href="./../src/exec/deconnexion_exec.php">Déconnexion</a>
+                <a href="./src/exec/deconnexion_exec.php">Déconnexion</a>
             <?php } else { ?>
                 <a id="btt_conn">Connexion</a>
             <?php } ?>

@@ -28,7 +28,6 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
         ":id_user" => $_SESSION['id_user']
       ]);
       $data = $res->fetchAll(PDO::FETCH_ASSOC);
-var_dump($data);
     } catch (PDOException $e) {
       $error_log = new Error_Log();
       $error_log->addError($e);

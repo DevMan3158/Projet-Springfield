@@ -30,4 +30,5 @@ if(!empty($_GET) && array_key_exists('desc', $_GET)) {
     }
 }
 $html = file_get_contents(dirname(__FILE__) . '/../template/messages.html', true);
+
 echo str_replace("#id_produit#",$desc,str_replace("#img_produit#",$img,$html));

@@ -85,7 +85,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
                 <a class="dropdown-item" href="./index.php?ind=utilisateur">
                     <img class="img_del" src="src/img/utilisateur.svg"> Utilisateurs
                 </a>
-                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php">
+                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php?admin=dec">
                     <img class="img_del" src="src/img/deconnexion.svg"> Déconnexion
                 </a>
             </div>

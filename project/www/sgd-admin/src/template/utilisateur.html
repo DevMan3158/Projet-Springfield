@@ -1,0 +1,155 @@
+<!--Formulaire pour Users-->
+
+<div class="container">
+  <!--Début_container-->
+
+  <div class="row">
+    <div class="col-md-4 mb-5 InfoUse">Avatar :</div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <!-- <form
+        id="form-1"
+        action="./src/exec/add_utilisateurs.php"
+        method="post"
+        entype="multipart/form-data"
+      >
+          <input type="file" id="file" name="file" accept="image/png, image/jpeg" />
+          <img id="add-img" src="./src/template/add_picture_235.svg" alt="ajouter une image" />
+
+          <button
+            type="submit"
+            id="btt-form-1"
+            for="form-1"
+            class="btn btn-light"
+          >
+            Valider
+          </button>
+      </form> -->
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <!--Début_container-->
+
+  <div class="row">
+    <div class="col-md-4 mb-5 InfoUse">Informations utilisateur :</div>
+  </div>
+  <!--Fin_container-->
+
+  <form
+    id="form-2"
+    action="./src/exec/add_utilisateurs.php"
+    method="post"
+    entype="multipart/form-data"
+  >
+
+    <input type="file" id="file" name="file" accept="image/png, image/jpeg" />
+    <img id="add-img" src="./src/template/add_picture_235.svg" alt="ajouter une image" />
+    <div class="form-row">
+      <!--Début_row_1-->
+
+      <div class="col-md-4 mb-3">
+        <label for="prenom"> Prénom </label>
+
+        <input
+          class="form-control"
+          type="text"
+          name="prenom"
+          id="prenom"
+          placeholder="prénom"
+          value=""
+          required
+        />
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="nom"> Nom </label>
+
+        <input
+          class="form-control"
+          type="text"
+          name="nom"
+          id="nom"
+          placeholder="nom"
+          value=""
+          required
+        />
+      </div>
+
+      <div class="col-md-4 mb-5">
+        <label for="email"> Identifiant </label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend3">@</span>
+          </div>
+
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="homer@gmail.fr"
+            aria-describedby="inputGroupPrepend3"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <!--Fin_row_1-->
+
+    <div class="row">
+      <!--Début_row_2-->
+      <div class="col-md-4 mb-5 InfoUse">Modifier le mot de passe :</div>
+    </div>
+    <!--Fin_row_2-->
+
+    <div class="row">
+      <!--Début_row_3-->
+      <div class="col-md-5 mb-3">
+        <div class="form-group">
+          <label for="password"> Mot de passe </label>
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Mot de passe"
+            pattern="{6,}"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="col-md-5 mb-5">
+        <div class="form-group">
+          <label for="password"> Répéter le Mot de passe </label>
+          <input
+            class="form-control"
+            type="password"
+            id="password-2"
+            name="password-2"
+            placeholder="Mot de passe..."
+            pattern="{6,}"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <!--Fin_row_3-->
+
+    <div class="row">
+      <!--Début_row_4-->
+      <div class="col mb-3 text-center text-left-md">
+        <button id="btt-form-1" class="btn btn-primary" type="submit">Valider</button>
+      </div>
+    </div>
+    <!--Fin_row_4-->
+  </form>
+
+  <div><!--Fin_Container--></div>
+</div>
+
+<script src="./../src/js/le_fetch.js"></script>
+<script src="./src/js/user.js"></script>

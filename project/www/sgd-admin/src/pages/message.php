@@ -40,7 +40,9 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
   } else {
     echo "Désolé, une erreur c'est produite lors du téléchargement de la page.";
   }
-  echo str_replace("#list_msg#",$list,str_replace("#select_msg#", $select, $html));
+  
+  $remp_box_msg = str_replace("#msg_from#","",str_replace("#msg_date#","",str_replace("#msg_obj#","",$html)));
+  echo str_replace("#list_msg#",$list,str_replace("#select_msg#", $select, $remp_box_msg));
 } else {
   echo "Vous n'avez pas le droit d'ouvrir cette page.";
 }

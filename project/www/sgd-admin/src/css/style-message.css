@@ -18,13 +18,28 @@
 }
 
 #msg .display_msg:hover {
-    background-color: beige;
+    background-color: #fed90f;
 }
 
 #msg #info {
-    background-color: beige;
+    background-color: #b1e6ff;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
 }
 
 #msg #info img {
     width: 50px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+#msg #info label {
+    margin-left : 5px;
+}
+
+#msg #info .type {
+    text-align: right;
 }

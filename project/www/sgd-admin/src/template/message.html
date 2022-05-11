@@ -16,24 +16,17 @@
     </ul>
     <div class="txt-msg">
       <div id="info" class="text-left">
-        <figure class="col-4">
-          <img src="src/img/icons8-supprimer-pour-toujours-90.svg" />
-        </figure>
-        <figure class="">
-          <div class="row justify-content-start">
-            <div class="col-4">de : </div><div class="col-4">name first_name (email)</div>
-          </div>
-          <div class="row justify-content-start">
-            <div class="col-4">le : </div><div class="col-4">date</div>
-          </div>
-          <div class="row justify-content-start">
-            <div class="col-4">objet : </div><div class="col-4">objet</div>
-          </div>
+          <img id="img_del_msg" src="src/img/icons8-supprimer-pour-toujours-90.svg" />
+          <label class="type">de : </label><label id="msg_from"></label>
+          <label class="type">le : </label><label id="msg_date"></label>
+          <label class="type">objet : </label><label id="msg_obj"></label>
         </figure>
       </div>
-      <div id="txt">
-        coucou
+      <div id="msg_txt">
       </div>
     </div>
   </div>
+
+  <script src="./../src/js/le_fetch.js"></script>
+  <script src="./src/js/message.js"></script>
 </section>
