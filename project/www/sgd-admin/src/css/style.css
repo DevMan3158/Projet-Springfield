@@ -20,6 +20,12 @@ body {
     background-size: cover;
 }
 
+.color-icon
+{
+color: #FFF500; 
+}
+
+
 .bg-simpson {
     background-color: #8BC7E5;
     color: black;
