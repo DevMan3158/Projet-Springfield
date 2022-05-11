@@ -65,23 +65,23 @@
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
-            <a href="./index.php?ind=acc">Accueil</a>
-            <a id="btt_conn">Connexion</a>
+            <a id="acc" href="./index.php?ind=acc">Accueil</a>
+            <?php if($isConnected) { ?>
+                <a id="disc" href="./src/exec/deconnexion_exec.php">Déconnexion</a>
+            <?php } else { ?>
+                <a id="btt_conn" class="conn">Connexion</a>
+            <?php } ?>
+            <a id="insc" href="./index.php?ind=insc">Inscription</a>
             <div class="cat">
                 <a>Categories</a>
                 <div class="souscat">
-                    <a href="./index.php?ind=cat&cat=2">Battiments</a>
-                    <a href="./index.php?ind=cat&cat=3">Personnages</a>
-                    <a href="./index.php?ind=cat&cat=1">Lieux</a>
+                    <a id="batt" href="./index.php?ind=cat&cat=2">Battiments</a>
+                    <a id="pers" href="./index.php?ind=cat&cat=3">Personnages</a>
+                    <a id="lieux" href="./index.php?ind=cat&cat=1">Lieux</a>
                 </div>
             </div>
             
-            <?php if($isConnected) { ?>
-                <a href="./../src/exec/deconnexion_exec.php">Déconnexion</a>
-            <?php } else { ?>
-                <a id="btt_conn">Connexion</a>
-            <?php } ?>
-            <a href="./index.php?ind=cat">Categories</a>
+
 
             <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>
             
@@ -111,8 +111,8 @@
     <footer>
         <ul>
             <li>Contact</li>
-            <li><a href="#">Particulier</a></li>
-            <li><a href="#">Professionel</a></li>
+            <li><a href="./index.php?ind=msg">Particulier</a></li>
+            <li><a href="./index.php?ind=msg">Professionel</a></li>
         </ul>
 
         <ul>

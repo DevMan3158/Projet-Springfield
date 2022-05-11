@@ -84,7 +84,7 @@ nav {
     flex-direction: column;
     right: 0;
     display: none;
-    bottom: -133px;
+    bottom: -177px;
     z-index: 10;
 }
 
@@ -117,7 +117,11 @@ nav a:hover {
 
 /* ICONES NAV */
 
-nav > a:first-of-type::after {
+#btt_conn{
+    cursor: pointer;
+}
+
+#acc::after {
     content: "";
     position: absolute;
     width: 20px;
@@ -126,13 +130,24 @@ nav > a:first-of-type::after {
     background-image: url(../img/accueil.png);
 }
 
-nav > a:nth-of-type(2)::after {
+.conn::after {
     content: "";
     position: absolute;
     width: 20px;
     height: 20px;
     left: 10px;
     background-image: url(../img/login.png);
+}
+
+#disc::after {
+
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    background-image: url(../img/disconnect.png);
+
 }
 
 .cat > a::after {
@@ -143,6 +158,22 @@ nav > a:nth-of-type(2)::after {
     left: 10px;
     background-image: url(../img/expo.png);
 }
+
+.cat > a::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    background-image: url(../img/right_arrow.png);
+}
+
+.cat:hover > a::before{
+
+    background-image: url(../img/down_arrow.png);
+
+}
+
 
 .souscat > a:first-of-type::after {
     content: "";
@@ -169,6 +200,17 @@ nav > a:nth-of-type(2)::after {
     height: 20px;
     left: 10px;
     background-image: url(../img/map.png);
+}
+
+#insc::after {
+
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    background-image: url(../img/signin.png);
+
 }
 
 /* FOOTER */
