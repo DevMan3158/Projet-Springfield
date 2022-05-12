@@ -15,7 +15,6 @@ $cat = validation_donnees($_POST["catégorie"]);
 $lieu = validation_donnees($_POST["lieu"]);
 $message = validation_donnees($_POST["story"]);
 
-
     $sth = $sgbd->prepare("
     INSERT INTO produits (nom, id_cat, lieu, description, id_user)
     VALUES (:nom, :id_cat, :lieu, :description, :id_user)");
@@ -28,10 +27,21 @@ $sth->execute();
 $id_produit=$sgbd->lastInsertID();
 echo $id_produit;
 /* Pour les modifications, Rajouter un if else ( SI la page existe alors la modifier SINON la créer ) */
-/* Pour rajouter la photos, créer une autre requetes sql INSERT avec le $id_produit */
+/* Pour rajouter la photos, créer une autre requetes sql INSERT aec le $id_produit */
+
+
+
 
 if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
     foreach ($_FILES["file"]["name"] as $key => $name) {
+        $sth = $sgbd->prepare("
+        INSERT INTO photos (id_produit, src, alt, titre)
+        VALUES (:id, :src, :alt, :titre)");
+        $sth->bindParam(':id',$id_produit);
+        $sth->bindParam(':src',$name);
+        $sth->bindParam(':alt',"Une photo de (".$nom.").");
+        $sth->bindParam(':titre',$nom);
+        $sth->execute();
         if(move_uploaded_file($_FILES['file']['tmp_name'][$key], "./../../../data/img/".$name)) {
             echo "Le fichier ".$name." a été sauvegardé.<br />";
         } else {
