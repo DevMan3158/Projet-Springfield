@@ -9,6 +9,7 @@ array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) &&
 array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] == 1) {
 
   $page = file_get_contents(dirname(__FILE__) . '/../template/admin.html', true);
+  
 
   $table = "";
   $sgbd = connexion_sgbd();

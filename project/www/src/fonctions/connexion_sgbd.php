@@ -13,9 +13,9 @@ if (!function_exists('connexion_sgbd')) {
         $sgbd_conn_type = !empty($sgbd_type) ? $sgbd_type : "mysql";
         $sgbd_conn_server = !empty($sgbd_server) ? $sgbd_server : "localhost";
         $sgbd_conn_port = !empty($sgbd_port) ? $sgbd_port : "0";
-        $sgbd_conn_name = !empty($sgbd_name) ? $sgbd_name : "";
+        $sgbd_conn_name = !empty($sgbd_name) ? $sgbd_name : "springfield";
         $sgbd_conn_user = !empty($sgbd_user) ? $sgbd_user : "root";
-        $sgbd_conn_pass = !empty($sgbd_pass) ? $sgbd_pass : "";
+        $sgbd_conn_pass = !empty($sgbd_pass) ? $sgbd_pass : "1234";
         $sgbd_conn_prefix = !empty($sgbd_prefix) ? $sgbd_prefix : "";
 
         $line = $sgbd_conn_type . ':host=' . $sgbd_conn_server;
