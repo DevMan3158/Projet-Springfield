@@ -6,11 +6,13 @@ if (!function_exists('create_list_msg')) {
         $list = "";
         foreach($tab_msgs as $value) {
             $img_no_lu = "enveloppe.svg";
+            $msg_no_lu = "display_msg_no_lu";
             if($value['lu'] == "1") {
                 $img_no_lu = "document.svg";
+                $msg_no_lu = "display_msg_lu";
             }
-            $list .= '<li class="list-group-item display_msg text-left" id="msg_'.$value['Id_msg'].'">';
-            $list .= '<img src="src/img/'.$img_no_lu.'" /> ';
+            $list .= '<li class="list-group-item display_msg text-left '.$msg_no_lu.'" id="msg_'.$value['Id_msg'].'">';
+            $list .= '<img id="img_msg_'.$value['Id_msg'].'" src="./src/img/'.$img_no_lu.'" /> ';
             $list .= $value['Objet'];
             $list .= '</li>';
         }

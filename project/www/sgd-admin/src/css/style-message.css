@@ -17,8 +17,16 @@
     width: 20px;
 }
 
+#msg .display_msg_lu {
+    border-left: #01ff01 5px solid;
+}
+
+#msg .display_msg_no_lu {
+    border-left: red 5px solid;
+}
+
 #msg .display_msg:hover {
-    background-color: #fed90f;
+    background-color: #FFF500;
 }
 
 #msg #info {

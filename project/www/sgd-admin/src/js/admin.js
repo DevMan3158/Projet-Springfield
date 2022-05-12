@@ -206,8 +206,8 @@ function activeClick() {
    .forEach((element) => {
       element.addEventListener("click", admin_del);
    });
-
-   document.getElementById("bt_find").addEventListener("click", bt_find);
 }
+
+document.getElementById("bt_find").addEventListener("click", bt_find);
 
 activeClick();

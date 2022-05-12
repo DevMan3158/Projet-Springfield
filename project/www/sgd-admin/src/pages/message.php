@@ -12,7 +12,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
 
   $select = "";
   if($_SESSION['id_admin'] == 1) {
-    $select = "<select class=\"custom-select custom-select-sm\">".
+    $select = "<select id=\"select_type_msg\" class=\"custom-select custom-select-sm\">".
       "<option value=\"user\" selected>Utilisateur</option>".
       "<option value=\"admin\">Administrateur</option>".
       "</select>";
