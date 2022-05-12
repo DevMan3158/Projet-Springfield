@@ -6,3 +6,45 @@ input[type="file"] {
     width: 90px;
     height: 90px;
 }
+
+h1{
+    margin: 50px 0;
+}
+
+form{
+    grid-gap: 30px;
+    background: rgb(255,255,255,0.2);
+    padding: 150px;
+}
+
+#desc{
+    height: 100px;
+    width: 400px;
+}
+
+.boutton{
+    width: 10%;
+    flex: none;
+    margin: auto;
+    transition: 0.2s;
+    background-color: #8bc7e5;
+    border: white solid 2px;
+    border-radius: 5px;
+}
+
+input,textarea,select{
+    border-radius: 5px;
+    border: 2px white solid;
+    background-color: #8bc7e5;
+}
+
+.boutton:hover{
+    transform: scale(1.1);
+    border-radius: 15px;
+    width: 15%
+}
+
+figure div{
+    background-color: white;
+    border-radius: 5px;
+}

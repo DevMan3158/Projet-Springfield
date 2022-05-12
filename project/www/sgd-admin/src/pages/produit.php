@@ -1,10 +1,57 @@
+<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
 <h1 class="text-center">Produits</h1>
 
-<form action="./src/exec/add_produits.php" method="post" enctype="multipart/form-data" >
-        <input type="file" id="file" name="file" accept="image/png, image/jpeg, image/webp" />
-        <img id="add-img" src="src/icons8-ajouter-une-image-90.png" alt="ajouter une image" />
-        <button type="sumit">Valider</button>
-</form>
+<div class="">
+
+    <form class="row text-center " action="./src/exec/add_produits.php" method="post" enctype="multipart/form-data" >
+
+            <div class="col-md-12 text-center form-group">
+                <input  type="file" id="file" name="file[]"  accept="image/png, image/jpeg, image/webp" multiple/>
+                <img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" alt="ajouter une image" />
+            </div>
+
+            <div class="col-md-12 text-center form-group">
+                    <label for="nom">Nom :</label>
+                    <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer">
+
+            </div> 
+
+            <div class="col-md-12 form-group">
+
+            <label for="catégorie">Choisisez une catégorie :</label>
+            <select class="form-control" name="catégorie" id="cat-select">
+                <option value="1">Lieux
+                </option>
+                <option value="2">Personnages</option>
+                <option value="3">Batiments</option>
+            </select>
+
+            </div>
+
+            <div class="col-md-12 text-center form-group">
+                   <label for="lieu">Localisation :</label>
+                   <input class="form-control" type="text" name="lieu" text_area="Lieu" placeholder="742 Evergreen Terrace">
+            </div>
+
+            <div class="col-md-12 text-center form-group">
+                    <label for="description">Description :</label>            
+                    <figure class="bbcode">
+                    <button class="bbcode_bold">B</button><button class="bbcode_title">title</button><button class="bbcode_type">&lt;&gt;</button>
+                    <textarea name="story" class="editor_bbcode form-control" readonly></textarea>
+                </figure>
+            </div>
+
+            <button class="col-md-12 boutton form-control" type="sumit">Valider</button>
+
+    </form>
+
+
+</div>
+
+
+<div class="col">
+    
+</div>
 <script src="./addImg.js"></script>
 
 <script>
@@ -55,3 +102,6 @@ document.getElementById('add-img').addEventListener('click', img_add);
 
 
 </script>
+
+
+<script src="../src/bbcode_editeur/bbcode.js"></script>
