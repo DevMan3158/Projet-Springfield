@@ -190,14 +190,14 @@ function activeClick() {
    .getElementById("user_tab")
    .querySelectorAll(".tab_input")
    .forEach((element) => {
-      element.addEventListener("click", input_edit);
+      element.addEventListener("dblclick", input_edit);
    });
 
    document
    .getElementById("user_tab")
    .querySelectorAll(".tab_select")
    .forEach((element) => {
-      element.addEventListener("click", select_edit);
+      element.addEventListener("dblclick", select_edit);
    });
 
    document
