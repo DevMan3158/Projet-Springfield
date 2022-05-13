@@ -40,7 +40,7 @@ try{
   //On insère les données reçues
   $sth = $dbco->prepare(" 
   INSERT INTO messages(nom, prenom, email, mot_pass)  
-  VALUES(:nom, :prenom, :email, :mot de passe)
+  VALUES(:nom, :prenom, :email, :mot_pass)
     ");
    /*INSERT INTO -> On spécifie la table "utilisateur" dans la db "springfield" */
    $sth->bindParam(':prenom',$prenom);
@@ -164,10 +164,10 @@ catch(PDOException $e){
 
 </div>  <!--Fin_container-->
 
+ 
 
 
-
-    <form>
+    <form action="" method="post" >
         <div class="form-row "> <!--Début_row_1-->
 
         
@@ -223,14 +223,14 @@ catch(PDOException $e){
                   value="<?php  echo $_SESSION['email']; ?> "
                   placeholder = ""
                   aria-describedby="inputGroupPrepend3"
-                  pattern="[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}
-                           [a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)"
+                 
                   required
                   >           
                 </div>
                 
               </div>
-           </div><!--Fin_row_1-->            
+           </div><!--Fin_row_1- pattern="[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}
+                           [a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)"-->            
 
               <div class="row"><!--Début_row_2-->
                 <div class="col-md-4 mb-5 InfoUse">
