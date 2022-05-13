@@ -33,21 +33,21 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
         if(!empty($sgbd)) {
             try {
                 if($type == "admin" && $find) {
-                    $res = $sgbd->prepare($sql."id_user is NULL");
+                    $res = $sgbd->prepare($sql."id_user is NULL ORDER BY messages.Id_msg DESC");
                     $res->execute([
                         ":find" => "%".$_POST['recherche']."%"
                     ]);
                 } else if($type == "admin" && !$find) {
-                    $res = $sgbd->prepare($sql."id_user is NULL");
+                    $res = $sgbd->prepare($sql."id_user is NULL ORDER BY messages.Id_msg DESC");
                     $res->execute();
                 } else if($find) {
-                    $res = $sgbd->prepare($sql."id_user=:id_user");
+                    $res = $sgbd->prepare($sql."id_user=:id_user ORDER BY messages.Id_msg DESC");
                     $res->execute([
                         ":find" => "%".$_POST['recherche']."%",
                         ":id_user" => $_SESSION['id_user']
                     ]);
                 } else {
-                    $res = $sgbd->prepare($sql."id_user=:id_user");
+                    $res = $sgbd->prepare($sql."id_user=:id_user ORDER BY messages.Id_msg DESC");
                     $res->execute([
                         ":id_user" => $_SESSION['id_user']
                     ]);

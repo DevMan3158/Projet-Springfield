@@ -13,7 +13,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
   $select = "";
   if($_SESSION['id_admin'] == 1) {
     $select = "<select id=\"select_type_msg\" class=\"custom-select custom-select-sm\">".
-      "<option value=\"user\" selected>Utilisateur</option>".
+      "<option value=\"user\" selected>Gestionnaire</option>".
       "<option value=\"admin\">Administrateur</option>".
       "</select>";
   }
@@ -26,7 +26,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
     try {
       $res = $sgbd->prepare("SELECT * FROM messages INNER JOIN message_produit ".
       "ON messages.Id_msg = message_produit.Id_msg INNER JOIN produits ".
-      "ON produits.id_produit = message_produit.id_produit WHERE id_user=:id_user");
+      "ON produits.id_produit = message_produit.id_produit WHERE id_user=:id_user ORDER BY messages.Id_msg DESC");
       $res->execute([
         ":id_user" => $_SESSION['id_user']
       ]);

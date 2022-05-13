@@ -1,8 +1,8 @@
 <?php
 
-include_once './../fonctions/connexion_sgbd.php';
-include_once './../class/Error_Log.php';
-include_once './../class/Pass_Crypt.php';
+include_once dirname(__FILE__) . '/../fonctions/connexion_sgbd.php';
+include_once dirname(__FILE__) . '/../class/Error_Log.php';
+include_once dirname(__FILE__) . '/../class/Pass_Crypt.php';
 
 session_start();
 

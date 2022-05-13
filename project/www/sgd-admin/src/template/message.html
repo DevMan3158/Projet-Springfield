@@ -1,6 +1,5 @@
 <section class="container text-center">
   <h1>Messages</h1>
-  #select_msg#
   <form id="form_find" class="form-inline justify-content-center m-2">
       <div class="form-group mx-sm-3 mb-2">
         <label for="recherche" class="sr-only">Rechercher</label>
@@ -8,15 +7,18 @@
       </div>
       <button id="bt_find" type="submit" id="find" class="btn btn-primary bg-simpson mb-2">Rechercher</button>
   </form>
+  #select_msg#
 </section>
 <section class="container text-center">
+  <input type="checkbox" id="txt_mobile" />
   <div id="msg">
     <ul id="list-msg" class="list-group list-mgs">
       #list_msg#
     </ul>
     <div class="txt-msg">
       <div id="info" class="text-left">
-          <img id="img_del_msg" src="src/img/icons8-supprimer-pour-toujours-90.svg" />
+          <img id="img_del_msg" class="img_del_msg" src="src/img/icons8-supprimer-pour-toujours-90.svg" alt="image de suppression" />
+          <button id="return-list" class="two-column" title="retour à la liste des messages."><img class="icon" alt="image de retour" src="src/img/revenir.svg" /></button>
           <label class="type">de : </label><label id="msg_from"></label>
           <label class="type">le : </label><label id="msg_date"></label>
           <label class="type">objet : </label><label id="msg_obj"></label>

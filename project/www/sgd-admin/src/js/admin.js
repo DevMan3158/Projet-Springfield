@@ -146,7 +146,6 @@ function admin_del(e) {
       let values = {
          id: id_td.id.split("_")[1],
       };
-      console.log(values.id);
       fetch_post("./src/exec/delete_user_exec.php", values).then(function (response) {
          if(response == "true") {
             id_td.remove();
