@@ -9,8 +9,8 @@
 $sgbd_type = "mysql";
 $sgbd_server = "";
 $sgbd_port = "0";
-$sgbd_name = "";
-$sgbd_user = "";
+$sgbd_name = "springfield";
+$sgbd_user = "root";
 $sgbd_pass = "";
 $sgbd_prefix = "";
 

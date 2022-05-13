@@ -26,6 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat&family=Oswald&family=Playball&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/280516d329.js" crossorigin="anonymous"></script>
     <?php
         /*Liens_Contenues_.css*/
         if(empty($_GET['ind'])) {
@@ -64,40 +65,54 @@
             <img id="d2" src="src/img/donnuts_2.png" alt="Un donnuts croqué">
         </label>
         <nav>
+            <a id="acc" href="./index.php?ind=acc">Accueil</a>
             <?php if($isConnected) { ?>
-                <a href="./../src/exec/deconnexion_exec.php">Déconnexion</a>
+                <a id="disc" href="./src/exec/deconnexion_exec.php">Déconnexion</a>
             <?php } else { ?>
-                <a id="btt_conn">Connexion</a>
+                <a id="btt_conn" class="conn">Connexion</a>
             <?php } ?>
-            <a href="./index.php?ind=cat">Categories</a>
+            <a id="insc" href="./index.php?ind=insc">Inscription</a>
+            <div class="cat">
+                <a>Categories</a>
+                <div class="souscat">
+                    <a id="batt" href="./index.php?ind=cat&cat=2">Battiments</a>
+                    <a id="pers" href="./index.php?ind=cat&cat=3">Personnages</a>
+                    <a id="lieux" href="./index.php?ind=cat&cat=1">Lieux</a>
+                </div>
+            </div>
+            
+
 
             <?php $sgb = connexion_sgbd(); // idem : $sgb = new PDO(....,....,...)  ?>
-            <!--
-            <a>Expositions</a>
-            <a>Musée</a>
-            <a>Lieux</a>
-            -->
+            
+
+            
 
         </nav>
     </header>
     <?php
-        /*Liens_Contenues_.php*/
-        if ($_GET['ind'] == 'acc') {
-            include './src/pages/acc.php';
-        } elseif ($_GET['ind'] == 'cat'){
-            include './src/pages/cat.php';
-        } elseif ($_GET['ind'] == 'msg'){
-            include './src/pages/messages.php';
-        } elseif ($_GET['ind'] == 'insc'){
-            include './src/pages/inscription.php';
-        }
+
+        
+
+            if ($_GET['ind'] == 'acc') {
+                include './src/pages/acc.php';
+            } elseif ($_GET['ind'] == 'cat'){
+                include './src/pages/cat.php';
+            } elseif ($_GET['ind'] == 'msg'){
+                include './src/pages/messages.php';
+            } elseif ($_GET['ind'] == 'insc'){
+                include './src/pages/inscription.php';
+            }
+
+        
+
 
     ?>
     <footer>
         <ul>
             <li>Contact</li>
-            <li><a href="#">Particulier</a></li>
-            <li><a href="#">Professionel</a></li>
+            <li><a href="./index.php?ind=msg">Particulier</a></li>
+            <li><a href="./index.php?ind=msg">Professionel</a></li>
         </ul>
 
         <ul>

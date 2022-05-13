@@ -180,14 +180,17 @@ function editor_bbcode(itemTxt) {
 }
 
 function bbcode_bold(e) {
+    e.preventDefault();
     bbcode_add_txt(e, "b");
 }
 
 function bbcode_title(e) {
+    e.preventDefault();
     bbcode_add_txt(e, "t");
 }
 
 function bbcode_change(e) {
+    e.preventDefault();
     bbcode_add_txt(e, undefined);
 }
 
@@ -239,6 +242,7 @@ bbcode_edit.forEach(function(item) {
 });
 
 function bbcode_type(e) {
+    e.preventDefault();
     let edit_html = recupe_editor_html(e.target);
     let edit_text = recupe_editor_bb(e.target);
     let edit_type = recupe_editor_type(e.target);

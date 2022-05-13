@@ -1,0 +1,144 @@
+h3 {
+    font-size: 1.5em;
+    margin: auto;
+    display: block;
+    position: relative;
+    grid-area: title;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+h3:after {
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    right: -65px;
+    bottom: 15px;
+}
+
+h3:before {
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    left: -65px;
+    bottom: 15px;
+}
+
+figure {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border: solid black 2px;
+}
+
+figure::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 200px;
+    background-color: black;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.contain {
+    object-fit: contain;
+}
+
+p {
+    grid-area: text;
+    text-align: center;
+    font-family: "Comic Neue", cursive;
+}
+
+figure:first-of-type {
+    grid-area: fig1;
+}
+
+figure:nth-of-type(2) {
+    grid-area: fig2;
+}
+
+figure:nth-of-type(3) {
+    grid-area: fig3;
+}
+
+figure:nth-of-type(4) {
+    grid-area: fig4;
+}
+
+figure:nth-of-type(5) {
+    grid-area: fig5;
+}
+
+figure:nth-of-type(6) {
+    grid-area: fig6;
+}
+
+figure:nth-of-type(7) {
+    grid-area: fig7;
+}
+figure:nth-of-type(8) {
+    grid-area: fig8;
+}
+figure:nth-of-type(9) {
+    grid-area: fig9;
+}
+
+figure:last-of-type {
+    grid-area: fig10;
+}
+
+section {
+    display: grid;
+    grid-template-areas:
+        "title"
+        "text"
+        "fig1"
+        "fig2"
+        "fig3"
+        "fig4"
+        "fig5"
+        "fig6"
+        "fig7"
+        "fig8"
+        "fig9"
+        "fig10";
+    height: unset;
+    grid-gap: 20px;
+}
+
+figcaption {
+    margin: auto;
+    color: #fff500;
+    font-weight: 500;
+    text-shadow: black 2px 2px 2px;
+    -webkit-text-stroke: 0.7px black;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -85px;
+    font-size: 1.3em;
+    width: 150px;
+}
+
+@media all and (min-width: 768px) {
+    section {
+        padding: 50px;
+        grid-template-rows: auto auto 150px 150px 150px 150px 150px 150px;
+        grid-template-areas:
+            "title title title"
+            "text text text"
+            "fig1 fig2 fig3"
+            "fig1 fig2 fig4"
+            "fig1 fig5 fig4"
+            "fig9 fig8 fig6"
+            "fig9 fig7 fig6"
+            "fig10 fig7 fig6";
+    }
+}
