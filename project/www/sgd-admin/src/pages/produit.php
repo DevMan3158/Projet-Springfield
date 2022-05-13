@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
 <h1 class="text-center">Produits</h1>
 
-<div class="">
 
     <form class="row text-center " action="./src/exec/add_produits.php" method="post" enctype="multipart/form-data" >
 
@@ -46,12 +45,47 @@
     </form>
 
 
-</div>
+
+<div class="container">
+        <h1>Les tableaux Bootstrap</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Lieu</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
 
 
-<div class="col">
+                <?php
+
+                    include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
+                    $sgbd= connexion_sgbd();
+
+                    $requete = $sgbd->query ('SELECT COUNT(id_produit) as countid FROM produits');
+                        
+                    $nbligne = $requete->fetch();
+
+                    for($i=0; $i<$nbligne['countid']; $i++) {
+                    
+                        echo '<tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>';
     
-</div>
+                        }
+
+                ?>
+                
+            </tbody>
+        </table>
+
+
+
+
 <script src="./addImg.js"></script>
 
 <script>
@@ -105,3 +139,5 @@ document.getElementById('add-img').addEventListener('click', img_add);
 
 
 <script src="../src/bbcode_editeur/bbcode.js"></script>
+
+
