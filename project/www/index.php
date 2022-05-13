@@ -43,6 +43,9 @@
         } elseif ($_GET['ind'] == 'insc'){
             echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
+        } elseif ($_GET['ind'] == 'desc'){
+
+            echo '<link rel="stylesheet" href="./src/css/style-descriptif.css">';
         }
 
     ?>
@@ -102,6 +105,8 @@
                 include './src/pages/messages.php';
             } elseif ($_GET['ind'] == 'insc'){
                 include './src/pages/inscription.php';
+            } elseif ($_GET['ind'] == 'desc'){
+                include './src/pages/descriptif.php';
             }
 
         

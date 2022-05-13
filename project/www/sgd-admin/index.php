@@ -2,8 +2,6 @@
 /*Connexion*/
 include_once dirname(__FILE__) . '/../src/fonctions/connexion_sgbd.php';
 
-
-
 session_start();
 
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
@@ -11,9 +9,6 @@ array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) &&
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
 array_key_exists('email', $_SESSION)) {
 
-
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +78,7 @@ array_key_exists('email', $_SESSION)) {
                     </a>
                 <?php } ?>
                 <?php if($_SESSION['id_admin'] == 1 || $_SESSION['id_admin'] == 2) { ?>
-                    <a class="dropdown-item" href="./index.php?ind=desc">
+                    <a class="dropdown-item" href="./index.php?ind=produit">
                         <img class="img_del" src="src/img/document.svg">&emsp;Produits
                     </a>
                     <a class="dropdown-item" href="./index.php?ind=message">
@@ -119,8 +114,8 @@ if($_GET['ind'] =='acc') {
 elseif ($_GET['ind'] == 'admin') {
     include './src/pages/admin.php';
 }
-elseif ($_GET['ind'] == 'desc') {
-    include './src/pages/descriptif.php';
+elseif ($_GET['ind'] == 'produit') {
+    include './src/pages/produit.php';
 }
  elseif ($_GET['ind'] == 'utilisateur') {
     include './src/pages/utilisateur.php';

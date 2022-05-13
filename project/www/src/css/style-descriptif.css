@@ -1,0 +1,125 @@
+.h3Textcenter
+{
+    text-align: center;
+    margin: 10px 50px 10px 50px;
+    height: 20px;
+
+}
+
+p
+{
+    text-align: center;
+    margin: 20px;
+    line-height: 30px;
+}
+
+.contenairTitre
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    border: solid 1px black
+
+}
+
+
+.Ligne
+{
+    margin-top: 20px;
+    width: 20%;
+    height: 2px;
+    border: solid 1px black;
+
+}
+
+
+
+
+.contenairLieux
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    border: solid 1px black;
+
+}
+
+figcaption
+{
+
+    margin: 50px 0px 50px 0px;
+    height: 300px;
+    width: 80%;
+    border: solid 1px black; 
+
+}
+figure
+{
+    border: solid 1px black;
+    height: 100px;
+    width: 40%;
+    margin: 50px;
+    
+}
+.contenairHBC
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  
+    border: solid 1px black;
+
+}
+
+
+.contenairBtn
+{
+    width: 100%;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    
+    border: solid 1px black;
+
+}
+
+
+
+.styled {
+    margin: 40px 0px 40px 0px;
+    border: 0;
+    line-height: 2.5;
+    height: 60px;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #FFF500;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 20px;
+    background-color: #424F46;
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+                transition: 0.7s;
+                cursor: pointer;
+}
+
+.styled:hover {
+    background-color: #FFF500;
+    color: #FFFF;
+    transition: 0.5s;
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
