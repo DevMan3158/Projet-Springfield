@@ -3,10 +3,10 @@
 <?php
     include_once dirname(__FILE__) . '/../config/sgbd_config.php';
     $sgbd= connexion_sgbd();
-    $articles = $sgbd->prepare('SELECT photos.titre, photos.src, photos.alt FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
+    $articles = $sgbd->prepare('SELECT photos.id_produit, photos.titre, photos.src, photos.alt FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
     INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat !=3  ORDER BY RAND()
     LIMIT 5');
-    $personnages = $sgbd->prepare('SELECT photos.titre, photos.src, photos.alt FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
+    $personnages = $sgbd->prepare('SELECT photos.id_produit, photos.titre, photos.src, photos.alt FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
     INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=3  ORDER BY RAND()
     LIMIT 5');
 
@@ -31,8 +31,10 @@
         foreach ($resultat_articles as $article) {
 
             echo    '<figure>
-                        <img src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
-                        <figcaption>' .($article['titre']). '</figcaption>
+                        <a href="./index.php?ind=desc&desc='.($article['id_produit']).'">
+                            <img src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
+                            <figcaption>' .($article['titre']). '</figcaption>
+                        </a>
                     </figure>';
     }
 
@@ -42,8 +44,10 @@
         foreach ($resultat_personnages as $personnage) {
 
             echo    '<figure>
-                        <img class="contain" src="data/img/'.($personnage['src']).'" alt="'.($personnage['alt']).'">
-                        <figcaption>' .($personnage['titre']). '</figcaption>
+                        <a href="./index.php?desc='.($personnage['id_produit']).'">
+                            <img class="contain" src="data/img/'.($personnage['src']).'" alt="'.($personnage['alt']).'">
+                            <figcaption>' .($personnage['titre']). '</figcaption>
+                        </a>
                     </figure>';
     }
 ?>

@@ -34,12 +34,13 @@ echo $id_produit;
 
 if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
     foreach ($_FILES["file"]["name"] as $key => $name) {
+        $nomphoto="Une photo de ".$nom.".";
         $sth = $sgbd->prepare("
         INSERT INTO photos (id_produit, src, alt, titre)
         VALUES (:id, :src, :alt, :titre)");
         $sth->bindParam(':id',$id_produit);
         $sth->bindParam(':src',$name);
-        $sth->bindParam(':alt',"Une photo de (".$nom.").");
+        $sth->bindParam(':alt',$nomphoto);
         $sth->bindParam(':titre',$nom);
         $sth->execute();
         if(move_uploaded_file($_FILES['file']['tmp_name'][$key], "./../../../data/img/".$name)) {
