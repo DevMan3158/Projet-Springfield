@@ -5,7 +5,6 @@
     <br />
     <figure id="form_contact">
       <form id="form_inform" action="#" method="post">
-        <p id="form_title">Inscription</p>
         <div class="user_name">
           <label>Nom</label>
           <input
@@ -52,7 +51,9 @@
         </div>
         <div class="user_name">
           <label>Mot de passe</label>
-          <input
+          <figure class="pass-fig">
+              <input
+                  class="passDisp"
             type="password"
             id="password"
             name="password"
@@ -60,10 +61,14 @@
             autocomplete
             required
           />
+          <img class="passBtt" src="./src/img/les-yeux-croises.svg" alt="mot de passe caché" />
+      </figure>
         </div>
         <div class="user_name name_2">
           <label>Répéter le mot de passe</label>
-          <input
+          <figure class="pass-fig">
+              <input
+                  class="passDisp"
             type="password"
             id="password_rep"
             name="password_rep"
@@ -71,9 +76,11 @@
             autocomplete
             required
           />
+          <img class="passBtt" src="./src/img/les-yeux-croises.svg" alt="mot de passe caché" />
+      </figure>
         </div>
         <div class="text_center">
-          <button id="button_form" class="button_orange" type="sumit">
+          <button id="button_form" class="button_bleu" type="sumit">
             Envoyer
           </button>
         </div>

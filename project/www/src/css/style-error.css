@@ -1,0 +1,25 @@
+section {
+    display: flex;
+    width: 100%;
+    margin-top: 0px;
+    padding: 10px;
+    padding-bottom: 95px;
+    text-align: center;
+    flex-direction: column;
+}
+
+section img {
+    margin-top: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/***************************/
+/** version mobile 655px ***/
+/***************************/
+@media screen and (max-width: 450px) {
+    section img {
+        width: 200px;
+    }
+}

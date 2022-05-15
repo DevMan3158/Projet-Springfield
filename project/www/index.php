@@ -42,6 +42,9 @@
         } elseif ($_GET['ind'] == 'insc'){
             echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
+        } elseif ($_GET['ind'] == 'mmdp'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-modif-mdp.css">';
         }
 
     ?>
@@ -90,6 +93,8 @@
             include './src/pages/messages.php';
         } elseif ($_GET['ind'] == 'insc'){
             include './src/pages/inscription.php';
+        } elseif ($_GET['ind'] == 'mmdp'){
+            include './src/pages/modif_mdp.php';
         }
 
     ?>

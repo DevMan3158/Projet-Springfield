@@ -36,3 +36,21 @@ document.body.addEventListener("keydown", (event) => {
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("annuler").addEventListener("click", annuler);
 document.getElementById("pass_perdu").addEventListener("click", pass_perdu);
+
+function passDispNo(e) {
+    e.target.parentNode.querySelectorAll(".passDisp").forEach(element => {
+        if(element.type == "password") {
+            e.target.alt = "mot de passe afficher";
+            e.target.src = "./src/img/oeil.svg";
+            element.type = "text";
+        } else {
+            e.target.alt = "mot de passe cacher";
+            e.target.src = "./src/img/les-yeux-croises.svg";
+            element.type = "password";
+        }
+    });
+}
+
+document.querySelectorAll(".passBtt").forEach(element => {
+    element.addEventListener("click", passDispNo);
+});

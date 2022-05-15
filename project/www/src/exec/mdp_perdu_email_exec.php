@@ -5,9 +5,9 @@ include_once dirname(__FILE__) . '/../fonctions/message_email.php';
 include_once dirname(__FILE__) . '/../fonctions/connexion_sgbd.php';
 include_once dirname(__FILE__) . '/../class/Error_Log.php';
 include_once dirname(__FILE__) . '/../class/Pass_Crypt.php';
-include dirname(__FILE__) . '/../config/config_duree_demande_mdp.php';
+include_once dirname(__FILE__) . '/../config/config_duree_demande_mdp.php';
 if(file_exists(dirname(__FILE__) . '/../config/config.php')) {
-    include dirname(__FILE__) . '/../config/config.php';
+    include_once dirname(__FILE__) . '/../config/config.php';
 } else {
     define("RACINE", "http://localhost/");
     define("RACINE_PATH", dirname(__FILE__)."/../../");

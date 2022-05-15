@@ -85,6 +85,12 @@ function validation(e) {
 
 }
 
+document.body.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    validation(event);
+  }
+});
+
 /**
  * revenir sur la configuration d'origine du input du texte
  * @param {*} e (event) : ecouteur

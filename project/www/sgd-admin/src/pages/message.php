@@ -2,7 +2,8 @@
 
 include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
 include_once dirname(__FILE__) . '/../../../src/class/Error_Log.php';
-include_once dirname(__FILE__) . '/../fonctions/msg_load.php';
+include_once dirname(__FILE__) . '/../../../src/fonctions/error_msg.php';
+
 
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
@@ -31,7 +32,20 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
         ":id_user" => $_SESSION['id_user']
       ]);
       $data = $res->fetchAll(PDO::FETCH_ASSOC);
-      $list = create_list_msg($data);
+      $data_list = "";
+        foreach($data as $value) {
+            $img_no_lu = "enveloppe.svg";
+            $msg_no_lu = "display_msg_no_lu";
+            if($value['lu'] == "1") {
+                $img_no_lu = "document.svg";
+                $msg_no_lu = "display_msg_lu";
+            }
+            $data_list .= '<li class="list-group-item display_msg text-left '.$msg_no_lu.'" id="msg_'.$value['Id_msg'].'">';
+            $data_list .= '<img id="img_msg_'.$value['Id_msg'].'" src="./src/img/'.$img_no_lu.'" /> ';
+            $data_list .= $value['Objet'];
+            $data_list .= '</li>';
+        }
+      $list = $data_list;
     } catch (PDOException $e) {
       $error_log = new Error_Log();
       $error_log->addError($e);
@@ -44,5 +58,5 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
   $remp_box_msg = str_replace("#msg_from#","",str_replace("#msg_date#","",str_replace("#msg_obj#","",$html)));
   echo str_replace("#list_msg#",$list,str_replace("#select_msg#", $select, $remp_box_msg));
 } else {
-  echo "Vous n'avez pas le droit d'ouvrir cette page.";
+  error_msg("401");
 }

@@ -109,3 +109,27 @@ document.getElementById("password_rep").addEventListener('input', styleInputForm
 
 // quand on clique sur le bouton du formulaire
 document.getElementById('button_form').addEventListener('click', validation);
+
+function passDispNo(e) {
+    e.target.parentNode.querySelectorAll(".passDisp").forEach(element => {
+        if(element.type == "password") {
+            e.target.alt = "mot de passe afficher";
+            e.target.src = "./src/img/oeil.svg";
+            element.type = "text";
+        } else {
+            e.target.alt = "mot de passe cacher";
+            e.target.src = "./src/img/les-yeux-croises.svg";
+            element.type = "password";
+        }
+    });
+}
+
+document.querySelectorAll(".passBtt").forEach(element => {
+    element.addEventListener("click", passDispNo);
+});
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    validation(event);
+  }
+});

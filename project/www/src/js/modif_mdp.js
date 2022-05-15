@@ -1,11 +1,14 @@
 function valider(e) {
     e.preventDefault();
     let values = {
+        email : document.getElementById('email').value,
         code : document.getElementById('code').value,
         login : document.getElementById('login').value,
         password : document.getElementById('password').value,
         password_rep : document.getElementById('password_rep').value
     };
+    let regexEmailValide = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const regexEmail = new RegExp(regexEmailValide);
 
     let regexTextValide = /^.{3,40}$/;
     const regexText = new RegExp(regexTextValide);
@@ -13,7 +16,11 @@ function valider(e) {
     let regexPassValide = /^.{6,}$/;
     const regexPass = new RegExp(regexPassValide);
 
-    if(!regexPassValide.test(values.code)) {
+    if(!regexEmailValide.test(values.email)) {
+        document.getElementById("email").focus();
+        document.getElementById("email").select();
+        alert("Merci d'entrer un email.");
+    } else if(!regexPassValide.test(values.code)) {
         document.getElementById("name").focus();
         document.getElementById("name").select();
         alert("Merci d'entrer un nom.");
@@ -34,15 +41,17 @@ function valider(e) {
         document.getElementById("password").select();
         alert("Le mot de passe n'est pas identique, merci de recommencer.");
     } else {
-        fetch_post('./../exec/modif_mdp_exec.php', values).then(function(response) {
+        fetch_post('./src/exec/modif_mdp_exec.php', values).then(function(response) {
             if(response == "true") {
+                document.getElementById('email').value = "";
                 document.getElementById('code').value = "";
                 document.getElementById('login').value = "";
                 document.getElementById('password').value = "";
                 document.getElementById('password_rep').value = "";
-                alert("Merci de votre inscription.");
+                alert("Le mot de passe a été modifié.");
             } else {
                 alert(response);
+                console.log(response);
             }
         });
     }
@@ -64,4 +73,21 @@ document.body.addEventListener("keydown", (event) => {
 
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("annuler").addEventListener("click", annuler);
-document.getElementById("pass_perdu").addEventListener("click", pass_perdu);
+
+function passDispNo(e) {
+    e.target.parentNode.querySelectorAll(".passDisp").forEach(element => {
+        if(element.type == "password") {
+            e.target.alt = "mot de passe afficher";
+            e.target.src = "./src/img/oeil.svg";
+            element.type = "text";
+        } else {
+            e.target.alt = "mot de passe cacher";
+            e.target.src = "./src/img/les-yeux-croises.svg";
+            element.type = "password";
+        }
+    });
+}
+
+document.querySelectorAll(".passBtt").forEach(element => {
+    element.addEventListener("click", passDispNo);
+});
