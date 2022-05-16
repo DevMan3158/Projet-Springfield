@@ -34,39 +34,50 @@ include_once './src/bbcode_editeur/conversion_bbcode.php';
 
 
 
-<div class="Ligne">
 
-</div>
-
- <h3 class="h3Textcenter">Histoire</h3>
-
-<div class="Ligne">
-
-</div>
     
-        <p>
+        
+        <div class="Ligne">
+
+        </div>
+
+            <h3 class="h3Textcenter">Histoire</h3>
+
+        <div class="Ligne">
+
+        </div>   
+
+        <div>
             <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
             fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
             perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
-        <p>
+        </div>
     
-        <div class="Ligne"></div><h3 class="h3Textcenter">Bon à savoir</h3><div class="Ligne"></div>
+        <div class="Ligne"></div>
 
-        <p>
+        <h3 class="h3Textcenter">Bon à savoir</h3>
+
+        <div class="Ligne"></div>
+
+        <div>
             <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
             fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
             perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
-        <p>
+        </div>
     
 
-        <div class="Ligne"></div> <h3 class="h3Textcenter">Ce qui est inclus</h3><div class="Ligne"></div>
+        <div class="Ligne"></div> 
+
+        <h3 class="h3Textcenter">Ce qui est inclus</h3>
+        
+        <div class="Ligne"></div>
 
 
-        <p>
+        <div>
             <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
             fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
             perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
-        <p>
+        </div>
     
 
 
