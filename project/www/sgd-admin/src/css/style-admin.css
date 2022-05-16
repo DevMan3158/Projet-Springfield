@@ -1,17 +1,17 @@
-table img, table img {
+/* image dans la table admin */
+table img {
     width: 20px;
 }
 
-/*table td select {
-    width: 100%;
-    height: 100%;
-}*/
-
+/* hauteur des selecionneurs dans la cellule */
 #user_tab .tab_select {
-    /*padding: 0;*/
     height: 100%;
 }
 
+/*----------------------------------*/
+/* changer l'apparence du selecteur */
+/*----------------------------------*/
+/* code du site : https://www.w3schools.com/howto/howto_custom_select.asp */
 /* The container must be positioned relative: */
 .custom-select {
     position: relative;

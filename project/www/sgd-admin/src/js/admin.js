@@ -1,7 +1,16 @@
+/* variables de la page */
 let cellule_old_value = "";
 let cellule_old_item = "0";
 
+/**
+ * modifier les informations d'un.
+ * @param {string} id_user id de l'utilisateur dans le noeud
+ * @param {string} id_new le nouveau id
+ * @param {string} value_old l'ancienne valeur
+ * @param {string} id_old l'ancien id
+ */
 function modif_user(id_user, id_new, value_old, id_old) {
+  /* une table avec les valeurs par default */
   let values = {
     id: 0,
     login: "",
@@ -10,7 +19,9 @@ function modif_user(id_user, id_new, value_old, id_old) {
     email: "",
     admin: 0,
   };
+  /* recupere l'id utilisateur du noeud */
   values.id = parseInt(id_user.split("_")[1], 10);
+  /* recupere les informations dans la table de la page */
   document
     .getElementById(id_user)
     .querySelectorAll("td")
@@ -25,13 +36,17 @@ function modif_user(id_user, id_new, value_old, id_old) {
       } else if (col == "5") {
         values.email = element.innerHTML;
       } else if (col == "6") {
+        /* recupere la valeur de l'id admin */
         values.admin = parseInt(element.id.split("_")[4], 10);
       }
     });
+  /* envoyer les donnees a la page php */
   fetch_post("./src/exec/admin_modif_user_exec.php", values).then(function (
     response
   ) {
+    /* en cas d'erreur */
     if (response != "true") {
+      /* remettre la valeur d'avant */
       values.id = value_old.split("_")[3];
       values.name = value_old;
       if (values.id == "6") {
@@ -39,11 +54,15 @@ function modif_user(id_user, id_new, value_old, id_old) {
       }
       document.getElementById(id_new).innerHTML = values.name;
       document.getElementById(id_new).id = values.id_old;
+      /* afficher l'erreur */
       alert(response);
     }
   });
 }
 
+/**
+ * rendre les celles non editable.
+ */
 function editabled(item) {
   document
     .getElementById("user_tab")
@@ -207,6 +226,8 @@ function activeClick() {
    });
 }
 
+/* quand on clique sur le boutton recherche */
 document.getElementById("bt_find").addEventListener("click", bt_find);
 
+/* activer les cellules de la table, pour changer la valeur quand on clique dessus */
 activeClick();

@@ -1,3 +1,17 @@
+/*------------------------*/
+/* conteneur des messages */
+/*------------------------*/
+#msg {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 684px;
+    max-height: 684px;
+    box-sizing: border-box;
+}
+
+/*-----------------------*/
+/* la liste des messages */
+/*-----------------------*/
 .list-mgs {
     width: 200px;
     min-height: 684px;
@@ -5,25 +19,6 @@
     background-color: rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     overflow: auto;
-}
-
-.txt-msg {
-    background-color: white;
-    width: 100%;
-    height: 100%;
-}
-
-#msg_txt {
-    box-sizing: border-box;
-    overflow: auto;
-}
-
-#msg {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    min-height: 684px;
-    max-height: 684px;
-    box-sizing: border-box;
 }
 
 #msg li img {
@@ -42,6 +37,18 @@
     background-color: #FFF500;
 }
 
+/*-------------------------*/
+/* Le conteneur du message */
+/*-------------------------*/
+.txt-msg {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+/*----------------------------*/
+/* information sur le message */
+/*----------------------------*/
 .txt-msg #info {
     background-color: #b1e6ff;
     display: grid;
@@ -91,14 +98,25 @@
     text-align: right;
 }
 
-#txt_mobile {
-    display: none;
+/*--------------------*/
+/* Affiche le message */
+/*--------------------*/
+#msg_txt {
+    box-sizing: border-box;
+    overflow: auto;
 }
 
+/*------------------------*/
+/* pour la version mobile */
+/*------------------------*/
 #return-list {
     display: none;
     border: none;
     background-color: #b1e6ff;
+}
+
+#txt_mobile {
+    display: none;
 }
 
 /***************************/

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Pour modifier la taille d'une image.
+ */
+
 // verifier qu'on n'a pas deja creer la fonction
 if (!function_exists('modifier_images_folder')) {
 

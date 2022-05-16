@@ -16,6 +16,12 @@ if (!class_exists('Error_msg_ini')) {
             $this->error_ini = parse_ini_file(dirname(__FILE__)."/../config/error.ini", true);
         }
 
+        /**
+         * Undocumented function
+         *
+         * @param String|null $error la valeur de l'erreur sous format page html, exemple: 401
+         * @return array|null
+         */
         public function error(?String $error): ?array {
             return $this->error_ini[$error];
         }

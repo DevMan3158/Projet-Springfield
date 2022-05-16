@@ -1,6 +1,18 @@
 <?php
+/**
+ * Pour le contenu du message lors d'envoie d'email pour la perte d'un mot de passe.
+ */
+
 // verifier qu'on n'a pas deja creer la fonction
 if (!function_exists('text_email_mdp')) {
+
+    /**
+     * Message d'email pour une demande de changement de mot de passe.
+     * $demande=false : message signalent la modification
+     *
+     * @param boolean $demande demande de changement de mot de passe
+     * @return array|null tableau du message
+     */
     function text_email_mdp(bool $demande = true): ?array {
         if(true) {
             return array(
