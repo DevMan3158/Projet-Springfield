@@ -65,29 +65,94 @@
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
                     $sgbd= connexion_sgbd();
 
+                    // Ici on fait la requête pour récuperer le nombre de ligne dans le tableau
+
                     $requete = $sgbd->query ('SELECT COUNT(id_produit) as countid FROM produits');
                         
                     $nbligne = $requete->fetch();
 
-                    for($i=0; $i<$nbligne['countid']; $i++) {
-                    
-                        echo '<tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="col-md-1 edit">
-                                    <button class="tablebutton">
-                                        <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                    </button>
-                                </td>
-                                <td class="col-md-1 delete">
-                                    <button class="tablebutton">
-                                        <img src="src/img/poubelle.svg" class="testcolor">
-                                    </button>
-                                </td>
-                            </tr>';
+
+
+
+
+
+                    // Ici la requête pour le tableau ADMIN
+
+                    $requeteAdmin = $sgbd->query ('SELECT nom, lieu, id_produit, description FROM produits');
+
+                    $requeteAdmin->execute();
+
+                    $resultat_requeteAdmin = $requeteAdmin->fetchAll((PDO::FETCH_ASSOC));
+
+                    // On affiche le tableau ADMIN
+
+                    if ($_SESSION['id_admin'] == 1) {
+
+
+                    foreach ($resultat_requeteAdmin as $articleAdmin) {
+
+
+                        echo   '<tr>
+                                    <td>'.($articleAdmin['nom']).'</td>
+                                    <td>'.($articleAdmin['lieu']).'</td>
+                                    <td>'.($articleAdmin['description']).'</td>
+                                    <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleAdmin['id_produit']).'">
+                                        <td class="col-md-1 edit">
+                                            <button type="submit" value="edit" class="tablebutton">
+                                                <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                            </button>
+                                        </td>
+                                    </form>
+                                    <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleAdmin['id_produit']).'">
+                                        <td class="col-md-1 delete">
+                                            <button type="submit" value="edit" class="tablebutton">
+                                                <img src="src/img/poubelle.svg" class="testcolor">
+                                            </button>
+                                        </td>
+                                    </form
+                                </tr>';
+
+                    }
+                
+                    } else {  
+
+                                            // Ici la requête pour le tableau gestionnaire
+
+                    $requeteGestionnaire = $sgbd->prepare ('SELECT nom, lieu, id_produit, description FROM produits WHERE produits.id_user=:id_user');
+
+                    $requeteGestionnaire->execute([":id_user"=>$_SESSION['id_user']]);
+
+                    $resultat_requeteGestionnaire = $requeteGestionnaire->fetchAll((PDO::FETCH_ASSOC));
+
+                        // On affiche le tableau gestionnaire
+
+                        foreach ($resultat_requeteGestionnaire as $articleGestionnaire) {
+
+                            echo   '<tr>
+                                        <td>'.($articleGestionnaire['nom']).'</td>
+                                        <td>'.($articleGestionnaire['lieu']).'</td>
+                                        <td>'.($articleGestionnaire['description']).'</td>
+                                        <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleGestionnaire['id_produit']).'">
+                                            <td class="col-md-1 edit">
+                                                <button type="submit" value="edit" class="tablebutton">
+                                                    <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                                </button>
+                                            </td>
+                                        </form>
+                                        <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleGestionnaire['id_produit']).'">
+                                            <td class="col-md-1 delete">
+                                                <button type="submit" value="edit" class="tablebutton">
+                                                    <img src="src/img/poubelle.svg" class="testcolor">
+                                                </button>
+                                            </td>
+                                        </form
+                                    </tr>';
     
                         }
+                    }
+
+
+
 
                 ?>
                 
