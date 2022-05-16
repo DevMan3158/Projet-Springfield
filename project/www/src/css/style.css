@@ -13,6 +13,39 @@
 body {
     background: url("../img/background-sky.webp") repeat-y;
     background-size: cover;
+    min-width: 320px;
+}
+
+h3{
+    font-size: 1.5em;
+    margin: auto;
+    display: block;
+    position: relative;
+    grid-area: title;
+    padding: 0 20px;
+    z-index: 2;
+    box-sizing: border-box;
+    overflow: none;
+}
+
+h3:after{
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    left: -50px;
+    bottom: 15px;
+}
+
+h3:before{
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    right: -50px;
+    bottom: 15px;
 }
 
 /* HEADER */

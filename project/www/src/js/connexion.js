@@ -8,23 +8,17 @@ function valider(e) {
             "password_user" : password_user
         };
         fetch_post('./../exec/connexion_exec.php', dataArray).then(function(response) {
-            if(response == "1") {
+            if(response == "true") {
                 window.opener.location.href = "./../../sgd-admin/index.php";
                 window.close();
-            } else if(response == "2") {
-                alert("Il manque des informations pour vous connecter.");
-            } else if(response == "3") {
-                alert("Erreur de mot de passe.");
-            } else if(response == "4") {
-                alert("Erreur de login.");
-            } else if(response == "5") {
-                alert("Une erreur est survenu lors de la connexion.");
             } else {
-                alert("Erreur de login.");
+                document.getElementById('modal-msg').innerText = response;
+                document.getElementById('modalOne').style.display = "block";
             }
         });
     } else {
-        console.log("Les informations sont vides, vous ne pouvez pas vous connecter.");
+        document.getElementById('modal-msg').innerText = "Les informations sont vides, vous ne pouvez pas vous connecter.";
+        document.getElementById('modalOne').style.display = "block";
     }
 }
 
@@ -32,10 +26,36 @@ function annuler(e) {
     window.close();
 }
 
-function pass_perdu(e) {
-
-}
+document.body.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    valider(event);
+  }
+});
 
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("annuler").addEventListener("click", annuler);
-document.getElementById("pass_perdu").addEventListener("click", pass_perdu);
+
+function passDispNo(e) {
+    e.target.parentNode.querySelectorAll(".passDisp").forEach(element => {
+        if(element.type == "password") {
+            e.target.alt = "mot de passe afficher";
+            e.target.src = "./../img/oeil.svg";
+            element.type = "text";
+        } else {
+            e.target.alt = "mot de passe cacher";
+            e.target.src = "./../img/les-yeux-croises.svg";
+            element.type = "password";
+        }
+    });
+}
+
+document.querySelectorAll(".passBtt").forEach(element => {
+    element.addEventListener("click", passDispNo);
+});
+
+
+document.getElementById("pass_perdu").addEventListener("click", function(e) {
+    window.location.href = e.target.href;
+});
+
+modal();

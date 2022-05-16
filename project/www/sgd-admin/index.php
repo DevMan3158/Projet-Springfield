@@ -7,7 +7,7 @@ session_start();
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
-array_key_exists('email', $_SESSION)) {
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
 ?>
 
@@ -43,6 +43,7 @@ array_key_exists('email', $_SESSION)) {
             }
             elseif ($_GET['ind'] == 'message') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-message.css">';
+                echo '<link rel="stylesheet" href="./../src/css/popup.css" />';
             }
             elseif ($_GET['ind'] == 'produit') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-produit.css">';
@@ -88,8 +89,8 @@ array_key_exists('email', $_SESSION)) {
                 <a class="dropdown-item" href="./index.php?ind=utilisateur">
                     <img class="img_del" src="src/img/utilisateur.svg">&emsp;Utilisateurs
                 </a>
-                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php">
-                    <img class="img_del" src="src/img/deconnexion.svg">&emsp;Déconnexion
+                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php?admin=dec">
+                    <img class="img_del" src="src/img/deconnexion.svg"> Déconnexion
                 </a>
             </div>
         </nav>

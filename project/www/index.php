@@ -44,8 +44,11 @@
             echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
         } elseif ($_GET['ind'] == 'desc'){
-        echo '<link rel="stylesheet" href="./src/css/style-descriptif.css">';
-    }
+            echo '<link rel="stylesheet" href="./src/css/style-descriptif.css">';
+        } elseif ($_GET['ind'] == 'mmdp'){
+            echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
+            echo '<link rel="stylesheet" href="./src/css/style-modif-mdp.css">';
+        }
 
     ?>
     <title>Springfield</title>
@@ -106,6 +109,8 @@
                 include './src/pages/inscription.php';
             } elseif ($_GET['ind'] == 'desc'){
                 include './src/pages/descriptif.php';
+            } elseif ($_GET['ind'] == 'mmdp'){
+                include './src/pages/modif_mdp.php';
             }
 
         

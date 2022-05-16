@@ -1,0 +1,135 @@
+.list-mgs {
+    width: 200px;
+    min-height: 684px;
+    max-height: 684px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.txt-msg {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+#msg_txt {
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+#msg {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 684px;
+    max-height: 684px;
+    box-sizing: border-box;
+}
+
+#msg li img {
+    width: 20px;
+}
+
+#msg .display_msg_lu {
+    border-left: #01ff01 5px solid;
+}
+
+#msg .display_msg_no_lu {
+    border-left: red 5px solid;
+}
+
+#msg .display_msg:hover {
+    background-color: #FFF500;
+}
+
+.txt-msg #info {
+    background-color: #b1e6ff;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.txt-msg #info img {
+    width: 50px;
+}
+
+.txt-msg #info .img_del_msg {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    /*grid-row-end: 3;*/
+    grid-row-end: 5;
+}
+
+.txt-msg #info .img_rep_msg {
+    display: none;
+    /*grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 5;*/
+}
+
+.txt-msg #info .img_env_msg {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.txt-msg #info .two-column {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.txt-msg #info label {
+    margin-left : 5px;
+}
+
+.txt-msg #info .type {
+    text-align: right;
+}
+
+#txt_mobile {
+    display: none;
+}
+
+#return-list {
+    display: none;
+    border: none;
+    background-color: #b1e6ff;
+}
+
+/***************************/
+/** version mobile 500px ***/
+/***************************/
+@media screen and (max-width: 500px) {
+    #msg {
+        grid-template-columns: auto;
+    }
+
+    .list-mgs {
+        width: 100%;
+    }
+
+    #return-list {
+        display: unset;
+    }
+
+    #txt_mobile ~ #msg #list-msg {
+        display: block;
+    }
+
+    #txt_mobile ~ #msg .txt-msg {
+        display: none;
+    }
+
+    #txt_mobile:checked ~ #msg #list-msg {
+        display: none;
+    }
+
+    #txt_mobile:checked ~ #msg .txt-msg {
+        display: block;
+    }
+}

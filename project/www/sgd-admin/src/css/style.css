@@ -18,6 +18,7 @@
 body {
     background: url("./../../../src/img/background-sky.webp") repeat-y;
     background-size: cover;
+    min-width: 320px;
 }
 
 .color-icon
