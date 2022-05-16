@@ -28,7 +28,7 @@ if(!empty($_POST) && array_key_exists('code', $_POST) && array_key_exists('login
                 }
                 if($valide) {
                     $res = $sgbd->prepare("SELECT * FROM utilisateur INNER JOIN pass_perdu  ON utilisateur.id_user = pass_perdu.id_user ".
-                    "WHERE login=:login AND email=:email AND jeton=:jeton AND valide=1 AND expiration > CURDATE()");
+                    "WHERE login=:login AND email=:email AND jeton=:jeton AND valide=1 AND expiration > CURRENT_TIMESTAMP");
                     $res->execute([
                         ":login" => htmlspecialchars(stripslashes(trim($_POST['login']))),
                         ":jeton" => htmlspecialchars(stripslashes(trim($_POST['code']))),

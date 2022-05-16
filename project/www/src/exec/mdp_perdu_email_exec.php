@@ -35,12 +35,15 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
 
     $tab_code = array (
         "[##CODE##]" => "",
-        "[##LOGIN##]" => ""
+        "[##LOGIN##]" => "",
+        "[##DATE_VALIDE##]" => ""
     );
 
+    setlocale(LC_ALL, "fr_FR");
     // calcul la duree de validite de la demande
     $time = mktime(date("H") + CHMDP_H, date("i") + CHMDP_I, date("s") + CHMDP_S, date("m") + CHMDP_M, date("d") + CHMDP_D, date("Y") + CHMDP_Y);
     $date = date("Y-m-d H:i:s", $time);
+    $tab_code["[##DATE_VALIDE##]"] = date("d/m/Y H:i:s", $time);
 
     $sgbd = connexion_sgbd();
     if(!empty($sgbd)) {
