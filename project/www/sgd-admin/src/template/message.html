@@ -18,6 +18,7 @@
     <div class="txt-msg">
       <div id="info" class="text-left">
           <img id="img_del_msg" class="img_del_msg" src="src/img/icons8-supprimer-pour-toujours-90.svg" alt="image de suppression" />
+          <img id="img_rep_msg" class="img_rep_msg" src="src/img/repondre.svg" alt="image répondre'" />
           <button id="return-list" class="two-column" title="retour à la liste des messages."><img class="icon" alt="image de retour" src="src/img/revenir.svg" /></button>
           <label class="type">de : </label><label id="msg_from"></label>
           <label class="type">le : </label><label id="msg_date"></label>
@@ -27,7 +28,26 @@
       </div>
     </div>
   </div>
-
+  <div id="modalOne" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <a class="close">&times;</a>
+            <form id="modal-form" action="/">
+              <div class="txt-msg text-env">
+                <div id="info" class="text-left">
+                    <img id="img_env_msg" class="img_env_msg" src="src/img/envoyer.svg" alt="image envoyer'" />
+                    <label class="type">de : </label><label id="env_msg_from"></label>
+                    <label class="type">le : </label><label id="env_msg_date"></label>
+                    <label class="type">objet : </label><label id="env_msg_obj"></label>
+                </div>
+                <textarea id="env_msg_txt">
+                </textarea>
+              </div>
+            </form>
+        </div>
+    </div>
+  </div>
   <script src="./../src/js/le_fetch.js"></script>
+  <script src="./../src/js/popup.js"></script>
   <script src="./src/js/message.js"></script>
 </section>

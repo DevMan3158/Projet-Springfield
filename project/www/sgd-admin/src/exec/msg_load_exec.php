@@ -22,6 +22,11 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
                 $res->execute([
                     ":id_msg" => $_POST['id']
                 ]);
+                $res = $sgbd->prepare("INSERT INTO message_lu (id_msg, id_user) VALUES (:id_msg,:id_user)");
+                $res->execute([
+                    ":id_msg" => $_POST['id'],
+                    ":id_user" => $_SESSION['id_user'],
+                ]);
                 echo "true"."[#json#]".json_encode($tab);
             } catch (PDOException $e) {
                 $error_log = new Error_Log();

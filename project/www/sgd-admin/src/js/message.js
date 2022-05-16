@@ -19,9 +19,20 @@ function load_msg(e) {
                 document.querySelectorAll('.img_del_msg').forEach(element => {
                     element.id = "img_del_msg_"+values.id;
                 });
+                document.querySelectorAll('.img_env_msg').forEach(element => {
+                    element.id = "img_env_msg_"+values.id;
+                });
+                document.querySelectorAll('.img_rep_msg').forEach(element => {
+                    element.id = "img_rep_msg_"+values.id;
+                });
                 document.getElementById('msg_from').innerHTML = tabUser['Nom']+ " "+ tabUser['Prenom']+ " ("+ tabUser['Email']+ ").";
                 document.getElementById('msg_date').innerHTML = display_date(tabUser['date'])+".";
                 document.getElementById('msg_obj').innerHTML = tabUser['Objet']+".";
+
+                document.getElementById('env_msg_from').innerHTML = document.getElementById('msg_from').innerHTML;
+                document.getElementById('env_msg_date').innerHTML = document.getElementById('msg_date').innerHTML;
+                document.getElementById('env_msg_obj').innerHTML = document.getElementById('msg_obj').innerHTML;
+
                 document.getElementById('msg_txt').innerHTML = tabUser['Message'];
                 document.getElementById('img_msg_'+values.id).src = "./src/img/document.svg";
                 document.getElementById('txt_mobile').checked = true;
@@ -88,10 +99,19 @@ function init_values(e) {
     document.getElementById('msg_from').innerHTML = "";
     document.getElementById('msg_date').innerHTML = "";
     document.getElementById('msg_obj').innerHTML = "";
+    document.getElementById('env_msg_from').innerHTML = "";
+    document.getElementById('env_msg_date').innerHTML = "";
+    document.getElementById('env_msg_obj').innerHTML = "";
     document.getElementById('msg_txt').innerHTML = "";
     document.getElementById('recherche').value = "";
     document.querySelectorAll('.img_del_msg').forEach(element => {
         element.id = "img_del_msg";
+    });
+    document.querySelectorAll('.img_env_msg').forEach(element => {
+        element.id = "img_env_msg";
+    });
+    document.querySelectorAll('.img_rep_msg').forEach(element => {
+        element.id = "img_rep_msg";
     });
     document.getElementById('txt_mobile').checked = false;
 }
@@ -114,6 +134,10 @@ function delete_msg(e) {
     //init_values(e);
 }
 
+function repondre_msg(e) {
+    document.getElementById('modalOne').style.display = "block";
+}
+
 msg_create_click();
 
 document.getElementById("bt_find").addEventListener("click", bt_find);
@@ -126,6 +150,10 @@ document.querySelectorAll('.img_del_msg').forEach(element => {
     element.addEventListener("click", delete_msg);
 });
 
+document.querySelectorAll('.img_rep_msg').forEach(element => {
+    element.addEventListener("click", repondre_msg);
+});
+
 document.querySelectorAll('#select_type_msg').forEach(element => {
     element.addEventListener("change", function(e) {
         init_values(e);
@@ -133,3 +161,5 @@ document.querySelectorAll('#select_type_msg').forEach(element => {
         bt_find(e);
     });
 });
+
+modal();

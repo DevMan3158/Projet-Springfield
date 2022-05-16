@@ -61,10 +61,6 @@ function annuler(e) {
     window.close();
 }
 
-function pass_perdu(e) {
-
-}
-
 document.body.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     valider(event);

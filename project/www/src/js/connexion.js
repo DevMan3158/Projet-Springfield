@@ -12,12 +12,13 @@ function valider(e) {
                 window.opener.location.href = "./../../sgd-admin/index.php";
                 window.close();
             } else {
-                popupHTMLWindow('<div>'+response+'</div>', "connexion", window, 320, 320);
-                //alert(response);
+                document.getElementById('modal-msg').innerText = response;
+                document.getElementById('modalOne').style.display = "block";
             }
         });
     } else {
-        console.log("Les informations sont vides, vous ne pouvez pas vous connecter.");
+        document.getElementById('modal-msg').innerText = "Les informations sont vides, vous ne pouvez pas vous connecter.";
+        document.getElementById('modalOne').style.display = "block";
     }
 }
 
@@ -51,3 +52,10 @@ function passDispNo(e) {
 document.querySelectorAll(".passBtt").forEach(element => {
     element.addEventListener("click", passDispNo);
 });
+
+
+document.getElementById("pass_perdu").addEventListener("click", function(e) {
+    window.location.href = e.target.href;
+});
+
+modal();

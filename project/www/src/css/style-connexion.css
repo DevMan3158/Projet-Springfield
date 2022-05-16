@@ -115,7 +115,7 @@ h3:before{
     transform: scale(1.03);
 }
 
-#connexion .input:focus {
+#connexion .input:focus, #connexion .input input:focus {
     color: #D1B271;
 }
 
@@ -163,4 +163,8 @@ h3:before{
   width: 25px;
   margin-left: 14px;
   margin-right: 5px;
+}
+
+#modal-form {
+    font-family: "poppins-regular";
 }

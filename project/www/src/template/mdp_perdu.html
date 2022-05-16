@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./../css/style-connexion.css" />
         <link rel="stylesheet" href="./../css/modifier_mdp.css" />
+        <link rel="stylesheet" href="./../css/popup.css" />
         <title>Springfiled : mot de passe perdu</title>
     </head>
     <body>
@@ -17,8 +18,20 @@
                 <button type="sumit" id="valider" class="button button_jaune">Valider</button>
                 <button type="sumit" id="annuler" class="button button_gris">Annuler</button>
             </figure>
+
+            <div id="modalOne" class="modal">
+                <div class="modal-content">
+                    <div class="contact-form">
+                        <a class="close">&times;</a>
+                        <form id="modal-form" action="/">
+                            <div id="modal-msg">test</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
         <script src="./../js/le_fetch.js"></script>
+        <script src="./../js/popup.js"></script>
         <script src="./../js/mdp_perdu.js"></script>
     </body>
 </html>

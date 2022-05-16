@@ -7,24 +7,30 @@ function valider(e) {
         };
         fetch_post('./../exec/mdp_perdu_email_exec.php', dataArray).then(function(response) {
             if(response == "true") {
-                alert("Vous avez reçu un email, pour modifier le mot de passe.");
-                window.opener.location.href = "./../../index.php";
-                window.close();
+                document.getElementById('modal-msg').innerText = "Vous avez reçu un email, pour modifier le mot de passe.";
+                document.getElementById('modalOne').style.display = "block";
+                document.querySelectorAll(".close").forEach(function (btn) {
+                    btn.onclick = function (event) {
+                        event.preventDefault();
+                        let modal = btn.closest(".modal");
+                        modal.style.display = "none";
+                        window.opener.location.href = "./../../index.php";
+                        window.close();
+                    };
+                  });
             } else {
-                alert(response);
+                document.getElementById('modal-msg').innerText = response;
+                document.getElementById('modalOne').style.display = "block";
             }
         });
     } else {
-        console.log("Les informations sont vides, vous ne pouvez pas vous connecter.");
+        document.getElementById('modal-msg').innerText = "Les informations sont vides, vous ne pouvez pas vous connecter.";
+        document.getElementById('modalOne').style.display = "block";
     }
 }
 
 function annuler(e) {
     window.close();
-}
-
-function pass_perdu(e) {
-
 }
 
 document.body.addEventListener("keydown", (event) => {
@@ -35,7 +41,6 @@ document.body.addEventListener("keydown", (event) => {
 
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("annuler").addEventListener("click", annuler);
-document.getElementById("pass_perdu").addEventListener("click", pass_perdu);
 
 function passDispNo(e) {
     e.target.parentNode.querySelectorAll(".passDisp").forEach(element => {
@@ -54,3 +59,5 @@ function passDispNo(e) {
 document.querySelectorAll(".passBtt").forEach(element => {
     element.addEventListener("click", passDispNo);
 });
+
+modal();

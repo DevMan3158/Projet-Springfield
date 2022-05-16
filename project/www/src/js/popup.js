@@ -12,23 +12,35 @@ function popupHTMLWindow(html, windowName, win, w, h) {
 }
 
 function modal() {
-    let modalBtns = [...document.querySelectorAll(".button")];
-    modalBtns.forEach(function (btn) {
-      btn.onclick = function () {
+    document.querySelectorAll(".button").forEach(function (btn) {
+      btn.onclick = function (event) {
+        event.preventDefault();
         let modal = btn.getAttribute("data-modal");
-        document.getElementById(modal).style.display = "block";
+        if(modal != undefined) {
+            document.getElementById(modal).style.display = "block";
+        }
       };
     });
-    let closeBtns = [...document.querySelectorAll(".close")];
-    closeBtns.forEach(function (btn) {
-      btn.onclick = function () {
+    document.querySelectorAll(".close").forEach(function (btn) {
+      btn.onclick = function (event) {
+        event.preventDefault();
         let modal = btn.closest(".modal");
         modal.style.display = "none";
       };
     });
     window.onclick = function (event) {
+        event.preventDefault();
       if (event.target.className === "modal") {
         event.target.style.display = "none";
       }
     };
+}
+
+function clickModal(nameModal) {
+    var btn = document.createElement("BUTTON");
+    btn.classList.add("button");
+    btn.setAttribute("data-modal", nameModal);
+    console.log(btn);
+    modal();
+    btn.click();
 }
