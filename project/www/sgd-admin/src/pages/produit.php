@@ -47,7 +47,7 @@
 
 
 <div class="container">
-        <h1>Les tableaux Bootstrap</h1>
+        <h1>Les produits</h1>
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -74,6 +74,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td class="col-md-1 edit">
+                                    <button>
+                                        <img src="src/img/icons8-modifier.svg">
+                                    </button>
+                                </td>
+                                <td class="col-md-1 delete">
+                                    <button>
+                                        <img src="src/img/poubelle.svg">
+                                    </button>
+                                </td>
                             </tr>';
     
                         }

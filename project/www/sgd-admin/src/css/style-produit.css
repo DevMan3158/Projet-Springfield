@@ -48,3 +48,7 @@ figure div{
     background-color: white;
     border-radius: 5px;
 }
+
+button{
+    width: 100%;
+}

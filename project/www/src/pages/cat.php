@@ -35,41 +35,23 @@
                                 $nbOfPages = ceil($nbByCat['nbByCat'] / 5);
                             }
 
-                            //Ici on récupere les produits pour la première page
-
-
-
-                            // Deuxieme page
-
-                            $articles2 = $sgbd->prepare('SELECT produits.id_produit, categorie.nom, photos.titre, photos.src, photos.alt 
-                            FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
-                            INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=:id_cat LIMIT 5,5;');
-                            $articles2->execute([":id_cat"=>$_GET["cat"]]);
-                        
-                            $resultat_articles2 = $articles2->fetchAll((PDO::FETCH_ASSOC));
-
-
-                    
                             // On dit que si on est sur une page, alors $pg récupere la page actuelle, sinon il est sur 0
 
-                            $pg=0;
+                            $pg=1;
                             if (!empty($_GET['pg'])){
                                 $pg=$_GET['pg'];
                             }
 
                             // Ici on affiche le contenue des pages (les produits) (5 par pages)
 
-
-                            for ($i=0; $i<$nbOfPages; $i++){
-
+                                        $start_pg = 5*($pg-1);
                                         $articles = $sgbd->prepare('SELECT produits.id_produit, categorie.nom, photos.titre, photos.src, photos.alt 
                                         FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
-                                        INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=:id_cat LIMIT 5');
+                                        INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=:id_cat LIMIT '.$start_pg.',5');
                                         $articles->execute([":id_cat"=>$_GET["cat"]]);
-                                
+                                        
                                         $resultat_articles = $articles->fetchAll((PDO::FETCH_ASSOC));
 
-                                if ($pg==$i) {
 
                                     foreach ($resultat_articles as $article) {
 
@@ -82,61 +64,6 @@
                                                 </figure>';
 
                                             }
-                                        }
-
-
-                            }
-
-
-                            /* if ($pg==0) {
-
-                                foreach ($resultat_articles1 as $article1) {
-
-                                    echo    '<figure>
-                                                <a href="./index.php?ind=desc&desc='.($article1['id_produit']).'">
-                                                    <img class="contain" src="data/img/'.($article1['src']).'" alt="'.($article1['alt']).'">
-                                                    <figcaption>' .($article1['titre']). '</figcaption>
-                                                </a>
-                                            </figure>';
-                                        }
-
-                            } elseif ($pg==1){
-
-                                foreach ($resultat_articles2 as $article2) {
-        
-                                    echo    '<figure>
-                                                <a href="./index.php?ind=desc&desc='.($article2['id_produit']).'">
-                                                    <img class="contain" src="data/img/'.($article2['src']).'" alt="'.($article2['alt']).'">
-                                                    <figcaption>' .($article2['titre']). '</figcaption>
-                                                </a>
-                                            </figure>';
-                                        }
-
-
-                            } */
-/*
-                            foreach ($resultat_articles1 as $article1) {
-
-                                echo    '<figure>
-                                            <a href="./index.php?ind=desc&desc='.($article1['id_produit']).'">
-                                                <img class="contain" src="data/img/'.($article1['src']).'" alt="'.($article1['alt']).'">
-                                                <figcaption>' .($article1['titre']). '</figcaption>
-                                            </a>
-                                        </figure>';
-                                    }
-
-                            
-                            foreach ($resultat_articles2 as $article2) {
-        
-                                echo    '<figure>
-                                            <a href="./index.php?ind=desc&desc='.($article2['id_produit']).'">
-                                                <img class="contain" src="data/img/'.($article2['src']).'" alt="'.($article2['alt']).'">
-                                                <figcaption>' .($article2['titre']). '</figcaption>
-                                            </a>
-                                        </figure>';
-                                    }
-                
-*/
 
                 ?>
 
@@ -165,7 +92,7 @@
 
                         //Ici on fait une boucle $i qui correspond aux numéros de pages, et on récupere le numéro de page avec $_GET
 
-                for ($i=0; $i<($nbOfPages); $i++){
+                for ($i=1; $i<=($nbOfPages); $i++){
                         echo'        
                         <a href="./index.php?ind=cat&cat='.$_GET['cat'].'&pg='.($i).'" class="pages">'.($i).'</a>';
                     };
