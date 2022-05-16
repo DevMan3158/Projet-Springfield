@@ -38,6 +38,7 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
         "[##LOGIN##]" => ""
     );
 
+    setlocale (LC_ALL, "fr_FR");
     // calcul la duree de validite de la demande
     $time = mktime(date("H") + CHMDP_H, date("i") + CHMDP_I, date("s") + CHMDP_S, date("m") + CHMDP_M, date("d") + CHMDP_D, date("Y") + CHMDP_Y);
     $date = date("Y-m-d H:i:s", $time);

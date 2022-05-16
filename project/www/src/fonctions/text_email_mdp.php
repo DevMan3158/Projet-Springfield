@@ -6,10 +6,11 @@ if (!function_exists('text_email_mdp')) {
             return array(
                 "titre" => "le lien pour changer le mot de passe sur [##NAME_SITE##].",
                 "message" => "Madame, Monsieur,<br /><br />"
-                . "Vous avez demander de recevoir un lien et un code, pour cr&eacute;er un nouveau mot de passe apr&egrave;s la perte de celui-ci.<br /><br />"
+                . "Vous avez demander de recevoir un lien et un code, pour cr&eacute;er un nouveau mot de passe apr&egrave;s la perte de celui-ci.<br />"
+                . "Le code n'est valide qu'une seule fois et pour une durée de 12h (sinon vous allez devoir refaire une demande).<br /><br />"
                 . "Le code : [##CODE##]<br />"
                 . "Le login : [##LOGIN##]<br />"
-                . "Le lien : <a href=\"[##RACINE##]src/pages/index.php?ind=mmdp&code=[##CODE##]\">[##RACINE##]src/pages/modif_mdp.php?code=[##CODE##]</a>.<br /><br />"
+                . "Le lien : <a href=\"[##RACINE##]index.php?ind=mmdp&code=[##CODE##]\">[##RACINE##]src/pages/modif_mdp.php?code=[##CODE##]</a>.<br /><br />"
                 . "A tr&egrave;s vite sur [##NAME_SITE##]<br />"
             );
         }
