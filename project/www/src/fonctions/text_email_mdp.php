@@ -10,6 +10,7 @@ if (!function_exists('text_email_mdp')) {
                 . "Le code n'est valide qu'une seule fois et pour une durée de 12h (sinon vous allez devoir refaire une demande).<br /><br />"
                 . "Le code : [##CODE##]<br />"
                 . "Le login : [##LOGIN##]<br />"
+                . "Avant le : [##DATE_VALIDE##]<br />"
                 . "Le lien : <a href=\"[##RACINE##]index.php?ind=mmdp&code=[##CODE##]\">[##RACINE##]src/pages/modif_mdp.php?code=[##CODE##]</a>.<br /><br />"
                 . "A tr&egrave;s vite sur [##NAME_SITE##]<br />"
             );
