@@ -1,11 +1,7 @@
+/*input[type="file"] {
+    display: none;
+}*/
 
-.InfoUse{
-text-decoration: underline;
-font-size: larger;
-}
-
-
-.BtnCenter
-{
-    align-items: center;
+#add-img {
+    width: 100px;
 }

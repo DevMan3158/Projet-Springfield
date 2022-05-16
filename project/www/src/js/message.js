@@ -69,17 +69,27 @@ function validation(e) {
         document.getElementById("user_text").select();
         alert("Le message n'est pas valide.");
     } else {
-        fetch_form('./src/exec/connexion_exec.php', 'form_inform').then(function(response) {
-            alert("Le message a été transmis, nous vous répondrons dans les plus brefs délais.");
-            let inputs = document.getElementById('form_inform').querySelectorAll("input");
-            inputs.forEach(element => {
-                element.value = "";
-            });
-            document.getElementById('user_text').value = "";
+        fetch_form('./src/exec/msg_exec.php', 'form_inform').then(function(response) {
+            if(response == "true") {
+                document.getElementById('name').value = "";
+                document.getElementById('first_name').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('objet').value = "";
+                document.getElementById('user_text').value = "";
+                alert("Le message a été transmis, nous vous répondrons dans les plus brefs délais.");
+            } else {
+                alert(response);
+            }
         });
     }
 
 }
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    validation(event);
+  }
+});
 
 /**
  * revenir sur la configuration d'origine du input du texte

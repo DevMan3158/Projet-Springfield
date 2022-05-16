@@ -10,7 +10,9 @@ function header_connexion(e) {
     if (hostname_origin.search("sgd-admin") != -1) {
         startLink = "./../src/";
     }
-    popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 320);
+    popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 360);
 }
 
-document.getElementById("btt_conn").addEventListener("click", header_connexion);
+if(document.getElementById('btt_conn')) {
+    document.getElementById('btt_conn').addEventListener("click", header_connexion);
+}

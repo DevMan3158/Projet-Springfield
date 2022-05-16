@@ -2,5 +2,7 @@ ALTER TABLE `categorie` ADD `avatar` VARCHAR(255) NOT NULL DEFAULT '' AFTER `des
 
 ALTER TABLE `admin` CHANGE `nom` `nom_admin` VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '';
 
+ALTER TABLE `messages` ADD `Objet` VARCHAR(255) NOT NULL DEFAULT '' AFTER `Email`;
+
 
 
