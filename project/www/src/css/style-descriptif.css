@@ -1,3 +1,31 @@
+.bb_title
+{
+display: block;
+color: #FFF500;
+text-align: center;
+margin: 10px 50px 10px 50px;
+height: 20px;
+
+text-shadow: rgb(0, 0, 0) 2px 0px 0px, 
+rgb(0, 0, 0) 1.75517px 0.958851px 0px, 
+rgb(0, 0, 0) 1.0806px 1.68294px 0px, 
+rgb(0, 0, 0) 0.141474px 1.99499px 0px, 
+rgb(0, 0, 0) -0.832294px 1.81859px 0px,
+ rgb(0, 0, 0) -1.60229px 1.19694px 0px,
+  rgb(0, 0, 0) -1.97999px 0.28224px 0px, 
+  rgb(0, 0, 0) -1.87291px -0.701566px 0px, 
+  rgb(0, 0, 0) -1.30729px -1.51361px 0px, 
+  rgb(0, 0, 0) -0.421592px -1.95506px 0px, 
+  rgb(0, 0, 0) 0.567324px -1.91785px 0px, 
+  rgb(0, 0, 0) 1.41734px -1.41108px 0px, 
+  rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+
+}
+
+/*A text shadow black*/
+/*B box shadow white? */
+
+
 .h3Textcenter
 {
     text-align: center;
@@ -18,8 +46,7 @@ p
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 50px;
-    border: solid 1px black
+    /*border: solid 1px black*/
 
 }
 
@@ -28,8 +55,9 @@ p
 {
     margin-top: 20px;
     width: 20%;
-    height: 2px;
+    height: 1px;
     border: solid 1px black;
+    border-radius: 50px;
 
 }
 
@@ -41,39 +69,71 @@ p
     width: 100%;
     display: flex;
     justify-content: center;
-    
-    border: solid 1px black;
+    flex-wrap: wrap;
+
+   /* border: solid 1px black;*/
 
 }
 
-figcaption
-{
 
+figure
+{
+    
+   
+    display: flex;
     margin: 50px 0px 50px 0px;
     height: 300px;
     width: 80%;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 50px,
+        rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+        transparent 56px, transparent 63px,
+        rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+        transparent 69px, transparent 116px,
+        rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+      repeating-linear-gradient(0deg, transparent, transparent 50px,
+        rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+        transparent 56px, transparent 63px,
+        rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+        transparent 69px, transparent 116px,
+        rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+      repeating-linear-gradient(-45deg, transparent, transparent 5px,
+        rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),
+      repeating-linear-gradient(45deg, transparent, transparent 5px,
+        rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px);
     border: solid 1px black; 
-
-}
-figure
-{
-    border: solid 1px black;
-    height: 100px;
-    width: 40%;
-    margin: 50px;
+    justify-content: space-around;
+    border-radius: 15px;
     
 }
-.contenairHBC
+
+
+.contenairNomImage
 {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
-  
-    border: solid 1px black;
+    /*border: solid 1px black;*/
 
 }
+
+
+.contenairHBC
+{
+    width: 100%;
+    display: flex;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0px 30px 0px ;
+    /*border-top: solid 2px black;
+    border-bottom: solid 2px black;*/
+}
+ 
+
+
+
 
 
 .contenairBtn
@@ -85,7 +145,7 @@ figure
     justify-content: space-around;
     
     
-    border: solid 1px black;
+    /*border: solid 1px black;*/
 
 }
 
@@ -122,4 +182,46 @@ figure
 .styled:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+
+
+
+
+
+/* Ordinateur */
+
+@media (max-width: 1600px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+/* Tablette */
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 1024px) {
+    
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+    .Ligne
+    {
+        display: none;
+        margin-top: 20px;
+        width: 20%;
+        height: 1px;
+        border: solid 1px black;
+        border-radius: 50px;
+    
+    }
+
+
 }

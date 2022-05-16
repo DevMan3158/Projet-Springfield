@@ -1,57 +1,73 @@
-    <?php
-    include_once './src/bbcode_editeur/conversion_bbcode.php';
-    ?>
-<p><?php echo conversion_bbcode("[title][/title] \n test 021 [b]strong[/b]."); ?></p>
+<?php
+include_once './src/bbcode_editeur/conversion_bbcode.php';
+?>
+<p>
+    
+</p>
 
-    <div class="contenairTitre">
-        <div class="Ligne">
+<div class="contenairTitre">
+    <div class="Ligne">
 
-         </div>
-     <h3 class="h3Textcenter">Lieux</h3>
-        <div class="Ligne">
-
-         </div> 
     </div>
+    <h3 class="h3Textcenter">Lieux</h3>
+    <div class="Ligne">
 
-    <div class="contenairLieux">
+    </div>
+</div>
 
-        <figcaption>
-            <figure>
+<div class="contenairLieux">
 
-            </figure>
-        </figcaption>
 
-        </div>
+    <figure>
+
+
+
+    </figure>
+    <div class="contenairNomImage">
+        <p><?php echo conversion_bbcode("[title]Nom du lieux[/title] \n [b][/b]"); ?></p>
+    </div>
+</div>
 
 <div class="contenairHBC">
 
 
-        
-
-        
-                <h3>------Histoire------</h3>
-        <div> 
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet 
-                    fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit, 
-                    perspiciatis amet, harum nam fugiat ipsa numquam non.<p>
-        </div>
-                <h3>------Bon à savoir------</h3>
 
 
-                <div> 
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet 
-                    fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit, 
-                    perspiciatis amet, harum nam fugiat ipsa numquam non.<p>
-                 </div>  
 
-                <h3>------Ce qui est inclus------</h3>
+<div class="Ligne">
+
+</div>
+
+ <h3 class="h3Textcenter">Histoire</h3>
+
+<div class="Ligne">
+
+</div>
+    
+        <p>
+            <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
+            fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
+            perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
+        <p>
+    
+        <div class="Ligne"></div><h3 class="h3Textcenter">Bon à savoir</h3><div class="Ligne"></div>
+
+        <p>
+            <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
+            fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
+            perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
+        <p>
+    
+
+        <div class="Ligne"></div> <h3 class="h3Textcenter">Ce qui est inclus</h3><div class="Ligne"></div>
 
 
-        <div> 
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe evenie
-                fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit, 
-                perspiciatis amet, harum nam fugiat ipsa numquam non.<p>
-        </div>
+        <p>
+            <?php echo conversion_bbcode("[title]Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum nisi saepe eveniet
+            fuga perferendis praesentium fugiat delectus. Saepe rem porro veritatis, suscipit,
+            perspiciatis amet, harum nam fugiat ipsa numquam non.[/title] \n [b][/b]"); ?>
+        <p>
+    
 
 
 </div>
@@ -60,19 +76,15 @@
 
 
 
- <div class="contenairBtn">
+<div class="contenairBtn">
 
-    <input class="favorite styled"
-       type="button"
-       value="SERVICES">
+    <input class="favorite styled" type="button" value="SERVICES">
+<input class="favorite styled" type="button" value="HORAIRES ET TARIFS">
+    <input class="favorite styled" type="button" value="CONTACT">
+
+    
+
+</div>
 
 
-       <input class="favorite styled"
-       type="button"
-       value="CONTACT">
-
-      <input class="favorite styled"
-       type="button"
-       value="HORAIRES ET TARIFS">
-
-    </div>
+<!--<a href="./index.php?ind=msg&desc=0">Professionel</a>  Qaund users envoie, Envoie au proprietaire avec l'id desc-->

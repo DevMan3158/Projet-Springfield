@@ -27,31 +27,16 @@
 
 
   /* On déclare la base de données*/
-  $serveur = "localhost";
-  $dbname = "springfield";  
-  $user = "root";
-  $pass = "1234";
+
 
 try{
 
   //On se connecte à la BDD
-  $dbco = new PDO("mysql:host=$serveur;dbname=$dbname; charset=utf8", $user, $pass );
-  $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $dbco = connexion_sgbd();
   //On insère les données reçues
-  $sth = $dbco->prepare(" 
-  INSERT INTO messages(nom, prenom, email, mot_pass)  
-  VALUES(:nom, :prenom, :email, :mot_pass)
-    ");
-   /*INSERT INTO -> On spécifie la table "utilisateur" dans la db "springfield" */
-   $sth->bindParam(':prenom',$prenom);
+  
 
-   $sth->bindParam(':nom',$nom);
-
-   $sth->bindParam(':email',$email);
-
-   $sth->bindParam('mot_pass',$mot_pass);
-
-   $sth->execute();
+  
 
    echo' Envoie dans la table  <br>';
   //On renvoie l'utilisateur vers la page de remerciement
@@ -252,7 +237,7 @@ catch(PDOException $e){
                   id="password" 
                   placeholder="Mot de passe"
                   pattern="{6,}"
-                  value= "<?php  echo $_['mot_de_pass']; ?>"
+                  value= ""
                   required
                   >
                   
