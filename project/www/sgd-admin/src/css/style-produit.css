@@ -49,6 +49,17 @@ figure div{
     border-radius: 5px;
 }
 
-button{
+.tablebutton{
+    background-color: rgb(255,255,255,0);
+    border: none;
     width: 100%;
+    transition: 0.2s;
+}
+
+.testcolor{
+    filter:drop-shadow(16px 16px 20px white) invert(100%);
+}
+
+.tablebutton:hover{
+    transform: scale(1.2);
 }

@@ -59,6 +59,7 @@
             <tbody>
 
 
+
                 <?php
 
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
@@ -75,13 +76,13 @@
                                 <td></td>
                                 <td></td>
                                 <td class="col-md-1 edit">
-                                    <button>
-                                        <img src="src/img/icons8-modifier.svg">
+                                    <button class="tablebutton">
+                                        <img src="src/img/icons8-modifier.svg" class="testcolor">
                                     </button>
                                 </td>
                                 <td class="col-md-1 delete">
-                                    <button>
-                                        <img src="src/img/poubelle.svg">
+                                    <button class="tablebutton">
+                                        <img src="src/img/poubelle.svg" class="testcolor">
                                     </button>
                                 </td>
                             </tr>';
