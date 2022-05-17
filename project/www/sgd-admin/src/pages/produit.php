@@ -1,8 +1,22 @@
 <link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
 <h1 class="text-center">Produits</h1>
 
+<?php
 
-    <form class="row text-center " action="./src/exec/add_produits.php" method="post" enctype="multipart/form-data" >
+    $_GET['ind'] = 'produit';
+    $editOrAdd="add_produits.php";
+if (!empty($_GET['id_edit'])){
+    $editOrAdd="edit_produits.php?id_edit=".$_GET['id_edit'];
+}
+
+
+
+
+
+
+echo'
+
+    <form class="row text-center " action="./src/exec/'.($editOrAdd).'" method="post" enctype="multipart/form-data" >
 
             <div class="col-md-12 text-center form-group">
                 <input  type="file" id="file" name="file[]"  accept="image/png, image/jpeg, image/webp" multiple/>
@@ -40,9 +54,11 @@
                 </figure>
             </div>
 
-            <button class="col-md-12 boutton form-control" type="sumit">Valider</button>
+            <button class="col-md-12 boutton form-control" type="submit">Valider</button>
 
-    </form>
+    </form>';
+
+?>
 
 
 
@@ -52,8 +68,10 @@
             <thead>
                 <tr>
                     <th>Nom</th>
+                    <th>Categorie</th>
                     <th>Lieu</th>
                     <th>Description</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +96,8 @@
 
                     // Ici la requête pour le tableau ADMIN
 
-                    $requeteAdmin = $sgbd->query ('SELECT nom, lieu, id_produit, description FROM produits');
+                    $requeteAdmin = $sgbd->query ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories 
+                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat');
 
                     $requeteAdmin->execute();
 
@@ -93,23 +112,20 @@
 
 
                         echo   '<tr>
-                                    <td>'.($articleAdmin['nom']).'</td>
+                                    <td>'.($articleAdmin['produits']).'</td>
+                                    <td>'.($articleAdmin['categories']).'</td>
                                     <td>'.($articleAdmin['lieu']).'</td>
                                     <td>'.($articleAdmin['description']).'</td>
-                                    <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleAdmin['id_produit']).'">
-                                        <td class="col-md-1 edit">
-                                            <button type="submit" value="edit" class="tablebutton">
-                                                <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                            </button>
-                                        </td>
-                                    </form>
-                                    <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleAdmin['id_produit']).'">
-                                        <td class="col-md-1 delete">
-                                            <button type="submit" value="edit" class="tablebutton">
-                                                <img src="src/img/poubelle.svg" class="testcolor">
-                                            </button>
-                                        </td>
-                                    </form
+                                    <td class="col-md-1 edit">
+                                        <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleAdmin['id_produit']).'">
+                                            <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                        </a>
+                                    </td>
+                                    <td class="col-md-1 delete">
+                                        <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleAdmin['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
+                                            <img src="src/img/poubelle.svg" class="testcolor">
+                                        </a>
+                                    </td>
                                 </tr>';
 
                     }
@@ -118,7 +134,8 @@
 
                                             // Ici la requête pour le tableau gestionnaire
 
-                    $requeteGestionnaire = $sgbd->prepare ('SELECT nom, lieu, id_produit, description FROM produits WHERE produits.id_user=:id_user');
+                    $requeteGestionnaire = $sgbd->prepare ('SELECT produits.nom, produits.lieu, produits.id_produit, produits.description, categorie.nom  
+                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat WHERE produits.id_user=:id_user');
 
                     $requeteGestionnaire->execute([":id_user"=>$_SESSION['id_user']]);
 
@@ -132,20 +149,21 @@
                                         <td>'.($articleGestionnaire['nom']).'</td>
                                         <td>'.($articleGestionnaire['lieu']).'</td>
                                         <td>'.($articleGestionnaire['description']).'</td>
-                                        <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleGestionnaire['id_produit']).'">
-                                            <td class="col-md-1 edit">
-                                                <button type="submit" value="edit" class="tablebutton">
-                                                    <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                                </button>
-                                            </td>
-                                        </form>
-                                        <form action="http://localhost/springfield/project/www/sgd-admin/index.php?ind=produit&id='.($articleGestionnaire['id_produit']).'">
-                                            <td class="col-md-1 delete">
-                                                <button type="submit" value="edit" class="tablebutton">
-                                                    <img src="src/img/poubelle.svg" class="testcolor">
-                                                </button>
-                                            </td>
-                                        </form
+                                        <td class="col-md-1 edit">
+                                        <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleGestionnaire['id_produit']).'">
+                                            <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                        </a>
+                                        </td>
+                                        <td class="col-md-1 delete">
+                                            <a class="tablebutton" 
+                                            href="   
+                                                <script>
+                                                <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
+                                                </script>
+                                            ">
+                                                <img src="src/img/poubelle.svg" class="testcolor">
+                                            </a>
+                                        </td>
                                     </tr>';
     
                         }
@@ -153,6 +171,14 @@
 
 
 
+                    // Supression d'un produit
+
+
+                    if(!empty($_GET['id_delete'])){
+
+                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
+                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
+                    }
 
                 ?>
                 
@@ -161,8 +187,6 @@
 
 
 
-
-<script src="./addImg.js"></script>
 
 <script>
 

@@ -58,8 +58,15 @@ figure div{
 
 .testcolor{
     filter:drop-shadow(16px 16px 20px white) invert(100%);
+    transition: 0.2s;
 }
 
-.tablebutton:hover{
+.edit, .delete{
+    transition: 0.2s;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.tablebutton img:hover{
     transform: scale(1.2);
 }
