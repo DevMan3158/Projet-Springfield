@@ -7,11 +7,8 @@
 if (!function_exists('error_msg')) {
     // la classe qui va lire le fichier d'erreur ini
     include_once dirname(__FILE__) . '/../class/Error_msg_ini.php';
-    // verifier que la constante variable "RACINE" a ete definie (une constante du fichier "config.php").
-    if(!defined("RACINE")) {
-        // recupere les constantes de variable dans le fichier
-        include_once dirname(__FILE__) . '/../config/config.php';
-    }
+    /* inclure des fonctionnalites à la page */
+    include_once dirname(__FILE__) . '/../config/config_default.php';
 
     /**
      * Pour afficher le html de la page d'erreur

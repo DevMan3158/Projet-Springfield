@@ -6,29 +6,7 @@ include_once dirname(__FILE__) . '/../fonctions/connexion_sgbd.php';
 include_once dirname(__FILE__) . '/../class/Error_Log.php';
 include_once dirname(__FILE__) . '/../class/Pass_Crypt.php';
 include_once dirname(__FILE__) . '/../config/config_duree_demande_mdp.php';
-if(file_exists(dirname(__FILE__) . '/../config/config.php')) {
-    include_once dirname(__FILE__) . '/../config/config.php';
-} else {
-    define("RACINE", "http://localhost/");
-    define("RACINE_PATH", dirname(__FILE__)."/../../");
-    define("DATA_PATH", dirname(__FILE__)."/../../data/");
-    define("DATA_WEB", RACINE."data/");
-    define("NAME_SITE", "Office du tourisme de Springfield");
-}
-
-function remplace_text(?string $text, ?array $tab_code):?string {
-    $tab_values_site = array (
-        "[##NAME_SITE##]" => NAME_SITE,
-        "[##RACINE##]" => RACINE
-    );
-    foreach ($tab_values_site as $key => $value) {
-        $text = str_replace($key, $value, $text);
-    }
-    foreach ($tab_code as $key => $value) {
-        $text = str_replace($key, $value, $text);
-    }
-    return $text;
-}
+include_once dirname(__FILE__) . '/../config/config_default.php';
 
 if (!empty($_POST) && array_key_exists('email', $_POST)) {
     $perte_mdp = text_email_mdp();
@@ -71,8 +49,6 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
                     $tab_code["[##CODE##]"] = $key;
                     $tab_code["[##LOGIN##]"] = $result['login'];
 
-                        
-
                     // ajoute la demande de validite
                     $res = $sgbd->prepare("INSERT INTO pass_perdu (id_user, jeton, expiration) VALUES (:id_user, :jeton, :expiration)");
                     $res->execute([
@@ -88,7 +64,7 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
                     echo "Cette adresse email n'est pas reconnu dans notre base, merci de créer un compte.";
                 }
             } else {
-                echo "Cette adresse email n'est pas reconnu dans notre base, merci de créer un compte.";
+                echo "Un problème c'est produite lors de l'envoie du message.";
             }
         } catch (PDOException $e) {
             $error_log = new Error_Log();

@@ -109,6 +109,7 @@
 /*------------------------*/
 /* pour la version mobile */
 /*------------------------*/
+/* desactiver si ce n'est pas une version mobile */
 #return-list {
     display: none;
     border: none;
@@ -131,6 +132,7 @@
         width: 100%;
     }
 
+    /* afficher la liste par defaut */
     #return-list {
         display: unset;
     }

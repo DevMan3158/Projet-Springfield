@@ -6,6 +6,8 @@
 // verifier qu'on n'a pas deja creer la fonction
 if (!function_exists('text_email_mdp')) {
 
+    
+
     /**
      * Message d'email pour une demande de changement de mot de passe.
      * $demande=false : message signalent la modification
@@ -30,9 +32,27 @@ if (!function_exists('text_email_mdp')) {
         return array(
             "titre" => "mot de passe modifi&eacute; pour votre compte sur [##NAME_SITE##]",
             "message" => "Madame, Monsieur,<br /><br />"
-            . "Votre mot de passe administrateur sur [##NAME_SITE##] vient d'&ecirc;tre modifi&eacute;.<br />"
+            . "Votre mot de passe sur [##NAME_SITE##] vient d'&ecirc;tre modifi&eacute;.<br />"
             . "Si vous n'&ecirc;tes pas &agrave; l'origine de cette demande, merci de nous le faire savoir &agrave; l'adresse [##EMAIL##]<br /><br />"
             . "A tr&egrave;s vite sur [##NAME_SITE##]"
         );
     }
+
+    /**
+     * 
+     */
+    function remplace_text(?string $text, ?array $tab_code):?string {
+        $tab_values_site = array (
+            "[##NAME_SITE##]" => NAME_SITE,
+            "[##RACINE##]" => RACINE
+        );
+        foreach ($tab_values_site as $key => $value) {
+            $text = str_replace($key, $value, $text);
+        }
+        foreach ($tab_code as $key => $value) {
+            $text = str_replace($key, $value, $text);
+        }
+        return $text;
+    }
+
 }
