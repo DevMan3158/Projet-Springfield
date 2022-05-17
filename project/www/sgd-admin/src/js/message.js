@@ -1,11 +1,21 @@
+/* variables de la page */
 let color_old = "white";
 let type_msg = "user";
 
+/**
+ * 
+ * @param {*} date 
+ * @returns 
+ */
 function display_date(date) {
     var ladate=new Date(Date.parse(date))
     return ladate.getDate()+"/"+(ladate.getMonth()+1)+"/"+ladate.getFullYear()+" à "+ladate.getHours()+"H"+ladate.getMinutes();
 }
 
+/**
+ * 
+ * @param {event} e evenement du javascript 
+ */
 function load_msg(e) {
     let values = {
         id: e.target.id.split("_")[1]
@@ -51,6 +61,10 @@ function load_msg(e) {
     });
 }
 
+/**
+ * 
+ * @param {event} e evenement du javascript 
+ */
 function bt_find(e) {
     e.preventDefault();
     document.getElementById("list-msg").innerHTML = "";
@@ -82,6 +96,9 @@ function bt_find(e) {
     });
   }
 
+/**
+ * 
+ */
 function msg_create_click() {
     document.querySelectorAll('.display_msg').forEach(element => {
         element.addEventListener("click", load_msg);
@@ -95,6 +112,10 @@ function msg_create_click() {
     });
 }
 
+/**
+ * 
+ * @param {event} e evenement du javascript 
+ */
 function init_values(e) {
     document.getElementById('msg_from').innerHTML = "";
     document.getElementById('msg_date').innerHTML = "";
@@ -116,6 +137,10 @@ function init_values(e) {
     document.getElementById('txt_mobile').checked = false;
 }
 
+/**
+ * 
+ * @param {event} e evenement du javascript 
+ */
 function delete_msg(e) {
     let isExecuted = confirm("Attention vous allez supprimer le message. 'Ok' pour continuer.");
     if(isExecuted) {
@@ -134,10 +159,15 @@ function delete_msg(e) {
     //init_values(e);
 }
 
+/**
+ * 
+ * @param {event} e evenement du javascript 
+ */
 function repondre_msg(e) {
     document.getElementById('modalOne').style.display = "block";
 }
 
+/* activer le clique des boutons */
 msg_create_click();
 
 document.getElementById("bt_find").addEventListener("click", bt_find);
@@ -162,4 +192,5 @@ document.querySelectorAll('#select_type_msg').forEach(element => {
     });
 });
 
+/* active le modal */
 modal();

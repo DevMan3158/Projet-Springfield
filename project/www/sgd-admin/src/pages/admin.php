@@ -34,7 +34,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
       /* on creer une variable pour se retrouver dans les lignes du tableau */
       $i = 0;
       foreach ($data as $valueLine) {
-        /* on rempli le tableau avec les donnees de l'utilisateur */
+        /* on rempli la ligne du tableau avec les donnees de l'utilisateur */
         $table .= "<tr id=\"admin_".$valueLine['id_user']."\">";
         $table .= "<td id=\"td_admin_".$i."_1\" class=\"td_del\"><img class=\"img_del\" src=\"src/img/poubelle.svg\"></td>";
         $table .= "<td id=\"td_admin_".$i."_2\" class=\"tab_input\">".$valueLine['login']."</td>";
