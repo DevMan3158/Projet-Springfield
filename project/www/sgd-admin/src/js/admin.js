@@ -156,7 +156,7 @@ function select_edit(e) {
 }
 
 function admin_del(e) {
-   let isExecuted = confirm("Attention vous allez supprimer le message. 'Ok' pour continuer.");
+   let isExecuted = confirm("Attention vous allez supprimer l'utilisateur. 'Ok' pour continuer.");
    if(isExecuted) {
       let id_td = e.target.parentNode;
       if(e.target.classList.contains('img_del')) {

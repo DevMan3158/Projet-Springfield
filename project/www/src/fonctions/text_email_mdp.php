@@ -5,8 +5,9 @@
 
 // verifier qu'on n'a pas deja creer la fonction
 if (!function_exists('text_email_mdp')) {
-
     
+    /* inclure des fonctionnalites à la page */
+    include_once dirname(__FILE__) . '/../config/config_default.php';
 
     /**
      * Message d'email pour une demande de changement de mot de passe.
@@ -16,7 +17,9 @@ if (!function_exists('text_email_mdp')) {
      * @return array|null tableau du message
      */
     function text_email_mdp(bool $demande = true): ?array {
-        if(true) {
+        /* si on fait une demande de modification de mot de passe */
+        if($demande) {
+            /* le contenu de l'email pour modifier le mot de passe. */
             return array(
                 "titre" => "le lien pour changer le mot de passe sur [##NAME_SITE##].",
                 "message" => "Madame, Monsieur,<br /><br />"
@@ -29,6 +32,7 @@ if (!function_exists('text_email_mdp')) {
                 . "A tr&egrave;s vite sur [##NAME_SITE##]<br />"
             );
         }
+        /* le contnu de l'email pour confirmer le changement de mot de passe. */
         return array(
             "titre" => "mot de passe modifi&eacute; pour votre compte sur [##NAME_SITE##]",
             "message" => "Madame, Monsieur,<br /><br />"
@@ -39,16 +43,23 @@ if (!function_exists('text_email_mdp')) {
     }
 
     /**
-     * 
+     * Modifier les informations dans le message d'email par les informations du site.
+     *
+     * @param string|null $text : le message avec des mots clees a remplacer.
+     * @param array|null $tab_code : tableau avec des mots clees a modifier dans le message.
+     * @return string|null le message sans mot clee.
      */
     function remplace_text(?string $text, ?array $tab_code):?string {
+        /* tableau de mot clee du site predefini */
         $tab_values_site = array (
             "[##NAME_SITE##]" => NAME_SITE,
             "[##RACINE##]" => RACINE
         );
+        /* remplace les mots clees predefini dans le message */
         foreach ($tab_values_site as $key => $value) {
             $text = str_replace($key, $value, $text);
         }
+        /* remplace les mots clees dans le message */
         foreach ($tab_code as $key => $value) {
             $text = str_replace($key, $value, $text);
         }
