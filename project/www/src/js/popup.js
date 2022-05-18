@@ -61,26 +61,26 @@ function modal() {
       };
     });
     /* action clique de la fenetre */
-    window.onclick = function (event) {
-      /* pour eviter l'action d'un formulaire */
+    /*window.onclick = function (event) {
+      // pour eviter l'action d'un formulaire
       event.preventDefault();
-      /* verifier que c'est un modal */
+      // verifier que c'est un modal
       if (event.target.className === "modal") {
-        /* on le ferme */
+        // on le ferme 
         event.target.style.display = "none";
       }
-    };
+    };*/
 }
 
 /* faire un clique sur un modal */
 /* il n'est pas utilise */
 function clickModal(nameModal) {
-  /* creation d'un boutton temporaire pour faire le clique */
+  /* creation d'un bouton temporaire pour faire le clique */
     var btn = document.createElement("BUTTON");
     btn.classList.add("button");
     btn.setAttribute("data-modal", nameModal);
-    /* on active le clique sur se boutton */
+    /* on active le clique sur se bouton */
     modal();
-    /* on clique le boutton */
+    /* on clique le bouton */
     btn.click();
 }

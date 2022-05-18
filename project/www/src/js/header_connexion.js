@@ -17,8 +17,8 @@ function header_connexion(e) {
     popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 360);
 }
 
-/* verifier l'existance du boutton de connexion sur la page  */
+/* verifier l'existance du bouton de connexion sur la page  */
 if(document.getElementById('btt_conn')) {
-    /* active le clique du boutton de connexion */
+    /* active le clique du bouton de connexion */
     document.getElementById('btt_conn').addEventListener("click", header_connexion);
 }

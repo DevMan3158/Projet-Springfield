@@ -38,8 +38,8 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
             }
 
             elseif ($_GET['ind'] == 'message') {
-                echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-message.css">';
                 echo '<link rel="stylesheet" href="./../src/css/popup.css" />';
+                echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-message.css">';
             }
 
             elseif ($_GET['ind'] == 'produit') {

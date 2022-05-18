@@ -1,29 +1,51 @@
+/**
+ * Le tableau de valeur du bbcode et sa conversion
+ * @returns tableau du bbcode et sa conversion.
+ */
 function tab_values() {
     return [
-        ['<', '>', '[b]', '[/b]', '[title]', '[/title]', "\n", "\n", '  '],
-        ['&lt;', '&gt;', '<strong>', '</strong>', '<span class=\"bb_title\">', '</span>', '<br />', '<br>', '&nbsp;&nbsp;'],
+        ['<', '>', '[b]', '[/b]', '[title]', '[/title]', "\n", "\n", "\n", '  '],
+        ['&lt;', '&gt;', '<strong>', '</strong>', '<span class=\"bb_title\">', '</span>', '<br />', '<br>', '<br >', '&nbsp;&nbsp;'],
     ]; 
 }
 
+/**
+ * Recuperer le noeud du texte avec bbcode
+ * 
+ * @param {*} itemTxt le noeud de depart (pour aller au noeud parent)
+ * @returns le noeud du texte avec bbcode
+ */
 function recupe_editor_bb(itemTxt) {
-    let edit_text = itemTxt.parentNode.querySelectorAll('.editor_bbcode');
-    edit_text.forEach(function(item) {
+    let edit = undefined;
+    itemTxt.parentNode.querySelectorAll('.editor_bbcode').forEach(function(item) {
         edit = item;
     });
     return edit;
 }
 
+/**
+ * Recuperer le noeud du texte avec html
+ * 
+ * @param {*} itemTxt le noeud depart (pour aller au noeud parent)
+ * @returns le noeud du texte avec html
+ */
 function recupe_editor_html(itemTxt) {
-    let edit_text = itemTxt.parentNode.querySelectorAll('.editor_html_bbcode');
-    edit_text.forEach(function(item) {
+    let edit = undefined;
+    itemTxt.parentNode.querySelectorAll('.editor_html_bbcode').forEach(function(item) {
         edit = item;
     });
     return edit;
 }
 
+/**
+ * Recuperer le noeud qui contient l'affichage (bbcode ou html)
+ * 
+ * @param {*} itemTxt le noeud depart (pour aller au noeud parent)
+ * @returns le noeud qui contient l'affichage (bbcode ou html)
+ */
 function recupe_editor_type(itemTxt) {
-    let edit_text = itemTxt.parentNode.querySelectorAll('.bbcode_type');
-    edit_text.forEach(function(item) {
+    let edit = undefined;
+    itemTxt.parentNode.querySelectorAll('.bbcode_type').forEach(function(item) {
         edit = item;
     });
     return edit;
@@ -257,6 +279,7 @@ function bbcode_type(e) {
     }
 }
 
+/* les boutons du bbcode */
 let bbcode_bold_bt = document.querySelectorAll('.bbcode_bold');
 bbcode_bold_bt.forEach(function(item) {
     item.addEventListener('click', bbcode_bold);

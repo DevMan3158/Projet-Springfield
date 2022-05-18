@@ -28,7 +28,7 @@ function validation(e) {
     let regexEmailValide = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     const regexEmail = new RegExp(regexEmailValide);
 
-    // regex pour verifier la validiter u texte a envoyer.
+    // regex pour verifier la validiter un texte a envoyer.
     let regexTextValide = /^.{8,}$/;
     const regexText = new RegExp(regexTextValide);
 
@@ -104,7 +104,7 @@ function validation(e) {
 }
 
 /**
- * Action si on touche le boutton entrer du clavier.
+ * Action si on touche le bouton entrer du clavier.
  */
 document.body.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {

@@ -146,7 +146,7 @@ function editabled(item) {
 }
 
 /**
- * Action si on touche le boutton entrer du clavier.
+ * Action si on touche le bouton entrer du clavier.
  */
 document.body.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
@@ -273,7 +273,7 @@ function bt_find(e) {
          /* on augmente i pour l'ajout d'une nouvelle ligne */
          i++;
       });
-      /* on rends a nouveau le tableau et ces bouttons cliquables */
+      /* on rends a nouveau le tableau et ces boutons cliquables */
       activeClick();
     } else {
       alert(response);
@@ -300,7 +300,7 @@ function activeClick() {
       element.addEventListener("dblclick", select_edit);
    });
 
-   /* activer le boutton de suppression */
+   /* activer le bouton de suppression */
    document
    .getElementById("user_tab")
    .querySelectorAll(".td_del")

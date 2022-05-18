@@ -66,16 +66,16 @@
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
-    /*grid-row-end: 3;*/
-    grid-row-end: 5;
+    grid-row-end: 3;
+    /*grid-row-end: 5;*/
 }
 
 .txt-msg #info .img_rep_msg {
-    display: none;
-    /*grid-column-start: 1;
+    /*display: none;*/
+    grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
-    grid-row-end: 5;*/
+    grid-row-end: 5;
 }
 
 .txt-msg #info .img_env_msg {
@@ -96,6 +96,16 @@
 
 .txt-msg #info .type {
     text-align: right;
+}
+
+/* le message dans le modal */
+.modal textarea {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    margin-bottom: -7px;
+    border: 1px solid #1c87c9;
+    outline: none;
 }
 
 /*--------------------*/
