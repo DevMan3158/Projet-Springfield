@@ -1,0 +1,14 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/damp/public_html/
+    - export DEPLOYCRONPATH=/home/damp/cron_html/
+    - export DEPLOYERRPATH=/home/damp/public_html/error/
+    - export DEPLOYINSTPATH=/home/damp/public_html/install/
+    - /bin/cp -R project/www/* $DEPLOYPATH
+    #- /bin/cp -R project/error/* $DEPLOYERRPATH
+    #- /bin/cp -R docker/config/config_path_default.php $DEPLOYERRPATH/config_path.php
+    #- /bin/cp -R project/install/* $DEPLOYINSTPATH
+    #- /bin/cp -R docker/config/config_path_default.php $DEPLOYINSTPATH/config_path.php
+    - /bin/cp -R project/cron/* $DEPLOYCRONPATH
+    - /bin/rm $DEPLOYCRONPATH/index.php

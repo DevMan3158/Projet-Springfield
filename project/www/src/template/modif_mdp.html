@@ -1,0 +1,70 @@
+<section id="section_contact">
+  <h3>Modifier le mot de passe</h3>
+  <br />
+  <figure id="form_contact">
+    <form id="form_inform" action="#" method="post">
+      <div class="user_name">
+        <label>Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="user_name name_2">
+        <label>Login</label>
+        <input type="text" name="login" id="login" />
+      </div>
+      <label>Code</label>
+      <input type="text" name="code" id="code" class="add-marge-btm-6" value="#code#" />
+      <div class="user_name">
+        <label>Mot de passe</label>
+        <figure class="pass-fig">
+          <input
+            class="passDisp"
+            type="password"
+            id="password"
+            name="password"
+            pattern=".{6,}"
+            autocomplete
+            required
+          />
+          <img
+            class="passBtt"
+            src="./src/img/les-yeux-croises.svg"
+            alt="mot de passe caché"
+          />
+        </figure>
+      </div>
+      <div class="user_name name_2">
+        <label>Répéter le mot de passe</label>
+        <figure class="pass-fig">
+          <input
+            class="passDisp"
+            type="password"
+            id="password_rep"
+            name="password_rep"
+            pattern=".{6,}"
+            autocomplete
+            required
+          />
+          <img
+            class="passBtt"
+            src="./src/img/les-yeux-croises.svg"
+            alt="mot de passe caché"
+          />
+        </figure>
+      </div>
+      <figure>
+        <button type="sumit" id="valider" class="button button_bleu">
+          Valider
+        </button>
+        <button type="sumit" id="annuler" class="button button_gris">
+          Annuler
+        </button>
+      </figure>
+    </form>
+    <div id="form_image">
+      <img src="src/img/modifier_mdp.svg" alt="la photo d'un plat" />
+    </div>
+  </figure>
+</section>
+
+<script src="./src/js/le_fetch.js"></script>
+<script src="./src/js/modif_mdp.js"></script>

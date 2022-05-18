@@ -1,0 +1,97 @@
+# Adopt version 2 syntax:
+#   https://docs.docker.com/compose/compose-file/#/versioning
+version: '2'
+
+services:
+###########################
+# Setup the Apache container
+###########################
+    httpd:
+        container_name: ${NAME_HTTPD_CONTAINER}
+        restart: always
+        image: httpd:${VALUE_HTTPD_VERSION}
+        ports:
+            - ${VALUE_HTTPD_PORT}:80
+        volumes:
+            - ./.docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+            - ./.docker/apache/vhosts/:/usr/local/apache2/conf/vhosts
+            - ./projecttmp/tmp/httpd/:/usr/local/apache2/tmp/httpd:rw
+            - ./projecttmp/log/httpd/:/usr/local/apache2/logs:rw
+        volumes_from:
+            - php
+
+###########################
+# Setup the PHP container
+###########################
+    php:
+        container_name: ${NAME_PHP_CONTAINER}
+        restart: always
+        build: ./.docker/php/
+        expose:
+            - ${VALUE_PHP_EXPOSE}
+        volumes:
+            - ./project/www/:/usr/local/apache2/www
+            - ./project/unit/:/usr/local/apache2/unit:rw
+            - ./project/cron/:/usr/local/apache2/cron:rw
+            - ./project/install/:/usr/local/apache2/install:rw
+            - ./project/error/:/usr/local/apache2/error:rw
+            - ./project/docs/:/usr/local/apache2/docs:rw
+            - ./projecttmp/data:/usr/local/projecttmp/data:rw
+            - ./projecttmp/log/php:/usr/local/projecttmp/log/php:rw
+            - ./projecttmp/log/xdebug:/usr/local/projecttmp/log/xdebug:rw
+            - ./projecttmp/tmp/php:/usr/local/projecttmp/tmp/php:rw
+            - ./.docker/php/phpDocumentor.ini:/usr/local/lib/php/data/PhpDocumentor/phpDocumentor.ini:ro
+            - ./.docker/php/php-mail.conf:/usr/local/etc/php/conf.d/mail.ini:ro
+            - ./.docker/php/opcache-recommended.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini:ro
+            - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+            - ./.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+            - ./.docker/mysql/conf.d:/etc/mysql/conf.d
+            - ./.docker/config/config_cron_path.php:/usr/local/apache2/cron/config_path.php:rw
+            - ./.docker/config/config_error_path.php:/usr/local/apache2/error/config_path.php:rw
+            - ./.docker/config/config_install_path.php:/usr/local/apache2/install/config_path.php:rw
+            - ./.docker/config/.htaccess:/usr/local/apache2/www/.htaccess:rw
+            - ./config/sgbd_config.php:/usr/local/apache2/www/src/config/sgbd_config.php
+            
+
+###########################
+# Setup the Database (MariaDB) container
+###########################
+    mariadb:
+        container_name: ${NAME_MARIABD_CONTAINER}
+        restart: always
+        image: mariadb:${VALUE_MARIABD_VERSION}
+        expose:
+            - ${VALUE_MARIABD_EXPOSE}
+        volumes:
+            - ./projecttmp/log/mysql:/var/log/mysql:rw
+            - ./projecttmp/tmp/mysql:/var/tmp/mysql:rw
+            - ./projecttmp/mysql_data:/var/lib/mysql
+            - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf:ro
+            - ./.docker/mysql/mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf:ro
+            - ./.docker/mysql/0000_phpmyadmin.sql:/docker-entrypoint-initdb.d/0000_phpmyadmin.sql
+            # start sql
+            - ./config/0001-springfield.sql:/docker-entrypoint-initdb.d/0001-springfield.sql
+            - ./config/0002-springfield.sql:/docker-entrypoint-initdb.d/0002-springfield.sql
+            - ./config/0003-springfield.sql:/docker-entrypoint-initdb.d/0003-springfield.sql
+            # stop sql
+        environment:
+            - MYSQL_ROOT_PASSWORD=secret
+        entrypoint:
+            sh -c "/usr/local/bin/docker-entrypoint.sh --character-set-server=latin1 --collation-server=latin1_swedish_ci"
+            
+###########################
+# Setup the PhpMyAdmin container
+###########################
+    myadmin:
+        container_name: ${NAME_PHPMYADMIN_CONTAINER}
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        environment:
+            - PMA_PORT=${VALUE_MARIABD_EXPOSE}
+            - PMA_HOST=mariadb
+            - PMA_USER=root
+            - PMA_PASSWORD=secret
+        ports:
+            - ${VALUE_PHPMYADMIN_PORT}:80
+        depends_on: 
+            - mariadb

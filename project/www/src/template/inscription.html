@@ -1,0 +1,95 @@
+
+
+<section id="section_contact">
+  <h3>INSCRIPTION</h3>
+    <br />
+    <figure id="form_contact">
+      <form id="form_inform" action="#" method="post">
+        <div class="user_name">
+          <label>Nom</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            pattern=".{3,40}"
+            placeholder="Nom"
+            required
+          />
+        </div>
+        <div class="user_name name_2">
+          <label>Prénom</label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            placeholder="Prénom"
+            pattern=".{3,40}"
+            required
+          />
+        </div>
+        <div class="user_name">
+          <label>Login</label>
+          <input
+            type="text"
+            id="login"
+            name="login"
+            pattern=".{3,40}"
+            placeholder="login"
+            required
+          />
+        </div>
+        <div class="user_name name_2">
+          <label>Adresse e-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="monAdresseMail@gmail.com"
+            pattern="[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)"
+            required
+          />
+        </div>
+        <div class="user_name">
+          <label>Mot de passe</label>
+          <figure class="pass-fig">
+              <input
+                  class="passDisp"
+            type="password"
+            id="password"
+            name="password"
+            pattern=".{6,}"
+            autocomplete
+            required
+          />
+          <img class="passBtt" src="./src/img/les-yeux-croises.svg" alt="mot de passe caché" />
+      </figure>
+        </div>
+        <div class="user_name name_2">
+          <label>Répéter le mot de passe</label>
+          <figure class="pass-fig">
+              <input
+                  class="passDisp"
+            type="password"
+            id="password_rep"
+            name="password_rep"
+            pattern=".{6,}"
+            autocomplete
+            required
+          />
+          <img class="passBtt" src="./src/img/les-yeux-croises.svg" alt="mot de passe caché" />
+      </figure>
+        </div>
+        <div class="text_center">
+          <button id="button_form" class="button_bleu" type="sumit">
+            Envoyer
+          </button>
+        </div>
+      </form>
+      <div id="form_image">
+        <img src="src/img/les_simpsons_accordent_une_interview_pour_leurs_20_ans.png" alt="la photo d'un plat" />
+      </div>
+    </figure>
+  </section>
+
+  <script src="./src/js/le_fetch.js"></script>
+  <script src="./src/js/inscription.js"></script>
