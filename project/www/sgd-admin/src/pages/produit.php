@@ -184,7 +184,7 @@ echo'
                                     <td>'.($articleAdmin['lieu']).'</td>
                                     <td>'.($articleAdmin['description']).'</td>
                                     <td class="col-md-1 edit">
-                                        <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleAdmin['id_produit']).'">
+                                        <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleAdmin['id_produit']).'">
                                             <img src="src/img/icons8-modifier.svg" class="testcolor">
                                         </a>
                                     </td>
@@ -219,7 +219,7 @@ echo'
                                         <td>'.($articleGestionnaire['lieu']).'</td>
                                         <td>'.($articleGestionnaire['description']).'</td>
                                         <td class="col-md-1 edit">
-                                            <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleGestionnaire['id_produit']).'">
+                                            <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
                                                 <img src="src/img/icons8-modifier.svg" class="testcolor">
                                             </a>
                                         </td>

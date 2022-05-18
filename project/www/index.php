@@ -77,6 +77,7 @@
                 <a id="btt_conn" class="conn">Connexion</a>
             <?php } ?>
             <a id="insc" href="./index.php?ind=insc">Inscription</a>
+            <a id="backOff" href="sgd-admin/index.php">Back-Office</a>
             <div class="cat">
                 <a>Categories</a>
                 <div class="souscat">
