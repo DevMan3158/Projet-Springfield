@@ -2,6 +2,9 @@
 <h1 class="text-center">Produits</h1>
 
 <?php
+                    include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
+                    $sgbd= connexion_sgbd();
+
 
     $_GET['ind'] = 'produit';
     $editOrAdd="add_produits.php";
@@ -12,6 +15,29 @@ if (!empty($_GET['id_edit'])){
 
 
 
+$editInfo = array(
+    'nom' => "",
+    'cat' => "",
+    'lieu' => "",
+    'desc' => ""
+);
+
+if (!empty($_GET['id_edit'])) {
+
+    $requeteEdit = $sgbd->prepare('SELECT produits.nom AS nom, produits.lieu, produits.description, categorie.nom AS cat FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat  WHERE id_produit=:id_produit');
+    $requeteEdit->execute([":id_produit"=>$_GET["id_edit"]]);
+    $resultat_requeteEdit = $requeteEdit->fetch((PDO::FETCH_ASSOC));
+
+    $editInfo = array(
+        
+        'nom' => $resultat_requeteEdit['nom'],
+        'cat' => $resultat_requeteEdit['cat'],
+        'lieu' => $resultat_requeteEdit['lieu'],
+        'desc' => $resultat_requeteEdit['description']
+
+    );
+
+    }
 
 
 echo'
@@ -19,38 +45,58 @@ echo'
     <form class="row text-center " action="./src/exec/'.($editOrAdd).'" method="post" enctype="multipart/form-data" >
 
             <div class="col-md-12 text-center form-group">
-                <input  type="file" id="file" name="file[]"  accept="image/png, image/jpeg, image/webp" multiple/>
+                <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>
                 <img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" alt="ajouter une image" />
             </div>
 
             <div class="col-md-12 text-center form-group">
                     <label for="nom">Nom :</label>
-                    <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer">
+                    <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer" value="'.($editInfo['nom']).'">
 
             </div> 
 
             <div class="col-md-12 form-group">
 
             <label for="catégorie">Choisisez une catégorie :</label>
-            <select class="form-control" name="catégorie" id="cat-select">
-                <option value="1">Lieux
-                </option>
-                <option value="2">Personnages</option>
-                <option value="3">Batiments</option>
-            </select>
+            <select class="form-control" name="catégorie" id="cat-select">';
+            if(!empty($resultat_requeteEdit['cat'] == 'Lieux')) {
+
+                echo   '<option value="1" selected>Lieux</option>
+                        <option value="2">Personnages</option>
+                        <option value="3">Batiments</option>';
+
+            } elseif(!empty($resultat_requeteEdit['cat'] == 'Personnages')){
+
+                echo   '<option value="1">Lieux</option>
+                        <option value="2"selected>Personnages</option>
+                        <option value="3">Batiments</option>';
+            } elseif(!empty($resultat_requeteEdit['cat'] == 'Batiments')){
+
+                echo   '<option value="1">Lieux</option>
+                        <option value="2">Personnages</option>
+                        <option value="3"selected>Batiments</option>';
+            } else {
+
+                echo
+                        '<option value="1">Lieux</option>
+                        <option value="2">Personnages</option>
+                        <option value="3">Batiments</option>';
+            }
+            
+            echo '</select>
 
             </div>
 
             <div class="col-md-12 text-center form-group">
                    <label for="lieu">Localisation :</label>
-                   <input class="form-control" type="text" name="lieu" text_area="Lieu" placeholder="742 Evergreen Terrace">
+                   <input class="form-control" type="text" name="lieu" text_area="Lieu" placeholder="742 Evergreen Terrace" value="'.($editInfo['lieu']).'"> 
             </div>
 
             <div class="col-md-12 text-center form-group">
                     <label for="description">Description :</label>            
                     <figure class="bbcode">
                     <button class="bbcode_bold">B</button><button class="bbcode_title">title</button><button class="bbcode_type">&lt;&gt;</button>
-                    <textarea name="story" class="editor_bbcode form-control" readonly></textarea>
+                    <textarea name="story" height=500px class="editor_bbcode form-control textarea" readonly>'.($editInfo['desc']).'</textarea>
                 </figure>
             </div>
 
@@ -67,6 +113,7 @@ echo'
         <table class="table table-dark">
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>Nom</th>
                     <th>Categorie</th>
                     <th>Lieu</th>
@@ -80,8 +127,7 @@ echo'
 
                 <?php
 
-                    include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
-                    $sgbd= connexion_sgbd();
+
 
                     // Ici on fait la requête pour récuperer le nombre de ligne dans le tableau
 
@@ -96,8 +142,9 @@ echo'
 
                     // Ici la requête pour le tableau ADMIN
 
-                    $requeteAdmin = $sgbd->query ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories 
-                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat');
+                    $requeteAdmin = $sgbd->query ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories,
+                      photos.src, photos.alt 
+                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat INNER JOIN springfield.photos ON photos.id_produit = produits.id_produit');
 
                     $requeteAdmin->execute();
 
@@ -112,6 +159,10 @@ echo'
 
 
                         echo   '<tr>
+                                    <td>
+                                        <img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"
+                                    
+                                    </td>
                                     <td>'.($articleAdmin['produits']).'</td>
                                     <td>'.($articleAdmin['categories']).'</td>
                                     <td>'.($articleAdmin['lieu']).'</td>
@@ -145,22 +196,19 @@ echo'
 
                         foreach ($resultat_requeteGestionnaire as $articleGestionnaire) {
 
+
                             echo   '<tr>
-                                        <td>'.($articleGestionnaire['nom']).'</td>
+                                        <td>'.($articleGestionnaire['produits']).'</td>
+                                        <td>'.($articleGestionnaire['categories']).'</td>
                                         <td>'.($articleGestionnaire['lieu']).'</td>
                                         <td>'.($articleGestionnaire['description']).'</td>
                                         <td class="col-md-1 edit">
-                                        <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleGestionnaire['id_produit']).'">
-                                            <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                        </a>
+                                            <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleGestionnaire['id_produit']).'">
+                                                <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                            </a>
                                         </td>
                                         <td class="col-md-1 delete">
-                                            <a class="tablebutton" 
-                                            href="   
-                                                <script>
-                                                <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
-                                                </script>
-                                            ">
+                                            <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
                                                 <img src="src/img/poubelle.svg" class="testcolor">
                                             </a>
                                         </td>

@@ -70,3 +70,12 @@ figure div{
 .tablebutton img:hover{
     transform: scale(1.2);
 }
+
+.editor_html_bbcode {
+ height: unset !important;
+}
+
+.phototableau{
+    width: 150px;
+    height: 150px;
+}
