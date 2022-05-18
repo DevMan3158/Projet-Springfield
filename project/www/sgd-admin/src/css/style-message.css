@@ -75,7 +75,7 @@
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
-    grid-row-end: 5;
+    grid-row-end: 6;
 }
 
 .txt-msg #info .img_env_msg {
@@ -96,6 +96,11 @@
 
 .txt-msg #info .type {
     text-align: right;
+}
+
+/* ne pas afficher le nom du produit dans le message */
+#label_msg_produit, #msg_produit, #label_env_msg_produit, #env_msg_produit {
+    display: none;
 }
 
 /* le message dans le modal */
