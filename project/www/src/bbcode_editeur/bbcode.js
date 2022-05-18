@@ -318,6 +318,8 @@ function editor_bbcode(itemTxt) {
  * @param {*} e evenement du javascript
  */
 function bbcode_bold(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
+    e.preventDefault();
     bbcode_add_txt(e, "b");
 }
 
@@ -328,6 +330,8 @@ function bbcode_bold(e) {
  * @param {*} e evenement du javascript
  */
 function bbcode_title(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
+    e.preventDefault();
     bbcode_add_txt(e, "t");
 }
 
@@ -338,6 +342,8 @@ function bbcode_title(e) {
  * @param {*} e evenement du javascript
  */
 function bbcode_change(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
+    e.preventDefault();
     bbcode_add_txt(e, undefined);
 }
 
@@ -348,6 +354,7 @@ function bbcode_change(e) {
  * @returns null
  */
 function bbcode_key(event) {
+    // recupere le type d'editeur d'affichage
     let edit_type = recupe_editor_type(event.target);
     // si c'est un editeur de texte bbcode
     if(edit_type.value == "txt") {
@@ -433,6 +440,8 @@ document.querySelectorAll('.editor_bbcode').forEach(function(item) {
  * @param {event} e evenement du javascript 
  */
 function bbcode_type(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
+    e.preventDefault();
     /* recupere les editeurs de la partir bbcode et le type d'affichage */
     let edit_html = recupe_editor_html(e.target);
     let edit_text = recupe_editor_bb(e.target);
