@@ -1,9 +1,9 @@
-<style>
+<!--<style>
 div .row .col
 {
     border : solid 1px black; 
 }
-</style>
+</style>-->
 
     <div  class="container-fluid">
 

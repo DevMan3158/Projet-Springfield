@@ -1,4 +1,8 @@
 <?php
+/**
+ * Pour envoyer un email.
+ */
+
 // verifier qu'on n'a pas deja creer la fonction
 if (!function_exists('message_email')) {
     /**
