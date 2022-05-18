@@ -31,26 +31,20 @@ $sth->execute();
 
 
 if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
-    foreach ($_FILES["file"]["name"] as $key => $name) {
+        $name=$_FILES["file"]["name"];
         $nomphoto="Une photo de ".$nom.".";
-        $sth = $sgbd->prepare("
-        INSERT INTO photos (id_produit, src, alt, titre)
-        VALUES (:id, :src, :alt, :titre)");
-        $sth->bindParam(':id',$id_produit);
+        $sth = $sgbd->prepare('UPDATE photos SET photos.src = :src, photos.alt = :alt, photos.titre = :titre WHERE photos.id_produit=:id_produit');
+        $sth->bindParam(':id_produit',$_GET["id_edit"]);
         $sth->bindParam(':src',$name);
         $sth->bindParam(':alt',$nomphoto);
         $sth->bindParam(':titre',$nom);
         $sth->execute();
-        if(move_uploaded_file($_FILES['file']['tmp_name'][$key], "./../../../data/img/".$name)) {
+        if(move_uploaded_file($_FILES['file']['tmp_name'], "./../../../data/img/".$name)) {
             echo "Le fichier ".$name." a été sauvegardé.<br />";
         }
-    }
-} 
+}
 
-
-//On renvoie l'utilisateur vers la page de remerciement
-/*header("location:produit.php");*/
-
+//header("location:../../index.php?ind=produit");
 
 
 

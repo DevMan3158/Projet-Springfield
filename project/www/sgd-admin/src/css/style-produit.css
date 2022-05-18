@@ -3,8 +3,8 @@ input[type="file"] {
 }
 
 #add-img {
-    width: 90px;
-    height: 90px;
+    width: 400px;
+    height: 300px;
 }
 
 h1{
@@ -76,6 +76,6 @@ figure div{
 }
 
 .phototableau{
-    width: 150px;
+    width: 220px;
     height: 150px;
 }

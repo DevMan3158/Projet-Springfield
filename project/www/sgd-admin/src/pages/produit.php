@@ -24,7 +24,9 @@ $editInfo = array(
 
 if (!empty($_GET['id_edit'])) {
 
-    $requeteEdit = $sgbd->prepare('SELECT produits.nom AS nom, produits.lieu, produits.description, categorie.nom AS cat FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat  WHERE id_produit=:id_produit');
+    $requeteEdit = $sgbd->prepare('SELECT produits.nom AS nom, produits.lieu, produits.description, categorie.nom AS cat, photos.src, photos.alt
+    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat 
+    INNER JOIN springfield.photos ON photos.id_produit = produits.id_produit  WHERE produits.id_produit=:id_produit');
     $requeteEdit->execute([":id_produit"=>$_GET["id_edit"]]);
     $resultat_requeteEdit = $requeteEdit->fetch((PDO::FETCH_ASSOC));
 
@@ -33,7 +35,10 @@ if (!empty($_GET['id_edit'])) {
         'nom' => $resultat_requeteEdit['nom'],
         'cat' => $resultat_requeteEdit['cat'],
         'lieu' => $resultat_requeteEdit['lieu'],
-        'desc' => $resultat_requeteEdit['description']
+        'desc' => $resultat_requeteEdit['description'],
+        'src' => $resultat_requeteEdit['src'],
+        'alt' => $resultat_requeteEdit['alt']
+
 
     );
 
@@ -45,11 +50,16 @@ echo'
     <form class="row text-center " action="./src/exec/'.($editOrAdd).'" method="post" enctype="multipart/form-data" >
 
             <div class="col-md-12 text-center form-group">
-                <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>
-                <img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" alt="ajouter une image" />
-            </div>
+                <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>';
 
-            <div class="col-md-12 text-center form-group">
+            if(!empty($resultat_requeteEdit['src'])) {
+                echo '<img id="add-img" src="../data/img/'.($resultat_requeteEdit['src']).'" alt="'.($resultat_requeteEdit['alt']).'" />
+                </div>';
+            } else {
+                echo '<img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" />
+                </div>';
+            }
+            echo '<div class="col-md-12 text-center form-group">
                     <label for="nom">Nom :</label>
                     <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer" value="'.($editInfo['nom']).'">
 
