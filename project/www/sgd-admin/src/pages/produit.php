@@ -5,6 +5,7 @@
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
                     $sgbd= connexion_sgbd();
 
+// On créer une variable qui saura si on est sur une édition de produit ou sur l'index
 
     $_GET['ind'] = 'produit';
     $editOrAdd="add_produits.php";
@@ -12,7 +13,7 @@ if (!empty($_GET['id_edit'])){
     $editOrAdd="edit_produits.php?id_edit=".$_GET['id_edit'];
 }
 
-
+// On créer un tableau pour regrouper les données 
 
 
 $editInfo = array(
@@ -23,6 +24,8 @@ $editInfo = array(
 );
 
 if (!empty($_GET['id_edit'])) {
+
+    // on fait la requete pour modifier les éléments
 
     $requeteEdit = $sgbd->prepare('SELECT produits.nom AS nom, produits.lieu, produits.description, categorie.nom AS cat, photos.src, photos.alt
     FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat 
@@ -44,18 +47,18 @@ if (!empty($_GET['id_edit'])) {
 
     }
 
-
-echo'
+                // ici on echo le formulaire, on utilise editOrAdd sur l'affiction, elle nous enverra sur la bonne page de réception des données.
+echo' 
 
     <form class="row text-center " action="./src/exec/'.($editOrAdd).'" method="post" enctype="multipart/form-data" >
 
             <div class="col-md-12 text-center form-group">
                 <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>';
-
+                // ici on dit que s'il y a une photo, alors on remplace la photo par celle qu'on veux éditer
             if(!empty($resultat_requeteEdit['src'])) {
                 echo '<img id="add-img" src="../data/img/'.($resultat_requeteEdit['src']).'" alt="'.($resultat_requeteEdit['alt']).'" />
                 </div>';
-            } else {
+            } else { // Sinon, on ajoute la photo de base ( upload image )
                 echo '<img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" />
                 </div>';
             }
@@ -69,6 +72,9 @@ echo'
 
             <label for="catégorie">Choisisez une catégorie :</label>
             <select class="form-control" name="catégorie" id="cat-select">';
+
+                // Ici on donne l'attribut selected à la catégorie de base de l'élément qu'on souhaite modifier
+
             if(!empty($resultat_requeteEdit['cat'] == 'Lieux')) {
 
                 echo   '<option value="1" selected>Lieux</option>
