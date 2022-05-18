@@ -1,9 +1,20 @@
 
   <?php
-
+ /*include_once dirname(__FILE__) . '/../../../src/class/Pass_Crypt.php';
+ echo Pass_Crypt::password("code");*/
+  
   var_dump($_SESSION); /*Sert à affiché les informations de session*/
   var_dump($_POST);
   var_dump($_FILES);
+
+
+  
+  include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
+
+  /*if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+  array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+  array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+  array_key_exists('email', $_SESSION));*/
 
     //On démarre une nouvelle session
    /* session_start();*/ 
@@ -22,29 +33,6 @@
         .$_COOKIE['PHPSESSID'];
     
     }*/
-
-  include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
-
-
-  /* On déclare la base de données*/
-
-
-try{
-
-  //On se connecte à la BDD
-  $dbco = connexion_sgbd();
-  //On insère les données reçues
-  
-
-  
-
-   echo' Envoie dans la table  <br>';
-  //On renvoie l'utilisateur vers la page de remerciement
-
-}
-catch(PDOException $e){
-  echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
-}
 ?>
 
 
@@ -67,7 +55,7 @@ catch(PDOException $e){
                         
                             <label for="exampleFormControlFile1 "></label>
                         
-                            <form action="./src/exec/add_utilisateurs.php" method="post" enctype="multipart/form-data" >
+                            <form action="" method="post" enctype="multipart/form-data" >
                             
                                 <input type="file" class="drop_img" id="file" name="file" accept="image/png, image/jpeg" />
                                 <img id="add-img" src="/project/www/sgd-admin/src/img/add_image_user.svg" alt="Ajouter une image&nbsp;" />
@@ -152,7 +140,7 @@ catch(PDOException $e){
  
 
 
-    <form action="" method="post" >
+    <form action="./src/exec/add_utilisateurs.php" method="post" >
         <div class="form-row "> <!--Début_row_1-->
 
         
@@ -167,7 +155,8 @@ catch(PDOException $e){
                   type="text"  
                   id="prenom" 
                   placeholder= ""
-                  value= "<?php  echo $_SESSION['prenom']; ?>" 
+                  value = "<?php  echo $_SESSION['prenom']; ?>" 
+                  name = "prenom" 
                   required  
                   >
               </div>
@@ -185,6 +174,7 @@ catch(PDOException $e){
                   id="nom" 
                   placeholder= ""
                   value="<?php  echo $_SESSION['nom']; ?>" 
+                  name = "nom" 
                   required
                   >   
 
@@ -207,6 +197,7 @@ catch(PDOException $e){
                   id="email" 
                   value="<?php  echo $_SESSION['email']; ?> "
                   placeholder = ""
+                  name = "email" 
                   aria-describedby="inputGroupPrepend3"
                  
                   required
@@ -235,10 +226,11 @@ catch(PDOException $e){
                   class="form-control" 
                   type="password"  
                   id="password" 
+                  name ="mdp"
                   placeholder="Mot de passe"
                   pattern="{6,}"
                   value= ""
-                  required
+                  
                   >
                   
                 </div>
@@ -254,9 +246,10 @@ catch(PDOException $e){
                   class="form-control"
                   type="password"             
                   id="password" 
+                  name ="cfn_mdp"
                   placeholder="Mot de passe..."
                   pattern="{6,}"
-                  required
+                  
                   >
                 </div>
               </div>
