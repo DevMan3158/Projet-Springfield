@@ -318,6 +318,7 @@ function editor_bbcode(itemTxt) {
  * @param {*} e evenement du javascript
  */
 function bbcode_bold(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
     e.preventDefault();
     bbcode_add_txt(e, "b");
 }
@@ -329,6 +330,7 @@ function bbcode_bold(e) {
  * @param {*} e evenement du javascript
  */
 function bbcode_title(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
     e.preventDefault();
     bbcode_add_txt(e, "t");
 }
@@ -340,6 +342,7 @@ function bbcode_title(e) {
  * @param {*} e evenement du javascript
  */
 function bbcode_change(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
     e.preventDefault();
     bbcode_add_txt(e, undefined);
 }
@@ -351,6 +354,7 @@ function bbcode_change(e) {
  * @returns null
  */
 function bbcode_key(event) {
+    // recupere le type d'editeur d'affichage
     let edit_type = recupe_editor_type(event.target);
     // si c'est un editeur de texte bbcode
     if(edit_type.value == "txt") {
