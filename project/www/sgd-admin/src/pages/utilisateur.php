@@ -2,6 +2,13 @@
   <?php
  /*include_once dirname(__FILE__) . '/../../../src/class/Pass_Crypt.php';
  echo Pass_Crypt::password("code");*/
+
+
+ 
+ if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION)) {
   
   var_dump($_SESSION); /*Sert à affiché les informations de session*/
   var_dump($_POST);
@@ -274,5 +281,10 @@
 
 
 <div> <!--Fin_Container-->  
-
+ <?php                 } 
+ 
+ else echo '<h3>Page non disponible</h3>';
+ 
+ 
+ ?>
 
