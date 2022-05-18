@@ -158,6 +158,7 @@ figure {
     display: none;
     color: black;
     bottom: 10px;
+    text-shadow: black 2px 2px;
 }
 
 .pages:visited {
