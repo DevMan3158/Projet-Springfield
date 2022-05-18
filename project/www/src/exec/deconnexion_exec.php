@@ -1,7 +1,9 @@
 <?php
 
+/* demarrer la session */
 session_start();
 
+/* supprimer chaque valeurs de la session */
 if(!empty($_SESSION) && array_key_exists('id_user', $_SESSION)) {
     $_SESSION['id_user'] = "";
     unset($_SESSION['id_user']);
@@ -30,7 +32,11 @@ if(!empty($_SESSION) && array_key_exists('avatar', $_SESSION)) {
     $_SESSION['avatar'] = "";
     unset($_SESSION['avatar']);
 }
+/* vide la table de la section */
 unset($_SESSION);
+
+/* met fin a la section */
 session_destroy();
 
-header('location: ./../../');
+/* revenir a l'index.php */
+header('location: ./../../index.php');
