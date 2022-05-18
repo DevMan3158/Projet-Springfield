@@ -13,6 +13,8 @@ if(!empty($_GET) && array_key_exists('ind', $_GET) && $_GET['ind'] == "msg") {
     $desc = 0;
     /* image par defaut pour le formulaire. */
     $img = "src/img/message_admin_2.svg";
+    /* nom du formulaire */
+    $name = "Administration";
     /* si on a ouvert une page a partir d'une description de produit */
     if(array_key_exists('desc', $_GET)) {
         /* se connecter a la base de donnees */
@@ -28,10 +30,11 @@ if(!empty($_GET) && array_key_exists('ind', $_GET) && $_GET['ind'] == "msg") {
                 ]);
                 /* si on a trouve le produit (si le produit n'a pas ete trouve, on envoie le message a l'administrateur). */
                 if($res->rowCount() > 0) {
-                    $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $res->fetch(PDO::FETCH_ASSOC);
                     $desc = $_GET['desc'];
-                    if(!empty($data[0]['src'])) {
-                        $img = "data/img/".$data[0]['src'];
+                    $name = $data['nom'];
+                    if(!empty($data['src'])) {
+                        $img = "data/img/".$data['src'];
                     }
                 }
             } catch (PDOException $e) {
@@ -49,7 +52,7 @@ if(!empty($_GET) && array_key_exists('ind', $_GET) && $_GET['ind'] == "msg") {
 
     /* place l'id produit et l'image sur la page html */
     /* afficher la page html */
-    echo str_replace("#id_produit#",$desc,str_replace("#img_produit#",$img,$html));
+    echo str_replace("#nom_produit#",$name,str_replace("#id_produit#",$desc,str_replace("#img_produit#",$img,$html)));
 } else {
     error_msg("404");
 }

@@ -25,7 +25,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
             /* se proteger des erreurs de requete sql (pour ne pas afficher l'erreur a l'ecran) */
             try {
                 /* recupere le message */
-                $res = $sgbd->prepare("SELECT * FROM  messages WHERE id_msg=:id_msg");
+                $res = $sgbd->prepare("SELECT *, messages.date AS date_msg FROM messages LEFT JOIN message_produit ON messages.id_msg=message_produit.id_msg LEFT JOIN produits ON message_produit.id_produit=produits.id_produit WHERE messages.id_msg=:id_msg");
                 $res->execute([
                     ":id_msg" => $_POST['id']
                 ]);
