@@ -14,7 +14,7 @@ function header_connexion(e) {
         startLink = "./../src/";
     }
     /* afficher la page de connexion */
-    popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 360);
+    popupWindow(startLink+"pages/connexion.php", "connexion", window, 320, 400);
 }
 
 /* verifier l'existance du bouton de connexion sur la page  */
