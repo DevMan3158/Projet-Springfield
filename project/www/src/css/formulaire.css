@@ -253,6 +253,7 @@ textarea {
   width: 25px;
   margin-left: 14px;
   margin-right: 5px;
+  object-fit: unset;
 }
 
 /**********************/

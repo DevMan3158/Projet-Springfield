@@ -1,8 +1,10 @@
+/* mise en page du bbcode */
 .bbcode {
     display: grid;
     grid-template-columns: auto auto auto 1fr;
 }
 
+/* editeur du bbcode */
 .editor_bbcode {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -10,6 +12,7 @@
   grid-row-end: 3;
 }
 
+/* editeur html du bbcode */
 .editor_html_bbcode {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -23,6 +26,7 @@
   height: 35px;
 }
 
+/* le type d'editeur du bbcode en hidden */
 .editor_type_bbcode {
   grid-column-start: 1;
   grid-column-end: 5;
@@ -30,6 +34,7 @@
   grid-row-end: 5;
 }
 
+/* le titre bbcode en html par defaut */
 .bb_title {
   color: blue;
   font-size: 40px;

@@ -18,13 +18,8 @@ mkdir -p projecttmp/log/httpd
 mkdir -p projecttmp/log/xdebug
 mkdir -p projecttmp/log/mysql
 
-# copier les configurations
-# cp docker/config/config_path.php project/cron/
-# cp docker/config/config_path.php project/error/
-# cp docker/config/config_path.php project/install/
-# cp docker/config/.htaccess project/www/
-# cp docker/config/sgbd_config.php project/www/config/
-# cp docker/config/config.php project/www/config/
+# copier les configurations et fichiers
+cp -R config/img/ project/www/data/
 
 # modifi les droits sur les dossiers
 # chmod 777 -R project

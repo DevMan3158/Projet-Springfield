@@ -44,7 +44,7 @@
         foreach ($resultat_personnages as $personnage) {
 
             echo    '<figure>
-                        <a href="./index.php?desc='.($personnage['id_produit']).'">
+                        <a href="./index.php?ind=desc&desc='.($personnage['id_produit']).'">
                             <img class="contain" src="data/img/'.($personnage['src']).'" alt="'.($personnage['alt']).'">
                             <figcaption>' .($personnage['titre']). '</figcaption>
                         </a>
