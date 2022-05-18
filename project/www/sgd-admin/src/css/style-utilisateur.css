@@ -2,6 +2,23 @@
     display: none;
 }*/
 
+.InfoUse{
+text-decoration: underline;
+font-size: larger;
+}
+
+
+.BtnCenter
+{
+    align-items: center;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
 #add-img {
-    width: 100px;
+    width: 90px;
+    height: 90px;
 }

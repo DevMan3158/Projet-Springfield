@@ -1,0 +1,1 @@
+/*Liens pointant vers cette page ne charge pas le script*/
