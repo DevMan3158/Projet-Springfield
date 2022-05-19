@@ -137,6 +137,7 @@ array_key_exists('email', $_SESSION)) {
                 <label for="password">
                 <strong>Mot de passe</strong>
                 </label>
+                <div class="input-group mb-2 mr-sm-2">
                   <input 
                   class="form-control" 
                   type="password"  
@@ -147,6 +148,10 @@ array_key_exists('email', $_SESSION)) {
                   value= ""
                   
                   >
+                  <div class="input-group-append">
+                          <div class="input-group-text"><i class="bi bi-eye-slash" id="togglePassword"></i></div>
+                      </div>
+                  </div>
                   
                 </div>
               </div>
@@ -157,15 +162,20 @@ array_key_exists('email', $_SESSION)) {
                  <label for="password">
                  <strong> Répéter le Mot de passe</strong>
                  </label>
+                 <div class="input-group mb-2 mr-sm-2">
                   <input 
                   class="form-control"
                   type="password"             
-                  id="password" 
+                  id="password_2" 
                   name ="cfn_mdp"
                   placeholder="Mot de passe..."
                   pattern="{6,}"
                   
                   >
+                  <div class="input-group-append">
+                          <div class="input-group-text"><i class="bi bi-eye-slash" id="togglePassword_2"></i></div>
+                      </div>
+                  </div>
                 </div>
               </div>
 
@@ -186,7 +196,7 @@ array_key_exists('email', $_SESSION)) {
           </div> <!--Fin_row_4-->
     </form>
 
-
+    <script src="./src/js/utilisateur_password.js"></script>
 
 <div> <!--Fin_Container-->  
 

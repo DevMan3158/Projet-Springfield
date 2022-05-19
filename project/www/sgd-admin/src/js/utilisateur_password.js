@@ -17,7 +17,7 @@ document.getElementById('togglePassword').addEventListener('click', (e) => {
 });
 
 // recupere l'input du premier mot de passe
-const password_2 = document.getElementById('show_hide_password_2');
+const password_2 = document.getElementById('password_2');
 // si on clique sur l'oeuil pour afficher ou masquer le mot de passe
 document.getElementById('togglePassword_2').addEventListener('click', (e) => {
 
@@ -34,17 +34,3 @@ document.getElementById('togglePassword_2').addEventListener('click', (e) => {
     e.target.classList.add(img_eye);
 });
 
-/**
-<div class="input-group mb-2 mr-sm-2">
-                      <input 
-                        class="form-control" 
-                        type="password"  
-                        id="show_hide_password_2" />
-                      <div class="input-group-append">
-                          <div class="input-group-text"><i class="bi bi-eye-slash" id="togglePassword_2"></i></div>
-                      </div>
-                  </div>
-
-<script src="./src/js/utilisateur_password.js"></script>
-
-*/
