@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 09 mai 2022 à 07:21
+-- Généré le : mer. 18 mai 2022 à 11:42
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -132,7 +132,7 @@ CREATE TABLE `produits` (
   `id_cat` int(10) NOT NULL,
   `nom` varchar(40) NOT NULL DEFAULT '',
   `lieu` varchar(40) NOT NULL DEFAULT '',
-  `nbvisite` int(20) NOT NULL,
+  `nbvisite` int(20) NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   `id_user` int(10) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP

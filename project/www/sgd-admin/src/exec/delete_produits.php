@@ -9,7 +9,7 @@
 <body style="background-color:#343a40; padding:10px;">
 
     <h1 style="color:white; margin:auto; border:solid white 2px; width:fit-content; padding:10px; border-radius:10px;"> Êtes vous sur ? </h1>
-    <a href="#" onClick= "window.opener.location.href='../../index.php?ind=produit&id_delete=<?php echo $_GET['id_delete'] ?>'; location.reload(); window.close()">
+    <a href="#" onClick= "window.opener.location.href='../../index.php?ind=desc&id_delete=<?php echo $_GET['id_delete'] ?>'; window.close()">
         <img src="../img/valider.png" alt="Valider"  style="width:100px;">
     </a>
     <a href="#" onClick="window.close();">

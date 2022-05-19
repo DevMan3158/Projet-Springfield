@@ -1,4 +1,7 @@
 <?php
+/**
+ * Pour la creation d'un fichier "errors.log" avec les messages d'erreurs rencontres.
+ */
 if (!class_exists('Error_Log')) {
 
     /**
@@ -21,7 +24,7 @@ if (!class_exists('Error_Log')) {
          * Creation ou modification du fichier d'erreur, avec l'erreur rencontre.
          *
          * @param string|null ($message) : Le message d'erreur.
-         * @return void
+         * @return void ne retourne rien.
          */
         public function addError(?string $message): void {
             $ligne = "------------------------------------------------------------------------------------\n";

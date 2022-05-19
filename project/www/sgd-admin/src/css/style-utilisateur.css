@@ -2,6 +2,24 @@
     display: none;
 }*/
 
-#add-img {
-    width: 100px;
+.InfoUse{
+text-decoration: underline;
+font-size: larger;
 }
+
+
+.BtnCenter
+{
+    align-items: center;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+#add-img {
+    width: 90px;
+    height: 90px;
+}
+

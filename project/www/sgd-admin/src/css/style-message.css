@@ -1,3 +1,17 @@
+/*------------------------*/
+/* conteneur des messages */
+/*------------------------*/
+#msg {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 684px;
+    max-height: 684px;
+    box-sizing: border-box;
+}
+
+/*-----------------------*/
+/* la liste des messages */
+/*-----------------------*/
 .list-mgs {
     width: 200px;
     min-height: 684px;
@@ -5,25 +19,6 @@
     background-color: rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     overflow: auto;
-}
-
-.txt-msg {
-    background-color: white;
-    width: 100%;
-    height: 100%;
-}
-
-#msg_txt {
-    box-sizing: border-box;
-    overflow: auto;
-}
-
-#msg {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    min-height: 684px;
-    max-height: 684px;
-    box-sizing: border-box;
 }
 
 #msg li img {
@@ -42,6 +37,18 @@
     background-color: #FFF500;
 }
 
+/*-------------------------*/
+/* Le conteneur du message */
+/*-------------------------*/
+.txt-msg {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+/*----------------------------*/
+/* information sur le message */
+/*----------------------------*/
 .txt-msg #info {
     background-color: #b1e6ff;
     display: grid;
@@ -59,16 +66,16 @@
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
-    /*grid-row-end: 3;*/
-    grid-row-end: 5;
+    grid-row-end: 3;
+    /*grid-row-end: 5;*/
 }
 
 .txt-msg #info .img_rep_msg {
-    display: none;
-    /*grid-column-start: 1;
+    /*display: none;*/
+    grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
-    grid-row-end: 5;*/
+    grid-row-end: 6;
 }
 
 .txt-msg #info .img_env_msg {
@@ -91,14 +98,41 @@
     text-align: right;
 }
 
-#txt_mobile {
+/* ne pas afficher le nom du produit dans le message */
+#label_msg_produit, #msg_produit, #label_env_msg_produit, #env_msg_produit {
     display: none;
 }
 
+/* le message dans le modal */
+.modal textarea {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    margin-bottom: -7px;
+    border: 1px solid #1c87c9;
+    outline: none;
+}
+
+/*--------------------*/
+/* Affiche le message */
+/*--------------------*/
+#msg_txt {
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+/*------------------------*/
+/* pour la version mobile */
+/*------------------------*/
+/* desactiver si ce n'est pas une version mobile */
 #return-list {
     display: none;
     border: none;
     background-color: #b1e6ff;
+}
+
+#txt_mobile {
+    display: none;
 }
 
 /***************************/
@@ -113,6 +147,7 @@
         width: 100%;
     }
 
+    /* afficher la liste par defaut */
     #return-list {
         display: unset;
     }

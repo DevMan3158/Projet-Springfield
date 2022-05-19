@@ -1,10 +1,20 @@
-<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
-<h1 class="text-center">Produits</h1>
-
 <?php
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
+
+
+
+
+echo '<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
+<h1 class="text-center">Produits</h1>';
+
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
                     $sgbd= connexion_sgbd();
 
+// On créer une variable qui saura si on est sur une édition de produit ou sur l'index
 
     $_GET['ind'] = 'produit';
     $editOrAdd="add_produits.php";
@@ -12,7 +22,7 @@ if (!empty($_GET['id_edit'])){
     $editOrAdd="edit_produits.php?id_edit=".$_GET['id_edit'];
 }
 
-
+// On créer un tableau pour regrouper les données 
 
 
 $editInfo = array(
@@ -23,6 +33,8 @@ $editInfo = array(
 );
 
 if (!empty($_GET['id_edit'])) {
+
+    // on fait la requete pour modifier les éléments
 
     $requeteEdit = $sgbd->prepare('SELECT produits.nom AS nom, produits.lieu, produits.description, categorie.nom AS cat, photos.src, photos.alt
     FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat 
@@ -44,18 +56,18 @@ if (!empty($_GET['id_edit'])) {
 
     }
 
-
-echo'
+                // ici on echo le formulaire, on utilise editOrAdd sur l'affiction, elle nous enverra sur la bonne page de réception des données.
+echo' 
 
     <form class="row text-center " action="./src/exec/'.($editOrAdd).'" method="post" enctype="multipart/form-data" >
 
             <div class="col-md-12 text-center form-group">
                 <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>';
-
+                // ici on dit que s'il y a une photo, alors on remplace la photo par celle qu'on veux éditer
             if(!empty($resultat_requeteEdit['src'])) {
                 echo '<img id="add-img" src="../data/img/'.($resultat_requeteEdit['src']).'" alt="'.($resultat_requeteEdit['alt']).'" />
                 </div>';
-            } else {
+            } else { // Sinon, on ajoute la photo de base ( upload image )
                 echo '<img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" />
                 </div>';
             }
@@ -67,30 +79,33 @@ echo'
 
             <div class="col-md-12 form-group">
 
-            <label for="catégorie">Choisisez une catégorie :</label>
-            <select class="form-control" name="catégorie" id="cat-select">';
+            <label for="categorie">Choisisez une catégorie :</label>
+            <select class="form-control" name="cat" id="cat-select">';
+
+                // Ici on donne l'attribut selected à la catégorie de base de l'élément qu'on souhaite modifier
+
             if(!empty($resultat_requeteEdit['cat'] == 'Lieux')) {
 
                 echo   '<option value="1" selected>Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2">Batiments</option>';
 
             } elseif(!empty($resultat_requeteEdit['cat'] == 'Personnages')){
 
                 echo   '<option value="1">Lieux</option>
-                        <option value="2"selected>Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3"selected>Personnages</option>
+                        <option value="2">Batiments</option>';
             } elseif(!empty($resultat_requeteEdit['cat'] == 'Batiments')){
 
                 echo   '<option value="1">Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3"selected>Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2"selected>Batiments</option>';
             } else {
 
                 echo
                         '<option value="1">Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2">Batiments</option>';
             }
             
             echo '</select>
@@ -169,16 +184,24 @@ echo'
 
 
                         echo   '<tr>
-                                    <td>
-                                        <img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"
-                                    
-                                    </td>
+                                    <td>';
+                                            if($articleAdmin['categories'] == "Personnages") {
+
+                                                echo  '<img class="phototableau contain" src="../data/img/'.($articleAdmin['src']).'"';
+
+                                            } else {
+
+                                                echo  '<img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"';
+
+                                            }
+                                    echo 
+                                    '</td>
                                     <td>'.($articleAdmin['produits']).'</td>
                                     <td>'.($articleAdmin['categories']).'</td>
                                     <td>'.($articleAdmin['lieu']).'</td>
                                     <td>'.($articleAdmin['description']).'</td>
                                     <td class="col-md-1 edit">
-                                        <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleAdmin['id_produit']).'">
+                                        <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleAdmin['id_produit']).'">
                                             <img src="src/img/icons8-modifier.svg" class="testcolor">
                                         </a>
                                     </td>
@@ -213,7 +236,7 @@ echo'
                                         <td>'.($articleGestionnaire['lieu']).'</td>
                                         <td>'.($articleGestionnaire['description']).'</td>
                                         <td class="col-md-1 edit">
-                                            <a class="tablebutton" href="index.php?ind=produit&id_edit='.($articleGestionnaire['id_produit']).'">
+                                            <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
                                                 <img src="src/img/icons8-modifier.svg" class="testcolor">
                                             </a>
                                         </td>
@@ -227,16 +250,6 @@ echo'
                         }
                     }
 
-
-
-                    // Supression d'un produit
-
-
-                    if(!empty($_GET['id_delete'])){
-
-                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
-                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
-                    }
 
                 ?>
                 
@@ -297,5 +310,7 @@ document.getElementById('add-img').addEventListener('click', img_add);
 
 
 <script src="../src/bbcode_editeur/bbcode.js"></script>
+
+<?php } else { echo 'Acces non autorisé';} ?>
 
 
