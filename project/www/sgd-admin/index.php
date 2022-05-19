@@ -154,6 +154,7 @@ elseif ($_GET['ind'] == 'produit') {
 <?php
 
 } else { ?>
+    <script src="./../src/js/popup.js"></script>
     <script src="./../src/js/header_connexion.js"></script>
     <script type="text/javascript">
         header_connexion(event);
