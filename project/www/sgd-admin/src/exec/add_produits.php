@@ -20,7 +20,7 @@ function validation_donnees($donnees){
 }
 
 $nom = validation_donnees($_POST["nom"]);
-$cat = validation_donnees($_POST["catégorie"]);
+$cat = validation_donnees($_POST["cat"]);
 $lieu = validation_donnees($_POST["lieu"]);
 $message = validation_donnees($_POST["story"]);
 

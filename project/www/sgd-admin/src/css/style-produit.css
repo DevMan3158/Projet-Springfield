@@ -88,3 +88,8 @@ figure div{
     margin-right: 0;
     margin-left: 0;
 }
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+}

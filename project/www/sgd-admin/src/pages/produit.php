@@ -29,7 +29,9 @@ $editInfo = array(
     'nom' => "",
     'cat' => "",
     'lieu' => "",
-    'desc' => ""
+    'desc' => "[title]  Histoire  [/title]
+
+    [b]  [/b]"
 );
 
 if (!empty($_GET['id_edit'])) {
@@ -218,7 +220,8 @@ echo'
 
                                             // Ici la requête pour le tableau gestionnaire
 
-                    $requeteGestionnaire = $sgbd->prepare ('SELECT produits.nom, produits.lieu, produits.id_produit, produits.description, categorie.nom  
+                    $requeteGestionnaire = $sgbd->prepare ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories,
+                    photos.src, photos.alt 
                     FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat WHERE produits.id_user=:id_user');
 
                     $requeteGestionnaire->execute([":id_user"=>$_SESSION['id_user']]);
@@ -231,21 +234,33 @@ echo'
 
 
                             echo   '<tr>
-                                        <td>'.($articleGestionnaire['produits']).'</td>
-                                        <td>'.($articleGestionnaire['categories']).'</td>
-                                        <td>'.($articleGestionnaire['lieu']).'</td>
-                                        <td>'.($articleGestionnaire['description']).'</td>
-                                        <td class="col-md-1 edit">
-                                            <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
-                                                <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                            </a>
-                                        </td>
-                                        <td class="col-md-1 delete">
-                                            <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
-                                                <img src="src/img/poubelle.svg" class="testcolor">
-                                            </a>
-                                        </td>
-                                    </tr>';
+                            <td>';
+                                    if($articleGestionnaire['categories'] == "Personnages") {
+
+                                        echo  '<img class="phototableau contain" src="../data/img/'.($articleGestionnaire['src']).'"';
+
+                                    } else {
+
+                                        echo  '<img class="phototableau" src="../data/img/'.($articleGestionnaire['src']).'"';
+
+                                    }
+                            echo 
+                            '</td>
+                            <td>'.($articleGestionnaire['produits']).'</td>
+                            <td>'.($articleGestionnaire['categories']).'</td>
+                            <td>'.($articleGestionnaire['lieu']).'</td>
+                            <td>'.($articleGestionnaire['description']).'</td>
+                            <td class="col-md-1 edit">
+                                <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
+                                    <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                </a>
+                            </td>
+                            <td class="col-md-1 delete">
+                                <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
+                                    <img src="src/img/poubelle.svg" class="testcolor">
+                                </a>
+                            </td>
+                        </tr>';
     
                         }
                     }
