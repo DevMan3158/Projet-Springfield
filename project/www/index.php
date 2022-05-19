@@ -77,6 +77,9 @@
                 <a id="btt_conn" class="conn">Connexion</a>
             <?php } ?>
             <a id="insc" href="./index.php?ind=insc">Inscription</a>
+            <?php if($isConnected) { ?>
+            <a id="backOff" href="sgd-admin/index.php">Back-Office</a>
+            <?php } ?>
             <div class="cat">
                 <a>Categories</a>
                 <div class="souscat">
@@ -137,7 +140,7 @@
 
         <p>Tous droits réservés @Springfield - 2022</p>
     </footer>
-    <script src="./../src/js/popup.js"></script>
-    <script src="./../src/js/header_connexion.js"></script>
+    <script src="./src/js/popup.js"></script>
+    <script src="./src/js/header_connexion.js"></script>
 </body>
 </html>

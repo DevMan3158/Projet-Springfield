@@ -79,3 +79,12 @@ figure div{
     width: 220px;
     height: 150px;
 }
+
+.contain{
+    object-fit: contain;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
