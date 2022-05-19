@@ -137,9 +137,9 @@ $sgbd= connexion_sgbd();
 
 <div class="contenairBtn">
 
-<a href="./index.php?ind=msg&desc=0"><input class="favorite styled" type="button" value="SERVICES"></a>
-<a href="./index.php?ind=msg&desc=0"><input class="favorite styled" type="button" value="HORAIRES ET TARIFS"></a>
-<a href="./index.php?ind=msg&desc=0"><input class="favorite styled" type="button" value="CONTACT"></a>
+<a href="./index.php?ind=msg&desc=<?php echo $_GET["desc"]?>"><input class="favorite styled" type="button" value="SERVICES"></a>
+<a href="./index.php?ind=msg&desc=<?php echo $_GET["desc"]?>"><input class="favorite styled" type="button" value="HORAIRES ET TARIFS"></a>
+<a href="./index.php?ind=msg&desc=<?php echo $_GET["desc"]?>"><input class="favorite styled" type="button" value="CONTACT"></a>
 
 
 
