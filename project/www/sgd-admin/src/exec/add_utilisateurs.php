@@ -1,9 +1,27 @@
 <?php
+// à mettre tout en haut du fichier .php, cette fonction propre à PHP servira à maintenir la $_SESSION
 session_start();
-var_dump($_POST);
+
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION)){
+
+
+
+
+/* test SuperGlob*/
+/*var_dump($_POST);*/
 include_once dirname(__FILE__) . '/../../../src/class/Pass_Crypt.php';
 include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
 
+   function valid_donnees($donnees){
+    $donnees = trim($donnees);
+    $donnees = stripslashes($donnees);
+    $donnees = htmlspecialchars($donnees);
+    return $donnees;
+}
 
 try{
 
@@ -12,82 +30,110 @@ try{
    if(!empty($_POST));
 
    {
-  
-  $prenom = $_POST["prenom"];
-  $email = $_POST["email"];
-  $nom = $_POST["nom"];
-  $mdp = $_POST["mdp"];
-  $cfn_mdp = $_POST["cfn_mdp"];
-
-  if( $_POST["mdp"]== $_POST["cfn_mdp"]){
- 
-
-    }
-
-    else
-
-    {
-       header("Location:../../index.php?ind=utilisateur");
-   
-    }
-
-
-  $dbco = connexion_sgbd();
-  $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
- 
-  $dta_usr = $dbco->prepare("UPDATE utilisateur SET  nom=:nom , prenom=:prenom , email=:email ,mot_pass=:mdp , mot_pass=:cfn_mdp WHERE  id_user=:id_user");
+    
+   /*On récupère se qui à était écrit dans les champs du formulaire*/ 
+   $login = valid_donnees($_POST["login"]);
+   $prenom = valid_donnees($_POST["prenom"]);
+   $email = valid_donnees($_POST["email"]);
+   $nom = valid_donnees($_POST["nom"]);
+   $mdp = $_POST["mdp"];
+   $cfn_mdp = $_POST["cfn_mdp"];
 
 
 
- /*on crée un tableau avec le nom $dta_usr */  
-   
+   /*test l'égalité des champs du formulaire pour le mot de passe et la répétition
+     Si la condition est TRUE, crypt le mdp avec la fonction "password" SINON envoie un echo 
+     dans add_utilisateur 
+   */
+        if( $_POST["mdp"] == $_POST["cfn_mdp"]){
+            /*connexion à la SGBD Springfield par la fonction "connexion_sgbd"*/
+              $dbco = connexion_sgbd();
+              $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              if (!empty($_POST["mdp"]))
+              {
+           
+             /*Envoie de la requête SQL UPDATE dans table utilisateur  pour modifier l'utilisateurs (Nom-Prénom-Email-Mdp)*/ 
+              $dta_usr = $dbco->prepare("UPDATE utilisateur SET  nom=:nom , prenom=:prenom , login=:login , email=:email ,mot_pass=:mdp  WHERE  id_user=:id_user");
+             /*Crée un tableau avec le nom $dta_usr avec les données stokés dans les variables */  
+                 $dta_usr->execute
+                 ([
+                 ':login'=>$login,
+                 ':prenom'=>$prenom,
+                 ':nom'=>$nom,
+                 ':email'=>$email,
+                 ':mdp'=>Pass_Crypt::password($mdp),
+                 ':id_user'=>$_SESSION["id_user"],  
+                 ]);
+             }
 
 
-      $dta_usr->execute
-      ([
+             else 
+             {
+                /*Envoie de la requête SQL UPDATE dans table utilisateur  pour modifier l'utilisateurs (Nom-Prénom-Email-)*/ 
+              $dta_usr = $dbco->prepare("UPDATE utilisateur SET  nom=:nom , prenom=:prenom , login=:login , email=:email   WHERE  id_user=:id_user");
+              /*Crée un tableau avec le nom $dta_usr avec les données stokés dans les variables */  
+                  $dta_usr->execute
+                  ([
+                  ':login'=>$login,
+                  ':prenom'=>$prenom,
+                  ':nom'=>$nom,
+                  ':email'=>$email,
+                  ':id_user'=>$_SESSION["id_user"],  
+                  ]);  
+             }
+            /*Raffiche les données à jour dans les champs du formulaire */
+                $_SESSION['login']=$login;
+                $_SESSION['prenom']=$prenom;
+                $_SESSION['nom']=$nom;
+                $_SESSION['email']=$email;
+            }
 
-      ':prenom'=>$prenom,
-      ':nom'=>$nom,
-      ':email'=>$email,
-      ':mdp'=>Pass_Crypt::password($mdp),
-      ':cfn_mdp'=>Pass_Crypt::password($cfn_mdp),  
-      ':id_user'=>$_SESSION["id_user"],  
+            else
+            {
+               echo 'Mot de passe non identique';
+              /* header("Location:../../index.php?ind=utilisateur");*/
+            
+            }
+        
+        /* test affichage
+        /*echo '<br><br>P:' .$prenom.'<br>';
+        echo 'E:' .$email.'<br>';
+        echo 'N:' .$nom.'<br>';
+        echo 'MDP:' .$mdp.'<br>';*/
 
-
-      ]);
-   
-
-  
-  $_SESSION['prenom']=$prenom;
-  $_SESSION['nom']=$nom;
-  $_SESSION['email']=$email;
-
-
-  echo '<br><br>P:' .$prenom.'<br>';
-  echo 'E:' .$email.'<br>';
-  echo 'N:' .$nom.'<br>';
-  echo 'MDP:' .$mdp.'<br>';
-
-  
-
-              
-header("Location:../../index.php?ind=utilisateur");
-
-  
-  //On renvoie l'utilisateur vers la page de remerciement
-  
- /**/
+           //On renvoie l'utilisateur vers la page utilisateur    
+  header("Location:../../index.php?ind=utilisateur");
 
 }
 
    }
 
-
 catch(PDOException $e){
   echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
 }
-  /* if (isset($_POST['nom'])) $name = $_POST['nom'];*/
+  
+ }
  
+ else 
+ {
+ echo '<h1>Page non disponible</h1>';}
+
+
+
+ ?>
+
+
+<?php 
+/*
+
+
+else 
+
+header ("Location:../../index.php?ind=utilisateur");
+
+
+
+
 /*6. met à jour */
 //On se connecte à la BDD
 
@@ -118,13 +164,4 @@ if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file'
 }
 
 */
-
-
 ?>
-
-
-
-
-
-
-
