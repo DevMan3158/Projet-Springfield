@@ -1,7 +1,16 @@
-<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
-<h1 class="text-center">Produits</h1>
-
 <?php
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
+
+
+
+
+echo '<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
+<h1 class="text-center">Produits</h1>';
+
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
                     $sgbd= connexion_sgbd();
 
@@ -303,5 +312,7 @@ document.getElementById('add-img').addEventListener('click', img_add);
 
 
 <script src="../src/bbcode_editeur/bbcode.js"></script>
+
+<?php } else { echo 'Acces non autorisé';} ?>
 
 
