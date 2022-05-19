@@ -19,7 +19,7 @@ function validation_donnees($donnees){
 }
 
 $nom = validation_donnees($_POST["nom"]);
-$cat = validation_donnees($_POST["catégorie"]);
+$cat = validation_donnees($_POST["cat"]);
 $lieu = validation_donnees($_POST["lieu"]);
 $message = validation_donnees($_POST["story"]);
 
@@ -38,7 +38,7 @@ $sth->execute();
 
 
 
-if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
+ if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
         $name=$_FILES["file"]["name"];
         $nomphoto="Une photo de ".$nom.".";
         $sth = $sgbd->prepare('UPDATE photos SET photos.src = :src, photos.alt = :alt, photos.titre = :titre WHERE photos.id_produit=:id_produit');
@@ -51,6 +51,9 @@ if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file'
             echo "Le fichier ".$name." a été sauvegardé.<br />";
         }
 }
+
+
+header('location:../../index.php?ind=desc');
 
 } else { echo 'Acces interdit';}
 

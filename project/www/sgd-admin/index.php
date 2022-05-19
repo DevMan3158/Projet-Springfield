@@ -12,6 +12,15 @@ array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) &&
 array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
 
+                    // Supression d'un produit
+
+
+                    if(!empty($_GET['id_delete'])){
+                        $sgbd=connexion_sgbd();
+                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
+                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
+                        header('location:index.php?ind=desc');
+                    }
 
     
 ?>

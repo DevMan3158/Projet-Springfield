@@ -79,33 +79,33 @@ echo'
 
             <div class="col-md-12 form-group">
 
-            <label for="catégorie">Choisisez une catégorie :</label>
-            <select class="form-control" name="catégorie" id="cat-select">';
+            <label for="categorie">Choisisez une catégorie :</label>
+            <select class="form-control" name="cat" id="cat-select">';
 
                 // Ici on donne l'attribut selected à la catégorie de base de l'élément qu'on souhaite modifier
 
             if(!empty($resultat_requeteEdit['cat'] == 'Lieux')) {
 
                 echo   '<option value="1" selected>Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2">Batiments</option>';
 
             } elseif(!empty($resultat_requeteEdit['cat'] == 'Personnages')){
 
                 echo   '<option value="1">Lieux</option>
-                        <option value="2"selected>Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3"selected>Personnages</option>
+                        <option value="2">Batiments</option>';
             } elseif(!empty($resultat_requeteEdit['cat'] == 'Batiments')){
 
                 echo   '<option value="1">Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3"selected>Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2"selected>Batiments</option>';
             } else {
 
                 echo
                         '<option value="1">Lieux</option>
-                        <option value="2">Personnages</option>
-                        <option value="3">Batiments</option>';
+                        <option value="3">Personnages</option>
+                        <option value="2">Batiments</option>';
             }
             
             echo '</select>
@@ -184,10 +184,18 @@ echo'
 
 
                         echo   '<tr>
-                                    <td>
-                                        <img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"
-                                    
-                                    </td>
+                                    <td>';
+                                            if($articleAdmin['categories'] == "Personnages") {
+
+                                                echo  '<img class="phototableau contain" src="../data/img/'.($articleAdmin['src']).'"';
+
+                                            } else {
+
+                                                echo  '<img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"';
+
+                                            }
+                                    echo 
+                                    '</td>
                                     <td>'.($articleAdmin['produits']).'</td>
                                     <td>'.($articleAdmin['categories']).'</td>
                                     <td>'.($articleAdmin['lieu']).'</td>
@@ -242,16 +250,6 @@ echo'
                         }
                     }
 
-
-
-                    // Supression d'un produit
-
-
-                    if(!empty($_GET['id_delete'])){
-
-                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
-                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
-                    }
 
                 ?>
                 
