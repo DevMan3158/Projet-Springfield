@@ -70,6 +70,9 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
                 <img src="./src/img/burger_icon.svg" alt="menu" />
             </button>
             <div class="dropdown-menu dropdown-menu-right bg-simpson">
+                <a class="dropdown-item" href="./../index.php">
+                    <img class="img_del" src="src/img/home-page.svg">&emsp;Page web
+                </a>
                 <?php if($_SESSION['id_admin'] == 1) { ?>
                     <a class="dropdown-item" href="./index.php?ind=admin">
                         <img class="img_del" src="src/img/star.svg"> Admin
