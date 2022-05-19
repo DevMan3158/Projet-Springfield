@@ -90,7 +90,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
                     <img class="img_del" src="src/img/utilisateur.svg"> Utilisateurs
                 </a>
                 <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php?admin=dec">
-                    <img class="img_del" src="src/img/deconnexion.svg"> Déconnexion
+                    <img class="img_del" src="src/img/deconnexion.svg">&emsp;Déconnexion
                 </a>
             </div>
         </nav>
