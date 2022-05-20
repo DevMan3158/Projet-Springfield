@@ -76,7 +76,9 @@
             <?php } else { ?>
                 <a id="btt_conn" class="conn">Connexion</a>
             <?php } ?>
+            <?php if(!$isConnected) { ?>
             <a id="insc" href="./index.php?ind=insc">Inscription</a>
+            <?php } ?>
             <?php if($isConnected) { ?>
             <a id="backOff" href="sgd-admin/index.php">Back-Office</a>
             <?php } ?>

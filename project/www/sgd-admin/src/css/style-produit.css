@@ -88,3 +88,43 @@ figure div{
     margin-right: 0;
     margin-left: 0;
 }
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@media all and (max-width: 1000px) {
+
+        form{
+            grid-gap:0;
+            padding: 0;
+        }
+
+        .none{
+            display: none;
+        }
+
+        .container{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    
+}
+
+@media all and (max-width: 470px) {
+
+    form{
+        grid-gap:0;
+        padding: 0;
+    }
+
+    .none{
+        display: none;
+    }
+
+    .none2{
+        display: none;
+    }
+
+}
