@@ -103,10 +103,16 @@
                         //Ici on fait une boucle $i qui correspond aux numéros de pages, et on récupere le numéro de page avec $_GET
 
                 for ($i=1; $i<=($nbOfPages); $i++){
+
+                    if($nbOfPages==1) {
+                        echo'        
+                        <a href="./index.php?ind=cat&cat='.$_GET['cat'].'&pg='.($i).'" class="pages solo">'.($i).'</a>';
+                    } else {
                         echo'        
                         <a href="./index.php?ind=cat&cat='.$_GET['cat'].'&pg='.($i).'" class="pages">'.($i).'</a>';
-                    };
-
+                    }
+                }
+                    
 
                             
 
