@@ -114,8 +114,8 @@
             include './src/pages/modif_mdp.php';
         } elseif ($_GET['ind'] == 'info') {
             include './src/pages/info.php';
-        } else {
-            include './src/pages/acc.php';
+        } elseif ($_GET['ind'] == 'desc') {
+            include './src/pages/descriptif.php';
         }
 
     ?>
