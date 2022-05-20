@@ -33,6 +33,7 @@ figure {
     text-align: center;
     position: relative;
     border: solid black 2px;
+    transition: 0.2s;
 }
 
 figure::after {
@@ -126,6 +127,16 @@ figcaption {
     margin-left: -85px;
     font-size: 1.3em;
     width: 150px;
+}
+
+figure:hover{
+    transform: scale(1.02);
+    border: solid gold 2px;
+}
+
+figure:hover figcaption{
+    color: black;    text-shadow: gold 1px 1px 1px;
+    -webkit-text-stroke: 0.1px gold;
 }
 
 @media all and (min-width: 768px) {
