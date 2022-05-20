@@ -9,7 +9,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
 
 echo '<link rel="stylesheet" href="../src/bbcode_editeur/style-bbcode.css" />
-<h1 class="text-center">Produits</h1>';
+<h1 class="h1 text-center">Produits</h1>';
 
                     include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
                     $sgbd= connexion_sgbd();
@@ -29,7 +29,9 @@ $editInfo = array(
     'nom' => "",
     'cat' => "",
     'lieu' => "",
-    'desc' => ""
+    'desc' => "[title]  Histoire  [/title]
+
+    [b]  [/b]"
 );
 
 if (!empty($_GET['id_edit'])) {
@@ -65,15 +67,15 @@ echo'
                 <input  type="file" id="file" name="file"  accept="image/png, image/jpeg, image/webp"/>';
                 // ici on dit que s'il y a une photo, alors on remplace la photo par celle qu'on veux éditer
             if(!empty($resultat_requeteEdit['src'])) {
-                echo '<img id="add-img" src="../data/img/'.($resultat_requeteEdit['src']).'" alt="'.($resultat_requeteEdit['alt']).'" />
+                echo '<img id="add-img" src="../data/img/'.($resultat_requeteEdit['src']).'" alt="'.($resultat_requeteEdit['alt']).'" class="img-fluid" />
                 </div>';
             } else { // Sinon, on ajoute la photo de base ( upload image )
-                echo '<img id="add-img" src="src/img/icons8-ajouter-une-image-90.png" />
+                echo '<img id="add-img" src="src/img/icons8-ajouter-une-image-90.png"  class="img-fluid" />
                 </div>';
             }
             echo '<div class="col-md-12 text-center form-group">
                     <label for="nom">Nom :</label>
-                    <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer" value="'.($editInfo['nom']).'">
+                    <input class="form-control" type="text" name="nom" text_area="Nom" placeholder="Hommer" value="'.($editInfo['nom']).'" >
 
             </div> 
 
@@ -133,16 +135,16 @@ echo'
 
 
 
-<div class="container">
-        <h1>Les produits</h1>
+<div>
+        <h1 class="text-center">Les produits</h1>
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th>Photo</th>
+                    <th class="none">Photo</th>
                     <th>Nom</th>
                     <th>Categorie</th>
-                    <th>Lieu</th>
-                    <th>Description</th>
+                    <th class="none2">Lieu</th>
+                    <th class="none">Description</th>
 
                 </tr>
             </thead>
@@ -184,22 +186,22 @@ echo'
 
 
                         echo   '<tr>
-                                    <td>';
+                                    <td class="none">';
                                             if($articleAdmin['categories'] == "Personnages") {
 
-                                                echo  '<img class="phototableau contain" src="../data/img/'.($articleAdmin['src']).'"';
+                                                echo  '<img class="phototableau contain " src="../data/img/'.($articleAdmin['src']).'" alt="'.($articleAdmin['alt']).'"';
 
                                             } else {
 
-                                                echo  '<img class="phototableau" src="../data/img/'.($articleAdmin['src']).'"';
+                                                echo  '<img class="phototableau" src="../data/img/'.($articleAdmin['src']).'" alt="'.($articleAdmin['alt']).'"';
 
                                             }
                                     echo 
                                     '</td>
                                     <td>'.($articleAdmin['produits']).'</td>
                                     <td>'.($articleAdmin['categories']).'</td>
-                                    <td>'.($articleAdmin['lieu']).'</td>
-                                    <td>'.($articleAdmin['description']).'</td>
+                                    <td class="none2">'.($articleAdmin['lieu']).'</td>
+                                    <td class="none">'.($articleAdmin['description']).'</td>
                                     <td class="col-md-1 edit">
                                         <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleAdmin['id_produit']).'">
                                             <img src="src/img/icons8-modifier.svg" class="testcolor">
@@ -218,8 +220,9 @@ echo'
 
                                             // Ici la requête pour le tableau gestionnaire
 
-                    $requeteGestionnaire = $sgbd->prepare ('SELECT produits.nom, produits.lieu, produits.id_produit, produits.description, categorie.nom  
-                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat WHERE produits.id_user=:id_user');
+                    $requeteGestionnaire = $sgbd->prepare ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories,
+                    photos.src, photos.alt, photos.src, photos.alt
+                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat INNER JOIN springfield.photos ON photos.id_produit = produits.id_produit WHERE produits.id_user=:id_user');
 
                     $requeteGestionnaire->execute([":id_user"=>$_SESSION['id_user']]);
 
@@ -231,21 +234,33 @@ echo'
 
 
                             echo   '<tr>
-                                        <td>'.($articleGestionnaire['produits']).'</td>
-                                        <td>'.($articleGestionnaire['categories']).'</td>
-                                        <td>'.($articleGestionnaire['lieu']).'</td>
-                                        <td>'.($articleGestionnaire['description']).'</td>
-                                        <td class="col-md-1 edit">
-                                            <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
-                                                <img src="src/img/icons8-modifier.svg" class="testcolor">
-                                            </a>
-                                        </td>
-                                        <td class="col-md-1 delete">
-                                            <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
-                                                <img src="src/img/poubelle.svg" class="testcolor">
-                                            </a>
-                                        </td>
-                                    </tr>';
+                            <td class="none">';
+                                    if($articleGestionnaire['categories'] == "Personnages") {
+
+                                        echo  '<img class="phototableau contain" src="../data/img/'.($articleGestionnaire['src']).'" alt="'.($articleGestionnaire['alt']).'"';
+
+                                    } else {
+
+                                        echo  '<img class="phototableau" src="../data/img/'.($articleGestionnaire['src']).'" alt="'.($articleGestionnaire['alt']).'"';
+
+                                    }
+                            echo 
+                            '</td>
+                            <td>'.($articleGestionnaire['produits']).'</td>
+                            <td>'.($articleGestionnaire['categories']).'</td>
+                            <td class="none2>'.($articleGestionnaire['lieu']).'</td>
+                            <td class="none">'.($articleGestionnaire['description']).'</td>
+                            <td class="col-md-1 edit">
+                                <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleGestionnaire['id_produit']).'">
+                                    <img src="src/img/icons8-modifier.svg" class="testcolor">
+                                </a>
+                            </td>
+                            <td class="col-md-1 delete">
+                                <a class="tablebutton" onclick="window.open(\'./src/exec/delete_produits.php?id_delete='.($articleGestionnaire['id_produit']).'\',\'pop_up\',\'width=300, height=200, toolbar=no status=no\');">
+                                    <img src="src/img/poubelle.svg" class="testcolor">
+                                </a>
+                            </td>
+                        </tr>';
     
                         }
                     }

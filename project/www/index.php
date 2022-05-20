@@ -76,7 +76,9 @@
             <?php } else { ?>
                 <a id="btt_conn" class="conn">Connexion</a>
             <?php } ?>
+            <?php if(!$isConnected) { ?>
             <a id="insc" href="./index.php?ind=insc">Inscription</a>
+            <?php } ?>
             <?php if($isConnected) { ?>
             <a id="backOff" href="sgd-admin/index.php">Back-Office</a>
             <?php } ?>
@@ -100,24 +102,21 @@
     </header>
     <?php
 
-        
-
-            if ($_GET['ind'] == 'acc') {
-                include './src/pages/acc.php';
-            } elseif ($_GET['ind'] == 'cat'){
-                include './src/pages/cat.php';
-            } elseif ($_GET['ind'] == 'msg'){
-                include './src/pages/messages.php';
-            } elseif ($_GET['ind'] == 'insc'){
-                include './src/pages/inscription.php';
-            } elseif ($_GET['ind'] == 'desc'){
-                include './src/pages/descriptif.php';
-            } elseif ($_GET['ind'] == 'mmdp'){
-                include './src/pages/modif_mdp.php';
-            }
-
-        
-
+        if ($_GET['ind'] == 'acc') {
+            include './src/pages/acc.php';
+        } elseif ($_GET['ind'] == 'cat'){
+            include './src/pages/cat.php';
+        } elseif ($_GET['ind'] == 'msg'){
+            include './src/pages/messages.php';
+        } elseif ($_GET['ind'] == 'insc'){
+            include './src/pages/inscription.php';
+        } elseif ($_GET['ind'] == 'mmdp'){
+            include './src/pages/modif_mdp.php';
+        } elseif ($_GET['ind'] == 'info') {
+            include './src/pages/info.php';
+        } else {
+            include './src/pages/acc.php';
+        }
 
     ?>
     <footer>
@@ -129,9 +128,9 @@
 
         <ul>
             <li>Entreprise</li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Mentions légales</a></li>
-            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="./index.php?ind=info&info=propos">À propos</a></li>
+            <li><a href="./index.php?ind=info&info=legales">Mentions légales</a></li>
+            <li><a href="./index.php?ind=info&info=politique">Politique de confidentialité</a></li>
         </ul>
         <h1> Springfield </h1>
         <div class="duffbeer">

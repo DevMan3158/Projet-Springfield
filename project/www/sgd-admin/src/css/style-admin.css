@@ -78,3 +78,24 @@ td:focus {
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+/***************************/
+/** version mobile 768px ***/
+/***************************/
+@media screen and (max-width: 768px) {
+    .none-email {
+        display: none;
+    }
+
+    /* class="none-column" */
+}
+
+/***************************/
+/** version mobile 463px ***/
+/***************************/
+@media screen and (max-width: 463px) {
+    .none-column {
+        display: none;
+    }
+    
+}

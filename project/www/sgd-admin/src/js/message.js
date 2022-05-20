@@ -131,6 +131,8 @@ function bt_find(e) {
     ) {
         /* si c'est bon, on recupere le tableau des valeurs de la liste des messages */
         if (response.split("[#json#]")[0] == "true") {
+            /* masquer les messages */
+            document.getElementById("msg").style.display = "none";
             /* recuperation du tableau avec la liste de message */
             let tabUser = JSON.parse(response.split("[#json#]")[1]);
             let i = 0;
@@ -153,6 +155,8 @@ function bt_find(e) {
             });
             /* activer le clique sur la liste */
             msg_create_click();
+            /* afficher lles messages, si elle n'est pas vide */
+            message_vide();
         } else {
             alert(response);
         }
@@ -315,3 +319,20 @@ document.querySelectorAll('.img_env_msg').forEach(element => {
 
 /* active le modal */
 modal();
+
+function message_vide() {
+    let nbmessage = 0;
+    document.getElementById("list-msg").querySelectorAll('li').forEach(element => {
+        nbmessage++;
+    });
+    if(nbmessage == 0) {
+        document.getElementById("msg").style.display = "none";
+        document.getElementById("no_list").style.display = "unset";
+    } else {
+        document.getElementById("msg").style.display = "grid";
+        document.getElementById("no_list").style.display = "none";
+    }
+}
+
+message_vide();
+
