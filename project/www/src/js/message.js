@@ -49,7 +49,7 @@ function validation(e) {
         document.getElementById("email").style.borderBottomColor = "red";
     }
     /* si le texte n'est pas bon, souligner en rouge */
-    if(!regexText.test(values.user_text)) {
+    if(!regexText.test(values.user_text.replaceAll("\n", ""))) {
         document.getElementById("user_text").style.borderBottomColor = "red";
     }
     /* si l'objet n'est pas bon, souligner en rouge */
@@ -78,7 +78,7 @@ function validation(e) {
         document.getElementById("objet").select();
         alert("Merci d'entrer un objet.");
     /* si le texte n'est pas valide, ce placer dessus */
-    } else if (!regexText.test(values.user_text)) {
+    } else if (!regexText.test(values.user_text.replaceAll("\n", ""))) {
         document.getElementById("user_text").focus();
         document.getElementById("user_text").select();
         alert("Le message n'est pas valide.");
