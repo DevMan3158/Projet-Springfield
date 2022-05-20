@@ -3,11 +3,32 @@
     include_once dirname(__FILE__) . '/../config/sgbd_config.php';
     $sgbd= connexion_sgbd();
 
+    $pg=1;
+    if (!empty($_GET['pg'])){
+        $pg=$_GET['pg'];
+    }
+    
+    // Requete pour contenue des pages
+    $start_pg = 10*($pg-1);
+    $articles = $sgbd->prepare('SELECT produits.id_produit, categorie.nom, photos.titre, photos.src, photos.alt 
+    FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
+    INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=:id_cat LIMIT '.$start_pg.',10');
+    $articles->execute([":id_cat"=>$_GET["cat"]]);
+    
 ?>
 
 <section>
+    <?php
 
-    <div class="grid">
+    if($articles->rowCount() >= 10){
+        echo'
+        <div class="grid">';
+
+    } else {
+        echo'
+        <div class="grid grid2">';
+    }
+    ?>
 
         <?php
 
@@ -37,39 +58,46 @@
 
                             // On dit que si on est sur une page, alors $pg récupere la page actuelle, sinon il est sur 0
 
-                            $pg=1;
-                            if (!empty($_GET['pg'])){
-                                $pg=$_GET['pg'];
-                            }
+
 
                             // Ici on affiche le contenue des pages (les produits) (5 par pages)
 
-                                        $start_pg = 10*($pg-1);
-                                        $articles = $sgbd->prepare('SELECT produits.id_produit, categorie.nom, photos.titre, photos.src, photos.alt 
-                                        FROM springfield.photos INNER JOIN springfield.produits ON produits.id_produit = photos.id_produit
-                                        INNER JOIN categorie ON produits.id_cat = categorie.id_cat WHERE categorie.id_cat=:id_cat LIMIT '.$start_pg.',10');
-                                        $articles->execute([":id_cat"=>$_GET["cat"]]);
-                                        
-                                        $resultat_articles = $articles->fetchAll((PDO::FETCH_ASSOC));
+                            
+                            $resultat_articles = $articles->fetchAll((PDO::FETCH_ASSOC));
 
 
                                     foreach ($resultat_articles as $article) {
 
                                         if($article['nom'] == "Personnages") {
-                                        echo    '<figure>
-                                                    <a href="./index.php?ind=desc&desc='.($article['id_produit']).'">
+                                            if($articles->rowCount() >= 10){
+                                                echo'
+                                                <figure>';
+                                        
+                                            } else {
+                                                echo'
+                                                <figure class="height">';
+                                            }
+                                        echo        '<a href="./index.php?ind=desc&desc='.($article['id_produit']).'">
                                                         <img class="contain" src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
                                                         <figcaption>' .($article['titre']). '</figcaption>
                                                     </a>
                                                 </figure>';
                                                 } else {
 
-                                                    echo '<figure>
-                                                    <a href="./index.php?ind=desc&desc='.($article['id_produit']).'">
-                                                        <img class="cover" src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
-                                                        <figcaption>' .($article['titre']). '</figcaption>
-                                                    </a>
-                                                </figure>';
+                                                        if($articles->rowCount() >= 10){
+                                                            echo'
+                                                            <figure>';
+                                                    
+                                                        } else {
+                                                            echo'
+                                                            <figure class="height">';
+                                                        }
+
+                                                    echo '  <a href="./index.php?ind=desc&desc='.($article['id_produit']).'">
+                                                                <img class="cover" src="data/img/'.($article['src']).'" alt="'.($article['alt']).'">
+                                                                <figcaption>' .($article['titre']). '</figcaption>
+                                                            </a>
+                                                        </figure>';
                                                 }
 
                                                 
