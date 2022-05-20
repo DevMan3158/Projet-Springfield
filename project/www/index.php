@@ -95,6 +95,10 @@
             include './src/pages/inscription.php';
         } elseif ($_GET['ind'] == 'mmdp'){
             include './src/pages/modif_mdp.php';
+        } elseif ($_GET['ind'] == 'info') {
+            include './src/pages/info.php';
+        } else {
+            include './src/pages/acc.php';
         }
 
     ?>
@@ -107,9 +111,9 @@
 
         <ul>
             <li>Entreprise</li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Mentions légales</a></li>
-            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="./index.php?ind=info&info=propos">À propos</a></li>
+            <li><a href="./index.php?ind=info&info=legales">Mentions légales</a></li>
+            <li><a href="./index.php?ind=info&info=politique">Politique de confidentialité</a></li>
         </ul>
         <h1> Springfield </h1>
         <div class="duffbeer">
