@@ -98,6 +98,13 @@
     text-align: right;
 }
 
+/* pas de message */
+#no_list {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+}
+
 /* ne pas afficher le nom du produit dans le message */
 #label_msg_produit, #msg_produit, #label_env_msg_produit, #env_msg_produit {
     display: none;
@@ -166,5 +173,36 @@
 
     #txt_mobile:checked ~ #msg .txt-msg {
         display: block;
+    }
+}
+
+/***************************/
+/** version mobile 460px ***/
+/***************************/
+@media screen and (max-width: 460px) {
+    .text-env #info {
+        background-color: #b1e6ff;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        padding: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .text-env #info img {
+        width: 50px;
+    }
+    
+    .text-env #info .img_env_msg {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        justify-self: center;
+    }
+    
+    .text-env #info .two-column {
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
 }
