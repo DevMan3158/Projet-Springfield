@@ -17,8 +17,16 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
                     if(!empty($_GET['id_delete'])){
                         $sgbd=connexion_sgbd();
-                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
-                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
+                        if($_SESSION['id_admin'] == 1) {
+                            $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
+                            $delete->execute(array(':id_produit'=>$_GET['id_delete']));
+                        } else if ($_SESSION['id_admin'] == 2) {
+                            $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit AND id_user=:id_user");
+                            $delete->execute(array(
+                                ':id_produit'=>$_GET['id_delete'],
+                                ':id_user'=>$_SESSION['id_user']
+                            ));
+                        }
                         header('location:index.php?ind=desc');
                     }
 
