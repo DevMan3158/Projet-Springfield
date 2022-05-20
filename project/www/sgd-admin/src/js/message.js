@@ -47,9 +47,13 @@ function load_msg(e) {
                 element.id = "img_rep_msg_"+values.id;
             });
 
+            /* verifier qu'on a un nom de produit */
+            display_name_produit(tabUser['nom']);
+
             /* affiche le message sur la fenetre */
             document.getElementById('msg_from').innerHTML = tabUser['Nom']+ " "+ tabUser['Prenom']+ " ("+ tabUser['Email']+ ").";
-            document.getElementById('msg_date').innerHTML = display_date(tabUser['date'])+".";
+            document.getElementById('msg_date').innerHTML = display_date(tabUser['date_msg'])+".";
+            document.getElementById('msg_produit').innerHTML = tabUser['nom']+".";
             document.getElementById('msg_obj').innerHTML = tabUser['Objet']+".";
             document.getElementById('msg_txt').innerHTML = tabUser['Message'];
 
@@ -58,10 +62,15 @@ function load_msg(e) {
             msg_default += "------------------------------------------------------------------\n";
             msg_default += "De : "+document.getElementById('msg_from').innerHTML+"\n";
             msg_default += "le : "+document.getElementById('msg_date').innerHTML+"\n";
+            /* si on a un nom de produit */
+            if(document.getElementById('env_msg_produit').style.display != "none") {
+                msg_default += "produit : "+document.getElementById('msg_produit').innerHTML+"\n";
+            }
             msg_default += "Objet : "+document.getElementById('msg_obj').innerHTML+"\n\n";
             msg_default += document.getElementById('msg_obj').innerHTML;
             document.getElementById('env_msg_from').innerHTML = document.getElementById('msg_from').innerHTML;
             document.getElementById('env_msg_date').innerHTML = document.getElementById('msg_date').innerHTML;
+            document.getElementById('env_msg_produit').innerHTML = document.getElementById('msg_produit').innerHTML;
             document.getElementById('env_msg_obj').innerHTML = document.getElementById('msg_obj').innerHTML;
             document.getElementById('env_msg_txt').innerHTML = msg_default;
 
@@ -88,6 +97,25 @@ function load_msg(e) {
 }
 
 /**
+ * Si le nom de produit est null, on ne l'affiche pas.
+ * 
+ * @param {string} name le nom du produit.
+ */
+function display_name_produit(name) {
+    if(name == undefined || name == "null" || name == "Null" || name == "NULL") {
+        document.getElementById('label_msg_produit').style.display = "none";
+        document.getElementById('msg_produit').style.display = "none";
+        document.getElementById('label_env_msg_produit').style.display = "none";
+        document.getElementById('env_msg_produit').style.display = "none";
+    } else {
+        document.getElementById('label_msg_produit').style.display = "unset";
+        document.getElementById('msg_produit').style.display = "unset";
+        document.getElementById('label_env_msg_produit').style.display = "unset";
+        document.getElementById('env_msg_produit').style.display = "unset";
+    }
+}
+
+/**
  * Les messages apres une recherche
  * 
  * @param {event} e evenement du javascript 
@@ -102,34 +130,38 @@ function bt_find(e) {
       response
     ) {
         /* si c'est bon, on recupere le tableau des valeurs de la liste des messages */
-      if (response.split("[#json#]")[0] == "true") {
-        /* recuperation du tableau avec la liste de message */
-        let tabUser = JSON.parse(response.split("[#json#]")[1]);
-        let i = 0;
-        /* remplir la liste des messages */
-        tabUser.forEach(valueLine => {
-            let img_no_lu = "enveloppe.svg";
-            let msg_no_lu = "display_msg_no_lu";
-            if(valueLine['lu'] == "1") {
-                img_no_lu = "document.svg";
-                msg_no_lu = "display_msg_lu";
-            }
-            let line = '<li class="list-group-item display_msg text-left '+
-                msg_no_lu+'" id="msg_'+valueLine['Id_msg']+'">';
-            line += '<img id="img_msg_'+valueLine['Id_msg']+
-                '" src="./src/img/'+img_no_lu+'" /> ';
-            line += valueLine['Objet'];
-            line += '</li>';
-            /* afficher sur la page */
-            document.getElementById("list-msg").innerHTML += line;
-        });
-        /* activer le clique sur la liste */
-        msg_create_click();
-      } else {
-        alert(response);
-      }
+        if (response.split("[#json#]")[0] == "true") {
+            /* masquer les messages */
+            document.getElementById("msg").style.display = "none";
+            /* recuperation du tableau avec la liste de message */
+            let tabUser = JSON.parse(response.split("[#json#]")[1]);
+            let i = 0;
+            /* remplir la liste des messages */
+            tabUser.forEach(valueLine => {
+                let img_no_lu = "enveloppe.svg";
+                let msg_no_lu = "display_msg_no_lu";
+                if(valueLine['lu'] == "1") {
+                    img_no_lu = "document.svg";
+                    msg_no_lu = "display_msg_lu";
+                }
+                let line = '<li class="list-group-item display_msg text-left '+
+                    msg_no_lu+'" id="msg_'+valueLine['Id_msg']+'">';
+                line += '<img id="img_msg_'+valueLine['Id_msg']+
+                    '" src="./src/img/'+img_no_lu+'" /> ';
+                line += valueLine['Objet'];
+                line += '</li>';
+                /* afficher sur la page */
+                document.getElementById("list-msg").innerHTML += line;
+            });
+            /* activer le clique sur la liste */
+            msg_create_click();
+            /* afficher lles messages, si elle n'est pas vide */
+            message_vide();
+        } else {
+            alert(response);
+        }
     });
-  }
+}
 
 /**
  * Creation du clique sur la liste de message
@@ -160,12 +192,15 @@ function init_values(e) {
     document.getElementById('msg_from').innerHTML = "";
     document.getElementById('msg_date').innerHTML = "";
     document.getElementById('msg_obj').innerHTML = "";
+    document.getElementById('msg_produit').innerHTML = "";
     document.getElementById('env_msg_from').innerHTML = "";
     document.getElementById('env_msg_date').innerHTML = "";
     document.getElementById('env_msg_obj').innerHTML = "";
+    document.getElementById('env_msg_produit').innerHTML = "";
     document.getElementById('env_msg_txt').innerHTML = "";
     document.getElementById('msg_txt').innerHTML = "";
     document.getElementById('recherche').value = "";
+    display_name_produit(undefined);
     msg_default = "";
     /* renomme les id de la page message par les valeurs par defaut */
     document.querySelectorAll('.img_del_msg').forEach(element => {
@@ -284,3 +319,20 @@ document.querySelectorAll('.img_env_msg').forEach(element => {
 
 /* active le modal */
 modal();
+
+function message_vide() {
+    let nbmessage = 0;
+    document.getElementById("list-msg").querySelectorAll('li').forEach(element => {
+        nbmessage++;
+    });
+    if(nbmessage == 0) {
+        document.getElementById("msg").style.display = "none";
+        document.getElementById("no_list").style.display = "unset";
+    } else {
+        document.getElementById("msg").style.display = "grid";
+        document.getElementById("no_list").style.display = "none";
+    }
+}
+
+message_vide();
+
