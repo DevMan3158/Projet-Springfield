@@ -9,9 +9,18 @@ session_start();
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
-array_key_exists('email', $_SESSION)) {
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
 
 
+                    // Supression d'un produit
+
+
+                    if(!empty($_GET['id_delete'])){
+                        $sgbd=connexion_sgbd();
+                        $delete = $sgbd->prepare(" DELETE FROM produits WHERE id_produit=:id_produit");
+                        $delete->execute(array(':id_produit'=>$_GET['id_delete']));
+                        header('location:index.php?ind=desc');
+                    }
 
     
 ?>
@@ -47,9 +56,10 @@ array_key_exists('email', $_SESSION)) {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-admin.css">';
             }
             elseif ($_GET['ind'] == 'message') {
+                echo '<link rel="stylesheet" href="./../src/css/popup.css" />';
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-message.css">';
             }
-            elseif ($_GET['ind'] == 'produit') {
+            elseif ($_GET['ind'] == 'desc') {
                 echo '<link rel="stylesheet" href="../sgd-admin/src/css/style-produit.css">';
             }
             elseif ($_GET['ind'] == 'utilisateur') {
@@ -77,6 +87,9 @@ array_key_exists('email', $_SESSION)) {
                 <img src="./src/img/burger_icon.svg" alt="menu" />
             </button>
             <div class="dropdown-menu dropdown-menu-right bg-simpson">
+                <a class="dropdown-item" href="./../index.php">
+                    <img class="img_del" src="src/img/home-page.svg">&emsp;Page web
+                </a>
                 <?php if($_SESSION['id_admin'] == 1) { ?>
                     <a class="dropdown-item" href="./index.php?ind=admin">
                         <img class="img_del" src="src/img/star.svg">&emsp;Admin
@@ -93,7 +106,7 @@ array_key_exists('email', $_SESSION)) {
                 <a class="dropdown-item" href="./index.php?ind=utilisateur">
                     <img class="img_del" src="src/img/utilisateur.svg">&emsp;Utilisateurs
                 </a>
-                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php">
+                <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php?admin=dec">
                     <img class="img_del" src="src/img/deconnexion.svg">&emsp;Déconnexion
                 </a>
             </div>
@@ -120,7 +133,7 @@ elseif ($_GET['ind'] == 'admin') {
     include './src/pages/admin.php';
 }
 elseif ($_GET['ind'] == 'desc') {
-    include './src/pages/descriptif.php';
+    include './src/pages/produit.php';
 }
  elseif ($_GET['ind'] == 'utilisateur') {
     include './src/pages/utilisateur.php';
@@ -155,6 +168,7 @@ elseif ($_GET['ind'] == 'desc') {
 <?php
 
 } else { ?>
+    <script src="./../src/js/popup.js"></script>
     <script src="./../src/js/header_connexion.js"></script>
     <script type="text/javascript">
         header_connexion(event);

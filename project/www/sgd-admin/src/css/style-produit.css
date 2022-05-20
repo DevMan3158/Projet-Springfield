@@ -3,8 +3,8 @@ input[type="file"] {
 }
 
 #add-img {
-    width: 90px;
-    height: 90px;
+    width: 400px;
+    height: 300px;
 }
 
 h1{
@@ -47,4 +47,84 @@ input,textarea,select{
 figure div{
     background-color: white;
     border-radius: 5px;
+}
+
+.tablebutton{
+    background-color: rgb(255,255,255,0);
+    border: none;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.testcolor{
+    filter:drop-shadow(16px 16px 20px white) invert(100%);
+    transition: 0.2s;
+}
+
+.edit, .delete{
+    transition: 0.2s;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.tablebutton img:hover{
+    transform: scale(1.2);
+}
+
+.editor_html_bbcode {
+ height: unset !important;
+}
+
+.phototableau{
+    width: 220px;
+    height: 150px;
+}
+
+.contain{
+    object-fit: contain;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@media all and (max-width: 1000px) {
+
+        form{
+            grid-gap:0;
+            padding: 0;
+        }
+
+        .none{
+            display: none;
+        }
+
+        .container{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    
+}
+
+@media all and (max-width: 470px) {
+
+    form{
+        grid-gap:0;
+        padding: 0;
+    }
+
+    .none{
+        display: none;
+    }
+
+    .none2{
+        display: none;
+    }
+
 }

@@ -1,0 +1,208 @@
+/*------------------------*/
+/* conteneur des messages */
+/*------------------------*/
+#msg {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 684px;
+    max-height: 684px;
+    box-sizing: border-box;
+}
+
+/*-----------------------*/
+/* la liste des messages */
+/*-----------------------*/
+.list-mgs {
+    width: 200px;
+    min-height: 684px;
+    max-height: 684px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+#msg li img {
+    width: 20px;
+}
+
+#msg .display_msg_lu {
+    border-left: #01ff01 5px solid;
+}
+
+#msg .display_msg_no_lu {
+    border-left: red 5px solid;
+}
+
+#msg .display_msg:hover {
+    background-color: #FFF500;
+}
+
+/*-------------------------*/
+/* Le conteneur du message */
+/*-------------------------*/
+.txt-msg {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+/*----------------------------*/
+/* information sur le message */
+/*----------------------------*/
+.txt-msg #info {
+    background-color: #b1e6ff;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.txt-msg #info img {
+    width: 50px;
+}
+
+.txt-msg #info .img_del_msg {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    /*grid-row-end: 5;*/
+}
+
+.txt-msg #info .img_rep_msg {
+    /*display: none;*/
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 6;
+}
+
+.txt-msg #info .img_env_msg {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.txt-msg #info .two-column {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.txt-msg #info label {
+    margin-left : 5px;
+}
+
+.txt-msg #info .type {
+    text-align: right;
+}
+
+/* pas de message */
+#no_list {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ne pas afficher le nom du produit dans le message */
+#label_msg_produit, #msg_produit, #label_env_msg_produit, #env_msg_produit {
+    display: none;
+}
+
+/* le message dans le modal */
+.modal textarea {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    margin-bottom: -7px;
+    border: 1px solid #1c87c9;
+    outline: none;
+}
+
+/*--------------------*/
+/* Affiche le message */
+/*--------------------*/
+#msg_txt {
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+/*------------------------*/
+/* pour la version mobile */
+/*------------------------*/
+/* desactiver si ce n'est pas une version mobile */
+#return-list {
+    display: none;
+    border: none;
+    background-color: #b1e6ff;
+}
+
+#txt_mobile {
+    display: none;
+}
+
+/***************************/
+/** version mobile 500px ***/
+/***************************/
+@media screen and (max-width: 500px) {
+    #msg {
+        grid-template-columns: auto;
+    }
+
+    .list-mgs {
+        width: 100%;
+    }
+
+    /* afficher la liste par defaut */
+    #return-list {
+        display: unset;
+    }
+
+    #txt_mobile ~ #msg #list-msg {
+        display: block;
+    }
+
+    #txt_mobile ~ #msg .txt-msg {
+        display: none;
+    }
+
+    #txt_mobile:checked ~ #msg #list-msg {
+        display: none;
+    }
+
+    #txt_mobile:checked ~ #msg .txt-msg {
+        display: block;
+    }
+}
+
+/***************************/
+/** version mobile 460px ***/
+/***************************/
+@media screen and (max-width: 460px) {
+    .text-env #info {
+        background-color: #b1e6ff;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        padding: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .text-env #info img {
+        width: 50px;
+    }
+    
+    .text-env #info .img_env_msg {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        justify-self: center;
+    }
+    
+    .text-env #info .two-column {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}

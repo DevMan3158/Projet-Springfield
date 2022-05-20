@@ -1,10 +1,45 @@
+/******************/
+/** pour la page **/
+/******************/
+h3{
+  font-size: 1.5em;
+  margin: auto;
+  display: block;
+  position: relative;
+  grid-area: title;
+  padding: 0 20px;
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: none;
+}
+
+h3:after{
+  content: "";
+  background-color: black;
+  width: 50px;
+  height: 2px;
+  position: absolute;
+  left: -50px;
+  bottom: 15px;
+}
+
+h3:before{
+  content: "";
+  background-color: black;
+  width: 50px;
+  height: 2px;
+  position: absolute;
+  right: -50px;
+  bottom: 15px;
+}
+
 /***********************/
 /** css all component **/
 /***********************/
 /** buttons **/
-.button_orange,
-.button_orange:hover,
-.button_orange:link {
+.button_bleu,
+.button_bleu:hover,
+.button_bleu:link {
   display: inline-block;
   background-color: #8BC7E5;
   border: none;
@@ -19,10 +54,35 @@
   font-weight: bold;
 }
 
-.button_orange:hover {
+.button_bleu:hover {
     background-color: #7bb0c9;
     box-shadow: 0px 20px 35px 6px rgba(123, 176, 201, 0.16);
   transform: scale(1.05);
+  cursor: pointer;
+}
+
+.button_gris,
+.button_gris:hover,
+.button_gris:link {
+  display: inline-block;
+  background-color: #424F46;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  box-shadow: 0px 20px 35px 6px rgba(66, 79, 70, 0.16);
+  color: white;
+  border: 0.1px solid rgb(0, 0, 0);
+  font-family: "poppins-regular";
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.button_gris:hover {
+    background-color: #444444;
+    box-shadow: 0px 20px 35px 6px rgba(68, 68, 68, 0.16);
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 button img {
@@ -30,6 +90,16 @@ button img {
   min-height: 15px;
   max-width: 15px;
   max-height: 15px;
+}
+
+.button {
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.add-marge-btm-6 {
+  margin-bottom: 15px;
 }
 
 /** images **/
@@ -58,6 +128,10 @@ form p {
   text-align: center;
 }
 
+#section_contact h3 {
+  display: inline;
+}
+
 #section_img_deco {
   position: relative;
   float: right;
@@ -82,13 +156,13 @@ form p {
 #form_contact {
   background-color: white;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   /* justify-content: center; */
   align-items: center;
   /* vertical-align: middle; */
   margin: auto;
   float: none;
-  margin-top: -30px;
+  margin-top: 30px;
   width: 1020px;
   border-radius: 20px;
   box-shadow: 2px 14px 14px #f3f3f3;
@@ -171,6 +245,7 @@ form p {
 }
 
 #form_contact input:focus,
+#form_contact .input input:focus,
 #form_contact textarea:focus {
   outline: none;
   border-bottom: 0.1px solid rgb(0, 119, 255);
@@ -202,6 +277,20 @@ textarea {
     resize: none;
 }
 
+.pass-fig {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pass-fig img {
+  width: 25px;
+  margin-left: 14px;
+  margin-right: 5px;
+  object-fit: unset;
+}
+
 /**********************/
 /** version tablette **/
 /**********************/
@@ -229,6 +318,10 @@ textarea {
       margin: unset;
       padding: unset;
     }
+
+    #form_image img {
+      display: none;
+    }
   
     #section_contact_info {
       margin-top: 91px;
@@ -245,6 +338,7 @@ textarea {
     /*--------------*/
     /** formulaire **/
     #form_contact {
+      grid-template-columns: 1fr;
       width: 100%;
       box-shadow: none;
     }

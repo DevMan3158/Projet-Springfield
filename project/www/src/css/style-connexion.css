@@ -6,6 +6,10 @@
     font-style: normal;
 }
 
+/**************/
+/** css page **/
+/**************/
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,46 +23,108 @@ body {
     min-width: 320px;
 }
 
+/* titre */
+h3{
+    font-size: 1.5em;
+    margin: auto;
+    display: block;
+    position: relative;
+    grid-area: title;
+    padding: 15px 20px;
+    z-index: 2;
+    max-width: 320px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+h3:after{
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    left: -50px;
+    bottom: 15px;
+}
+
+h3:before{
+    content: "";
+    background-color: black;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    right: -50px;
+    bottom: 15px;
+}
+
+/* section de connexion */
 #connexion {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
+    overflow: none;
 }
 
 /** textes pour la connexion **/
-#connexion label, #connexion input, #connexion input:hover, 
-#connexion input:focus, #connexion input:default {
-    font-family: "simpsonfont";
+#connexion label, #connexion .input, #connexion .input:hover, 
+#connexion .input:focus, #connexion .input:default {
+    font-family: "poppins-regular";
     font-weight: bold;
     text-align: center;
     outline: none;
+    border: none;
     font-size: 25px;
     padding: 5px;
-    width: 310px;
+    width: 300px;
 }
 
-#connexion input, #connexion input:hover, #connexion input:focus {
+#connexion label {
+    font-family: "simpsonfont";
+} 
+
+/** textes pour la connexion **/
+#connexion .input, #connexion .input:hover, 
+#connexion .input:focus, #connexion .input:default {
+    background-color: white;
+    border: black 1px solid;
+}
+
+#connexion .input input, #connexion .input:hover input, #connexion .input:focus input, 
+#connexion .input:default input, #connexion .input input:hover, #connexion .input input:focus, 
+#connexion .input input:default {
+    font-family: "poppins-regular";
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    outline: none;
+    border: none;
+    width: 244px;
+}
+
+#connexion .input, #connexion .input:hover, #connexion .input:focus {
     border-radius: 30px;
 }
 
-#connexion input:hover {
+#connexion .input:hover {
     transform: scale(1.03);
 }
 
-#connexion input:focus {
-    color: #D1B271;
+#connexion .input:focus, #connexion .input input:focus {
+    color: #b1965b;
 }
 
 #connexion label {
     padding: 10px;
 }
 
-#connexion input, #connexion input:hover, #connexion input:focus {
+#connexion .input, #connexion .input:hover, #connexion .input:focus {
     outline: none;
 }
 
+/* bouton de connexion */
 #connexion a {
     text-decoration: none;
     padding: 10px;
@@ -70,9 +136,14 @@ body {
     font-family: "simpsonfont";
     font-size: 25px;
     padding: 5px 20px;
-    margin: 0 5px;
+    margin: 15px 5px;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
 }
 
 .button_jaune {
@@ -82,4 +153,24 @@ body {
 .button_gris {
     background-color: #424F46;
     color: white;
+}
+
+/* pour la partie du mot de passe */
+.pass-fig {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* l'image d'affichage du mot de passe */
+.pass-fig img {
+  width: 25px;
+  margin-left: 14px;
+  margin-right: 5px;
+}
+
+/* le texte dans le modal */
+#modal-form {
+    font-family: "poppins-regular";
 }

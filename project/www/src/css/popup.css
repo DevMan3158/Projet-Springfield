@@ -1,0 +1,108 @@
+/*---------------------*/
+/* le contenu du modal */
+/*---------------------*/
+/* assombrir le fond de la page */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 8;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  font: unset;
+}
+/* ouvrir une fenetre de modal */
+.modal .modal-content {
+  margin: 50px auto;
+  border: 1px solid #999;
+  width: 60%;
+}
+/* le texte dans le modal */
+.modal h2,
+.modal p {
+  margin: 0 0 20px;
+  font-weight: 400;
+  color: #999;
+}
+.modal span {
+  color: #666;
+  display: block;
+  padding: 0 0 5px;
+}
+/* le formulaire dans le modal */
+.modal form {
+  padding: 25px;
+  margin: 25px;
+  box-shadow: 0 2px 5px #f5f5f5;
+  background: #eee;
+}
+/* l'editeur de texte dans le modal */
+.modal input,
+.modal textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #1c87c9;
+  outline: none;
+}
+/* bouton de fermeture du modal */
+.modal .close {
+  color: white !important;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: rgb(214, 0, 0);
+  border: rgb(109, 0, 0) 1px solid;
+  padding: 0px 10px !important;
+  border-radius: 20px;
+  margin-right: -5px;
+  margin-top: -35px;
+}
+.modal .close:hover,
+.modal .close:focus {
+    color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* bouton dans le formulaire */
+.modal .contact-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #1c87c9;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.modal button:hover {
+  background: #2371a0;
+}
+/* bouton de classe button dans le formulaire du modal */
+.modal button.button {
+  background: none;
+  border-top: none;
+  outline: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: #02274a 1px solid;
+  padding: 0 0 3px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+.modal button.button:hover {
+  border-bottom: #a99567 1px solid;
+  color: #a99567;
+}
+
+/***************************/
+/** version mobile 655px ***/
+/***************************/
+@media screen and (max-width: 655px) {
+    .modal .modal-content {
+        width: 90%;
+    }
+}

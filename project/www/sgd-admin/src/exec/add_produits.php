@@ -1,5 +1,14 @@
 <?php
 session_start();
+
+if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
+array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
+array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 
+&& ($_SESSION['id_admin'] == 1 || $_SESSION['id_admin'] == 2)) {
+
+
+
 include_once dirname(__FILE__) . '/../../../src/fonctions/connexion_sgbd.php';
 $sgbd= connexion_sgbd();
 
@@ -11,7 +20,7 @@ function validation_donnees($donnees){
 }
 
 $nom = validation_donnees($_POST["nom"]);
-$cat = validation_donnees($_POST["catégorie"]);
+$cat = validation_donnees($_POST["cat"]);
 $lieu = validation_donnees($_POST["lieu"]);
 $message = validation_donnees($_POST["story"]);
 
@@ -25,46 +34,32 @@ $sth->bindParam(':description',$message);
 $sth->bindParam(':id_user',$_SESSION["id_user"]);
 $sth->execute();
 $id_produit=$sgbd->lastInsertID();
-echo $id_produit;
-/* Pour les modifications, Rajouter un if else ( SI la page existe alors la modifier SINON la créer ) */
-/* Pour rajouter la photos, créer une autre requetes sql INSERT aec le $id_produit */
+header('location:../../index.php?ind=desc');
 
 
-
+$lieu = validation_donnees($_POST["lieu"]);
+$message = validation_donnees($_POST["story"]);
 
 if(!empty($_FILES) && array_key_exists('file', $_FILES) && !empty($_FILES['file']['name'])) {
-    foreach ($_FILES["file"]["name"] as $key => $name) {
-        $nomphoto="Une photo de ".$nom.".";
-        $sth = $sgbd->prepare("
-        INSERT INTO photos (id_produit, src, alt, titre)
-        VALUES (:id, :src, :alt, :titre)");
-        $sth->bindParam(':id',$id_produit);
-        $sth->bindParam(':src',$name);
-        $sth->bindParam(':alt',$nomphoto);
-        $sth->bindParam(':titre',$nom);
-        $sth->execute();
-        if(move_uploaded_file($_FILES['file']['tmp_name'][$key], "./../../../data/img/".$name)) {
-            echo "Le fichier ".$name." a été sauvegardé.<br />";
-        } else {
-            echo "Erreur lors du téléchargement du fichier ".$name.".";
-        }
+    $name = validation_donnees($_FILES['file']['name']);
+    $nomphoto= validation_donnees("Une photo de ".$nom.".");
+    $sth = $sgbd->prepare("
+    INSERT INTO photos (id_produit, src, alt, titre)
+    VALUES (:id, :src, :alt, :titre)");
+    $sth->bindParam(':id',($id_produit));
+    $sth->bindParam(':src',($name));
+    $sth->bindParam(':alt',($nomphoto));
+    $sth->bindParam(':titre',($nom));
+    $sth->execute();
+    if(move_uploaded_file($_FILES['file']['tmp_name'], "./../../../data/img/".$name)) {
+        echo ' "Le fichier ".$name." a été sauvegardé.<br />"; ';
+    } else {
+        echo "Erreur lors du téléchargement du fichier ".$name.".";
     }
 } else {
-    echo "Vous devez envoyer un fichier.";
+echo "Vous devez envoyer un fichier.";
 }
 
+} else { echo 'Acces interdit';} ?>
 
-//On renvoie l'utilisateur vers la page de remerciement
-/*header("location:produit.php");*/
-
-
-
-
-
-
-
-
-
-
-?>
 
