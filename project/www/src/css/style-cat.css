@@ -72,6 +72,26 @@ figure:nth-of-type(5) {
     grid-area: fig5;
 }
 
+figure:nth-of-type(6) {
+    grid-area: fig6;
+}
+
+figure:nth-of-type(7) {
+    grid-area: fig7;
+}
+
+figure:nth-of-type(8) {
+    grid-area: fig8;
+}
+
+figure:nth-of-type(9) {
+    grid-area: fig9;
+}
+
+figure:nth-of-type(10) {
+    grid-area: fig10;
+}
+
 figcaption {
     margin: auto;
     color: #fff500;
@@ -91,17 +111,36 @@ figure {
     width: 100%;
     text-align: center;
     position: relative;
-    border: solid black 1px;
+    border: solid black 2px;
+    transition: 0.2s;
+}
+
+figure:hover{
+    transform: scale(1.02);
+    border: solid gold 2px;
+}
+
+figure:hover figcaption{
+    color: black;    text-shadow: gold 1px 1px 1px;
+    -webkit-text-stroke: 0.1px gold;
 }
 
 .grid {
     display: grid;
+    grid-template-rows: auto 150px 150px 150px 150px 150px 150px 150px 150px 150px 150px;
     grid-template-areas:
-        "title title title title title"
-        "fig1 fig1 fig1 fig1 fig1"
-        "fig2 fig2 fig2 fig4 fig4"
-        "fig5 fig5 fig3 fig3 fig3";
-    grid-gap: 20px;
+    "title"
+    "fig1"
+    "fig2"
+    "fig3"
+    "fig4"
+    "fig5"
+    "fig6"
+    "fig7"
+    "fig8"
+    "fig9"
+    "fig10";
+    grid-gap: 30px;
 }
 
 /* FLECHE */
@@ -183,30 +222,73 @@ figure {
 
 .pages:last-of-type {
     left: 60%;
+}    
+
+.contain {
+    object-fit: contain;
+}
+
+.cover {
+    object-fit: cover;
 }
 
 @media all and (min-width: 768px) {
     .grid {
+        grid-template-rows: auto 200px 200px 200px 200px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas:
-            "title title title"
-            "fig1 fig1 fig1 fig2 fig2"
-            "fig3 fig3 fig4 fig4 fig4"
-            "fig5 fig5 fig5 fig6 fig6";
+        "title title title title title"
+        "fig1 fig2 fig2 fig4 fig4"
+        "fig1 fig3 fig3 fig3 fig5"
+        "fig8 fig7 fig7 fig7 fig7"
+        "fig8 fig6 fig9 fig10 fig10"
+        "fig8 fig6 fig9 fig10 fig10";
+        grid-gap: 20px;
     }
 
     figure {
-        height: 600px;
+        
     }
 
-    section img {
-        object-fit: contain;
-    }
+
 
     section {
         padding: 50px;
     }
 
     figcaption {
-        font-size: 2em;
+        font-size: 1em;
+        width: 100px;
+        margin-left: -50px;
     }
+}
+
+
+@media all and (min-width: 1260px) {
+
+    .grid {
+        grid-template-rows: auto 200px 200px 200px 200px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "title title title title title"
+        "fig1 fig2 fig2 fig2 fig5"
+        "fig1 fig3 fig4 fig4 fig5"
+        "fig8 fig3 fig7 fig7 fig7"
+        "fig8 fig6 fig9 fig10 fig10";
+        grid-gap: 30px;
+    }
+    
+
+    section{
+        padding: 100px 120px;
+    }
+
+    figcaption{
+        font-size: 1.2em;
+        width:200px;
+        margin-left: -100px;
+    }
+
+
+
 }
