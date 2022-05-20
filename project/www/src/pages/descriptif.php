@@ -20,8 +20,17 @@ $sgbd= connexion_sgbd();
 <?php 
  /* initialise la variable $articles_lbp, pour faire requêtes SQL */
 
-     $articles_lbp = $sgbd->prepare('SELECT produits.nom FROM springfield.produits WHERE produits.id_produit=:id_produit');
+     $articles_lbp = $sgbd->prepare('SELECT categorie.nom, produits.id_cat FROM springfield.categorie INNER JOIN springfield.produits ON categorie.id_cat = produits.id_cat WHERE produits.id_produit=:id_produit ');
 
+
+     //SELECT categorie.nom FROM springfield.categorie WHERE categorie.id_cat=:id_cat
+     //SELECT categorie.nom, produits.id_produit FROM springfield.categorie 
+     //INNER JOIN springfield.produits ON produits.id_produit = produits.id_produit WHERE produits.id_produit=:id_produit LIMIT 1
+
+
+     //SELECT `produits`.`id_cat`, `categorie`.`id_cat`FROM `produits` LEFT JOIN `categorie` ON `produits`.`id_cat` = `categorie`.`id_cat`; marche pas
+    // SELECT `categorie`.`id_cat`, `produits`.`id_cat`, `produits`.`id_produit` FROM `categorie` LEFT JOIN `produits` ON `categorie`.`id_cat` = `produits`.`id_cat`  marche pas 
+     
 
                         $articles_lbp->execute([":id_produit"=>$_GET["desc"]]);
 

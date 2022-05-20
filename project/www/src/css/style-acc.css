@@ -46,6 +46,7 @@ figure::after {
     margin-left: -100px;
 }
 
+
 .contain {
     object-fit: contain;
 }
