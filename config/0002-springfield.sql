@@ -27,7 +27,7 @@ USE `springfield`;
 -- Déchargement des données de la table `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nom`) VALUES
+INSERT INTO `admin` (`id_admin`, `nom_admin`) VALUES
 (1, 'Administrateur'),
 (2, 'Gestionnaire'),
 (3, 'Utilisateur'),
