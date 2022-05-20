@@ -38,9 +38,9 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION[
         $table .= "<tr id=\"admin_".$valueLine['id_user']."\">";
         $table .= "<td id=\"td_admin_".$i."_1\" class=\"td_del\"><img class=\"img_del\" src=\"src/img/poubelle.svg\"></td>";
         $table .= "<td id=\"td_admin_".$i."_2\" class=\"tab_input\">".$valueLine['login']."</td>";
-        $table .= "<td id=\"td_admin_".$i."_3\" class=\"tab_input\">".$valueLine['nom']."</td>";
-        $table .= "<td id=\"td_admin_".$i."_4\" class=\"tab_input\">".$valueLine['prenom']."</td>";
-        $table .= "<td id=\"td_admin_".$i."_5\" class=\"tab_input\">".$valueLine['email']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_3\" class=\"none-column tab_input\">".$valueLine['nom']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_4\" class=\"none-column tab_input\">".$valueLine['prenom']."</td>";
+        $table .= "<td id=\"td_admin_".$i."_5\" class=\"none-email tab_input\">".$valueLine['email']."</td>";
         $table .= "<td id=\"td_admin_".$i."_6_".$valueLine['id_admin']."\" class=\"tab_select\">".$valueLine['nom_admin']."</td>";
         $table .= "</tr>";
         /* on augmente i pour l'ajout d'une nouvelle ligne */
