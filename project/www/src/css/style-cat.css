@@ -232,6 +232,19 @@ figure:hover figcaption{
     object-fit: cover;
 }
 
+.solo {
+    left: 50% !important;
+}
+
+.grid2{
+    grid-template-rows: unset !important;
+}
+
+.height{
+    height: 200px;
+}
+
+
 @media all and (min-width: 768px) {
     .grid {
         grid-template-rows: auto 200px 200px 200px 200px;
@@ -246,9 +259,6 @@ figure:hover figcaption{
         grid-gap: 20px;
     }
 
-    figure {
-        
-    }
 
 
 
