@@ -21,7 +21,7 @@ if(!empty($_POST) && array_key_exists('name', $_POST) && array_key_exists('first
         /* verifier la validiter des informations */
         if(preg_match("/^.{3,40}$/", $_POST['name']) && preg_match("/^.{3,40}$/", $_POST['first_name']) 
             && preg_match($regexEmailValide,$_POST['email']) && preg_match("/^.{3,255}$/",$_POST['objet']) 
-            && preg_match("/^.{8,}$/",$_POST['user_text'])) {
+            && preg_match("/^.{8,}$/",str_replace("\n", "", $_POST['user_text']))) {
             /* se proteger des erreurs de requete sql (pour ne pas afficher l'erreur a l'ecran) */
             try {
                 /* protege les commits du sql, pour eviter des erreurs d'envois */
