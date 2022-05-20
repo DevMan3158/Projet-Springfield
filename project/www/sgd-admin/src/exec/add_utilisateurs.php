@@ -39,16 +39,50 @@ try{
    $mdp = $_POST["mdp"];
    $cfn_mdp = $_POST["cfn_mdp"];
 
+    /*connexion à la SGBD Springfield par la fonction "connexion_sgbd"*/
+    $dbco = connexion_sgbd();
+    $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    /* pour verifier la validiter des informations (eviter les doublons ou probleme de mot de passe) */
+    $valide = true;
+
+    /* si c'est valide, on continu la verification */
+    if($valide) {
+        /* on verifit que le login n'a pas deja ete utilise par une autre personne */
+        $res = $dbco->prepare("SELECT * FROM utilisateur WHERE login=:login AND id_user!=:id_user");
+        $res->execute([
+            ":login" => htmlspecialchars(stripslashes(trim($_POST['login']))),
+            ':id_user'=>$_SESSION["id_user"]
+        ]);
+        /* si le login est deja utilise */
+        if($res->rowCount() > 0) {
+            echo "le login est déja utilisé, merci d'en prendre un autre.";
+            $valide = false;
+        }
+    }
+    /* si c'est valide, on continu la verification */
+    if($valide) {
+        /* on verifit que l'email n'a pas deja ete utilise par une autre personne */
+        $res = $dbco->prepare("SELECT * FROM utilisateur WHERE email=:email AND id_user!=:id_user");
+        $res->execute([
+            ":email" => htmlspecialchars(stripslashes(trim($_POST['email']))),
+            ':id_user'=>$_SESSION["id_user"]
+        ]);
+        /* si l'email est deja utilise */
+        if($res->rowCount() > 0) {
+            echo "Cette adresse email fait déjà parti des inscris.";
+            $valide = false;
+        }
+    }
+
+    if($valide) {
 
    /*test l'égalité des champs du formulaire pour le mot de passe et la répétition
      Si la condition est TRUE, crypt le mdp avec la fonction "password" SINON envoie un echo 
      dans add_utilisateur 
    */
         if( $_POST["mdp"] == $_POST["cfn_mdp"]){
-            /*connexion à la SGBD Springfield par la fonction "connexion_sgbd"*/
-              $dbco = connexion_sgbd();
-              $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
               if (!empty($_POST["mdp"]))
               {
            
@@ -94,6 +128,8 @@ try{
               /* header("Location:../../index.php?ind=utilisateur");*/
             
             }
+
+    }
         
         /* test affichage
         /*echo '<br><br>P:' .$prenom.'<br>';
