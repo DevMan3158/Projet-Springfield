@@ -43,11 +43,16 @@
         } elseif ($_GET['ind'] == 'insc'){
             echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-inscription.css">';
-        } elseif ($_GET['ind'] == 'desc'){
+
+        } elseif ($_GET['ind'] == 'desc'){       
             echo '<link rel="stylesheet" href="./src/css/style-descriptif.css">';
+            
         } elseif ($_GET['ind'] == 'mmdp'){
             echo '<link rel="stylesheet" href="./src/css/formulaire.css">';
             echo '<link rel="stylesheet" href="./src/css/style-modif-mdp.css">';
+        } 
+            elseif ($_GET['ind'] == 'info'){       
+            echo '<link rel="stylesheet" href="./src/css/style-entreprise.css">';
         }
 
     ?>

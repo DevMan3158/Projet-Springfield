@@ -1,0 +1,37 @@
+section
+{ 
+
+   font-family: Arial, Helvetica, sans-serif;
+   padding: 50px;
+   transform: 1s;
+}
+
+
+
+h2, h3, p 
+{
+   font-family: Arial, Helvetica, sans-serif;
+   text-align: center;
+   margin-top: 20px;
+   word-spacing: 1%;
+}
+
+strong
+{
+   font-family: Arial, Helvetica, sans-serif; 
+}
+
+
+
+@media (max-width: 500px) {
+   section
+{ 
+
+   padding: 20px;
+   transform: 1s;
+}
+
+
+
+
+}
