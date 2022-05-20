@@ -11,6 +11,7 @@
 </section>
 <section class="container text-center">
   <input type="checkbox" id="txt_mobile" />
+  <p id="no_list"><br /><br /><br />Vous n'avez pas de message pour le moment.</p>
   <div id="msg">
     <ul id="list-msg" class="list-group list-mgs">
       #list_msg#
@@ -22,6 +23,7 @@
           <button id="return-list" class="two-column" title="retour à la liste des messages."><img class="icon" alt="image de retour" src="src/img/revenir.svg" /></button>
           <label class="type">de : </label><label id="msg_from"></label>
           <label class="type">le : </label><label id="msg_date"></label>
+          <label id="label_msg_produit" class="type">produit : </label><label id="msg_produit"></label>
           <label class="type">objet : </label><label id="msg_obj"></label>
       </div>
       <div id="msg_txt">
@@ -38,6 +40,7 @@
                     <img id="img_env_msg" class="img_env_msg" src="src/img/envoyer.svg" alt="image envoyer'" />
                     <label class="type">de : </label><label id="env_msg_from"></label>
                     <label class="type">le : </label><label id="env_msg_date"></label>
+                    <label id="label_env_msg_produit" class="type">produit : </label><label id="env_msg_produit"></label>
                     <label class="type">objet : </label><label id="env_msg_obj"></label>
                 </div>
                 <textarea name="message" id="env_msg_txt"></textarea>

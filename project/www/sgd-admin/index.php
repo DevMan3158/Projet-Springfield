@@ -87,6 +87,9 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
                 <img src="./src/img/burger_icon.svg" alt="menu" />
             </button>
             <div class="dropdown-menu dropdown-menu-right bg-simpson">
+                <a class="dropdown-item" href="./../index.php">
+                    <img class="img_del" src="src/img/home-page.svg">&emsp;Page web
+                </a>
                 <?php if($_SESSION['id_admin'] == 1) { ?>
                     <a class="dropdown-item" href="./index.php?ind=admin">
                         <img class="img_del" src="src/img/star.svg">&emsp;Admin
@@ -104,7 +107,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4) {
                     <img class="img_del" src="src/img/utilisateur.svg">&emsp;Utilisateurs
                 </a>
                 <a class="dropdown-item" href="./../src/exec/deconnexion_exec.php?admin=dec">
-                    <img class="img_del" src="src/img/deconnexion.svg"> Déconnexion
+                    <img class="img_del" src="src/img/deconnexion.svg">&emsp;Déconnexion
                 </a>
             </div>
         </nav>
@@ -165,6 +168,7 @@ elseif ($_GET['ind'] == 'desc') {
 <?php
 
 } else { ?>
+    <script src="./../src/js/popup.js"></script>
     <script src="./../src/js/header_connexion.js"></script>
     <script type="text/javascript">
         header_connexion(event);
