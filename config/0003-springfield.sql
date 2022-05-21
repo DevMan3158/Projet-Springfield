@@ -30,10 +30,6 @@ USE `springfield`;
 INSERT INTO `utilisateur` (`id_user`, `id_admin`, `nom`, `prenom`, `login`, `avatar`, `email`, `mot_pass`, `date`) VALUES
 (1, 1, 'root', 'root', 'root', '', 'root@root.fr', 'TmpKMmNCRjI2V2NPU0xCMQ$Gi6Ucz29Na2efDYcEgyx+7s5TT2VHpSiWYx8qo546T4', '2022-05-05 13:44:04');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 --
 -- Déchargement des données de la table `categorie`
 --
@@ -43,3 +39,7 @@ INSERT INTO `categorie` (`id_cat`, `id_user`, `nom`, `description`, `avatar`, `d
 (2, 1, 'Batiments', '', '../img/musee.png', '2022-05-05 09:48:01'),
 (3, 1, 'Personnages', '', '../img/expo.png', '2022-05-05 09:48:01');
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

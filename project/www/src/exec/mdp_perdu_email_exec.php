@@ -76,6 +76,7 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
 
                     // on envoie le message
                     message_email($_POST["email"], $email_admin, remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
+
                     echo "true"; 
                 } else {
                     echo "Cette adresse email n'est pas reconnu dans notre base, merci de créer un compte.";

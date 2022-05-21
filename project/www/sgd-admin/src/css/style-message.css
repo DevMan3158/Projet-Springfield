@@ -126,6 +126,8 @@
 #msg_txt {
     box-sizing: border-box;
     overflow: auto;
+    text-align: left;
+    padding: 10px;
 }
 
 /*------------------------*/

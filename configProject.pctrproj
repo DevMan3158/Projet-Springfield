@@ -27,6 +27,13 @@ tr_com =
 is_container = true
 name_docker = ${NAME_MARIABD_CONTAINER}
 
+[mailhog]
+tr_key = mailhog
+tr_text = mailhog
+tr_com = 
+is_container = true
+name_docker = ${NAME_MAILHOG_CONTAINER}
+
 [PhpMyAdmin]
 tr_key = phpMyAdmin
 tr_text = PhpMyAdmin
@@ -61,6 +68,15 @@ is_container = true
 sub = 
 type = http
 lien = http://localhost:${VALUE_PHPMYADMIN_PORT}
+
+[config_bt_mailhog]
+tr_key = bt_mailhog
+tr_text = Open mailhog
+tr_com = 
+is_container = true
+sub = 
+type = http
+lien = http://localhost:${VALUE_MAILHOG_DISPLAY_PORT}
 
 [config_bt_folder_unit]
 tr_key = bt_folder_unit
@@ -155,6 +171,26 @@ is_container = false
 sub = ${NAME_MARIABD_CONTAINER}
 type = file
 lien = .docker/mysql/mariadb.cnf
+
+[config_bt_port_mailhog]
+tr_key = expose_mailhog
+tr_text = port
+tr_com = 
+is_container = false
+sub = ${NAME_MAILHOG_CONTAINER}
+type = expose
+lien = .env,VALUE_MAILHOG_PORT=%port
+value = ${VALUE_MAILHOG_PORT}
+
+[config_bt_port_mailhog_2]
+tr_key = expose_mailhog_2
+tr_text = port 2
+tr_com = 
+is_container = false
+sub = ${NAME_MAILHOG_CONTAINER}
+type = expose
+lien = .env,VALUE_MAILHOG_DISPLAY_PORT=%port
+value = ${VALUE_MAILHOG_DISPLAY_PORT}
 
 [config_docker_img_php]
 name = ${NAME_PHP_CONTAINER}

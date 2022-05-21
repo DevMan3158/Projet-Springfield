@@ -263,9 +263,9 @@ function bt_find(e) {
          let td = "<tr id=\"admin_"+valueLine['id_user']+"\">";
          td += "<td id=\"td_admin_"+i+"_1\" class=\"td_del\"><img class=\"img_del\" src=\"src/img/poubelle.svg\"></td>";
          td += "<td id=\"td_admin_"+i+"_2\" class=\"tab_input\">"+valueLine['login']+"</td>";
-         td += "<td id=\"td_admin_"+i+"_3\" class=\"tab_input\">"+valueLine['nom']+"</td>";
-         td += "<td id=\"td_admin_"+i+"_4\" class=\"tab_input\">"+valueLine['prenom']+"</td>";
-         td += "<td id=\"td_admin_"+i+"_5\" class=\"tab_input\">"+valueLine['email']+"</td>";
+         td += "<td id=\"td_admin_"+i+"_3\" class=\"none-column tab_input\">"+valueLine['nom']+"</td>";
+         td += "<td id=\"td_admin_"+i+"_4\" class=\"none-column tab_input\">"+valueLine['prenom']+"</td>";
+         td += "<td id=\"td_admin_"+i+"_5\" class=\"none-email tab_input\">"+valueLine['email']+"</td>";
          td += "<td id=\"td_admin_"+i+"_6_"+valueLine['id_admin']+"\" class=\"tab_select\">"+valueLine['nom_admin']+"</td>";
          td += "</tr>";
          /* on affiche la ligne du tableau html */
