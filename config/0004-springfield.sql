@@ -24,6 +24,19 @@ CREATE DATABASE IF NOT EXISTS `springfield` DEFAULT CHARACTER SET utf8 COLLATE u
 USE `springfield`;
 
 --
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_user`, `id_admin`, `nom`, `prenom`, `login`, `avatar`, `email`, `mot_pass`, `date`) VALUES
+(2, 2, 'Simpson', 'Homer', 'Homer', '', 'Homer@springfield.usa', 'ckNEOW94eVRnRkd3QlVwTg$vYjHt7OoJ35AYUWtJe3mlRGiAhVHK4/G7HaTxP6jgsw', '2022-05-19 14:20:08'),
+(3, 2, 'Skinner', 'Seymour', 'Skinner', '', 'Skinner@springfield.usa', 'YUdEVXZacHJ0ZzQzajRQLw$2GsgN0Een1mr28LxLyilWtl6iyk9Q5We5XkplbOWs28', '2022-05-19 14:21:27'),
+(4, 2, 'Burns', 'Montgomery', 'Burns', '', 'Burns@springfield.usa', 'ZTlwQUtJdDFEU1I4TkhMeQ$MNwo+RlH4OwX6t6UezIbWQiM57iLvsZjkH4uIr7IR14', '2022-05-19 14:25:11'),
+(5, 2, 'Krusty', 'le clown', 'Krusty', '', 'Krusty@springfield.usa', 'NVByVGkvSGJtaDJIU1o1Zw$DUQe0kaUBZ7D5QAfgg3lL0+q3teHEHu1Ha3xuVKbkyQ', '2022-05-19 14:27:43'),
+(6, 2, 'Szyslak', 'Moe', 'Szyslak', '', 'Moe@springfield.usa', 'TFRnOG5RZkpYeUNuajd2MA$meHxZLpKMLL8mEVJOSXw2EOJPkM7YOu+2htaI5+u8R4', '2022-05-19 14:29:28'),
+(7, 3, 'Simpson', 'Bartholomew', 'Bart', '', 'Bart@springfield.usa', 'VDZmSzlxVjZmcGoucnBlMg$gbADRSKmZaJGHbBjG3nkKNHhqWww+JxrMH56otOiS38', '2022-05-19 14:31:45'),
+(8, 2, 'Quimby', 'Joe', 'Quimby', '', 'Joe@springfield.usa', 'U3QvSHh0bHJjdm9nRnlzLw$oLgni31hWB+5IuLZlC/N/RtZN7DVUdnCSdQWHnxaGuM', '2022-05-19 14:39:22');
+
+--
 -- Déchargement des données de la table `produits`
 --
 
@@ -47,7 +60,7 @@ INSERT INTO `produits` (`id_produit`, `id_cat`, `nom`, `lieu`, `nbvisite`, `desc
 (25, 2, 'L\'Armoire à sandwiches de Grand-Maman', 'Sandwich Street', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] L\'Armoire à sandwiches de Grand-Maman, est le nom d\'une franchise de restaurant appartenant à Trudy Zangler. Cette dernière remarquera les talents de Marge en matière de sandwiches et lui offrit d\'ouvrir une franchise à Springfield, offre que Marge acceptera. [/b]', 1, '2022-05-19 10:35:37'),
 (26, 2, 'La Maison Derrière', 'Derrière la maison', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La Maison Derrière est une maison de boîte de strip-tease ou Homer s\'aventure régulièrement afin de se vider les esprits[/b]', 1, '2022-05-19 10:37:24'),
 (27, 2, 'La mangeoire d\'oncle Moe', 'Derrière le musée', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La mangeoire d\'oncle Moe est un bar familial qui remplace la Taverne de Moe dans l\'épisode Bart vend son âme. [/b]', 6, '2022-05-19 10:38:37'),
-(28, 2, 'La Truffe Dorée', 'Dans une truffe bien secrete', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La Truffe Dorée est un restaurant chic et de haute gastronomie situé à Springfield.\r\n\r\nIl a déjà employé Willie jusqu\'à ce qu\'il quitte et retourne à son ancien poste à l\'École élémentaire de Springfield.\r\n\r\nHomer a donné un mauvais rapport au restaurant lorsqu\'il travaillait en tant que critique gastronomique, uniquement parce que les autres critiques lui avait dit de le faire. [/b]', 1, '2022-05-19 10:39:36'),
+(28, 2, 'La Truffe Dorée', 'Dans une truffe bien secrete', 0, '[title]  Histoire  [/title]\n\n    \n    [b] La Truffe Dorée est un restaurant chic et de haute gastronomie situé à Springfield.\n\nIl a déjà employé Willie jusqu\'à ce qu\'il quitte et retourne à son ancien poste à l\'École élémentaire de Springfield.\n\nHomer a donné un mauvais rapport au restaurant lorsqu\'il travaillait en tant que critique gastronomique, uniquement parce que les autres critiques lui avait dit de le faire. [/b]', 1, '2022-05-19 10:39:36'),
 (29, 2, 'Le Barnacle Rusty', 'Rusty hood', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] Le Barnacle Rusty est un restaurant sur le thème des pirates, À l\'origine, il n\'était que mentionné mais apparaît plus tard quand Eugene Fisk tient sa soirée de célibataire. [/b]', 1, '2022-05-19 10:40:59'),
 (30, 2, 'Le Hollandais Volant', 'SeaFood street', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] Le Hollandais Volant, propriété du capitaine Horatio McCallister, est un restaurant de fruits de mer à Springfield. [/b]', 1, '2022-05-19 10:42:22'),
 (31, 2, 'Le Hun Hungry', 'GermanStreet', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] The Hungry Hun est un restaurant de cuisine allemande situé dans l\'est de Springfield. [/b]', 1, '2022-05-19 10:43:00'),
@@ -62,15 +75,7 @@ INSERT INTO `produits` (`id_produit`, `id_cat`, `nom`, `lieu`, `nbvisite`, `desc
 (40, 1, 'Route Rurale 9', 'En campagne', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La Route Rurale 9 est, comme son nom l\'indique, une route située en campagne. [/b]', 8, '2022-05-19 10:55:53'),
 (41, 1, 'Cypress Creek', 'Au nord de Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] Cypress Creek est une ville de compagnie construites pour les familles des employés de la Corporation Globex dont le siège est situé à Cypress Creek. [/b]', 1, '2022-05-19 10:56:39'),
 (42, 1, 'Duff Gardens', 'à l\'exterieuse de Springfield à l\'ouest', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] Le Duff Gardens est un parc d\'attraction sponsorisé par la Bière Duff . [/b]', 1, '2022-05-19 10:57:23'),
-(43, 1, 'Forêt nationale de Springfield', 'A l\'ouest de Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La Forêt nationale de Springfield est la forêt de Springfield.\r\nLa forêt contient une cascade et une grotte, qui abrite une famille d\'ours. [/b]', 8, '2022-05-19 10:58:18'),
-(46, 3, 'Hugo Simpson II', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Hugo est le frère siamois de Bart Simpson de naissance. Peu de temps après, ils ont été séparés par le Docteur Hibbert et Hugo vit seul depuis cette séparation dans le grenier. [/b]', 1, '2022-05-20 09:20:21'),
-(47, 3, 'Robert Terwilliger', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Robert Terwilliger plus connu sous le nom de Tahiti Bob ou Sideshow Bob est un ancien partenaire de scène de Krusty le Clown. Il est tombé dans le crime et n\'a désormais qu\'une ambition, tuer Bart Simpson. [/b]', 1, '2022-05-20 09:21:39'),
-(48, 3, 'Mona Simpson', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Mona Simpson née Penelope Olsen est la mère d\'Homer et la compagne d\'Abraham Simpson. Elle apparaît dans l\'épisode La Mère d\'Homer.\r\nOn l\'a longtemps crue morte, jusqu\'à ce que l\'on découvre qu\'elle avait entamé des poursuites à cause d\'une rencontre avec le propriétaire de la centrale nucléaire Charles Montgomery Burns plusieurs années auparavant. [/b]', 1, '2022-05-20 09:22:36'),
-(49, 3, 'Maude Flanders', '', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Maude Flanders (1960-2000) était l\'épouse de Ned Flanders, et la mère de Rod et Todd. Maude est une femme avec beaucoup de qualités : la foi, la chasteté, la charité. Elle aime dessiner, activité découverte après sa mort. [/b]', 1, '2022-05-20 09:23:22'),
-(50, 3, 'Herbert Powell', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Herbert « Herb » Powell est le demi-frère d\'Homer.\r\n Il a été abandonné à l\'orphelinat de Shelbyville peu après sa naissance et son existence a été cachée à Homer. [/b]', 1, '2022-05-20 09:24:20'),
-(51, 3, 'Abby', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b]Abby est la soeur d\'Abygail. Elle s\'occupe de celle-ci après qu\'elle ait subit un traumatisme en gardant Bart. [/b]', 1, '2022-05-20 09:24:52'),
-(52, 3, 'Darcy', 'Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Darcy est une fille venant de North Haverbrook. Bart éprouve des sentiments amoureux à son égard. [/b]', 1, '2022-05-20 09:25:23'),
-(53, 3, 'Dame Judith Terwilliger', '', 0, '[title]  Histoire  [/title]\r\n\r\n    [b] Dame Judith Terwilliger (née Underdunk) est l\'épouse de Robert Terwilliger Sr. et la mère de Robert et Cecil Terwilliger. Elle est une actrice à la retraite. [/b]', 1, '2022-05-20 09:25:59');
+(43, 1, 'Forêt nationale de Springfield', 'A l\'ouest de Springfield', 0, '[title]  Histoire  [/title]\r\n\r\n    \r\n    [b] La Forêt nationale de Springfield est la forêt de Springfield.\r\nLa forêt contient une cascade et une grotte, qui abrite une famille d\'ours. [/b]', 8, '2022-05-19 10:58:18');
 
 --
 -- Déchargement des données de la table `photos`
@@ -89,37 +94,29 @@ INSERT INTO `photos` (`id_photo`, `id_produit`, `src`, `alt`, `titre`, `date`) V
 (10, 16, 'Marge.webp', 'Une photo du personnage Marge', 'Marge', '2022-05-06 03:49:14'),
 (11, 5, 'springfield_school.webp', 'Une photo de Springfield School', 'Springfield School', '2022-05-06 03:49:14'),
 (12, 4, 'Washington.webp', 'Une photo de Washington D.C', 'Washington D.C', '2022-05-06 03:49:14'),
-(15, 21, 'springfield.png', 'Une photo de Springfield.', 'Springfield', '2022-05-19 12:19:33'),
-(16, 22, 'centrale_nucleaire.webp', 'Une photo de Centrale nucléaire de Springfield.', 'Centrale nucléaire de Springfield', '2022-05-19 12:26:48'),
-(17, 23, 'Kwik-E-Mart.webp', 'Une photo de Kwik-E-Mart.', 'Kwik-E-Mart', '2022-05-19 12:29:19'),
-(19, 24, 'Shelbyville.webp', 'Une photo de Shelbyville.', 'Shelbyville', '2022-05-19 12:33:24'),
-(20, 25, 'Sandwicherie_Simpson.webp', 'Une photo de L\'Armoire à sandwiches de Grand-Maman.', 'L\'Armoire à sandwiches de Grand-Maman', '2022-05-19 12:35:37'),
-(21, 26, 'La_Maison_Derriere.webp', 'Une photo de La Maison Derrière.', 'La Maison Derrière', '2022-05-19 12:37:24'),
-(22, 27, 'La_mangeoire_d\'oncle_Moe.webp', 'Une photo de La mangeoire d\'oncle Moe.', 'La mangeoire d\'oncle Moe', '2022-05-19 12:38:37'),
-(23, 28, 'La_Truffe_Dorée.webp', 'Une photo de La Truffe Dorée.', 'La Truffe Dorée', '2022-05-19 12:39:36'),
-(24, 29, 'The_Rusty_Barnacle.webp', 'Une photo de Le Barnacle Rusty.', 'Le Barnacle Rusty', '2022-05-19 12:40:59'),
-(25, 30, 'The_Frying_Dutchman.webp', 'Une photo de Le Hollandais Volant.', 'Le Hollandais Volant', '2022-05-19 12:42:22'),
-(26, 31, 'The_Hungry_Hun.webp', 'Une photo de Le Hun Hungry.', 'Le Hun Hungry', '2022-05-19 12:43:00'),
-(27, 32, 'Le_pays_du_chocolat.webp', 'Une photo de Le pays du chocolat.', 'Le pays du chocolat', '2022-05-19 12:44:03'),
-(28, 33, 'Le_petit_pays_de_la_Duff.webp', 'Une photo de Le petit pays de la Duff.', 'Le petit pays de la Duff', '2022-05-19 12:45:04'),
-(29, 34, 'Les_grottes_du_papa_de_Carl.webp', 'Une photo de Les grottes du papa de Carl.', 'Les grottes du papa de Carl', '2022-05-19 12:49:29'),
-(30, 35, 'Luigi\'s.webp', 'Une photo de Luigi\'s.', 'Luigi\'s', '2022-05-19 12:50:32'),
-(31, 36, 'Agence_Le_blazer_rouge.webp', 'Une photo de Agence Le blazer rouge.', 'Agence Le blazer rouge', '2022-05-19 12:51:15'),
-(32, 37, 'Amulet_Hamlet.webp', 'Une photo de Amulet Hamlet.', 'Amulet Hamlet', '2022-05-19 12:52:11'),
-(33, 38, 'Aphrodite_Inn.webp', 'Une photo de Aphrodite Inn.', 'Aphrodite Inn', '2022-05-19 12:52:50'),
-(34, 39, 'Burns_Family_Mausoleum.webp', 'Une photo de Mausolée de la famille Burns.', 'Mausolée de la famille Burns', '2022-05-19 12:55:21'),
-(35, 40, 'Ruralroad.webp', 'Une photo de Route Rurale 9.', 'Route Rurale 9', '2022-05-19 12:55:53'),
-(36, 41, 'Cypress_Creek.webp', 'Une photo de Cypress Creek.', 'Cypress Creek', '2022-05-19 12:56:39'),
-(37, 42, 'Duff_Gardens.webp', 'Une photo de Duff Gardens.', 'Duff Gardens', '2022-05-19 12:57:23'),
-(38, 43, 'Springfield_National_Forest.webp', 'Une photo de Forêt nationale de Springfield.', 'Forêt nationale de Springfield', '2022-05-19 12:58:18'),
-(41, 46, 'Hugo_Simpson2.webp', 'Une photo de Hugo Simpson II.', 'Hugo Simpson II', '2022-05-20 09:20:21'),
-(42, 47, 'Sideshow_Bob.webp', 'Une photo de Robert Terwilliger.', 'Robert Terwilliger', '2022-05-20 09:21:39'),
-(43, 48, 'Mona_Simpson.webp', 'Une photo de Mona Simpson.', 'Mona Simpson', '2022-05-20 09:22:36'),
-(44, 49, 'Maude.webp', 'Une photo de Maude Flanders.', 'Maude Flanders', '2022-05-20 09:23:22'),
-(45, 50, 'HerbPowell.webp', 'Une photo de Herbert Powell.', 'Herbert Powell', '2022-05-20 09:24:20'),
-(46, 51, 'Abby.webp', 'Une photo de Abby.', 'Abby', '2022-05-20 09:24:52'),
-(47, 52, 'Darcy.webp', 'Une photo de Darcy.', 'Darcy', '2022-05-20 09:25:23'),
-(48, 53, 'Judith_Underdunk.webp', 'Une photo de Dame Judith Terwilliger.', 'Dame Judith Terwilliger', '2022-05-20 09:25:59');
+(15, 21, 'springfield.png', 'Une photo de Springfield.', 'Springfield', '2022-05-19 10:19:33'),
+(16, 22, 'centrale_nucleaire.webp', 'Une photo de Centrale nucléaire de Springfield.', 'Centrale nucléaire de Springfield', '2022-05-19 10:26:48'),
+(17, 23, 'Kwik-E-Mart.webp', 'Une photo de Kwik-E-Mart.', 'Kwik-E-Mart', '2022-05-19 10:29:19'),
+(19, 24, 'Shelbyville.webp', 'Une photo de Shelbyville.', 'Shelbyville', '2022-05-19 10:33:24'),
+(20, 25, 'Sandwicherie_Simpson.webp', 'Une photo de L\'Armoire à sandwiches de Grand-Maman.', 'L\'Armoire à sandwiches de Grand-Maman', '2022-05-19 10:35:37'),
+(21, 26, 'La_Maison_Derriere.webp', 'Une photo de La Maison Derrière.', 'La Maison Derrière', '2022-05-19 10:37:24'),
+(22, 27, 'La_mangeoire_d\'oncle_Moe.webp', 'Une photo de La mangeoire d\'oncle Moe.', 'La mangeoire d\'oncle Moe', '2022-05-19 10:38:37'),
+(23, 28, 'La_Truffe_Dorée.webp', 'Une photo de La Truffe Dorée.', 'La Truffe Dorée', '2022-05-19 10:39:36'),
+(24, 29, 'The_Rusty_Barnacle.webp', 'Une photo de Le Barnacle Rusty.', 'Le Barnacle Rusty', '2022-05-19 10:40:59'),
+(25, 30, 'The_Frying_Dutchman.webp', 'Une photo de Le Hollandais Volant.', 'Le Hollandais Volant', '2022-05-19 10:42:22'),
+(26, 31, 'The_Hungry_Hun.webp', 'Une photo de Le Hun Hungry.', 'Le Hun Hungry', '2022-05-19 10:43:00'),
+(27, 32, 'Le_pays_du_chocolat.webp', 'Une photo de Le pays du chocolat.', 'Le pays du chocolat', '2022-05-19 10:44:03'),
+(28, 33, 'Le_petit_pays_de_la_Duff.webp', 'Une photo de Le petit pays de la Duff.', 'Le petit pays de la Duff', '2022-05-19 10:45:04'),
+(29, 34, 'Les_grottes_du_papa_de_Carl.webp', 'Une photo de Les grottes du papa de Carl.', 'Les grottes du papa de Carl', '2022-05-19 10:49:29'),
+(30, 35, 'Luigi\'s.webp', 'Une photo de Luigi\'s.', 'Luigi\'s', '2022-05-19 10:50:32'),
+(31, 36, 'Agence_Le_blazer_rouge.webp', 'Une photo de Agence Le blazer rouge.', 'Agence Le blazer rouge', '2022-05-19 10:51:15'),
+(32, 37, 'Amulet_Hamlet.webp', 'Une photo de Amulet Hamlet.', 'Amulet Hamlet', '2022-05-19 10:52:11'),
+(33, 38, 'Aphrodite_Inn.webp', 'Une photo de Aphrodite Inn.', 'Aphrodite Inn', '2022-05-19 10:52:50'),
+(34, 39, 'Burns_Family_Mausoleum.webp', 'Une photo de Mausolée de la famille Burns.', 'Mausolée de la famille Burns', '2022-05-19 10:55:21'),
+(35, 40, 'Ruralroad.webp', 'Une photo de Route Rurale 9.', 'Route Rurale 9', '2022-05-19 10:55:53'),
+(36, 41, 'Cypress_Creek.webp', 'Une photo de Cypress Creek.', 'Cypress Creek', '2022-05-19 10:56:39'),
+(37, 42, 'Duff_Gardens.webp', 'Une photo de Duff Gardens.', 'Duff Gardens', '2022-05-19 10:57:23'),
+(38, 43, 'Springfield_National_Forest.webp', 'Une photo de Forêt nationale de Springfield.', 'Forêt nationale de Springfield', '2022-05-19 10:58:18');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

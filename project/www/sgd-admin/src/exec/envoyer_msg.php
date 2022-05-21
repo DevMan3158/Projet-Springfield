@@ -37,7 +37,7 @@ array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4
                 if($res->rowCount() > 0) {
                     $tab = $res->fetch(PDO::FETCH_ASSOC);
                     /* envoyer le message */
-                    message_email($tab["Email"], $_SESSION['email'], "RE : ".$tab["Objet"], $_POST['message']);
+                    message_email($tab["Email"], $_SESSION['email'], "RE : ".$tab["Objet"], str_replace("\n", "<br />", $_POST['message']));
                     echo 'true';
                 } else {
                     echo "Un problème avec le message.";

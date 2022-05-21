@@ -20,6 +20,7 @@ RUN apt install -y libzip-dev
 RUN set -ex; \
 	\
 	apt-get update; \
+	apt-get install -y vim curl debconf subversion apt-transport-https apt-utils build-essential locales acl mailutils wget; \
 	apt-get install -y \
 		libjpeg-dev \
 		libpng-dev \
@@ -32,6 +33,14 @@ RUN set -ex; \
 	docker-php-ext-install -j5 gd mysqli pdo_mysql json xsl zip; \
 	pecl install -o -f xdebug-3.0.4 \
         && rm -rf /tmp/pear 
+        
+RUN apt-get update &&\
+    apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
+    rm -rf /var/lib/apt/lists/*
+RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
+ENV PATH /usr/local/go/bin:$PATH
+RUN go get github.com/mailhog/mhsendmail
+RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 
 #install some base extensions
 #RUN apt-get install -y \
@@ -59,6 +68,15 @@ RUN apt-get install libyaml-dev -y
 RUN pecl install yaml && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
 #RUN pecl install ${yaml_version} && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
 #RUN pecl install yaml && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
+
+# Set up php sendmail config
+RUN echo "sendmail_path=sendmail -i -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
+
+# Fully qualified domain name configuration for sendmail on localhost.
+# Without this sendmail will not work.
+# This must match the value for 'hostname' field that you set in ssmtp.conf.
+RUN echo "localhost localhost.localdomain" >> /etc/hosts 
+
     
 # Goto temporary directory.
 WORKDIR /tmp

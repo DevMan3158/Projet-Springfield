@@ -45,6 +45,8 @@ try{
 
     /* pour verifier la validiter des informations (eviter les doublons ou probleme de mot de passe) */
     $valide = true;
+    /* message a envoyer */
+    $message_afficher = "";
 
     /* si c'est valide, on continu la verification */
     if($valide) {
@@ -56,6 +58,7 @@ try{
         ]);
         /* si le login est deja utilise */
         if($res->rowCount() > 0) {
+            $meesage_afficher = "le login est déja utilisé, merci d'en prendre un autre.";
             echo "le login est déja utilisé, merci d'en prendre un autre.";
             $valide = false;
         }
@@ -70,6 +73,7 @@ try{
         ]);
         /* si l'email est deja utilise */
         if($res->rowCount() > 0) {
+            $message_afficher = "Cette adresse email fait déjà parti des inscris.";
             echo "Cette adresse email fait déjà parti des inscris.";
             $valide = false;
         }
@@ -124,11 +128,18 @@ try{
 
             else
             {
+                $message_afficher = "Mot de passe non identique.";
                echo 'Mot de passe non identique';
               /* header("Location:../../index.php?ind=utilisateur");*/
             
             }
 
+    }
+
+    if(empty($message_afficher)) {
+        echo "true";
+    } else {
+        //setcookie("info_message_add_user", $message_afficher, time()+900);
     }
         
         /* test affichage
@@ -137,8 +148,8 @@ try{
         echo 'N:' .$nom.'<br>';
         echo 'MDP:' .$mdp.'<br>';*/
 
-           //On renvoie l'utilisateur vers la page utilisateur    
-  header("Location:../../index.php?ind=utilisateur");
+    //On renvoie l'utilisateur vers la page utilisateur    
+    //header("Location:../../index.php?ind=utilisateur");
 
 }
 

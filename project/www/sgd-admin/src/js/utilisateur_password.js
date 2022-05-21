@@ -34,3 +34,22 @@ document.getElementById('togglePassword_2').addEventListener('click', (e) => {
     e.target.classList.add(img_eye);
 });
 
+/* le formulaire de l'utilisateur */
+function formulaire(e) {
+    // pour ne pas prendre l'adresse de l'action du formulaire.
+    e.preventDefault();
+    /* envoyer les informations du message sur la page php */
+    fetch_form('./src/exec/add_utilisateurs.php', 'form-user').then(function(response) {
+        /* si tout c'est bien passe */
+        if(response == "true") {
+            //alert("Enregistrement effectué.");
+        } else {
+            if(!alert(response)) {
+                location.reload();
+            }
+        }
+    });
+}
+
+/* activer le clique sur les boutons */
+document.getElementById("valide_user").addEventListener("click", formulaire);

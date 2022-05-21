@@ -55,7 +55,7 @@ function load_msg(e) {
             document.getElementById('msg_date').innerHTML = display_date(tabUser['date_msg'])+".";
             document.getElementById('msg_produit').innerHTML = tabUser['nom']+".";
             document.getElementById('msg_obj').innerHTML = tabUser['Objet']+".";
-            document.getElementById('msg_txt').innerHTML = tabUser['Message'];
+            document.getElementById('msg_txt').innerHTML = tabUser['Message'].replaceAll("\n", '<br />');
 
             /* prepare le message dans le modal, pour la reponse */
             msg_default = "\n\n\n\n\n";
@@ -67,7 +67,7 @@ function load_msg(e) {
                 msg_default += "produit : "+document.getElementById('msg_produit').innerHTML+"\n";
             }
             msg_default += "Objet : "+document.getElementById('msg_obj').innerHTML+"\n\n";
-            msg_default += document.getElementById('msg_obj').innerHTML;
+            msg_default += tabUser['Message'];
             document.getElementById('env_msg_from').innerHTML = document.getElementById('msg_from').innerHTML;
             document.getElementById('env_msg_date').innerHTML = document.getElementById('msg_date').innerHTML;
             document.getElementById('env_msg_produit').innerHTML = document.getElementById('msg_produit').innerHTML;

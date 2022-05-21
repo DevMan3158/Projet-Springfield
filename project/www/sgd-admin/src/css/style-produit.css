@@ -94,6 +94,35 @@ figure div{
     padding-left: 0;
 }
 
+.bbcode button {
+    padding: 5px;
+    margin: 2px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #8bc7e5;
+    border: white solid 2px;
+    border-radius: 5px;
+}
+
+.bbcode button:hover {
+    transform: scale(1.05);
+}
+
+@media all and (max-width: 1200px) {
+
+    .boutton{
+        width: unset;
+    }
+
+    .boutton:hover {
+        padding-left: 45px;
+        padding-right: 45px;
+        width: unset;
+    }
+
+}
+
 @media all and (max-width: 1000px) {
 
         form{

@@ -36,7 +36,7 @@ if (!function_exists('message_email')) {
             $passage_ligne = "\r\n";
         }
         if(empty($messageText)) {
-            $messageText = strip_tags($messageHTML);
+            $messageText = strip_tags(str_replace("<br />", "\n", $messageHTML));
         }
         //Creation de la boundary
         $boundary = "-----=" . md5(rand());

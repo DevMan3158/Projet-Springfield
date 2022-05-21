@@ -40,7 +40,7 @@ array_key_exists('email', $_SESSION)) {
  
 
 
-    <form action="./src/exec/add_utilisateurs.php" method="post" >
+    <form action="./src/exec/add_utilisateurs.php" method="post" id="form-user" >
         <div class="form-row "> <!--Début_row_1-->
 
         <div class="col-md-4 mb-3">
@@ -144,8 +144,9 @@ array_key_exists('email', $_SESSION)) {
                   id="password" 
                   name ="mdp"
                   placeholder="Mot de passe"
-                  pattern="{6,}"
+                  pattern=".{6,}"
                   value= ""
+                  autocomplete
                   
                   >
                   <div class="input-group-append">
@@ -169,7 +170,8 @@ array_key_exists('email', $_SESSION)) {
                   id="password_2" 
                   name ="cfn_mdp"
                   placeholder="Mot de passe..."
-                  pattern="{6,}"
+                  pattern=".{6,}"
+                  autocomplete
                   
                   >
                   <div class="input-group-append">
@@ -187,7 +189,7 @@ array_key_exists('email', $_SESSION)) {
         <div class="row"> <!--Début_row_4-->
          <div class="col mb-3 text-center text-left-md">  
 
-           <button 
+           <button id="valide_user"
                   class="btn btn-primary " type="submit">  
                   Valider
           </button>
@@ -196,7 +198,15 @@ array_key_exists('email', $_SESSION)) {
           </div> <!--Fin_row_4-->
     </form>
 
+    <script src="./../src/js/le_fetch.js"></script>
     <script src="./src/js/utilisateur_password.js"></script>
+
+    <?php // en cas d'erreur, recuperer les informations a afficher
+    /*var_dump($_COOKIE);
+    if(!empty($_COOKIE) && array_key_exists("info_message_add_user", $_COOKIE)) {
+      echo '<script>alert("'.$_COOKIE['info_message_add_user'].'");</script>';
+      //setcookie("info_message_add_user", "", time()-3600);
+    }*/ ?>
 
 <div> <!--Fin_Container-->  
 

@@ -2,10 +2,10 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mer. 18 mai 2022 à 11:42
--- Version du serveur : 5.7.33
--- Version de PHP : 7.4.19
+-- Hôte : mariadb:3311
+-- Généré le : sam. 21 mai 2022 à 02:09
+-- Version du serveur : 10.4.18-MariaDB-1:10.4.18+maria~focal-log
+-- Version de PHP : 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,7 +46,7 @@ CREATE TABLE `categorie` (
   `nom` varchar(40) NOT NULL DEFAULT '',
   `description` text NOT NULL,
   `avatar` varchar(255) NOT NULL DEFAULT '',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -62,8 +62,8 @@ CREATE TABLE `messages` (
   `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Objet` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Message` text COLLATE utf8_unicode_ci NOT NULL,
-  `lu` tinyint(2) NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `lu` tinyint(2) NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -76,7 +76,7 @@ CREATE TABLE `message_lu` (
   `id_msg_lu` int(10) NOT NULL,
   `id_msg` int(10) NOT NULL,
   `id_user` int(10) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -101,9 +101,9 @@ CREATE TABLE `pass_perdu` (
   `id_pass_perdu` int(10) NOT NULL,
   `id_user` int(11) NOT NULL,
   `jeton` varchar(255) NOT NULL DEFAULT '',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `expiration` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `valide` tinyint(2) NOT NULL DEFAULT '1'
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expiration` timestamp NOT NULL DEFAULT current_timestamp(),
+  `valide` tinyint(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -118,7 +118,7 @@ CREATE TABLE `photos` (
   `src` varchar(100) NOT NULL DEFAULT '',
   `alt` varchar(255) NOT NULL DEFAULT '',
   `titre` varchar(255) NOT NULL DEFAULT '',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -132,10 +132,10 @@ CREATE TABLE `produits` (
   `id_cat` int(10) NOT NULL,
   `nom` varchar(40) NOT NULL DEFAULT '',
   `lieu` varchar(40) NOT NULL DEFAULT '',
-  `nbvisite` int(20) NOT NULL DEFAULT '0',
+  `nbvisite` int(20) NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `id_user` int(10) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -153,7 +153,7 @@ CREATE TABLE `utilisateur` (
   `avatar` varchar(150) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `mot_pass` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -222,6 +222,8 @@ ALTER TABLE `produits`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `login` (`login`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `user_admin` (`id_admin`);
 
 --
