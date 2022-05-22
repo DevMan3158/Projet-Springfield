@@ -37,7 +37,7 @@ if (!function_exists('text_email_mdp')) {
             "titre" => "mot de passe modifi&eacute; pour votre compte sur [##NAME_SITE##]",
             "message" => "Madame, Monsieur,<br /><br />"
             . "Votre mot de passe sur [##NAME_SITE##] vient d'&ecirc;tre modifi&eacute;.<br />"
-            . "Si vous n'&ecirc;tes pas &agrave; l'origine de cette demande, merci de nous le faire savoir &agrave; l'adresse [##EMAIL##]<br /><br />"
+            . "Si vous n'&ecirc;tes pas &agrave; l'origine de cette demande, merci de nous le faire savoir &agrave; la page : <a href=\"[##PG_MSG##]\">[##PG_MSG##]</a>.<br /><br />"
             . "A tr&egrave;s vite sur [##NAME_SITE##]"
         );
     }

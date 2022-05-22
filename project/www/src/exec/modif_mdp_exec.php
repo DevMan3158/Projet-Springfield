@@ -21,7 +21,8 @@ if(!empty($_POST) && array_key_exists('code', $_POST) && array_key_exists('login
 
     /* creation des clees a remplacer dans le message */
     $tab_code = array (
-        "[##EMAIL##]" => ""
+        "[##EMAIL##]" => "",
+        "[##PG_MSG##]" => RACINE_MSG
     );
     
     /* regex de validation de l'adresse email */
@@ -93,7 +94,7 @@ if(!empty($_POST) && array_key_exists('code', $_POST) && array_key_exists('login
                         ]);
 
                         /* envoyer un message confirment la modification. */
-                        message_email($_POST["email"], "noreply@springfield.usa", remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
+                        message_email($_POST["email"], EMAIL_NOREPLY, remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
                         echo "true";
                     }
                 } else {
