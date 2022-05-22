@@ -75,7 +75,7 @@ if (!empty($_POST) && array_key_exists('email', $_POST)) {
                     ]);
 
                     // on envoie le message
-                    message_email($_POST["email"], $email_admin, remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
+                    message_email($_POST["email"], "noreply@springfield.usa", remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
 
                     echo "true"; 
                 } else {

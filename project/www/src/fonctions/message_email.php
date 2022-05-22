@@ -60,6 +60,6 @@ if (!function_exists('message_email')) {
         $message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne;
         $message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne;
         //Envoi de l'e-mail.
-        mail($mail, $objet, $message, $header);
+        mail($mail, html_entity_decode($objet), html_entity_decode($message), $header);
     }
 }

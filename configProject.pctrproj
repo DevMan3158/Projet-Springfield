@@ -163,6 +163,15 @@ sub = ${NAME_HTTPD_CONTAINER}
 type = file
 lien = .docker/apache/httpd.conf
 
+[config_bt_file_php]
+tr_key = bt_file_php
+tr_text = php.ini
+tr_com = 
+is_container = false
+sub = ${NAME_PHP_CONTAINER}
+type = file
+lien = .docker/php/php.ini
+
 [config_bt_file_mariadb]
 tr_key = bt_file_mariadb
 tr_text = mariadb.cnf

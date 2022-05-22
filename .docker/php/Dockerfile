@@ -33,7 +33,8 @@ RUN set -ex; \
 	docker-php-ext-install -j5 gd mysqli pdo_mysql json xsl zip; \
 	pecl install -o -f xdebug-3.0.4 \
         && rm -rf /tmp/pear 
-        
+   
+#install mailhog     
 RUN apt-get update &&\
     apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
     rm -rf /var/lib/apt/lists/*
@@ -68,15 +69,6 @@ RUN apt-get install libyaml-dev -y
 RUN pecl install yaml && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
 #RUN pecl install ${yaml_version} && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
 #RUN pecl install yaml && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
-
-# Set up php sendmail config
-RUN echo "sendmail_path=sendmail -i -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
-
-# Fully qualified domain name configuration for sendmail on localhost.
-# Without this sendmail will not work.
-# This must match the value for 'hostname' field that you set in ssmtp.conf.
-RUN echo "localhost localhost.localdomain" >> /etc/hosts 
-
     
 # Goto temporary directory.
 WORKDIR /tmp

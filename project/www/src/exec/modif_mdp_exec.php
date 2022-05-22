@@ -93,7 +93,7 @@ if(!empty($_POST) && array_key_exists('code', $_POST) && array_key_exists('login
                         ]);
 
                         /* envoyer un message confirment la modification. */
-                        message_email($_POST["email"], $email_admin, remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
+                        message_email($_POST["email"], "noreply@springfield.usa", remplace_text($perte_mdp["titre"], $tab_code), remplace_text($perte_mdp["message"], $tab_code));
                         echo "true";
                     }
                 } else {
