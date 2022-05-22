@@ -31,7 +31,13 @@ $sth->bindParam(':id_cat',$cat);
 $sth->bindParam(':lieu',$lieu);
 $sth->bindParam(':description',$message);
 $sth->bindParam(':id_produit',$_GET["id_edit"]);
-$sth->execute();
+$sth->execute([
+    ':nom' => $nom,
+    ':id_cat' => $cat,
+    ':lieu' => $lieu,
+    ':description' => $message,
+    ':id_produit' => $_GET["id_edit"]
+]);
 /* Pour les modifications, Rajouter un if else ( SI la page existe alors la modifier SINON la créer ) */
 /* Pour rajouter la photos, créer une autre requetes sql INSERT aec le $id_produit */
 
@@ -42,11 +48,16 @@ $sth->execute();
         $name=$_FILES["file"]["name"];
         $nomphoto="Une photo de ".$nom.".";
         $sth = $sgbd->prepare('UPDATE photos SET photos.src = :src, photos.alt = :alt, photos.titre = :titre WHERE photos.id_produit=:id_produit');
-        $sth->bindParam(':id_produit',validation_donnees($_GET["id_edit"]));
+        /*$sth->bindParam(':id_produit',validation_donnees($_GET["id_edit"]));
         $sth->bindParam(':src',validation_donnees($name));
         $sth->bindParam(':alt',validation_donnees($nomphoto));
-        $sth->bindParam(':titre',validation_donnees($nom));
-        $sth->execute();
+        $sth->bindParam(':titre',validation_donnees($nom));*/
+        $sth->execute([
+            ':id_produit' => validation_donnees($_GET["id_edit"]),
+            ':src' => validation_donnees($name),
+            ':alt' => validation_donnees($nomphoto),
+            ':titre' => validation_donnees($nom)
+        ]);
         if(move_uploaded_file($_FILES['file']['tmp_name'], "./../../../data/img/".$name)) {
             echo "Le fichier ".$name." a été sauvegardé.<br />";
         }
