@@ -145,6 +145,7 @@ echo'
                     <th>Nom</th>
                     <th>Categorie</th>
                     <th class="none2">Lieu</th>
+                    <th>Gestionnaire</th>
                     <th class="none">Description</th>
 
                 </tr>
@@ -171,8 +172,10 @@ echo'
                     // Ici la requête pour le tableau ADMIN
 
                     $requeteAdmin = $sgbd->query ('SELECT produits.nom AS produits, produits.lieu, produits.id_produit, produits.description, categorie.nom AS categories,
-                      photos.src, photos.alt 
-                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat INNER JOIN springfield.photos ON photos.id_produit = produits.id_produit');
+                      photos.src, photos.alt, utilisateur.login 
+                    FROM produits INNER JOIN springfield.categorie ON produits.id_cat = categorie.id_cat 
+                    INNER JOIN springfield.photos ON photos.id_produit = produits.id_produit
+                    INNER JOIN springfield.utilisateur ON produits.id_user = utilisateur.id_user');
 
                     $requeteAdmin->execute();
 
@@ -202,6 +205,7 @@ echo'
                                     <td>'.($articleAdmin['produits']).'</td>
                                     <td>'.($articleAdmin['categories']).'</td>
                                     <td class="none2">'.($articleAdmin['lieu']).'</td>
+                                    <td class="none">'.($articleAdmin['login']).'</td>
                                     <td class="none">'.($articleAdmin['description']).'</td>
                                     <td class="col-md-1 edit">
                                         <a class="tablebutton" href="index.php?ind=desc&id_edit='.($articleAdmin['id_produit']).'">
