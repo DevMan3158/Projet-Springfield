@@ -15,7 +15,7 @@ include_once dirname(__FILE__) . '/../../../src/fonctions/error_msg.php';
 if (!empty($_SESSION) && array_key_exists('id_user', $_SESSION) && 
 array_key_exists('id_admin', $_SESSION) && array_key_exists('nom', $_SESSION) && 
 array_key_exists('prenom', $_SESSION) && array_key_exists('login', $_SESSION) && 
-array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && $_SESSION['id_admin'] == 1) {
+array_key_exists('email', $_SESSION) && $_SESSION['id_admin'] != 4 && ($_SESSION['id_admin'] == 1 || $_SESSION['id_admin'] == 2)) {
     /* verifier qu'on vient a partir d'un formulaire */
     if (!empty($_POST) && array_key_exists('id', $_POST)) {
         /* se connecter a la base de donnees */
