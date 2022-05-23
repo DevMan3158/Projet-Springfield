@@ -41,7 +41,8 @@ function formulaire(e) {
     /* envoyer les informations du message sur la page php */
     fetch_form('./src/exec/add_utilisateurs.php', 'form-user').then(function(response) {
         /* si tout c'est bien passe */
-        if(response == "true") {
+        if(response.trim() == "true") {
+            location.reload();
             //alert("Enregistrement effectué.");
         } else {
             if(!alert(response)) {
