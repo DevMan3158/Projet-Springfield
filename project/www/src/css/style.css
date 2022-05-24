@@ -285,6 +285,10 @@ footer div {
     margin-top: 40px;
 }
 
+footer li a {
+    color: #fff500;
+}
+
 .duffbeer {
     width: 100%;
 }
