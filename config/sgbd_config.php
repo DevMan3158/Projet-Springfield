@@ -7,8 +7,8 @@
  */
 
 $sgbd_type = "mysql";
-$sgbd_server = "mariadb";
-$sgbd_port = "3311";
+$sgbd_server = "springfield_mariadb";
+$sgbd_port = "3306";
 $sgbd_name = "springfield";
 $sgbd_user = "root";
 $sgbd_pass = "secret";
