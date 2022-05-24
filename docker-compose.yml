@@ -61,8 +61,8 @@ services:
         container_name: ${NAME_MARIABD_CONTAINER}
         restart: always
         image: mariadb:${VALUE_MARIABD_VERSION}
-        expose:
-            - ${VALUE_MARIABD_EXPOSE}
+        ports:
+            - ${VALUE_MARIABD_EXPOSE}:3306
         volumes:
             - ./projecttmp/log/mysql:/var/log/mysql:rw
             - ./projecttmp/tmp/mysql:/var/tmp/mysql:rw
@@ -91,8 +91,8 @@ services:
         image: phpmyadmin/phpmyadmin
         restart: always
         environment:
-            - PMA_PORT=${VALUE_MARIABD_EXPOSE}
-            - PMA_HOST=mariadb
+            - PMA_PORT=3306
+            - PMA_HOST=${NAME_MARIABD_CONTAINER}
             - PMA_USER=root
             - PMA_PASSWORD=secret
         ports:
