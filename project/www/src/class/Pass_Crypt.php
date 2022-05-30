@@ -71,9 +71,9 @@ if (!class_exists('Pass_Crypt')) {
 
         /**
          * 
-         * @param string|null $pass : le mot de passe a crypter.
-         * @param string|null $pass : le mot de passe a crypter.
-         * @return string|null retourne le mot de passe crypte.
+         * @param string|null $pass : le mot de passe a tester.
+         * @param string|null $hash : le mot de passe crypter a tester.
+         * @return boolean retourne true, si le mot de passe est valide.
          */
         public static function verify(?string $pass, ?string $hash):bool {
             $error_log = new Error_Log();

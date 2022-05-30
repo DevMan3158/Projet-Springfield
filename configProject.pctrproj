@@ -114,6 +114,15 @@ sub =
 type = folder
 lien = project/error
 
+[config_bt_folder_data]
+tr_key = bt_folder_data
+tr_text = Open Aplication Data Folder
+tr_com = 
+is_container = false
+sub = 
+type = folder
+lien = project/www/data
+
 [config_bt_port_httpd]
 tr_key = expose_httpd
 tr_text = port
@@ -141,7 +150,7 @@ tr_com =
 is_container = false
 sub = ${NAME_MARIABD_CONTAINER}
 type = expose
-lien = .env,VALUE_MARIABD_EXPOSE=%port;${FOLDER_SGBD}mariadb.cnf,port=%port
+lien = .env,VALUE_MARIABD_EXPOSE=%port
 value = ${VALUE_MARIABD_EXPOSE}
 
 [config_bt_port_phpmyadmin]
