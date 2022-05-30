@@ -69,7 +69,7 @@ services:
             - ./projecttmp/mysql_data:/var/lib/mysql
             - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf:ro
             - ./.docker/mysql/mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf:ro
-            - ./.docker/mysql/0000_phpmyadmin.sql:/docker-entrypoint-initdb.d/0000_phpmyadmin.sql
+            - ./.docker/sgbd_data/0000_phpmyadmin.sql:/docker-entrypoint-initdb.d/0000_phpmyadmin.sql
             # start sql
             - ./config/0001-springfield.sql:/docker-entrypoint-initdb.d/0001-springfield.sql
             - ./config/0002-springfield.sql:/docker-entrypoint-initdb.d/0002-springfield.sql
