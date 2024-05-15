@@ -1,0 +1,159 @@
+input[type="file"] {
+    display: none;
+}
+
+#add-img {
+    width: 400px;
+    height: 300px;
+}
+
+h1{
+    margin: 50px 0;
+}
+
+form{
+    grid-gap: 30px;
+    background: rgb(255,255,255,0.2);
+    padding: 150px;
+}
+
+#desc{
+    height: 100px;
+    width: 400px;
+}
+
+.boutton{
+    width: 10%;
+    flex: none;
+    margin: auto;
+    transition: 0.2s;
+    background-color: #8bc7e5;
+    border: white solid 2px;
+    border-radius: 5px;
+}
+
+input,textarea,select{
+    border-radius: 5px;
+    border: 2px white solid;
+    background-color: #8bc7e5;
+}
+
+.boutton:hover{
+    transform: scale(1.1);
+    border-radius: 15px;
+    width: 15%
+}
+
+figure div{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.tablebutton{
+    background-color: rgb(255,255,255,0);
+    border: none;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.testcolor{
+    filter:drop-shadow(16px 16px 20px white) invert(100%);
+    transition: 0.2s;
+}
+
+.edit, .delete{
+    transition: 0.2s;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.tablebutton img:hover{
+    transform: scale(1.2);
+}
+
+.editor_html_bbcode {
+ height: unset !important;
+}
+
+.phototableau{
+    width: 220px;
+    height: 150px;
+}
+
+.contain{
+    object-fit: contain;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.bbcode button {
+    padding: 5px;
+    margin: 2px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #8bc7e5;
+    border: white solid 2px;
+    border-radius: 5px;
+}
+
+.bbcode button:hover {
+    transform: scale(1.05);
+}
+
+@media all and (max-width: 1200px) {
+
+    .boutton{
+        width: unset;
+    }
+
+    .boutton:hover {
+        padding-left: 45px;
+        padding-right: 45px;
+        width: unset;
+    }
+
+}
+
+@media all and (max-width: 1000px) {
+
+        form{
+            grid-gap:0;
+            padding: 0;
+        }
+
+        .none{
+            display: none;
+        }
+
+        .container{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    
+}
+
+@media all and (max-width: 470px) {
+
+    form{
+        grid-gap:0;
+        padding: 0;
+    }
+
+    .none{
+        display: none;
+    }
+
+    .none2{
+        display: none;
+    }
+
+}
