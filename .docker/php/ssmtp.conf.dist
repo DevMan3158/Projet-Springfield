@@ -1,6 +1,0 @@
-FromLineOverride=YES
-mailhub=smtp.gmail.com:587
-hostname=dockerdev.foo.net
-UseSTARTTLS=YES
-AuthUser=me@mydomain.net
-AuthPass=mypassword
